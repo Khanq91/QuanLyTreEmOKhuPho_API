@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class VanDongTreEmRepository : IVanDongTreEmRepository
     {
-        private readonly QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
 
-        public VanDongTreEmRepository(QuanLyTreEmContext context)
+        public VanDongTreEmRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
         {
             _context = context;
         }

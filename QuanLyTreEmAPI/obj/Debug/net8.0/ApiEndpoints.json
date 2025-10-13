@@ -1,5 +1,84 @@
 [
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.KhuPhoController",
+    "Method": "GetAll",
+    "RelativePath": "api/KhuPho",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.KhuPhoController",
+    "Method": "Create",
+    "RelativePath": "api/KhuPho",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "khuPho",
+        "Type": "QuanLyTreEmAPI.Models.KhuPho",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.KhuPhoController",
+    "Method": "GetById",
+    "RelativePath": "api/KhuPho/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.KhuPhoController",
+    "Method": "Update",
+    "RelativePath": "api/KhuPho/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "khuPho",
+        "Type": "QuanLyTreEmAPI.Models.KhuPho",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.KhuPhoController",
+    "Method": "Delete",
+    "RelativePath": "api/KhuPho/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

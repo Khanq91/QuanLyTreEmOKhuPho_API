@@ -153,3 +153,5 @@ D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\ref
 D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.pdb
 D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.genruntimeconfig.cache
 D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\ref\QuanLyTreEmAPI.dll
+D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.sourcelink.json
+D:\File\HK7\KL_CN\project\api\QuanLyTreEmAPI\QuanLyTreEmAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

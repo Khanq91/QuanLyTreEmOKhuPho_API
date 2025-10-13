@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\data\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\data\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\phuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\phuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\vandongtreemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\vandongtreemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\hotrophucloirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,32 +27,28 @@
       "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\phieuhoctaprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\ihotrophucloirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\ihotrophucloirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\hoancanhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\hoancanhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\ivandongtreemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\ivandongtreemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\truonghocrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\truonghocrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\phuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\phuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\khuphorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\khuphorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\iphuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\iphuhuynhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\data\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\data\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\treemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\treemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\repositories\\iphieuhoctaprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\repositories\\iphieuhoctaprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\quanlytreemapi\\quanlytreemapi\\controllers\\khuphocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\khuphocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,150 +61,165 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:50:40.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VanDongTreEmRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:49:22.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IVanDongTreEmRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IVanDongTreEmRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\IVanDongTreEmRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IVanDongTreEmRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\IVanDongTreEmRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:49:04.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HoTroPhucLoiRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:48:01.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IHoTroPhucLoiRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IHoTroPhucLoiRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\IHoTroPhucLoiRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IHoTroPhucLoiRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\IHoTroPhucLoiRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:43:36.718Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PhieuHocTapRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:41:35.195Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IPhieuHocTapRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IPhieuHocTapRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\IPhieuHocTapRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IPhieuHocTapRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\IPhieuHocTapRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:41:16.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PhuHuynhRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:27:53.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IPhuHuynhRepository.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IPhuHuynhRepository.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\IPhuHuynhRepository.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\IPhuHuynhRepository.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\IPhuHuynhRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:27:20.323Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Program.cs",
               "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Program.cs",
               "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Program.cs",
               "RelativeToolTip": "QuanLyTreEmAPI\\Program.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGQAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-11T14:37:15.126Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "QuanLyTreEmContext.cs",
               "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Data\\QuanLyTreEmContext.cs",
               "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Data\\QuanLyTreEmContext.cs",
               "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Data\\QuanLyTreEmContext.cs",
               "RelativeToolTip": "QuanLyTreEmAPI\\Data\\QuanLyTreEmContext.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAswCAAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwCQAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T14:34:10.463Z",
+              "WhenOpened": "2025-10-13T17:11:37.97Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VanDongTreEmRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\VanDongTreEmRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwAkAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:46.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HoTroPhucLoiRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\HoTroPhucLoiRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:40.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PhieuHocTapRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\PhieuHocTapRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:34.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhuHuynhRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs*",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\PhuHuynhRepository.cs*",
+              "ViewState": "AgIAABEAAAAAAAAAAADgvx0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:25.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HoanCanhRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoanCanhRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\HoanCanhRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\HoanCanhRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\HoanCanhRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:19.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TruongHocRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\TruongHocRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\TruongHocRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\TruongHocRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\TruongHocRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:14.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KhuPhoRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\KhuPhoRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\KhuPhoRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\KhuPhoRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\KhuPhoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:26:07.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TreEmRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\TreEmRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\TreEmRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\TreEmRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\TreEmRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:25:37.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Repositories\\AuthRepository.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Repositories\\AuthRepository.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Repositories\\AuthRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:12:18.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "KhuPhoController.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Controllers\\KhuPhoController.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\KhuPhoController.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\QuanLyTreEmAPI\\QuanLyTreEmAPI\\Controllers\\KhuPhoController.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\KhuPhoController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T17:10:46.882Z",
               "EditorCaption": ""
             }
           ]

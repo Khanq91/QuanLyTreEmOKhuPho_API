@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
 
-        public AuthRepository(QuanLyTreEmContext context)
+        public AuthRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
         {
             _context = context;
         }
@@ -40,5 +40,4 @@ namespace QuanLyTreEmAPI.Repositories
             return true;
         }
     }
-}
 }

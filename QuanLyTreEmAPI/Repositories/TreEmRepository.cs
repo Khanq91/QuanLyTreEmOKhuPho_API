@@ -6,9 +6,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class TreEmRepository : ITreEmRepository
     {
-        private readonly QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
 
-        public TreEmRepository(QuanLyTreEmContext context)
+        public TreEmRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
         {
             _context = context;
         }

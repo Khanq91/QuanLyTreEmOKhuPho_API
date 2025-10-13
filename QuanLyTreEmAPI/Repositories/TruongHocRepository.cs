@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class TruongHocRepository : ITruongHocRepository
     {
-        private readonly QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
 
-        public TruongHocRepository(QuanLyTreEmContext context)
+        public TruongHocRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
         {
             _context = context;
         }

@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class PhieuHocTapRepository : IPhieuHocTapRepository
     {
-        private readonly QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
 
-        public PhieuHocTapRepository(QuanLyTreEmContext context)
+        public PhieuHocTapRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
         {
             _context = context;
         }
