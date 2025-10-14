@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class PhuHuynhRepository : IPhuHuynhRepository
     {
-        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmContext _context;
 
-        public PhuHuynhRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
+        public PhuHuynhRepository(QuanLyTreEmContext context)
         {
             _context = context;
         }

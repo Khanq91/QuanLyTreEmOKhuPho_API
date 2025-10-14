@@ -38,7 +38,7 @@ builder.Services.AddSwaggerGen(c =>
 );
 
 // Database
-builder.Services.AddDbContext<QuanLyTreEmContext>(c =>
+builder.Services.AddDbContext<QuanLyTreEmAPI.Models.QuanLyTreEmContext>(c =>
     c.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 

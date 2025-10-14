@@ -7,7 +7,7 @@ namespace QuanLyTreEmAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class KhuPhoController : ControllerBase
     {
         private readonly QuanLyTreEmContext _context;
@@ -35,7 +35,7 @@ namespace QuanLyTreEmAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] KhuPho khuPho)
         {
             _context.KhuPhos.Add(khuPho);
@@ -44,7 +44,7 @@ namespace QuanLyTreEmAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] KhuPho khuPho)
         {
             var existing = await _context.KhuPhos.FindAsync(id);
@@ -61,7 +61,7 @@ namespace QuanLyTreEmAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var khuPho = await _context.KhuPhos.FindAsync(id);

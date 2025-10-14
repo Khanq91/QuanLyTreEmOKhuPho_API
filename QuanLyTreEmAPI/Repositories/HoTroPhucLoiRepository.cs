@@ -5,9 +5,9 @@ namespace QuanLyTreEmAPI.Repositories
 {
     public class HoTroPhucLoiRepository : IHoTroPhucLoiRepository
     {
-        private readonly QuanLyTreEmAPI.Data.QuanLyTreEmContext _context;
+        private readonly QuanLyTreEmContext _context;
 
-        public HoTroPhucLoiRepository(QuanLyTreEmAPI.Data.QuanLyTreEmContext context)
+        public HoTroPhucLoiRepository(QuanLyTreEmContext context)
         {
             _context = context;
         }

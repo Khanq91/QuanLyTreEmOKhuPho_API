@@ -11,7 +11,7 @@ namespace QuanLyTreEmAPI.Data
 {
     public class QuanLyTreEmContext : DbContext
     {
-        public QuanLyTreEmContext(DbContextOptions<QuanLyTreEmContext> options) : base(options) { }
+        public QuanLyTreEmContext(DbContextOptions<QuanLyTreEmAPI.Models.QuanLyTreEmContext> options) : base(options) { }
         public DbSet<KhuPho> KhuPhos { get; set; }
         public DbSet<NguoiDung> NguoiDungs { get; set; }
         public DbSet<TinhNguyenVien> TinhNguyenViens { get; set; }
@@ -42,6 +42,11 @@ namespace QuanLyTreEmAPI.Data
 
             modelBuilder.Entity<TreEmHoanCanh>()
                 .HasKey(th => new { th.TreEmId, th.HoanCanhId });
+            modelBuilder.Entity<NguoiDung>()
+                .HasOne(nd => nd.TinhNguyenVien)
+                .WithOne(tv => tv.User)
+                .HasForeignKey<TinhNguyenVien>(tv => tv.UserId); 
+
         }
     }
 }
