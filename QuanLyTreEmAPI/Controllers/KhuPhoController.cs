@@ -23,7 +23,7 @@ namespace QuanLyTreEmAPI.Controllers
             var khuPhos = await _context.KhuPhos.ToListAsync();
             return Ok(khuPhos);
         }
-
+     
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

@@ -130,6 +130,333 @@
         }
       }
     },
+    "/api/NguoiDung": {
+      "get": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NguoiDung"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NguoiDung"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NguoiDung"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/Login": {
+      "get": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "SDT",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MatKhau",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/SapToi": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "KhuPhoID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/TTCB_ChiTietSuKien": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "SuKienID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/TTCT_ChiTietSuKien": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "SuKienID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/TT_ThanhVienSuKien_TNV": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "SuKienID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/TT_ThanhVienSuKienPhuHuynh": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "SuKienID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/CapNhatTrangThai": {
+      "put": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "SuKienID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "UserID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TrangThai",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TinhNguyenVien": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TreEm": {
+      "get": {
+        "tags": [
+          "TreEm"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TreEm/TongTreEmTheoKhuPho": {
+      "get": {
+        "tags": [
+          "TreEm"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UngHo": {
+      "get": {
+        "tags": [
+          "UngHo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UngHo/TongSuKienSapToi": {
+      "get": {
+        "tags": [
+          "UngHo"
+        ],
+        "parameters": [
+          {
+            "name": "KhuPhoID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UngHo/TongTienUngHoTrongThang": {
+      "get": {
+        "tags": [
+          "UngHo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -538,6 +865,10 @@
             "format": "int32"
           },
           "hoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "sdt": {
             "type": "string",
             "nullable": true
           },

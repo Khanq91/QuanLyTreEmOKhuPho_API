@@ -8,6 +8,7 @@ public partial class NguoiDung
     public int UserId { get; set; }
 
     public string? HoTen { get; set; }
+    public string? SDT { get; set; }
 
     public string? Email { get; set; }
 
