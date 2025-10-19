@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QuanLyTreEmAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using QuanLyTreEmAPI.DTOs.SuKien;
 
 namespace QuanLyTreEmAPI.Controllers
 {

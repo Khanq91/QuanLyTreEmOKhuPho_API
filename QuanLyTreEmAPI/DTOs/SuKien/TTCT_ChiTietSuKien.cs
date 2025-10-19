@@ -1,4 +1,4 @@
-﻿namespace QuanLyTreEmAPI.Models
+﻿namespace QuanLyTreEmAPI.DTOs.SuKien
 {
     public class TTCT_ChiTietSuKien
     {

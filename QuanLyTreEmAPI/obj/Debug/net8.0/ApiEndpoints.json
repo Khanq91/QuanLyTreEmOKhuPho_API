@@ -246,6 +246,86 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TinhNguyenVienController",
+    "Method": "ChiTietThongTinTinhNguyenVien",
+    "RelativePath": "api/TinhNguyenVien/ChiTietThongTinTinhNguyenVien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TinhNguyenVienController",
+    "Method": "GetHoTroVanDong",
+    "RelativePath": "api/TinhNguyenVien/GetHoTroVanDong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TinhNguyenVienController",
+    "Method": "GetLichRanhTinhNguyenVien",
+    "RelativePath": "api/TinhNguyenVien/GetLichRanhTinhNguyenVien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TinhNguyenVienController",
+    "Method": "GetSuKienDaThamGia",
+    "RelativePath": "api/TinhNguyenVien/GetSuKienDaThamGia",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TinhNguyenVienController",
+    "Method": "GetThongKeTinhNguyenVien",
+    "RelativePath": "api/TinhNguyenVien/GetThongKeTinhNguyenVien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "KhuPhoId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.TreEmController",
     "Method": "GetAll",
     "RelativePath": "api/TreEm",

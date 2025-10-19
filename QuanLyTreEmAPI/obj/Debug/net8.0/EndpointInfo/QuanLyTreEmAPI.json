@@ -367,6 +367,116 @@
         }
       }
     },
+    "/api/TinhNguyenVien/GetThongKeTinhNguyenVien": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "KhuPhoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TinhNguyenVien/ChiTietThongTinTinhNguyenVien": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "UserID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TinhNguyenVien/GetLichRanhTinhNguyenVien": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "UserID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TinhNguyenVien/GetSuKienDaThamGia": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "UserID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TinhNguyenVien/GetHoTroVanDong": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TreEm": {
       "get": {
         "tags": [
@@ -1328,7 +1438,7 @@
           },
           "ngaySinh": {
             "type": "string",
-            "format": "date",
+            "format": "date-time",
             "nullable": true
           },
           "chucVu": {
