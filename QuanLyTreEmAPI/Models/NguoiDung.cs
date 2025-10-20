@@ -17,7 +17,8 @@ public partial class NguoiDung
     public string? VaiTro { get; set; }
 
     public DateOnly? NgayTao { get; set; }
-
+    public string Anh { get; set; }
+    public string TrangThai { get; set; }
     public virtual ICollection<DangKySuKien> DangKySuKiens { get; set; } = new List<DangKySuKien>();
 
     public virtual ICollection<SuKien> SuKiens { get; set; } = new List<SuKien>();

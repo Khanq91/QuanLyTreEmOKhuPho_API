@@ -999,6 +999,14 @@
             "format": "date",
             "nullable": true
           },
+          "anh": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
           "dangKySuKiens": {
             "type": "array",
             "items": {
@@ -1512,6 +1520,10 @@
             "nullable": true
           },
           "tinhTrang": {
+            "type": "string",
+            "nullable": true
+          },
+          "anh": {
             "type": "string",
             "nullable": true
           },

@@ -311,3 +311,4 @@ D:\Tong_hop_Tieu_Luan\DOAN\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.
 D:\Tong_hop_Tieu_Luan\DOAN\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.pdb
 D:\Tong_hop_Tieu_Luan\DOAN\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.genruntimeconfig.cache
 D:\Tong_hop_Tieu_Luan\DOAN\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\ref\QuanLyTreEmAPI.dll
+D:\Tong_hop_Tieu_Luan\DOAN\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\bin\Debug\net8.0\QuanLyTreEmAPI.staticwebassets.runtime.json

@@ -45,10 +45,14 @@ namespace QuanLyTreEmAPI.Controllers
                     g.t.TinhNguyenVienId,
                     g.t.UserId,
                     g.u.HoTen,
+                    g.u.TrangThai,
+                    g.u.NgayTao,
                     g.t.NgaySinh,
+                    g.u.Anh,
                     g.k.TenKhuPho,
                     g.u.SDT,
                     g.t.ChucVu
+
                 })
                 .Select(g => new ThongKeTinhNguyenVienDTO
                 {
@@ -56,7 +60,10 @@ namespace QuanLyTreEmAPI.Controllers
                     UserID = g.Key.UserId,
                     TinhNguyenVienID = g.Key.TinhNguyenVienId,
                     TenTinhNguyenVien = g.Key.HoTen,
+                    TrangThai = g.Key.TrangThai,
                     NgaySinh = g.Key.NgaySinh,
+                    NgayTao = g.Key.NgayTao,
+                    Anh =g.Key.Anh,
                     TenKhuPho = g.Key.TenKhuPho,
                     SDT = g.Key.SDT,
                     ChucVu = g.Key.ChucVu,

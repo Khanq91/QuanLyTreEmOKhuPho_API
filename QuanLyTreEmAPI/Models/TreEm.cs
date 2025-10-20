@@ -22,6 +22,7 @@ public partial class TreEm
     public int? TruongId { get; set; }
 
     public string? TinhTrang { get; set; }
+    public string? Anh { get; set; }
 
     public int? KhuPhoId { get; set; }
 
