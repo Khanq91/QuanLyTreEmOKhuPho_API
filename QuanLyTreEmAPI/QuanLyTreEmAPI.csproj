@@ -24,4 +24,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="DTOs\ManhThuongQuan\LichSuUngHo.cs" />
+  </ItemGroup>
+
 </Project>

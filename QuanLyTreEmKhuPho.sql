@@ -591,21 +591,4 @@ SELECT * FROM HoTroPhucLoi;
 SELECT * FROM PhieuMinhChung;
 SELECT * FROM UngHo_TreEm;
 SELECT * FROM UngHo_HoTroPhucLoi;
-SELECT 
-    nd.HoTen AS TenTinhNguyenVien,
-    te.HoTen AS TenTreEm,
-    hc.LoaiHoanCanh,
-    hc.MoTa AS MoTaHoanCanh,
-    vdt.SoLan,
-    vdt.LyDo,
-    vdt.KetQua,
-    vdt.NgayVanDong
-FROM VanDongTreEm vdt
-JOIN NguoiDung nd ON vdt.NguoiDungID = nd.UserID
-JOIN TreEm te ON vdt.TreEmID = te.TreEmID
-JOIN HoanCanh hc ON vdt.HoanCanhID = hc.HoanCanhID
-WHERE vdt.NguoiDungID = 2;
-
-update NguoiDung
-set TrangThai=N'Ngưng hoạt động'
-where UserID=2
+select ManhThuongQuanID,Ten,Loai,DiaChi,SDT,Email,GhiChu from ManhThuongQuan where ManhThuongQuanID=1

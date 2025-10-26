@@ -130,6 +130,242 @@
         }
       }
     },
+    "/api/ManhThuongQuan/ThongKeManhThuongQuan": {
+      "get": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/ThongTinhManhThuongQuan": {
+      "get": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/LuuThongTinUngHo": {
+      "post": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThongTinUngHo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThongTinUngHo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThongTinUngHo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/GhiNhanManhThuongQuan": {
+      "post": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/GetThongTinChiTietManhThuongQuan": {
+      "get": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "parameters": [
+          {
+            "name": "ManhThuongQuanID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/ThongTinUngHoCuaManhThuongQuan": {
+      "get": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "parameters": [
+          {
+            "name": "UngHoID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/SuaUngHoCuaManhThuongQuan": {
+      "post": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UngHoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UngHoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UngHoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/XoaUngHo": {
+      "delete": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "parameters": [
+          {
+            "name": "UngHoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/ThongTinManhThuongQuan": {
+      "get": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "parameters": [
+          {
+            "name": "ManhThuongQuanID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ManhThuongQuan/SuaManhThuongQuan": {
+      "put": {
+        "tags": [
+          "ManhThuongQuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GhiNhanManhThuongQuan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/NguoiDung": {
       "get": {
         "tags": [
@@ -501,10 +737,20 @@
         }
       }
     },
-    "/api/UngHo": {
+    "/api/UngHo/GetAll": {
       "get": {
         "tags": [
           "UngHo"
+        ],
+        "parameters": [
+          {
+            "name": "ManhThuongQuanID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -740,6 +986,40 @@
           },
           "user": {
             "$ref": "#/components/schemas/NguoiDung"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GhiNhanManhThuongQuan": {
+        "type": "object",
+        "properties": {
+          "manhThuongQuanId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ten": {
+            "type": "string",
+            "nullable": true
+          },
+          "loai": {
+            "type": "string",
+            "nullable": true
+          },
+          "diaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "sdt": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghiChu": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1402,6 +1682,34 @@
         },
         "additionalProperties": false
       },
+      "ThongTinUngHo": {
+        "type": "object",
+        "properties": {
+          "manhThuongQuanId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soTien": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ngayUngHo": {
+            "type": "string",
+            "format": "date"
+          },
+          "hinhThuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghiChu": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TietMucSuKien": {
         "type": "object",
         "properties": {
@@ -1721,6 +2029,41 @@
               "$ref": "#/components/schemas/TreEm"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UngHoDTO": {
+        "type": "object",
+        "properties": {
+          "ungHoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soTien": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "loaiUngHo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayUngHo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghiChu": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenManhThuongQuan": {
+            "type": "string",
+            "nullable": true
+          },
+          "manhThuongQuanId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -79,6 +79,154 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "GetThongTinChiTietManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/GetThongTinChiTietManhThuongQuan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ManhThuongQuanID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "GhiNhanManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/GhiNhanManhThuongQuan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "QuanLyTreEmAPI.DTOs.ManhThuongQuan.GhiNhanManhThuongQuan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "LuuThongTinUngHo",
+    "RelativePath": "api/ManhThuongQuan/LuuThongTinUngHo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuanLyTreEmAPI.DTOs.ManhThuongQuan.ThongTinUngHo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "SuaManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/SuaManhThuongQuan",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "QuanLyTreEmAPI.DTOs.ManhThuongQuan.GhiNhanManhThuongQuan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "SuaUngHoCuaManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/SuaUngHoCuaManhThuongQuan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updatedUngHo",
+        "Type": "QuanLyTreEmAPI.DTOs.ManhThuongQuan.UngHoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "GetThongKeManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/ThongKeManhThuongQuan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "GetThongKeManhThuongQuan_Lambda",
+    "RelativePath": "api/ManhThuongQuan/ThongTinhManhThuongQuan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "ThongTinManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/ThongTinManhThuongQuan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ManhThuongQuanID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "ThongTinUngHoCuaManhThuongQuan",
+    "RelativePath": "api/ManhThuongQuan/ThongTinUngHoCuaManhThuongQuan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UngHoID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ManhThuongQuanController",
+    "Method": "XoaUngHo",
+    "RelativePath": "api/ManhThuongQuan/XoaUngHo",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UngHoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.NguoiDungController",
     "Method": "GetAll",
     "RelativePath": "api/NguoiDung",
@@ -348,11 +496,17 @@
   {
     "ContainingType": "QuanLyTreEmAPI.Controllers.UngHoController",
     "Method": "GetAll",
-    "RelativePath": "api/UngHo",
+    "RelativePath": "api/UngHo/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "ManhThuongQuanID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
