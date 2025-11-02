@@ -591,4 +591,5 @@ SELECT * FROM HoTroPhucLoi;
 SELECT * FROM PhieuMinhChung;
 SELECT * FROM UngHo_TreEm;
 SELECT * FROM UngHo_HoTroPhucLoi;
-select ManhThuongQuanID,Ten,Loai,DiaChi,SDT,Email,GhiChu from ManhThuongQuan where ManhThuongQuanID=1
+
+select * from UngHo where UngHo.ManhThuongQuanID=1

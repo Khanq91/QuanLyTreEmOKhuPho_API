@@ -244,12 +244,11 @@ namespace QuanLyTreEmAPI.Controllers
             _context.UngHos.Remove(ungHo);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Xóa ủng hộ thành công." });
+            return Ok();
         }
         [HttpGet("ThongTinManhThuongQuan")]
         public async Task<IActionResult> ThongTinManhThuongQuan([FromQuery] int ManhThuongQuanID)
         {
-            // Truy vấn cơ sở dữ liệu để lấy thông tin ManhThuongQuan với ID tương ứng
             var manhThuongQuan = await _context.ManhThuongQuans
                 .Where(m => m.ManhThuongQuanId == ManhThuongQuanID)
                 .Select(m => new
@@ -304,6 +303,5 @@ namespace QuanLyTreEmAPI.Controllers
                 data = mtq
             });
         }
-
     }
 }
