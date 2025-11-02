@@ -5,6 +5,35 @@
     "version": "v1"
   },
   "paths": {
+    "/api/AIPhanLoai/PhanTichMucDoUuTienTreEm": {
+      "get": {
+        "tags": [
+          "AIPhanLoai"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/KetQuaPhanTichDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KetQuaPhanTichDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KetQuaPhanTichDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/BaoCaoThongKe/TongQuan": {
       "get": {
         "tags": [
@@ -1545,6 +1574,39 @@
         },
         "additionalProperties": false
       },
+      "KetQuaPhanTichDto": {
+        "type": "object",
+        "properties": {
+          "tongSoTreEm": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soTreEmUuTienCao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soTreEmUuTienTrungBinh": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soTreEmUuTienThap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "thoiGianPhanTich": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "danhSachTreEm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MucDoUuTienDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "KhuPho": {
         "type": "object",
         "properties": {
@@ -1681,6 +1743,63 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UngHo"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MucDoUuTienDto": {
+        "type": "object",
+        "properties": {
+          "treEmId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "tuoi": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gioiTinh": {
+            "type": "string",
+            "nullable": true
+          },
+          "khuPho": {
+            "type": "string",
+            "nullable": true
+          },
+          "truongHoc": {
+            "type": "string",
+            "nullable": true
+          },
+          "mucDoUuTien": {
+            "type": "string",
+            "nullable": true
+          },
+          "diemUuTien": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lyDoChinhh": {
+            "type": "string",
+            "nullable": true
+          },
+          "chiTietLyDo": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "deXuatHoTro": {
+            "type": "array",
+            "items": {
+              "type": "string"
             },
             "nullable": true
           }

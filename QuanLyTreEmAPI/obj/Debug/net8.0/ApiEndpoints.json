@@ -1,5 +1,25 @@
 [
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.AIPhanLoaiController",
+    "Method": "PhanTichTatCaTreEm",
+    "RelativePath": "api/AIPhanLoai/PhanTichMucDoUuTienTreEm",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "QuanLyTreEmAPI.DTOs.AI.KetQuaPhanTichDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "QuanLyTreEm.API.Controllers.BaoCaoThongKeController",
     "Method": "GetChiTietTheoTuan",
     "RelativePath": "api/BaoCaoThongKe/ChiTietTheoTuan",
