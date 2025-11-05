@@ -194,7 +194,7 @@ CREATE TABLE PhieuHocTap (
     XepLoai NVARCHAR(50),
 	HanhKiem NVARCHAR(25),
     GhiChu NVARCHAR(200),
-	NamHoc DATE,
+    NgayCapNhat DATE,
     TruongID INT FOREIGN KEY REFERENCES TruongHoc(TruongID),
     TreEmID INT FOREIGN KEY REFERENCES TreEm(TreEmID),	
 	LopID INT FOREIGN KEY REFERENCES LopHoc(LopID),
@@ -591,5 +591,21 @@ SELECT * FROM HoTroPhucLoi;
 SELECT * FROM PhieuMinhChung;
 SELECT * FROM UngHo_TreEm;
 SELECT * FROM UngHo_HoTroPhucLoi;
+SELECT 
+    nd.HoTen AS TenTinhNguyenVien,
+    te.HoTen AS TenTreEm,
+    hc.LoaiHoanCanh,
+    hc.MoTa AS MoTaHoanCanh,
+    vdt.SoLan,
+    vdt.LyDo,
+    vdt.KetQua,
+    vdt.NgayVanDong
+FROM VanDongTreEm vdt
+JOIN NguoiDung nd ON vdt.NguoiDungID = nd.UserID
+JOIN TreEm te ON vdt.TreEmID = te.TreEmID
+JOIN HoanCanh hc ON vdt.HoanCanhID = hc.HoanCanhID
+WHERE vdt.NguoiDungID = 2;
 
-select * from UngHo where UngHo.ManhThuongQuanID=1
+update NguoiDung
+set TrangThai=N'Ngưng hoạt động'
+where UserID=2

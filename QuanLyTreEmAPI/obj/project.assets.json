@@ -4866,23 +4866,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Tong_hop_Tieu_Luan\\DOAN\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\OneDrive\\Máy tính\\zjob99\\kimanh\\QuanLyTreEmOKhuPho_API-main\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
       "projectName": "QuanLyTreEmAPI",
-      "projectPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\obj\\",
+      "projectPath": "C:\\Users\\DELL\\OneDrive\\Máy tính\\zjob99\\kimanh\\QuanLyTreEmOKhuPho_API-main\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DELL\\OneDrive\\Máy tính\\zjob99\\kimanh\\QuanLyTreEmOKhuPho_API-main\\QuanLyTreEmAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4965,7 +4965,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

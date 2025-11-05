@@ -8,4 +8,3 @@ wwwroot\Anh\TreEm\hinh2.jpg
 wwwroot\Anh\TreEm\hinh3.jpg
 wwwroot\Anh\TreEm\hinh4.jpg
 wwwroot\Anh\TreEm\hinh5.jpg
-wwwroot\Anh\NguoiDung\macdinh.jpg

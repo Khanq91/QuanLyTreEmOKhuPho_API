@@ -15,26 +15,12 @@ namespace QuanLyTreEmAPI.Controllers
         {
             _context = context;
         }
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll([FromQuery] int? ManhThuongQuanID)
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            IQueryable<UngHo> query = _context.UngHos;
-
-            if (ManhThuongQuanID.HasValue)
-            {
-                query = query.Where(u => u.ManhThuongQuanId == ManhThuongQuanID.Value);
-            }
-
-            var ungHos = await query.ToListAsync();
-
-            if (ungHos == null || !ungHos.Any())
-            {
-                return NotFound(new { Message = "Không tìm thấy dữ liệu ủng hộ." });
-            }
-
-            return Ok(ungHos);
+            var Unghos = await _context.UngHos.ToListAsync();
+            return Ok(Unghos);
         }
-
         [HttpGet("TongSuKienSapToi")]
         public async Task<IActionResult> GetSuKienSapToi([FromQuery] int? KhuPhoID)
         {
@@ -51,20 +37,17 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet("TongTienUngHoTrongThang")]
         public async Task<ActionResult<double>> TongTienTrongThang()
         {
-            var today = DateOnly.FromDateTime(DateTime.Today);
-            var firstDay = new DateOnly(today.Year, today.Month, 1);
+            var today = DateTime.Today;
+            var firstDay = new DateTime(today.Year, today.Month, 1);
 
-            var ungHos = await _context.UngHos
-                .Where(u => u.NgayUngHo.HasValue)
-                .ToListAsync();
-
-            var tongTien = ungHos
-                .Where(u => u.NgayUngHo >= firstDay && u.NgayUngHo <= today)
-                .Sum(u => (double?)u.SoTien) ?? 0;
+            var tongTien = await _context.UngHos
+                .Where(u => u.NgayUngHo.HasValue
+                            && u.NgayUngHo.Value.ToDateTime(TimeOnly.MinValue) >= firstDay
+                            && u.NgayUngHo.Value.ToDateTime(TimeOnly.MinValue) <= today)
+                .SumAsync(u => (double?)u.SoTien) ?? 0;
 
             return Ok(tongTien);
-        } 
-
+        }
 
     }
 }
