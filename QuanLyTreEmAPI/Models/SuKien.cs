@@ -31,6 +31,8 @@ public partial class SuKien
 
     public virtual ICollection<DangKySuKien> DangKySuKiens { get; set; } = new List<DangKySuKien>();
 
+    public virtual ICollection<TietMucSuKien> TietMucSuKiens { get; set; } = new List<TietMucSuKien>();
+
     public virtual KhuPho? KhuPho { get; set; }
 
     public virtual ICollection<PhanCongTinhNguyenVien> PhanCongTinhNguyenViens { get; set; } = new List<PhanCongTinhNguyenVien>();
