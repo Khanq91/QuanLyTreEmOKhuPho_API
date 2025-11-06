@@ -261,47 +261,78 @@ namespace QuanLyTreEmAPI.Controllers
             }
         }
 
-
         [HttpPut("Update/{id}")]
         public async Task<IActionResult> UpdateTreEm(int id, [FromBody] TreEmCreateDto model)
         {
-            var tre = await _context.TreEms.FindAsync(id);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var tre = await _context.TreEms
+                .Include(te => te.TreEmPhuHuynhs)
+                .Include(te => te.TreEmHoanCanhs)
+                .Include(te => te.PhieuHocTaps)
+                .Include(te => te.HoTroPhucLois)
+                    .ThenInclude(ht => ht.PhieuMinhChungs)
+                .Include(te => te.VanDongTreEms)
+                .FirstOrDefaultAsync(te => te.TreEmId == id);
+
             if (tre == null)
-                return NotFound("Không tìm thấy trẻ em.");
+                return NotFound($"Không tìm thấy trẻ với ID = {id}");
 
-            // Cập nhật thông tin cơ bản
-            tre.HoTen = model.HoTen;
-            tre.NgaySinh = DateOnly.FromDateTime(model.NgaySinh);
-            tre.GioiTinh = model.GioiTinh;
-            tre.TonGiao = model.TonGiao;
-            tre.DanToc = model.DanToc;
-            tre.QuocTich = model.QuocTich;
-            tre.TruongId = model.TruongId;
-            tre.KhuPhoId = model.KhuPhoId;
-            tre.TinhTrang = model.TinhTrang;
-            tre.Anh = model.Anh;
-            await _context.SaveChangesAsync();
-
-            // Cập nhật hoàn cảnh
-            var oldHC = _context.TreEmHoanCanhs.Where(h => h.TreEmId == id);
-            _context.TreEmHoanCanhs.RemoveRange(oldHC);
-            if (model.HoanCanhIds != null)
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
             {
-                foreach (var hc in model.HoanCanhIds)
+                // ============================
+                // 🔹 Cập nhật thông tin cơ bản
+                // ============================
+                tre.HoTen = model.HoTen;
+                tre.NgaySinh = DateOnly.FromDateTime(model.NgaySinh);
+                tre.GioiTinh = model.GioiTinh;
+                tre.DanToc = model.DanToc;
+                tre.TonGiao = model.TonGiao;
+                tre.QuocTich = model.QuocTich;
+                tre.KhuPhoId = model.KhuPhoId;
+                tre.TruongId = model.TruongId;
+                tre.TinhTrang = model.TinhTrang;
+
+                // 🔹 Nếu người dùng upload ảnh mới (base64)
+                if (!string.IsNullOrEmpty(model.Anh))
                 {
-                    _context.TreEmHoanCanhs.Add(new TreEmHoanCanh
+                    if (model.Anh.StartsWith("data:image"))
                     {
-                        TreEmId = id,
-                        HoanCanhId = hc,
-                        NgayCapNhat = DateOnly.FromDateTime(DateTime.Now)
-                    });
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Anh", "TreEm");
+                        if (!Directory.Exists(folderPath))
+                            Directory.CreateDirectory(folderPath);
+
+                        var fileName = $"treem_{DateTime.Now:yyyyMMddHHmmssfff}.jpg";
+                        var filePath = Path.Combine(folderPath, fileName);
+                        var base64Data = model.Anh.Substring(model.Anh.IndexOf(",") + 1);
+                        var bytes = Convert.FromBase64String(base64Data);
+                        await System.IO.File.WriteAllBytesAsync(filePath, bytes);
+
+                        tre.Anh = $"/Anh/TreEm/{fileName}";
+                    }
+                    else
+                    {
+                        tre.Anh = model.Anh; // dùng lại ảnh cũ
+                    }
                 }
+
+       
+
+          
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(new { message = "Cập nhật thông tin trẻ thành công" });
             }
-
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Cập nhật hồ sơ trẻ thành công" });
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, new { message = "Lỗi khi cập nhật", detail = ex.Message });
+            }
         }
-
 
 
         public class TreEmCreateDto
