@@ -29,6 +29,7 @@ public partial class SuKien
     public int? UserId { get; set; }
 
     public int? KhuPhoId { get; set; }
+    public virtual ICollection<TreEmSuKien> TreEmSuKiens { get; set; } = new List<TreEmSuKien>();
 
     public virtual ICollection<ChiPhiSuKien> ChiPhiSuKiens { get; set; } = new List<ChiPhiSuKien>();
 

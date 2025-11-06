@@ -37,6 +37,7 @@ public partial class TreEm
     public virtual ICollection<TreEmPhuHuynh> TreEmPhuHuynhs { get; set; } = new List<TreEmPhuHuynh>();
 
     public virtual TruongHoc? Truong { get; set; }
+    public virtual ICollection<TreEmSuKien> TreEmSuKiens { get; set; } = new List<TreEmSuKien>();
 
     public virtual ICollection<VanDongTreEm> VanDongTreEms { get; set; } = new List<VanDongTreEm>();
 

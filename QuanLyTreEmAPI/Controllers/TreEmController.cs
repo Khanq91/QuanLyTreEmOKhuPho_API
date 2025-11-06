@@ -318,8 +318,6 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
-       
-
           
 
                 await _context.SaveChangesAsync();

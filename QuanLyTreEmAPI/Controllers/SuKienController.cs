@@ -131,7 +131,6 @@ namespace QuanLyTreEmAPI.Controllers
             var sk = await _context.SuKiens
                 .Include(x => x.KhuPho)
                 .Include(x => x.ThoiGianChiTietSuKiens)
-                    .ThenInclude(t => t.TietMucSuKiens)
                 .Include(x => x.ChiPhiSuKiens)
                     .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
                 .AsNoTracking()
@@ -139,6 +138,19 @@ namespace QuanLyTreEmAPI.Controllers
 
             if (sk == null)
                 return NotFound("Không tìm thấy sự kiện");
+
+            // 🔹 Load tiết mục theo SuKienId (độc lập với thời gian chi tiết)
+            var tietMucs = await _context.TietMucSuKiens
+                .Where(t => t.SuKienId == id)
+                .Select(t => new
+                {
+                    t.TietMucId,
+                    t.TenTietMuc,
+                    t.NguoiThucHien,
+                    t.ChiPhiTietMuc,
+                    t.ThoiGianChiTietSuKienId
+                })
+                .ToListAsync();
 
             var result = new
             {
@@ -157,14 +169,7 @@ namespace QuanLyTreEmAPI.Controllers
                     t.ThoiGianBatDau,
                     t.ThoiGianKetThuc
                 }),
-                TietMuc = sk.ThoiGianChiTietSuKiens
-                            .SelectMany(t => t.TietMucSuKiens)
-                            .Select(t => new
-                            {
-                                t.TenTietMuc,
-                                t.NguoiThucHien,
-                                t.ChiPhiTietMuc
-                            }),
+                TietMuc = tietMucs,
                 ChiPhi = sk.ChiPhiSuKiens.Select(c => new
                 {
                     c.TenKhoanChi,
@@ -403,7 +408,6 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(result);
         }
 
-        // ✅ DUYỆT đăng ký
         [HttpPut("approve/{id}")]
         public async Task<IActionResult> ApproveDangKy(int id)
         {
@@ -416,7 +420,6 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(new { message = "Duyệt đăng ký thành công!" });
         }
 
-        // ✅ TỪ CHỐI đăng ký
         [HttpPut("reject/{id}")]
         public async Task<IActionResult> RejectDangKy(int id)
         {
@@ -429,7 +432,6 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(new { message = "Từ chối đăng ký thành công!" });
         }
 
-        // ✅ XÓA đăng ký
         [HttpDelete("deletedangky/{id}")]
         public async Task<IActionResult> DeleteDangKy(int id)
         {
@@ -441,5 +443,206 @@ namespace QuanLyTreEmAPI.Controllers
             await _context.SaveChangesAsync();
             return Ok(new { message = "Xóa đăng ký thành công!" });
         }
+
+        [HttpPut("{id}/updateAll")]
+        public async Task<IActionResult> UpdateFullSuKien(int id, [FromBody] SuKienDTOCreate model)
+        {
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var suKien = await _context.SuKiens
+                    .Include(x => x.TietMucSuKiens)
+                    .Include(x => x.ChiPhiSuKiens)
+                        .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
+                    .FirstOrDefaultAsync(x => x.SuKienId == id);
+
+                if (suKien == null)
+                    return NotFound("Không tìm thấy sự kiện.");
+
+                // === Cập nhật phần chính ===
+                suKien.TenSuKien = model.TenSuKien;
+                suKien.MoTa = model.MoTa;
+                suKien.NgayBatDau = model.NgayBatDau;
+                suKien.NgayKetThuc = model.NgayKetThuc;
+                suKien.DiaDiem = model.DiaDiem;
+                suKien.NguoiChiuTrachNhiem = model.NguoiChiuTrachNhiem;
+
+                // === Cập nhật TIẾT MỤC ===
+                var oldTietMuc = suKien.TietMucSuKiens.ToList();
+                foreach (var old in oldTietMuc)
+                {
+                    var newTm = model.TietMuc.FirstOrDefault(x => x.TietMucId == old.TietMucId);
+                    if (newTm == null)
+                    {
+                        _context.TietMucSuKiens.Remove(old);
+                    }
+                    else
+                    {
+                        old.TenTietMuc = newTm.TenTietMuc;
+                        old.NguoiThucHien = newTm.NguoiThucHien;
+                        old.ChiPhiTietMuc = newTm.ChiPhiTietMuc;
+                    }
+                }
+
+                // Thêm mới tiết mục nếu có
+                foreach (var tm in model.TietMuc.Where(x => x.TietMucId == 0))
+                {
+                    suKien.TietMucSuKiens.Add(new TietMucSuKien
+                    {
+                        TenTietMuc = tm.TenTietMuc,
+                        ThoiGianChiTietSuKienId = 1,
+                        NguoiThucHien = tm.NguoiThucHien,
+                        ChiPhiTietMuc = tm.ChiPhiTietMuc
+                    });
+                }
+
+                // === Cập nhật CHI PHÍ ===
+                foreach (var oldCp in suKien.ChiPhiSuKiens.ToList())
+                {
+                    var newCp = model.ChiPhi.FirstOrDefault(x => x.ChiPhiId == oldCp.ChiPhiId);
+                    if (newCp == null)
+                    {
+                        _context.ChiPhiSuKiens.Remove(oldCp);
+                        continue;
+                    }
+
+                    // Cập nhật phần chính
+                    oldCp.TenKhoanChi = newCp.TenKhoanChi;
+                    oldCp.GhiChu = newCp.GhiChu;
+                    oldCp.SoTien = newCp.SoTien;
+
+                    // === Cập nhật CHI TIẾT CHI PHÍ ===
+                    foreach (var oldCt in oldCp.ChiTietChiPhiSuKiens.ToList())
+                    {
+                        var newCt = newCp.ChiTiet.FirstOrDefault(c => c.ChiTietId == oldCt.ChiTietChiPhi);
+                        if (newCt == null)
+                            _context.ChiTietChiPhiSuKiens.Remove(oldCt);
+                        else
+                        {
+                            oldCt.TenPhanQua = newCt.TenPhanQua;
+                            oldCt.SoLuong = newCt.SoLuong;
+                            oldCt.DonGia = newCt.DonGia;
+                            oldCt.NguoiDaiDien = newCt.NguoiDaiDien;
+                        }
+                    }
+
+                    // Thêm chi tiết mới
+                    foreach (var addCt in newCp.ChiTiet.Where(c => c.ChiTietId == 0))
+                    {
+                        oldCp.ChiTietChiPhiSuKiens.Add(new ChiTietChiPhiSuKien
+                        {
+                            TenPhanQua = addCt.TenPhanQua,
+                            SoLuong = addCt.SoLuong,
+                            DonGia = addCt.DonGia,
+                            NguoiDaiDien = addCt.NguoiDaiDien
+                        });
+                    }
+                }
+
+                // === Thêm khoản chi phí mới nếu có ===
+                foreach (var addCp in model.ChiPhi.Where(x => x.ChiPhiId == 0))
+                {
+                    suKien.ChiPhiSuKiens.Add(new ChiPhiSuKien
+                    {
+                        TenKhoanChi = addCp.TenKhoanChi,
+                        GhiChu = addCp.GhiChu,
+                        SoTien = addCp.SoTien,
+                        ChiTietChiPhiSuKiens = addCp.ChiTiet.Select(c => new ChiTietChiPhiSuKien
+                        {
+                            TenPhanQua = c.TenPhanQua,
+                            SoLuong = c.SoLuong,
+                            DonGia = c.DonGia,
+                            NguoiDaiDien = c.NguoiDaiDien
+                        }).ToList()
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(new { message = "✅ Cập nhật sự kiện thành công!" });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, new
+                {
+                    message = "❌ Cập nhật thất bại! Dữ liệu đã được rollback.",
+                    error = ex.Message
+                });
+            }
+        }
+
+        // tre em dang ky tham gia su kien
+        [HttpPost("{id}/dangkytreem")]
+        public async Task<IActionResult> DangKyTreEm(int id, [FromBody] int treEmId)
+        {
+            var suKien = await _context.SuKiens.FindAsync(id);
+            if (suKien == null)
+                return NotFound("Sự kiện không tồn tại.");
+
+            var treEm = await _context.TreEms.FindAsync(treEmId);
+            if (treEm == null)
+                return NotFound("Trẻ em không tồn tại.");
+
+            var daDangKy = await _context.TreEmSuKiens
+                .AnyAsync(t => t.SuKienId == id && t.TreEmId == treEmId);
+
+            if (daDangKy)
+                return BadRequest("Trẻ em này đã đăng ký sự kiện này rồi!");
+
+            var treEmSuKien = new TreEmSuKien
+            {
+                TreEmId = treEmId,
+                SuKienId = id
+            };
+
+            _context.TreEmSuKiens.Add(treEmSuKien);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đăng ký trẻ em cho sự kiện thành công!" });
+        }
+        [HttpGet("{id}/trethamgiaSK")]
+        public async Task<IActionResult> GetTreEmThamGia(int id)
+        {
+            var suKien = await _context.SuKiens.FindAsync(id);
+            if (suKien == null)
+                return NotFound("Không tìm thấy sự kiện.");
+
+            var treEmList = await _context.TreEmSuKiens
+                .Where(ts => ts.SuKienId == id)
+                .Include(ts => ts.TreEm)
+                .Select(ts => new
+                {
+                    ts.TreEm.TreEmId,
+                    ts.TreEm.HoTen,
+                    ts.TreEm.NgaySinh,
+                    ts.TreEm.GioiTinh,
+                    ts.TreEm.TinhTrang,
+                    ts.TreEm.Anh
+                })
+                .ToListAsync();
+
+            if (!treEmList.Any())
+                return Ok(new { message = "Chưa có trẻ nào tham gia sự kiện này." });
+
+            return Ok(treEmList);
+        }
+
+        [HttpDelete("{id}/xoatreem/{treEmId}")]
+        public async Task<IActionResult> XoaTreEmKhoiSuKien(int id, int treEmId)
+        {
+            var record = await _context.TreEmSuKiens
+                .FirstOrDefaultAsync(t => t.SuKienId == id && t.TreEmId == treEmId);
+
+            if (record == null)
+                return NotFound("Trẻ em chưa đăng ký sự kiện này.");
+
+            _context.TreEmSuKiens.Remove(record);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đã xóa trẻ khỏi danh sách tham gia sự kiện." });
+        }
+
     }
 }

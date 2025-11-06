@@ -16,6 +16,7 @@ public partial class QuanLyTreEmContext : DbContext
     }
 
     public virtual DbSet<ChiPhiSuKien> ChiPhiSuKiens { get; set; }
+    public virtual DbSet<TreEmSuKien> TreEmSuKiens { get; set; }
 
     public virtual DbSet<ChiTietChiPhiSuKien> ChiTietChiPhiSuKiens { get; set; }
 
@@ -73,6 +74,21 @@ public partial class QuanLyTreEmContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<TreEmSuKien>(entity =>
+        {
+            entity.ToTable("TreEm_SuKien");
+
+            entity.HasKey(e => new { e.TreEmId, e.SuKienId });
+
+            entity.HasOne(e => e.TreEm)
+                  .WithMany(t => t.TreEmSuKiens)
+                  .HasForeignKey(e => e.TreEmId);
+
+            entity.HasOne(e => e.SuKien)
+                  .WithMany(s => s.TreEmSuKiens)
+                  .HasForeignKey(e => e.SuKienId);
+        });
+
         modelBuilder.Entity<ChiPhiSuKien>(entity =>
         {
             entity.HasKey(e => e.ChiPhiId).HasName("PK__ChiPhiSu__286EFE41D06CFD90");
