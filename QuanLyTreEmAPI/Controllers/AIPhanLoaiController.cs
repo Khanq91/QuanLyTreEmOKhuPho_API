@@ -352,7 +352,7 @@ namespace QuanLyTreEmAPI.Controllers
                 TruongHoc = treEm.Truong?.TenTruong,
                 MucDoUuTien = mucDoUuTien,
                 DiemUuTien = tongDiem,
-                LyDoChinhh = lyDoChinh,
+                LyDoChinh = lyDoChinh,
                 ChiTietLyDo = chiTietLyDo,
                 DeXuatHoTro = deXuat
             };

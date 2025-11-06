@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models;
 
 public partial class SuKien
 {
+    [Column("SuKienId")] 
+
     public int SuKienId { get; set; }
 
     public string? TenSuKien { get; set; }

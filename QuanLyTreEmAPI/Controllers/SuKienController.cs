@@ -28,7 +28,8 @@ namespace QuanLyTreEmAPI.Controllers
         {
             var suKiens = _context.SuKiens
        .ToList() // ⚠️ Chuyển về memory
-       .Select(e => new {
+       .Select(e => new
+       {
            e.SuKienId,
            e.TenSuKien,
            e.NgayBatDau,
@@ -52,7 +53,8 @@ namespace QuanLyTreEmAPI.Controllers
 
             var result = _context.SuKiens
                 .Where(e => e.NgayBatDau.HasValue && e.NgayBatDau.Value.ToDateTime(TimeOnly.MinValue) > today)
-                .Select(e => new {
+                .Select(e => new
+                {
                     e.SuKienId,
                     e.TenSuKien,
                     e.NgayBatDau,
@@ -76,7 +78,8 @@ namespace QuanLyTreEmAPI.Controllers
                     e.NgayBatDau.HasValue && e.NgayBatDau.Value.ToDateTime(TimeOnly.MinValue) <= today &&
                     e.NgayKetThuc.HasValue && e.NgayKetThuc.Value.ToDateTime(TimeOnly.MinValue) >= today
                 )
-                .Select(e => new {
+                .Select(e => new
+                {
                     e.SuKienId,
                     e.TenSuKien,
                     e.NgayBatDau,
@@ -97,7 +100,8 @@ namespace QuanLyTreEmAPI.Controllers
 
             var result = _context.SuKiens
                 .Where(e => e.NgayKetThuc.HasValue && e.NgayKetThuc.Value.ToDateTime(TimeOnly.MinValue) < today)
-                .Select(e => new {
+                .Select(e => new
+                {
                     e.SuKienId,
                     e.TenSuKien,
                     e.NgayBatDau,
@@ -121,16 +125,17 @@ namespace QuanLyTreEmAPI.Controllers
         }
         #region TAB 1: THÔNG TIN CHUNG
         // ===========================================================
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDetail(int id)
         {
             var sk = await _context.SuKiens
-           .Include(x => x.KhuPho)
-           .Include(x => x.ThoiGianChiTietSuKiens)
-           .Include(x => x.ChiPhiSuKiens)
-               .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
-           .FirstOrDefaultAsync(x => x.SuKienId == id);
+                .Include(x => x.KhuPho)
+                .Include(x => x.ThoiGianChiTietSuKiens)
+                    .ThenInclude(t => t.TietMucSuKiens)
+                .Include(x => x.ChiPhiSuKiens)
+                    .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.SuKienId == id);
 
             if (sk == null)
                 return NotFound("Không tìm thấy sự kiện");
@@ -145,6 +150,21 @@ namespace QuanLyTreEmAPI.Controllers
                 sk.NgayKetThuc,
                 sk.NguoiChiuTrachNhiem,
                 KhuPho = sk.KhuPho?.TenKhuPho,
+                ThoiGianChiTiet = sk.ThoiGianChiTietSuKiens.Select(t => new
+                {
+                    t.ThoiGianChiTietSuKienId,
+                    t.MoTa,
+                    t.ThoiGianBatDau,
+                    t.ThoiGianKetThuc
+                }),
+                TietMuc = sk.ThoiGianChiTietSuKiens
+                            .SelectMany(t => t.TietMucSuKiens)
+                            .Select(t => new
+                            {
+                                t.TenTietMuc,
+                                t.NguoiThucHien,
+                                t.ChiPhiTietMuc
+                            }),
                 ChiPhi = sk.ChiPhiSuKiens.Select(c => new
                 {
                     c.TenKhoanChi,
@@ -155,7 +175,8 @@ namespace QuanLyTreEmAPI.Controllers
                         ct.TenPhanQua,
                         ct.NguoiDaiDien,
                         ct.SoLuong,
-                        ct.DonGia
+                        ct.DonGia,
+                        ThanhTien = ct.SoLuong * ct.DonGia
                     })
                 })
             };
@@ -163,213 +184,262 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("{id}/upload")]
-        public async Task<IActionResult> UploadFile(int id, IFormFile file)
-        {
-            if (file == null || file.Length == 0)
-                return BadRequest("Vui lòng chọn file hợp lệ.");
-
-            var suKien = await _context.SuKiens.FindAsync(id);
-            if (suKien == null)
-                return NotFound("Không tìm thấy sự kiện.");
-
-            var uploadsRoot = Path.Combine(_env.ContentRootPath, "wwwroot", "Uploads", "SuKien", id.ToString());
-
-            if (!Directory.Exists(uploadsRoot))
-                Directory.CreateDirectory(uploadsRoot);
-
-            var fileName = $"{DateTime.Now:yyyyMMdd_HHmmss}_{Path.GetFileName(file.FileName)}";
-            var filePath = Path.Combine(uploadsRoot, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-                await file.CopyToAsync(stream);
-
-            var relativePath = $"/Uploads/SuKien/{id}/{fileName}";
-
-            var minhChung = new PhieuMinhChung
-            {
-                LoaiMinhChung = Path.GetExtension(fileName),
-                FilePath = relativePath,
-                NgayCap = DateOnly.FromDateTime(DateTime.Now)
-            };
-
-            _context.PhieuMinhChungs.Add(minhChung);
-            await _context.SaveChangesAsync();
-
-            return Ok(new
-            {
-                Message = "Tệp đã được tải lên thành công.",
-                FileName = fileName,
-                Path = relativePath
-            });
-        }
 
         #endregion
 
-        // ===========================================================
-        #region TAB 2: ĐĂNG KÝ THAM GIA
-        // ===========================================================
-
-        [HttpGet("{id}/dangky")]
-        public async Task<IActionResult> GetDangKy(int id)
+        // POST: api/SuKien
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] SuKienDTOCreate dto)
         {
-            var list = await _context.DangKySuKiens
-                .Include(x => x.User)
-                .Where(x => x.SuKienId == id)
-                .Select(x => new
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Kiểm tra tồn tại
+            if (!await _context.KhuPhos.AnyAsync(k => k.KhuPhoId == dto.KhuPhoId))
+                return BadRequest(new { message = "Khu phố không tồn tại." });
+
+            if (!await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId))
+                return BadRequest(new { message = "Người dùng không tồn tại." });
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                // 1. Tạo SuKien
+                var suKien = new SuKien
                 {
-                    x.DangKySuKienId,
-                    x.UserId,
-                    HoTen = x.User.HoTen,
-                    VaiTro = x.User.VaiTro,
-                    x.NgayDangKy,
-                    x.TrangThai
-                }).ToListAsync();
+                    TenSuKien = dto.TenSuKien,
+                    MoTa = dto.MoTa,
+                    DiaDiem = dto.DiaDiem,
+                    NgayBatDau = dto.NgayBatDau,
+                    NgayKetThuc = dto.NgayKetThuc,
+                    NguoiChiuTrachNhiem = dto.NguoiChiuTrachNhiem,
+                    SoLuongTinhNguyenVien = dto.SoLuongTinhNguyenVien,
+                    SoLuongTreEm = dto.SoLuongTreEm,
+                    UserId = dto.UserId,
+                    KhuPhoId = dto.KhuPhoId
+                };
 
-            return Ok(list);
-        }
+                _context.SuKiens.Add(suKien);
+                await _context.SaveChangesAsync(); // Lấy ID
 
-        [HttpPost("{id}/duyet/{userId}")]
-        public async Task<IActionResult> DuyetDangKy(int id, int userId, [FromQuery] string trangThai)
-        {
-            var dk = await _context.DangKySuKiens
-                .FirstOrDefaultAsync(x => x.SuKienId == id && x.UserId == userId);
-
-            if (dk == null)
-                return NotFound("Không tìm thấy đăng ký");
-
-            dk.TrangThai = trangThai;
-            await _context.SaveChangesAsync();
-
-            return Ok(new { Message = $"Cập nhật trạng thái '{trangThai}' thành công" });
-        }
-
-        #endregion
-
-        // ===========================================================
-        #region TAB 3: PHÂN CÔNG TÌNH NGUYỆN VIÊN
-        // ===========================================================
-
-        [HttpGet("{id}/phancong")]
-        public async Task<IActionResult> GetPhanCong(int id)
-        {
-            var list = await _context.PhanCongTinhNguyenViens
-                .Include(x => x.TinhNguyenVien)
-                    .ThenInclude(t => t.User)
-                .Where(x => x.SuKienId == id)
-                .Select(x => new
+                // 2. Thêm Thời gian chi tiết + Tiết mục
+                foreach (var tgDto in dto.ThoiGianChiTiet)
                 {
-                    x.PhanCongId,
-                    x.SuKienId,
-                    x.TinhNguyenVienId,
-                    TenTNV = x.TinhNguyenVien.User.HoTen,
-                    x.CongViec,
-                    x.GhiChu,
-                    x.NgayPhanCong
-                }).ToListAsync();
+                    var tg = new ThoiGianChiTietSuKien
+                    {
+                        MoTa = tgDto.MoTa,
+                        ThoiGianBatDau = tgDto.ThoiGianBatDau,
+                        ThoiGianKetThuc = tgDto.ThoiGianKetThuc,
+                        SuKienId = suKien.SuKienId
+                    };
+                    _context.ThoiGianChiTietSuKiens.Add(tg);
+                    await _context.SaveChangesAsync();
 
-            return Ok(list);
+                    foreach (var tmDto in tgDto.TietMuc)
+                    {
+                        var tm = new TietMucSuKien
+                        {
+                            TenTietMuc = tmDto.TenTietMuc,
+                            NguoiThucHien = tmDto.NguoiThucHien,
+                            ChiPhiTietMuc = tmDto.ChiPhiTietMuc,
+                            ThoiGianChiTietSuKienId = tg.ThoiGianChiTietSuKienId,
+                        };
+                        _context.TietMucSuKiens.Add(tm);
+                    }
+                }
+
+                // 3. Thêm Chi phí + Chi tiết
+                foreach (var cpDto in dto.ChiPhi)
+                {
+                    var cp = new ChiPhiSuKien
+                    {
+                        TenKhoanChi = cpDto.TenKhoanChi,
+                        SoTien = cpDto.SoTien,
+                        GhiChu = cpDto.GhiChu,
+                        SuKienId = suKien.SuKienId
+                    };
+                    _context.ChiPhiSuKiens.Add(cp);
+                    await _context.SaveChangesAsync();
+
+                    foreach (var ctDto in cpDto.ChiTiet)
+                    {
+                        var ct = new ChiTietChiPhiSuKien
+                        {
+                            TenPhanQua = ctDto.TenPhanQua,
+                            NguoiDaiDien = ctDto.NguoiDaiDien,
+                            SoLuong = ctDto.SoLuong,
+                            DonGia = ctDto.DonGia,
+                            ChiPhiId = cp.ChiPhiId
+                        };
+                        _context.ChiTietChiPhiSuKiens.Add(ct);
+                    }
+                }
+
+                // 4. Thêm Phân công
+                foreach (var pcDto in dto.PhanCong)
+                {
+                    if (!await _context.TinhNguyenViens.AnyAsync(t => t.TinhNguyenVienId == pcDto.TinhNguyenVienId))
+                        return BadRequest(new { message = $"Tình nguyện viên ID {pcDto.TinhNguyenVienId} không tồn tại." });
+
+                    var pc = new PhanCongTinhNguyenVien
+                    {
+                        SuKienId = suKien.SuKienId,
+                        TinhNguyenVienId = pcDto.TinhNguyenVienId,
+                        CongViec = pcDto.CongViec,
+                        GhiChu = pcDto.GhiChu,
+                        NgayPhanCong = DateOnly.FromDateTime(DateTime.Today)
+                    };
+                    _context.PhanCongTinhNguyenViens.Add(pc);
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                // Trả về đúng định dạng GetDetail
+                return await GetDetail(suKien.SuKienId);
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, new { message = "Lỗi khi tạo sự kiện.", error = ex.Message });
+            }
         }
 
-        [HttpPost("{id}/phancong")]
-        public async Task<IActionResult> AddPhanCong(int id, [FromBody] PhanCongTinhNguyenVien input)
+        [HttpGet("khuPho")]
+        public async Task<IActionResult> GetKhuPho()
         {
-            input.SuKienId = id;
-            input.NgayPhanCong = DateOnly.FromDateTime(DateTime.Now);
+            var result = await _context.KhuPhos
+                .Select(k => new
+                {
+                    k.KhuPhoId,
+                    k.TenKhuPho
+                })
+                .OrderBy(k => k.TenKhuPho)
+                .ToListAsync();
 
-            _context.PhanCongTinhNguyenViens.Add(input);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { Message = "Phân công thành công" });
-        }
-
-        [HttpGet("/api/TinhNguyenVien/{id}/lichtrong")]
-        public async Task<IActionResult> GetLichTrong(int id)
-        {
-            var lich = await _context.LichTrongs
-                .Include(x => x.ChiTietLichTrongs)
-                .FirstOrDefaultAsync(x => x.TinhNguyenVienId == id);
-
-            if (lich == null) return NotFound("Không có lịch trống");
-
-            var result = lich.ChiTietLichTrongs.Select(c => new { c.Thu, c.Buoi });
             return Ok(result);
         }
 
-        #endregion
-
-        // ===========================================================
-        #region TAB 4: CHI PHÍ
-        // ===========================================================
-
-        [HttpGet("{id}/chiphi")]
-        public async Task<IActionResult> GetChiPhi(int id)
+        [HttpGet("nguoiDung")]
+        public async Task<IActionResult> GetNguoiDung()
         {
-            var list = await _context.ChiPhiSuKiens
-                .Include(x => x.ChiTietChiPhiSuKiens)
-                .Where(x => x.SuKienId == id)
-                .Select(x => new
+            var result = await _context.NguoiDungs
+                .Select(u => new
                 {
-                    x.ChiPhiId,
-                    x.TenKhoanChi,
-                    x.SoTien,
-                    x.GhiChu,
-                    ChiTiet = x.ChiTietChiPhiSuKiens.Select(ct => new
-                    {
-                        ct.TenPhanQua,
-                        ct.SoLuong,
-                        ct.DonGia,
-                        ThanhTien = ct.SoLuong * ct.DonGia
-                    })
-                }).ToListAsync();
+                    u.UserId,
+                    HoTen = u.HoTen 
+                })
+                .OrderBy(u => u.HoTen)
+                .ToListAsync();
 
-            return Ok(list);
+            return Ok(result);
         }
 
-        [HttpGet("{id}/chiphi/tong")]
-        public async Task<IActionResult> GetTongChiPhi(int id)
+        [HttpGet("tinhNguyenVien")]
+        public async Task<IActionResult> GetTinhNguyenVien()
         {
-            var tong = await _context.ChiPhiSuKiens
-                .Where(x => x.SuKienId == id)
-                .SumAsync(x => (decimal?)x.SoTien) ?? 0;
-
-            return Ok(new { TongChiPhi = tong });
-        }
-
-        #endregion
-
-        // ===========================================================
-        #region TAB 5: THÔNG BÁO
-        // ===========================================================
-
-        [HttpGet("{id}/thongbao")]
-        public async Task<IActionResult> GetThongBao(int id)
-        {
-            var list = await _context.ThongBaos
-                .Where(x => x.SuKienId == id)
-                .OrderByDescending(x => x.NgayThongBao)
-                .Select(x => new
+            var result = await _context.TinhNguyenViens
+                .Select(t => new
                 {
-                    x.ThongBaoId,
-                    x.NoiDung,
-                    x.NgayThongBao
-                }).ToListAsync();
+                    t.TinhNguyenVienId,
+                    t.Sdt
+                })
+                .ToListAsync();
 
-            return Ok(list);
+            return Ok(result);
         }
 
-        [HttpPost("{id}/thongbao/guithongbao")]
-        public async Task<IActionResult> GuiThongBao(int id, [FromBody] ThongBao input)
-        {
-            input.SuKienId = id;
-            input.NgayThongBao = DateOnly.FromDateTime(DateTime.Now);
+        // POST: api/SuKien/{id}/dangky
+        [HttpPost("{id}/dangky")]
+        public async Task<IActionResult> DangKy(int id, [FromBody] DangKySuKien dto)
+         {
+            var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienId == id);
+            if (!suKien) return NotFound("Sự kiện không tồn tại");
 
-            _context.ThongBaos.Add(input);
+            var user = await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId);
+            if (!user) return BadRequest("Người dùng không tồn tại");
+
+            // Kiểm tra đã đăng ký chưa
+            var daDangKy = await _context.DangKySuKiens
+                .AnyAsync(d => d.SuKienId == id && d.UserId == dto.UserId);
+            if (daDangKy) return BadRequest("Bạn đã đăng ký sự kiện này rồi!");
+
+            var dangKy = new DangKySuKien
+            {
+                SuKienId = id,
+                UserId = dto.UserId,
+                NgayDangKy = DateOnly.FromDateTime(DateTime.Today),
+                TrangThai = "Chờ duyệt"
+            };
+
+            _context.DangKySuKiens.Add(dangKy);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Gửi thông báo thành công", input.NoiDung });
+            return Ok(new { message = "Đăng ký thành công! Vui lòng chờ duyệt." });
+        }
+        // =============================================================
+        // QUẢN LÝ ĐĂNG KÝ SỰ KIỆN
+        // =============================================================
+
+        [HttpGet("getalldangkysukien")]
+        public async Task<IActionResult> GetAllDangKySuKien()
+        {
+            var result = await _context.DangKySuKiens
+                .Include(d => d.SuKien)
+                .Include(d => d.User)
+                .Select(d => new
+                {
+                    d.DangKySuKienId,
+                    d.SuKienId,
+                    TenSuKien = d.SuKien.TenSuKien,
+                    d.UserId,
+                    HoTenNguoiDung = d.User.HoTen,
+                    d.NgayDangKy,
+                    d.TrangThai
+                })
+                .OrderByDescending(d => d.NgayDangKy)
+                .ToListAsync();
+
+            return Ok(result);
         }
 
-        #endregion
+        // ✅ DUYỆT đăng ký
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> ApproveDangKy(int id)
+        {
+            var dk = await _context.DangKySuKiens.FindAsync(id);
+            if (dk == null)
+                return NotFound("Không tìm thấy đăng ký.");
+
+            dk.TrangThai = "Đã duyệt";
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Duyệt đăng ký thành công!" });
+        }
+
+        // ✅ TỪ CHỐI đăng ký
+        [HttpPut("reject/{id}")]
+        public async Task<IActionResult> RejectDangKy(int id)
+        {
+            var dk = await _context.DangKySuKiens.FindAsync(id);
+            if (dk == null)
+                return NotFound("Không tìm thấy đăng ký.");
+
+            dk.TrangThai = "Từ chối";
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Từ chối đăng ký thành công!" });
+        }
+
+        // ✅ XÓA đăng ký
+        [HttpDelete("deletedangky/{id}")]
+        public async Task<IActionResult> DeleteDangKy(int id)
+        {
+            var dk = await _context.DangKySuKiens.FindAsync(id);
+            if (dk == null)
+                return NotFound("Không tìm thấy đăng ký.");
+
+            _context.DangKySuKiens.Remove(dk);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Xóa đăng ký thành công!" });
+        }
     }
 }
