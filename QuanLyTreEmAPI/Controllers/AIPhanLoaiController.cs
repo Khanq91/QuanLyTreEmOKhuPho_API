@@ -350,9 +350,9 @@ namespace QuanLyTreEmAPI.Controllers
                 GioiTinh = treEm.GioiTinh,
                 KhuPho = treEm.KhuPho?.TenKhuPho,
                 TruongHoc = treEm.Truong?.TenTruong,
+                LyDoChinh = lyDoChinh,
                 MucDoUuTien = mucDoUuTien,
                 DiemUuTien = tongDiem,
-                LyDoChinhh = lyDoChinh,
                 ChiTietLyDo = chiTietLyDo,
                 DeXuatHoTro = deXuat
             };

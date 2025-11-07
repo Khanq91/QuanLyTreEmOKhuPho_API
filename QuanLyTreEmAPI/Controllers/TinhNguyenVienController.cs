@@ -63,7 +63,7 @@ namespace QuanLyTreEmAPI.Controllers
                     TrangThai = g.Key.TrangThai,
                     NgaySinh = g.Key.NgaySinh,
                     NgayTao = g.Key.NgayTao,
-                    Anh =g.Key.Anh,
+                    Anh = g.Key.Anh,
                     TenKhuPho = g.Key.TenKhuPho,
                     SDT = g.Key.SDT,
                     ChucVu = g.Key.ChucVu,
@@ -102,7 +102,8 @@ namespace QuanLyTreEmAPI.Controllers
                     g.t.NgaySinh,
                     g.k.TenKhuPho,
                     g.u.SDT,
-                    g.t.ChucVu
+                    g.t.ChucVu,
+                    g.u.Anh,
                 })
                 .Select(g => new ThongKeTinhNguyenVienDTO
                 {
@@ -114,6 +115,7 @@ namespace QuanLyTreEmAPI.Controllers
                     TenKhuPho = g.Key.TenKhuPho,
                     SDT = g.Key.SDT,
                     ChucVu = g.Key.ChucVu,
+                    Anh = g.Key.Anh,
                     SoLuongCaRanh = g.Select(x => x.c.ChiTietLichTrongId).Distinct().Count(),
                     TongSuKienThamGia = g.Select(x => x.s.SuKienId).Distinct().Count(sid => sid != null)
                 })

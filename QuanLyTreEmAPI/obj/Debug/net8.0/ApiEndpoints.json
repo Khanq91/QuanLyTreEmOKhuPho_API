@@ -488,6 +488,22 @@
   },
   {
     "ContainingType": "QuanLyTreEmAPI.Controllers.QuanLyTaiKhoanController",
+    "Method": "KiemTraTonTai",
+    "RelativePath": "api/QuanLyTaiKhoan/KiemTraTonTai",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "QuanLyTreEmAPI.DTOs.QuanLyTaiKhoan.KiemTraTonTaiDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.QuanLyTaiKhoanController",
     "Method": "ResetMatKhau",
     "RelativePath": "api/QuanLyTaiKhoan/ResetMatKhau/{id}",
     "HttpMethod": "POST",
@@ -497,6 +513,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.QuanLyTaiKhoanController",
+    "Method": "SuaTaiKhoan",
+    "RelativePath": "api/QuanLyTaiKhoan/SuaTaiKhoan/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuanLyTreEmAPI.DTOs.QuanLyTaiKhoan.NguoiDungUpdateDto",
         "IsRequired": true
       }
     ],

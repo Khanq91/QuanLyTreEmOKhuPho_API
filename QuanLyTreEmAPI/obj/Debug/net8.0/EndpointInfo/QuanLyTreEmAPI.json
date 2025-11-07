@@ -715,6 +715,37 @@
         }
       }
     },
+    "/api/QuanLyTaiKhoan/KiemTraTonTai": {
+      "post": {
+        "tags": [
+          "QuanLyTaiKhoan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KiemTraTonTaiDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KiemTraTonTaiDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KiemTraTonTaiDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/QuanLyTaiKhoan/ThemTaiKhoan": {
       "post": {
         "tags": [
@@ -880,6 +911,48 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/DoiTrangThaiDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/QuanLyTaiKhoan/SuaTaiKhoan/{id}": {
+      "put": {
+        "tags": [
+          "QuanLyTaiKhoan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NguoiDungUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NguoiDungUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NguoiDungUpdateDto"
               }
             }
           }
@@ -1654,6 +1727,20 @@
         },
         "additionalProperties": false
       },
+      "KiemTraTonTaiDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "sdt": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LichTrong": {
         "type": "object",
         "properties": {
@@ -1785,7 +1872,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "lyDoChinhh": {
+          "lyDoChinh": {
             "type": "string",
             "nullable": true
           },
@@ -1907,6 +1994,48 @@
             "nullable": true
           },
           "matKhau": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "anh": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayTao": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NguoiDungUpdateDto": {
+        "type": "object",
+        "properties": {
+          "hoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "sdt": {
+            "type": "string",
+            "nullable": true
+          },
+          "vaiTro": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "anh": {
             "type": "string",
             "nullable": true
           }
