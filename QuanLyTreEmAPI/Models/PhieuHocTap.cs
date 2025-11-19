@@ -15,7 +15,7 @@ public partial class PhieuHocTap
 
     public string? GhiChu { get; set; }
 
-    public DateOnly? NgayCapNhat { get; set; }
+    public DateOnly? NamHoc { get; set; }
 
     public int? TruongId { get; set; }
 

@@ -35,6 +35,7 @@ namespace QuanLyTreEmAPI.Data
         public DbSet<LichTrong> LichTrongs { get; set; }
         public DbSet<ChiTietLichTrong> ChiTietLichTrongs { get; set; }
         public DbSet<TreEmPhuHuynh> TreEmPhuHuynhs { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TreEmPhuHuynh>()

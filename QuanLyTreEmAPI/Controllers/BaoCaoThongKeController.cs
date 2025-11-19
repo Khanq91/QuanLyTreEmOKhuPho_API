@@ -71,7 +71,7 @@ namespace QuanLyTreEm.API.Controllers
         [HttpGet("TongQuan")]
         public IActionResult GetTongQuan([FromQuery] DateTime? from, [FromQuery] DateTime? to)
         {
-            var fromDate = from ?? DateTime.Today.AddMonths(-12);
+            var fromDate = from ?? DateTime.Today.AddMonths(-12);   
             var toDate = to ?? DateTime.Today.AddDays(1);
 
             // Tổng sự kiện trong kỳ
@@ -91,6 +91,8 @@ namespace QuanLyTreEm.API.Controllers
                 .AsEnumerable()
                 .Where(x => ToDateTime(x.NgayUngHo) >= fromDate && ToDateTime(x.NgayUngHo) < toDate)
                 .Sum(x => (decimal?)x.SoTien) ?? 0m;
+            //var tongUngHo = _context.UngHos.AsEnumerable()
+            //    .Where(x => ToDateTime(x.NgayUngHo) >= fromDate && ToDateTime(x.NgayUngHo) < toDate).Sum(x => (decimal?)x.SoTien) ?? 0m;
 
             // Số trẻ được hỗ trợ
             var soTreDuocHoTro = _context.HoTroPhucLois

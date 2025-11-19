@@ -15,7 +15,7 @@ namespace QuanLyTreEmAPI.Repositories
         public async Task<PhieuHocTap> CreateAsync(PhieuHocTap phieuHocTap)
         {
             //phieuHocTap.NgayCapNhat = DateTime.Now;
-            phieuHocTap.NgayCapNhat = DateOnly.FromDateTime(DateTime.Now);
+            phieuHocTap.NamHoc = DateOnly.FromDateTime(DateTime.Now);
             _context.PhieuHocTaps.Add(phieuHocTap);
             await _context.SaveChangesAsync();
             return phieuHocTap;
@@ -27,7 +27,7 @@ namespace QuanLyTreEmAPI.Repositories
                 .Include(p => p.Truong)
                 .Include(p => p.Lop)
                 .Where(p => p.TreEmId == treEmId)
-                .OrderByDescending(p => p.NgayCapNhat)
+                .OrderByDescending(p => p.NamHoc)
                 .ToListAsync();
         }
     }

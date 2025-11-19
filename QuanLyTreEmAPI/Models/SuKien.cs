@@ -6,7 +6,7 @@ namespace QuanLyTreEmAPI.Models;
 
 public partial class SuKien
 {
-    [Column("SuKienId")] 
+    [Column("SuKienId")]
 
     public int SuKienId { get; set; }
 
@@ -46,4 +46,5 @@ public partial class SuKien
     public virtual ICollection<ThongBao> ThongBaos { get; set; } = new List<ThongBao>();
 
     public virtual NguoiDung? User { get; set; }
+    public virtual ICollection<QuaTangUngHo> QuaTangUngHos { get; set; } = new List<QuaTangUngHo>();
 }

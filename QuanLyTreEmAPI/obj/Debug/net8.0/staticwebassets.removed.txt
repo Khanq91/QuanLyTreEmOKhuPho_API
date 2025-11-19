@@ -1,0 +1,5 @@
+D:\Tong_hop_Tieu_Luan\DOAN\11_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\wwwroot\Anh\TreEm\hinh1.jpg
+D:\Tong_hop_Tieu_Luan\DOAN\11_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\wwwroot\Anh\TreEm\hinh2.jpg
+D:\Tong_hop_Tieu_Luan\DOAN\11_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\wwwroot\Anh\TreEm\hinh3.jpg
+D:\Tong_hop_Tieu_Luan\DOAN\11_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\wwwroot\Anh\TreEm\hinh4.jpg
+D:\Tong_hop_Tieu_Luan\DOAN\11_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\wwwroot\Anh\TreEm\hinh5.jpg

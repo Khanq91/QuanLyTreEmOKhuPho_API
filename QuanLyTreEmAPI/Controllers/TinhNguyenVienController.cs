@@ -102,6 +102,7 @@ namespace QuanLyTreEmAPI.Controllers
                     g.t.NgaySinh,
                     g.k.TenKhuPho,
                     g.u.SDT,
+                    g.u.TrangThai,
                     g.t.ChucVu,
                     g.u.Anh,
                 })
@@ -113,6 +114,7 @@ namespace QuanLyTreEmAPI.Controllers
                     TenTinhNguyenVien = g.Key.HoTen,
                     NgaySinh = g.Key.NgaySinh,
                     TenKhuPho = g.Key.TenKhuPho,
+                    TrangThai=g.Key.TrangThai,
                     SDT = g.Key.SDT,
                     ChucVu = g.Key.ChucVu,
                     Anh = g.Key.Anh,

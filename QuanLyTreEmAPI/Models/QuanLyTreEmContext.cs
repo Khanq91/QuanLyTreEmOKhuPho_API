@@ -67,10 +67,12 @@ public partial class QuanLyTreEmContext : DbContext
     public virtual DbSet<UngHo> UngHos { get; set; }
 
     public virtual DbSet<VanDongTreEm> VanDongTreEms { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;Database=QuanLyTreEm;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;");
+    public virtual DbSet<QuaTangUngHo> QuaTangUngHos { get; set; }
+    public virtual DbSet<PhanPhatQua> PhanPhatQuas { get; set; }
+    public virtual DbSet<PhanBoUngHoChiPhi> PhanBoUngHoChiPhis { get; set; }
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Server=.;Database=QuanLyTreEm;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -621,6 +623,87 @@ public partial class QuanLyTreEmContext : DbContext
             entity.HasOne(d => d.TreEm).WithMany(p => p.VanDongTreEms)
                 .HasForeignKey(d => d.TreEmId)
                 .HasConstraintName("FK__VanDongTr__TreEm__5EBF139D");
+        });
+        // ===================== QuaTangUngHo =====================
+        modelBuilder.Entity<QuaTangUngHo>(entity =>
+        {
+            entity.HasKey(e => e.QuaTangUngHoId).HasName("PK__QuaTangUngHo");
+            entity.ToTable("QuaTangUngHo");
+
+            entity.Property(e => e.QuaTangUngHoId).HasColumnName("QuaTangUngHoID");
+            entity.Property(e => e.UngHoId).HasColumnName("UngHoID");
+            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
+            entity.Property(e => e.TenQua).HasMaxLength(200);
+            entity.Property(e => e.MoTa).HasMaxLength(500);
+            entity.Property(e => e.DoiTuongNhan).HasMaxLength(100);
+            entity.Property(e => e.Anh).HasMaxLength(500);
+            entity.Property(e => e.DonGia).HasColumnType("decimal(18,2)");
+
+            entity.HasOne(e => e.UngHo)
+                  .WithMany(u => u.QuaTangUngHos)
+                  .HasForeignKey(e => e.UngHoId)
+                  .HasConstraintName("FK_QuaTangUngHo_UngHo");
+
+            entity.HasOne(e => e.SuKien)
+                  .WithMany(s => s.QuaTangUngHos)
+                  .HasForeignKey(e => e.SuKienId)
+                  .HasConstraintName("FK_QuaTangUngHo_SuKien");
+        });
+
+        // ===================== PhanPhatQua =====================
+        modelBuilder.Entity<PhanPhatQua>(entity =>
+        {
+            entity.HasKey(e => e.PhanPhatId).HasName("PK__PhanPhatQua");
+            entity.ToTable("PhanPhatQua");
+
+            entity.Property(e => e.PhanPhatId).HasColumnName("PhanPhatID");
+            entity.Property(e => e.QuaTangUngHoId).HasColumnName("QuaTangUngHoID");
+            entity.Property(e => e.TreEmId).HasColumnName("TreEmID");
+            entity.Property(e => e.SoLuongNhan).HasDefaultValue(1);
+            entity.Property(e => e.NgayPhanPhat).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.NguoiPhanPhat).HasMaxLength(100);
+            entity.Property(e => e.TrangThai).HasMaxLength(50);
+            entity.Property(e => e.GhiChu).HasMaxLength(500);
+
+            entity.HasIndex(e => new { e.QuaTangUngHoId, e.TreEmId, e.NgayPhanPhat })
+                  .IsUnique()
+                  .HasDatabaseName("UQ_QuaTreNgay");
+
+            entity.HasOne(e => e.QuaTangUngHo)
+                  .WithMany(q => q.PhanPhatQuas)
+                  .HasForeignKey(e => e.QuaTangUngHoId)
+                  .HasConstraintName("FK_PhanPhatQua_QuaTangUngHo");
+
+            entity.HasOne(e => e.TreEm)
+                  .WithMany(t => t.PhanPhatQuas)
+                  .HasForeignKey(e => e.TreEmId)
+                  .HasConstraintName("FK_PhanPhatQua_TreEm");
+        });
+
+        // ===================== PhanBoUngHoChiPhi =====================
+        modelBuilder.Entity<PhanBoUngHoChiPhi>(entity =>
+        {
+            entity.HasKey(e => e.PhanBoId).HasName("PK__PhanBoUngHoChiPhi");
+            entity.ToTable("PhanBoUngHoChiPhi");
+
+            entity.Property(e => e.PhanBoId).HasColumnName("PhanBoID");
+            entity.Property(e => e.UngHoId).HasColumnName("UngHoID");
+            entity.Property(e => e.ChiPhiId).HasColumnName("ChiPhiID");
+            entity.Property(e => e.SoTienPhanBo).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.TyLe).HasColumnType("decimal(5,2)");
+            entity.Property(e => e.NguoiPheDuyet).HasMaxLength(100);
+            entity.Property(e => e.NgayPheDuyet).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.GhiChu).HasMaxLength(500);
+
+            entity.HasOne(e => e.UngHo)
+                  .WithMany(u => u.PhanBoUngHoChiPhis)
+                  .HasForeignKey(e => e.UngHoId)
+                  .HasConstraintName("FK_PhanBoUngHoChiPhi_UngHo");
+
+            entity.HasOne(e => e.ChiPhiSuKien)
+                  .WithMany(c => c.PhanBoUngHoChiPhis)
+                  .HasForeignKey(e => e.ChiPhiId)
+                  .HasConstraintName("FK_PhanBoUngHoChiPhi_ChiPhiSuKien");
         });
 
         OnModelCreatingPartial(modelBuilder);

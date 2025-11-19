@@ -8,19 +8,21 @@ namespace QuanLyTreEmAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AIPhanLoaiController : ControllerBase
+    public class AIPhanCumController : ControllerBase
     {
         private readonly QuanLyTreEmContext _context;
-        public AIPhanLoaiController(QuanLyTreEmContext context)
+
+        public AIPhanCumController(QuanLyTreEmContext context)
         {
             _context = context;
         }
-        [HttpGet("PhanTichMucDoUuTienTreEm")]
-        public async Task<ActionResult<KetQuaPhanTichDto>> PhanTichTatCaTreEm()
+
+        [HttpGet("PhanCumDoUuTienCapBach")]
+        public async Task<ActionResult<KetQuaPhanCumDto>> PhanCumTreEmTheoDoCapBach()
         {
             try
             {
-                // Lấy tất cả dữ liệu trẻ em và các bảng liên quan
+                // Lấy toàn bộ dữ liệu trẻ em
                 var danhSachTreEm = await _context.TreEms
                     .Include(t => t.TreEmHoanCanhs)
                         .ThenInclude(th => th.HoanCanh)
@@ -28,52 +30,44 @@ namespace QuanLyTreEmAPI.Controllers
                     .Include(t => t.TreEmPhuHuynhs)
                         .ThenInclude(tp => tp.PhuHuynh)
                     .Include(t => t.PhieuHocTaps)
-                    .Include(t => t.VanDongTreEms)
-                    .Include(t => t.UngHos)
                     .Include(t => t.KhuPho)
                     .Include(t => t.Truong)
                     .ToListAsync();
 
-                // Phân tích từng trẻ
-                var danhSachUuTien = new List<MucDoUuTienDto>();
+                // Phân tích và phân cụm từng trẻ
+                var danhSachPhanTich = new List<TreEmDonGianDto>();
+
                 foreach (var treEm in danhSachTreEm)
                 {
-                    var mucDoUuTien = TinhToanMucDoUuTien(treEm);
-                    danhSachUuTien.Add(mucDoUuTien);
+                    var phanTich = PhanTichDonGian(treEm);
+                    danhSachPhanTich.Add(phanTich);
                 }
 
-                // Sắp xếp từ cao đến thấp
-                danhSachUuTien = danhSachUuTien
-                    .OrderByDescending(m => m.DiemUuTien)
-                    .ThenBy(m => m.HoTen)
+                // Sắp xếp theo điểm cấp bách
+                var danhSachSapXep = danhSachPhanTich
+                    .OrderByDescending(t => t.DiemCapBach)
                     .ToList();
 
-                // Tạo kết quả trả về
-                var ketQua = new KetQuaPhanTichDto
+                var ketQua = new KetQuaPhanCumDto
                 {
-                    TongSoTreEm = danhSachUuTien.Count,
-                    SoTreEmUuTienCao = danhSachUuTien.Count(m => m.MucDoUuTien == "Cao"),
-                    SoTreEmUuTienTrungBinh = danhSachUuTien.Count(m => m.MucDoUuTien == "Trung Bình"),
-                    SoTreEmUuTienThap = danhSachUuTien.Count(m => m.MucDoUuTien == "Thấp"),
-                    ThoiGianPhanTich = DateTime.Now,
-                    DanhSachTreEm = danhSachUuTien
+                    TongSoTreEm = danhSachSapXep.Count,
+                    DanhSachTreEm = danhSachSapXep
                 };
 
                 return Ok(ketQua);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Lỗi khi phân tích dữ liệu", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    message = "Lỗi khi phân cụm dữ liệu",
+                    error = ex.Message
+                });
             }
         }
 
-        private MucDoUuTienDto TinhToanMucDoUuTien(TreEm treEm)
+        private TreEmDonGianDto PhanTichDonGian(TreEm treEm)
         {
-            int tongDiem = 0;
-            var chiTietLyDo = new List<string>();
-            var deXuat = new List<string>();
-            string lyDoChinh = "";
-
             // Tính tuổi
             int? tuoi = null;
             if (treEm.NgaySinh.HasValue)
@@ -82,285 +76,204 @@ namespace QuanLyTreEmAPI.Controllers
                 tuoi = ngayHienTai.Year - treEm.NgaySinh.Value.Year;
             }
 
-            // 1. HOÀN CẢNH (0-40 điểm) - Quan trọng nhất
-            int diemHoanCanh = 0;
-            if (treEm.TreEmHoanCanhs.Any())
-            {
-                foreach (var hc in treEm.TreEmHoanCanhs)
-                {
-                    var tenHC = hc.HoanCanh?.LoaiHoanCanh?.ToLower() ?? "";
+            // Tính điểm rủi ro
+            double diemRuiRo = 0;
+            var lyDoChinhList = new List<string>();
+            var huongGiaiQuyet = new List<string>();
 
-                    if (tenHC.Contains("mồ côi") && (tenHC.Contains("cả") || tenHC.Contains("hai")))
-                    {
-                        diemHoanCanh = 40;
-                        lyDoChinh = "Trẻ mồ côi cả cha lẫn mẹ";
-                        chiTietLyDo.Add("🔴 Hoàn cảnh: Mồ côi cả cha lẫn mẹ - Cần ưu tiên cao nhất");
-                        deXuat.Add("Hỗ trợ toàn diện về tài chính và chăm sóc");
-                        deXuat.Add("Tìm gia đình hoặc cơ sở nuôi dưỡng");
-                        break;
-                    }
-                    else if (tenHC.Contains("mồ côi") || tenHC.Contains("mẹ") || tenHC.Contains("cha"))
-                    {
-                        diemHoanCanh = Math.Max(diemHoanCanh, 30);
-                        if (string.IsNullOrEmpty(lyDoChinh))
-                            lyDoChinh = $"Mất {(tenHC.Contains("mẹ") ? "mẹ" : "cha")}";
-                        chiTietLyDo.Add($"🟠 Hoàn cảnh: {hc.HoanCanh?.LoaiHoanCanh}");
-                        deXuat.Add("Hỗ trợ phụ huynh đơn thân chăm sóc con");
-                    }
-                    else if (tenHC.Contains("khuyết tật") || tenHC.Contains("bệnh"))
-                    {
-                        diemHoanCanh = Math.Max(diemHoanCanh, 30);
-                        if (string.IsNullOrEmpty(lyDoChinh))
-                            lyDoChinh = "Trẻ có khuyết tật/bệnh tật";
-                        chiTietLyDo.Add($"🟠 Sức khỏe: {hc.HoanCanh?.LoaiHoanCanh}");
-                        deXuat.Add("Hỗ trợ y tế và phục hồi chức năng");
-                    }
-                    else if (tenHC.Contains("nghèo") || tenHC.Contains("khó khăn"))
-                    {
-                        diemHoanCanh = Math.Max(diemHoanCanh, 25);
-                        if (string.IsNullOrEmpty(lyDoChinh))
-                            lyDoChinh = "Hoàn cảnh gia đình khó khăn";
-                        chiTietLyDo.Add($"🟡 Kinh tế: {hc.HoanCanh?.LoaiHoanCanh}");
-                        deXuat.Add("Hỗ trợ tài chính định kỳ");
-                    }
-                    else
-                    {
-                        diemHoanCanh = Math.Max(diemHoanCanh, 15);
-                        if (string.IsNullOrEmpty(lyDoChinh))
-                            lyDoChinh = "Hoàn cảnh đặc biệt";
-                        chiTietLyDo.Add($"⚪ Hoàn cảnh: {hc.HoanCanh?.LoaiHoanCanh}");
-                    }
+            // === PHÂN TÍCH RỦI RO ===
+
+            // 1. Hoàn cảnh nguy hiểm
+            foreach (var hc in treEm.TreEmHoanCanhs)
+            {
+                var tenHC = hc.HoanCanh?.LoaiHoanCanh?.ToLower() ?? "";
+
+                if (tenHC.Contains("mồ côi") && (tenHC.Contains("cả") || tenHC.Contains("hai")))
+                {
+                    diemRuiRo += 50;
+                    lyDoChinhList.Add("Mồ côi cả cha lẫn mẹ");
+                    huongGiaiQuyet.Add("Tìm gia đình/cơ sở nuôi dưỡng KHẨN CẤP");
+                }
+                else if (tenHC.Contains("lang thang") || tenHC.Contains("vô gia cư"))
+                {
+                    diemRuiRo += 45;
+                    lyDoChinhList.Add("Sống lang thang/vô gia cư");
+                    huongGiaiQuyet.Add("Can thiệp cứu trợ và tái hòa nhập xã hội");
+                }
+                else if (tenHC.Contains("bạo hành") || tenHC.Contains("xâm hại"))
+                {
+                    diemRuiRo += 40;
+                    lyDoChinhList.Add("Bị bạo hành/xâm hại");
+                    huongGiaiQuyet.Add("Báo cơ quan chức năng và bảo vệ trẻ");
+                }
+                else if (tenHC.Contains("bệnh") && tenHC.Contains("hiểm nghèo"))
+                {
+                    diemRuiRo += 45;
+                    lyDoChinhList.Add("Mắc bệnh hiểm nghèo");
+                    huongGiaiQuyet.Add("Hỗ trợ y tế và chi phí điều trị");
+                }
+                else if (tenHC.Contains("khuyết tật") && tenHC.Contains("nặng"))
+                {
+                    diemRuiRo += 40;
+                    lyDoChinhList.Add("Khuyết tật nặng");
+                    huongGiaiQuyet.Add("Hỗ trợ phục hồi chức năng");
+                }
+                else if (tenHC.Contains("suy dinh dưỡng"))
+                {
+                    diemRuiRo += 30;
+                    lyDoChinhList.Add("Suy dinh dưỡng");
+                    huongGiaiQuyet.Add("Hỗ trợ dinh dưỡng và theo dõi sức khỏe");
+                }
+                else if (tenHC.Contains("mồ côi"))
+                {
+                    diemRuiRo += 25;
+                    lyDoChinhList.Add("Mồ côi cha hoặc mẹ");
+                    huongGiaiQuyet.Add("Hỗ trợ phụ huynh còn lại và tư vấn tâm lý");
+                }
+            }
+
+            // 2. Không có người giám hộ
+            if (!treEm.TreEmPhuHuynhs.Any())
+            {
+                diemRuiRo += 30;
+                lyDoChinhList.Add("Không có người giám hộ");
+                huongGiaiQuyet.Add("Xác minh và đăng ký người giám hộ");
+            }
+
+            // 3. Không đi học
+            if (treEm.TruongId == null)
+            {
+                if (tuoi.HasValue && tuoi >= 6)
+                {
+                    diemRuiRo += 35;
+                    lyDoChinhList.Add("Không đi học (đã đến tuổi)");
+                    huongGiaiQuyet.Add("Hỗ trợ học phí và tìm trường học");
                 }
             }
             else
             {
-                diemHoanCanh = 5;
-                chiTietLyDo.Add("⚪ Chưa có thông tin hoàn cảnh chi tiết");
+                // Kiểm tra học lực
+                var phieuMoiNhat = treEm.PhieuHocTaps.OrderByDescending(p => p.NamHoc).FirstOrDefault();
+                if (phieuMoiNhat != null)
+                {
+                    var hocLuc = phieuMoiNhat.XepLoai?.ToLower() ?? "";
+                    if (hocLuc.Contains("yếu") || hocLuc.Contains("kém"))
+                    {
+                        diemRuiRo += 20;
+                        lyDoChinhList.Add("Học lực yếu kém");
+                        huongGiaiQuyet.Add("Hỗ trợ học bổng và dạy kèm");
+                    }
+                }
             }
-            tongDiem += diemHoanCanh;
 
-            // 2. TÌNH TRẠNG HỖ TRỢ (0-25 điểm)
-            int diemHoTro = 0;
+            // 4. Kiểm tra hỗ trợ
             var hoTroGanDay = treEm.HoTroPhucLois
                 .Where(h => h.NgayCap.HasValue &&
                        h.NgayCap.Value.ToDateTime(TimeOnly.MinValue) > DateTime.Now.AddMonths(-6))
                 .ToList();
 
-            if (!treEm.HoTroPhucLois.Any())
+            if (!hoTroGanDay.Any() && diemRuiRo > 30)
             {
-                diemHoTro = 25;
-                if (string.IsNullOrEmpty(lyDoChinh))
-                    lyDoChinh = "Chưa nhận hỗ trợ nào";
-                chiTietLyDo.Add("🔴 Hỗ trợ: Chưa nhận bất kỳ hỗ trợ nào");
-                deXuat.Add("Khảo sát và lập kế hoạch hỗ trợ ngay");
+                // Chưa nhận hỗ trợ dù có hoàn cảnh khó khăn -> TĂNG điểm rủi ro
+                diemRuiRo += 15;
+                lyDoChinhList.Add("Chưa nhận hỗ trợ dù có hoàn cảnh khó khăn");
+                huongGiaiQuyet.Add("Khảo sát và triển khai hỗ trợ ngay");
             }
-            else if (!hoTroGanDay.Any())
+            else if (hoTroGanDay.Any())
             {
-                diemHoTro = 20;
-                chiTietLyDo.Add("🟠 Hỗ trợ: Đã lâu không nhận hỗ trợ (>6 tháng)");
-                deXuat.Add("Đánh giá lại và tiếp tục hỗ trợ");
-            }
-            else if (hoTroGanDay.Count < 2)
-            {
-                diemHoTro = 10;
-                chiTietLyDo.Add($"🟡 Hỗ trợ: Đang nhận {hoTroGanDay.Count} hình thức hỗ trợ");
-                deXuat.Add("Cân nhắc tăng cường hỗ trợ");
-            }
-            else
-            {
-                diemHoTro = 5;
-                chiTietLyDo.Add($"🟢 Hỗ trợ: Đang nhận {hoTroGanDay.Count} hình thức hỗ trợ tốt");
-            }
+                // Đã nhận hỗ trợ gần đây -> GIẢM điểm rủi ro
+                int soHoTro = hoTroGanDay.Count;
+                double giamDiem = 0;
 
-            if (!treEm.UngHos.Any())
-            {
-                diemHoTro += 5;
-                chiTietLyDo.Add("⚪ Chưa có mạnh thường quân ủng hộ");
-                if (!deXuat.Any(d => d.Contains("mạnh thường quân")))
-                    deXuat.Add("Tìm kiếm nhà hảo tâm hỗ trợ dài hạn");
-            }
-            tongDiem += diemHoTro;
-
-            // 3. GIA ĐÌNH (0-20 điểm)
-            int diemGiaDinh = 0;
-            if (!treEm.TreEmPhuHuynhs.Any())
-            {
-                diemGiaDinh = 20;
-                chiTietLyDo.Add("🔴 Gia đình: Không có thông tin phụ huynh");
-                if (!deXuat.Any())
-                    deXuat.Add("Xác minh người chăm sóc trẻ");
-            }
-            else
-            {
-                var phuHuynhs = treEm.TreEmPhuHuynhs.Select(tp => tp.PhuHuynh).ToList();
-                if (phuHuynhs.Count <= 1)
+                if (soHoTro >= 3)
                 {
-                    diemGiaDinh = 15;
-                    chiTietLyDo.Add("🟠 Gia đình: Gia đình đơn thân");
+                    giamDiem = 20; // Nhận nhiều hỗ trợ
+                }
+                else if (soHoTro == 2)
+                {
+                    giamDiem = 15;
                 }
                 else
                 {
-                    chiTietLyDo.Add($"🟢 Gia đình: Có {phuHuynhs.Count} người chăm sóc");
+                    giamDiem = 10; // Nhận 1 hỗ trợ
                 }
 
-                var coNgheOnDinh = phuHuynhs.Any(p =>
-                    !string.IsNullOrEmpty(p.NgheNghiep) &&
-                    !p.NgheNghiep.ToLower().Contains("thất nghiệp") &&
-                    !p.NgheNghiep.ToLower().Contains("không"));
+                diemRuiRo = Math.Max(0, diemRuiRo - giamDiem);
 
-                if (!coNgheOnDinh)
+                // Không thêm vào lý do chính, nhưng ghi nhận trong hướng giải quyết
+                if (diemRuiRo > 0)
                 {
-                    diemGiaDinh += 10;
-                    chiTietLyDo.Add("🟠 Kinh tế: Phụ huynh không có nghề ổn định");
+                    huongGiaiQuyet.Add($"Tiếp tục duy trì và mở rộng hỗ trợ (đã có {soHoTro} hỗ trợ)");
                 }
             }
-            tongDiem += diemGiaDinh;
 
-            // 4. HỌC TẬP (0-15 điểm)
-            int diemHocTap = 0;
-            if (treEm.TruongId == null)
+            // 5. Trẻ nhỏ
+            if (tuoi.HasValue && tuoi < 3)
             {
-                diemHocTap = 15;
-                chiTietLyDo.Add("🔴 Học tập: Trẻ chưa đi học/đã bỏ học");
-                deXuat.Add("Hỗ trợ để trẻ được đến trường");
+                diemRuiRo += 10;
+                lyDoChinhList.Add($"Trẻ nhỏ ({tuoi} tuổi)");
+                huongGiaiQuyet.Add("Theo dõi sát sức khỏe và tiêm chủng");
             }
+
+            // Giới hạn điểm tối đa
+            diemRuiRo = Math.Min(diemRuiRo, 100);
+
+            // Xác định mức độ
+            string mucDo;
+            if (diemRuiRo >= 80)
+                mucDo = "Cao";
+            else if (diemRuiRo >= 50)
+                mucDo = "Trung bình";
+            else if (diemRuiRo >= 30)
+                mucDo = "Thấp";
             else
-            {
-                var phieuMoiNhat = treEm.PhieuHocTaps.LastOrDefault();
-                if (phieuMoiNhat == null)
-                {
-                    diemHocTap = 10;
-                    chiTietLyDo.Add("🟡 Học tập: Không có thông tin học tập");
-                }
-                else
-                {
-                    var hocLuc = phieuMoiNhat.XepLoai?.ToLower() ?? "";
-                    if (hocLuc.Contains("yếu") || hocLuc.Contains("kém"))
-                    {
-                        diemHocTap = 12;
-                        chiTietLyDo.Add("🟠 Học tập: Học lực yếu");
-                        deXuat.Add("Hỗ trợ học bổng và dạy kèm");
-                    }
-                    else if (hocLuc.Contains("trung bình"))
-                    {
-                        diemHocTap = 6;
-                        chiTietLyDo.Add("🟡 Học tập: Học lực trung bình");
-                    }
-                    else
-                    {
-                        chiTietLyDo.Add("🟢 Học tập: Học lực tốt");
-                    }
-                }
-            }
-            tongDiem += diemHocTap;
+                mucDo = "Ổn định";
 
-            // 5. ĐỘ TUỔI (0-10 điểm)
-            int diemDoTuoi = 0;
-            if (tuoi.HasValue)
+            // Lấy lý do chính (tối đa 3)
+            var lyDoChinh = lyDoChinhList.Take(3).ToList();
+            if (!lyDoChinh.Any())
             {
-                if (tuoi < 6)
-                {
-                    diemDoTuoi = 10;
-                    chiTietLyDo.Add($"🟠 Độ tuổi: Trẻ nhỏ ({tuoi} tuổi) - cần chăm sóc đặc biệt");
-                }
-                else if (tuoi >= 15 && tuoi < 18)
-                {
-                    diemDoTuoi = 8;
-                    chiTietLyDo.Add($"🟡 Độ tuổi: Tuổi vị thành niên ({tuoi} tuổi) - cần định hướng");
-                    if (!deXuat.Any(d => d.Contains("nghề")))
-                        deXuat.Add("Hướng nghiệp và dạy nghề");
-                }
-                else if (tuoi >= 6 && tuoi < 11)
-                {
-                    diemDoTuoi = 6;
-                    chiTietLyDo.Add($"⚪ Độ tuổi: Tiểu học ({tuoi} tuổi)");
-                }
-                else if (tuoi >= 11 && tuoi < 15)
-                {
-                    diemDoTuoi = 5;
-                    chiTietLyDo.Add($"⚪ Độ tuổi: Trung học ({tuoi} tuổi)");
-                }
-            }
-            tongDiem += diemDoTuoi;
-
-            // 6. VẬN ĐỘNG (0-10 điểm)
-            int diemVanDong = 0;
-            var vanDongGanDay = treEm.VanDongTreEms
-                .Where(v => v.NgayVanDong.HasValue &&
-                       v.NgayVanDong.Value.ToDateTime(TimeOnly.MinValue) > DateTime.Now.AddMonths(-3))
-                .ToList();
-
-            if (vanDongGanDay.Any())
-            {
-                var soLan = vanDongGanDay.Sum(v => v.SoLan ?? 0);
-                if (soLan >= 3)
-                {
-                    diemVanDong = 10;
-                    chiTietLyDo.Add($"🔴 Vận động: Đã vận động {soLan} lần nhưng chưa có kết quả");
-                }
-                else if (soLan > 0)
-                {
-                    diemVanDong = 5;
-                    chiTietLyDo.Add($"🟡 Vận động: Đang vận động hỗ trợ ({soLan} lần)");
-                }
-            }
-            tongDiem += diemVanDong;
-
-            // Xác định mức độ ưu tiên
-            string mucDoUuTien;
-            if (tongDiem >= 70)
-            {
-                mucDoUuTien = "Cao";
-                if (string.IsNullOrEmpty(lyDoChinh))
-                    lyDoChinh = "Tổng hợp nhiều yếu tố khó khăn";
-                if (!deXuat.Any())
-                {
-                    deXuat.Add("⚠️ Ưu tiên hỗ trợ khẩn cấp");
-                    deXuat.Add("Theo dõi sát sao hàng tuần");
-                }
-            }
-            else if (tongDiem >= 40)
-            {
-                mucDoUuTien = "Trung Bình";
-                if (string.IsNullOrEmpty(lyDoChinh))
-                    lyDoChinh = "Cần hỗ trợ định kỳ";
-                if (!deXuat.Any())
-                {
-                    deXuat.Add("Hỗ trợ định kỳ 3-6 tháng");
-                    deXuat.Add("Đánh giá lại tình hình thường xuyên");
-                }
-            }
-            else
-            {
-                mucDoUuTien = "Thấp";
-                if (string.IsNullOrEmpty(lyDoChinh))
-                    lyDoChinh = "Tình trạng ổn định";
-                if (!deXuat.Any())
-                {
-                    deXuat.Add("Theo dõi định kỳ 6-12 tháng");
-                    deXuat.Add("Khuyến khích gia đình tự lực");
-                }
+                lyDoChinh.Add("Không có yếu tố rủi ro đặc biệt");
             }
 
-            return new MucDoUuTienDto
+            // Lấy hướng giải quyết (tối đa 3)
+            var huongGiaiQuyetChinh = huongGiaiQuyet.Distinct().Take(3).ToList();
+            if (!huongGiaiQuyetChinh.Any())
+            {
+                huongGiaiQuyetChinh.Add("Theo dõi định kỳ");
+            }
+
+            return new TreEmDonGianDto
             {
                 TreEmId = treEm.TreEmId,
-                HoTen = treEm.HoTen,
+                TenTreEm = treEm.HoTen,
                 Tuoi = tuoi,
-                GioiTinh = treEm.GioiTinh,
-                KhuPho = treEm.KhuPho?.TenKhuPho,
-                TruongHoc = treEm.Truong?.TenTruong,
+                KhuPho = treEm.KhuPho?.TenKhuPho ?? "Chưa xác định",
+                MucDo = mucDo,
+                DiemCapBach = Math.Round(diemRuiRo, 2),
                 LyDoChinh = lyDoChinh,
-                MucDoUuTien = mucDoUuTien,
-                DiemUuTien = tongDiem,
-<<<<<<< HEAD
-                LyDoChinh = lyDoChinh,
-=======
->>>>>>> 1bc039af6e93ce6b5411f76df0027acee4880dd0
-                ChiTietLyDo = chiTietLyDo,
-                DeXuatHoTro = deXuat
+                HuongGiaiQuyet = huongGiaiQuyetChinh
             };
         }
     }
-}
 
+    // ===================== DTOs =====================
+
+    public class KetQuaPhanCumDto
+    {
+        public int TongSoTreEm { get; set; }
+        public List<TreEmDonGianDto> DanhSachTreEm { get; set; } = new();
+    }
+
+    public class TreEmDonGianDto
+    {
+        public int TreEmId { get; set; }
+        public string TenTreEm { get; set; }
+        public int? Tuoi { get; set; }
+        public string KhuPho { get; set; }
+        public string MucDo { get; set; } // Cao, Trung bình, Thấp, Ổn định
+        public double DiemCapBach { get; set; }
+        public List<string> LyDoChinh { get; set; } = new();
+        public List<string> HuongGiaiQuyet { get; set; } = new();
+    }
+}

@@ -18,6 +18,10 @@ public partial class VanDongTreEm
     public string? LyDo { get; set; }
 
     public string? KetQua { get; set; }
+    public string? AnhMinhChung { get; set; }
+    public string? TinhTrangCapNhat { get; set; }
+    public string? GhiChuChiTiet { get; set; }
+    public DateOnly? NgayCapNhat { get; set; }
 
     public DateOnly? NgayVanDong { get; set; }
 

@@ -15,7 +15,29 @@ namespace QuanLyTreEmAPI.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var treEms = await _context.TreEms.ToListAsync();
+            return Ok(treEms);
+        }
+        [HttpGet("TongTreEmTheoKhuPho")]
+        public async Task<IActionResult> TongTreEmTheoKhuPho()
+        {
+            var tongTreEm = await _context.TreEms
+               .Include(te => te.KhuPho)
+               .GroupBy(te => te.KhuPhoId)
+               .Select(g => new
+               {
+                   KhuPhoID = g.Key,
+                   TenKhuPho = g.FirstOrDefault().KhuPho.TenKhuPho,
+                   SoLuongTreEm = g.Count()
+               })
+               .ToListAsync();
 
+
+            return Ok(tongTreEm);
+        }
         [HttpGet("DanhSach")]
         public async Task<IActionResult> GetDanhSachTreEm()
         {
@@ -55,14 +77,24 @@ namespace QuanLyTreEmAPI.Controllers
             var tre = await _context.TreEms
                 .Include(te => te.KhuPho)
                 .Include(te => te.Truong)
-                .Include(te => te.TreEmHoanCanhs).ThenInclude(h => h.HoanCanh)
-                .Include(te => te.TreEmPhuHuynhs).ThenInclude(ph => ph.PhuHuynh)
+                .Include(te => te.TreEmHoanCanhs)
+                    .ThenInclude(h => h.HoanCanh)
+                .Include(te => te.TreEmPhuHuynhs)
+                    .ThenInclude(ph => ph.PhuHuynh)
                 .Include(te => te.PhieuHocTaps)
-                .Include(te => te.HoTroPhucLois).ThenInclude(h => h.PhieuMinhChungs)
+                    .ThenInclude(p => p.Lop)
+                .Include(te => te.PhieuHocTaps)
+                    .ThenInclude(p => p.Truong)
+                .Include(te => te.HoTroPhucLois)
+                    .ThenInclude(h => h.PhieuMinhChungs)
                 .Include(te => te.VanDongTreEms)
+                    .ThenInclude(v => v.HoanCanh)
+                .Include(te => te.VanDongTreEms)
+                    .ThenInclude(v => v.NguoiDung)
                 .FirstOrDefaultAsync(te => te.TreEmId == id);
 
-            if (tre == null) return NotFound();
+            if (tre == null)
+                return NotFound(new { message = "Không tìm thấy trẻ em" });
 
             var detail = new
             {
@@ -76,61 +108,132 @@ namespace QuanLyTreEmAPI.Controllers
                 tre.QuocTich,
                 KhuPho = tre.KhuPho?.TenKhuPho,
                 Truong = tre.Truong?.TenTruong,
-                Anh = tre.Anh != null
-                    ? $"{baseUrl}{tre.Anh.Replace("\\", "/")}"  // ✅ full URL
+                Anh = !string.IsNullOrEmpty(tre.Anh)
+                    ? $"{baseUrl}{tre.Anh.Replace("\\", "/")}"
                     : $"{baseUrl}/Anh/default-avatar.png",
-                HoanCanh = tre.TreEmHoanCanhs.Select(h => h.HoanCanh.LoaiHoanCanh).ToList(),
-                PhuHuynh = tre.TreEmPhuHuynhs.Select(p => new
-                {
-                    p.PhuHuynh.HoTen,
-                    p.PhuHuynh.Sdt,
-                    p.PhuHuynh.NgheNghiep,
-                    p.MoiQuanHe
-                }),
-                HocTap = tre.PhieuHocTaps.Select(p => new
-                {
-                    p.NgayCapNhat,
-                    p.DiemTrungBinh,
-                    p.XepLoai,
-                    p.HanhKiem,
-                    p.GhiChu
-                }),
-                HoTro = tre.HoTroPhucLois.Select(ht => new
-                {
-                    ht.HoTroId,
-                    ht.LoaiHoTro,
-                    ht.NgayCap,
-                    ht.MoTa,
-                    File = ht.PhieuMinhChungs.Select(f => $"{baseUrl}{f.FilePath.Replace("\\", "/")}")
-                }),
-                VanDong = tre.VanDongTreEms.Select(v => new
-                {
-                    v.NgayVanDong,
-                    v.LyDo,
-                    v.KetQua,
-                    v.SoLan
-                })
+
+                // ✅ Hoàn cảnh - BỎ ?? new List<object>()
+                HoanCanh = tre.TreEmHoanCanhs
+                    .Where(h => h.HoanCanh != null)
+                    .Select(h => new
+                    {
+                        h.HoanCanh.HoanCanhId,
+                        h.HoanCanh.LoaiHoanCanh,
+                        h.HoanCanh.MoTa,
+                        h.NgayCapNhat
+                    })
+                    .ToList(),
+
+                // ✅ Phụ huynh - BỎ ?? new List<object>()
+                PhuHuynh = tre.TreEmPhuHuynhs
+                    .Where(p => p.PhuHuynh != null)
+                    .Select(p => new
+                    {
+                        p.PhuHuynh.PhuHuynhId,
+                        p.PhuHuynh.HoTen,
+                        SDT = p.PhuHuynh.Sdt,
+                        p.PhuHuynh.NgheNghiep,
+                        p.PhuHuynh.DiaChi,
+                        p.PhuHuynh.NgaySinh,
+                        p.PhuHuynh.TonGiao,
+                        p.PhuHuynh.DanToc,
+                        p.PhuHuynh.QuocTich,
+                        p.MoiQuanHe
+                    })
+                    .ToList(),
+
+                // ✅ Học tập - BỎ ?? new List<object>()
+                HocTap = tre.PhieuHocTaps
+                    .OrderByDescending(p => p.NamHoc)
+                    .Select(p => new
+                    {
+                        p.PhieuHocTapId,
+                        p.NamHoc,
+                        p.DiemTrungBinh,
+                        p.XepLoai,
+                        p.HanhKiem,
+                        p.GhiChu,
+                        TenLop = p.Lop?.TenLop,
+                        TenTruong = p.Truong?.TenTruong
+                    })
+                    .ToList(),
+
+                // ✅ Hỗ trợ phúc lợi - BỎ ?? new List<object>()
+                HoTro = tre.HoTroPhucLois
+                    .OrderByDescending(ht => ht.NgayCap)
+                    .Select(ht => new
+                    {
+                        ht.HoTroId,
+                        ht.LoaiHoTro,
+                        ht.NgayCap,
+                        ht.MoTa,
+                        ht.TrangThaiPhat,
+                        ht.NguoiChiuTrachNhiemHoTro,
+                        ht.NgayHenLai,
+                        ht.GhiChuTNV,
+                        // ✅ Files - BỎ ?? new List<object>()
+                        Files = ht.PhieuMinhChungs
+                            .Where(f => !string.IsNullOrEmpty(f.FilePath))
+                            .Select(f => new
+                            {
+                                f.MinhChungId,
+                                f.LoaiMinhChung,
+                                f.NgayCap,
+                                Url = $"{baseUrl}{f.FilePath.Replace("\\", "/")}"
+                            })
+                            .ToList()
+                    })
+                    .ToList(),
+
+                // ✅ Vận động - BỎ ?? new List<object>()
+                VanDong = tre.VanDongTreEms
+                    .OrderByDescending(v => v.NgayVanDong)
+                    .Select(v => new
+                    {
+                        v.VanDongId,
+                        v.NgayVanDong,
+                        v.LyDo,
+                        v.KetQua,
+                        v.SoLan,
+                        v.TinhTrangCapNhat,
+                        v.GhiChuChiTiet,
+                        v.NgayCapNhat,
+                        HoanCanh = v.HoanCanh != null ? new
+                        {
+                            v.HoanCanh.HoanCanhId,
+                            v.HoanCanh.LoaiHoanCanh
+                        } : null,
+                        NguoiVanDong = v.NguoiDung != null ? new
+                        {
+                            v.NguoiDung.UserId,
+                            v.NguoiDung.HoTen
+                        } : null,
+                        AnhMinhChung = !string.IsNullOrEmpty(v.AnhMinhChung)
+                            ? $"{baseUrl}{v.AnhMinhChung.Replace("\\", "/")}"
+                            : null
+                    })
+                    .ToList()
             };
 
             return Ok(detail);
         }
 
-        [HttpGet("TongTreEmTheoKhuPho")]
-        public async Task<IActionResult> TongTreEmTheoKhuPho()
-        {
-            var tongTreEm = await _context.TreEms
-               .Include(te => te.KhuPho)
-               .GroupBy(te => te.KhuPhoId)
-               .Select(g => new
-               {
-                   KhuPhoID = g.Key,
-                   TenKhuPho = g.FirstOrDefault().KhuPho.TenKhuPho,
-                   SoLuongTreEm = g.Count()
-               })
-               .ToListAsync();
+        //[HttpGet("TongTreEmTheoKhuPho")]
+        //public async Task<IActionResult> TongTreEmTheoKhuPho()
+        //{
+        //    var tongTreEm = await _context.TreEms
+        //       .Include(te => te.KhuPho)
+        //       .GroupBy(te => te.KhuPhoId)
+        //       .Select(g => new
+        //       {
+        //           KhuPhoID = g.Key,
+        //           TenKhuPho = g.FirstOrDefault().KhuPho.TenKhuPho,
+        //           SoLuongTreEm = g.Count()
+        //       })
+        //       .ToListAsync();
 
-            return Ok(tongTreEm);
-        }
+        //    return Ok(tongTreEm);
+        //}
 
         [HttpPost("Create")]
         public async Task<IActionResult> CreateTreEm([FromBody] TreEmCreateDto model)
@@ -240,7 +343,7 @@ namespace QuanLyTreEmAPI.Controllers
                             XepLoai = ht.XepLoai,
                             HanhKiem = ht.HanhKiem,
                             GhiChu = ht.GhiChu,
-                            NgayCapNhat = DateOnly.FromDateTime(DateTime.Now),
+                            NamHoc = DateOnly.FromDateTime(DateTime.Now),
                             TruongId = model.TruongId,
                             TreEmId = tre.TreEmId,
                             LopId = ht.LopId

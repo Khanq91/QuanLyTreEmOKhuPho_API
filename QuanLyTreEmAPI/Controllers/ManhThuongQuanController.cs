@@ -96,8 +96,12 @@ namespace QuanLyTreEmAPI.Controllers
                 {
                     ManhThuongQuanId = dto.ManhThuongQuanId.Value,
                     SoTien = dto.SoTien,
+                    SoLuongVatPham = dto.SoLuongVatPham,
+                    SoLuongConLai = dto.SoLuongVatPham,
                     NgayUngHo = dto.NgayUngHo,
-                    LoaiUngHo = dto.HinhThuc,
+                    DoiTuong = dto.DoiTuong,
+                    TenVatPham = dto.TenVatPham,
+                    LoaiUngHo = dto.LoaiUngHo,
                     GhiChu = dto.GhiChu
                 };
 
@@ -174,7 +178,7 @@ namespace QuanLyTreEmAPI.Controllers
                     NgayUngHoGanNhat = g
                         .Where(x => x.uh != null && x.uh.NgayUngHo.HasValue)
                         .Max(x => x.uh.NgayUngHo.Value)
-                        .ToString("dd/MM/yyyy")
+                        .ToString("dd/MM/yyyy"),
                 })
                 .FirstOrDefaultAsync();
 
@@ -195,6 +199,7 @@ namespace QuanLyTreEmAPI.Controllers
                                     UngHoId = uh.UngHoId,
                                     SoTien = uh.SoTien,
                                     LoaiUngHo = uh.LoaiUngHo,
+                                    SoLuongVatPham = uh.SoLuongVatPham,
                                     NgayUngHo = uh.NgayUngHo.HasValue ? uh.NgayUngHo.Value.ToString("yyyy-MM-dd") : null,
                                     GhiChu = uh.GhiChu,
                                     TenManhThuongQuan = mtq.Ten,
@@ -217,15 +222,40 @@ namespace QuanLyTreEmAPI.Controllers
             if (ungHo == null)
                 return NotFound(new { Message = "Không tìm thấy dữ liệu ủng hộ." });
 
+            // ====== XỬ LÝ SỐ LƯỢNG VẬT PHẨM ======
+            if (updatedUngHo.SoLuongVatPham.HasValue)
+            {
+                int oldValue = ungHo.SoLuongVatPham ?? 0;
+                int newValue = updatedUngHo.SoLuongVatPham.Value;
+
+                if (newValue != oldValue)
+                {
+                    int diff = newValue - oldValue;
+
+                    // Nếu tăng => SoLuongConLai tăng theo
+                    // Nếu giảm => SoLuongConLai giảm theo
+                    ungHo.SoLuongConLai += diff;
+
+                    // Đảm bảo không âm
+                    if (ungHo.SoLuongConLai < 0)
+                        ungHo.SoLuongConLai = 0;
+
+                    // Gán giá trị mới
+                    ungHo.SoLuongVatPham = newValue;
+                }
+            }
+
+            // ====== CẬP NHẬT SỐ TIỀN ======
             ungHo.SoTien = updatedUngHo.SoTien ?? 0;
 
-            // Chuyển string sang DateOnly
+            // ====== CẬP NHẬT NGÀY ======
             if (!string.IsNullOrEmpty(updatedUngHo.NgayUngHo) &&
                 DateOnly.TryParse(updatedUngHo.NgayUngHo, out DateOnly parsedDate))
             {
                 ungHo.NgayUngHo = parsedDate;
             }
 
+            // ====== CẬP NHẬT LOẠI & GHI CHÚ ======
             ungHo.LoaiUngHo = updatedUngHo.LoaiUngHo;
             ungHo.GhiChu = updatedUngHo.GhiChu;
 
@@ -233,19 +263,48 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(new { Message = "Cập nhật thành công", Data = ungHo });
         }
+
         [HttpDelete("XoaUngHo")]
         public async Task<IActionResult> XoaUngHo([FromQuery] int UngHoId)
         {
-            var ungHo = await _context.UngHos.FirstOrDefaultAsync(u => u.UngHoId == UngHoId);
+            // Lấy bản ghi UngHo cùng các bảng liên quan
+            var ungHo = await _context.UngHos
+                .Include(u => u.PhanBoUngHoChiPhis)
+                .Include(u => u.QuaTangUngHos)
+                    .ThenInclude(q => q.PhanPhatQuas)
+                .Include(u => u.HoTros)
+                .FirstOrDefaultAsync(u => u.UngHoId == UngHoId);
 
             if (ungHo == null)
-                return NotFound(new { Message = "Không tìm thấy dữ liệu ủng hộ." });
+                return NotFound("Không tìm thấy bản ghi Ủng hộ.");
 
+            // 1. Xóa PhanPhatQua
+            foreach (var qua in ungHo.QuaTangUngHos)
+            {
+                if (qua.PhanPhatQuas.Any())
+                    _context.PhanPhatQuas.RemoveRange(qua.PhanPhatQuas);
+            }
+
+            // 2. Xóa QuaTangUngHo
+            if (ungHo.QuaTangUngHos.Any())
+                _context.QuaTangUngHos.RemoveRange(ungHo.QuaTangUngHos);
+
+            // 3. Xóa PhanBoUngHoChiPhi
+            if (ungHo.PhanBoUngHoChiPhis.Any())
+                _context.PhanBoUngHoChiPhis.RemoveRange(ungHo.PhanBoUngHoChiPhis);
+
+            // 4. Xóa liên kết HoTroPhucLoi (chỉ xóa liên kết, không xóa entity)
+            ungHo.HoTros.Clear();
+
+            // 5. Xóa bản ghi cha UngHo
             _context.UngHos.Remove(ungHo);
+
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok("Xóa thành công.");
         }
+
+
         [HttpGet("ThongTinManhThuongQuan")]
         public async Task<IActionResult> ThongTinManhThuongQuan([FromQuery] int ManhThuongQuanID)
         {

@@ -111,13 +111,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Đặt UseStaticFiles trước MapControllers
 app.UseStaticFiles();
 
 app.MapControllers();

@@ -6,7 +6,5 @@
         public string Email { get; set; }
         public string SDT { get; set; }
         public string VaiTro { get; set; }
-        public string TrangThai { get; set; }
-        public string Anh { get; set; }
     }
 }
