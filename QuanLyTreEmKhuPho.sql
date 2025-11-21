@@ -6,7 +6,7 @@ GO
 USE QuanLyTreEm;
 GO
 
--- ==============================
+-- ============================== 
 -- TẠO CÁC BẢNG
 -- ==============================
 
@@ -326,6 +326,8 @@ CREATE TABLE QuaTangUngHo (
     SuKienID INT NULL,
     TenQua NVARCHAR(200),
     MoTa NVARCHAR(500),
+    NguoiChiuTrachNhiem NVARCHAR(500),
+    LoaiHoTro NVARCHAR(100),
     SoLuongTong INT,
     SoLuongConLai INT,
     DonGia DECIMAL(18,2),
@@ -939,23 +941,23 @@ VALUES
 (9, 9, 3500000, 100.00, N'Đinh Văn I', '2024-07-01', N'Ủng hộ toàn bộ cho lớp kỹ năng');
 
 -- 31. QuaTangUngHo (15 quà tặng)
-INSERT INTO QuaTangUngHo (UngHoID, SuKienID, TenQua, MoTa, SoLuongTong, SoLuongConLai, DonGia, DoiTuongNhan, Anh)
+INSERT INTO QuaTangUngHo (UngHoID, SuKienID, TenQua, MoTa, SoLuongTong, SoLuongConLai, DonGia, DoiTuongNhan, Anh,NguoiChiuTrachNhiem,LoaiHoTro)
 VALUES
-(3, 1, N'Bánh trung thu cao cấp', N'Bánh trung thu nhân thập cẩm', 100, 5, 50000, N'Trẻ em tham gia sự kiện', '/Anh/QuaTang/qua1.jpg'),
-(3, 1, N'Lồng đèn trung thu', N'Lồng đèn hình ngôi sao', 100, 8, 30000, N'Trẻ em tham gia sự kiện', '/Anh/QuaTang/qua2.jpg'),
-(7, 7, N'Bộ đồ chơi giáo dục', N'Đồ chơi phát triển trí tuệ', 80, 12, 56250, N'Trẻ em 6-12 tuổi', '/Anh/QuaTang/qua3.jpg'),
-(10, 7, N'Phần quà tết thiếu nhi', N'Gồm bánh kẹo, đồ chơi, sách', 120, 20, 58333, N'Tất cả trẻ em', '/Anh/QuaTang/qua4.jpg'),
-(2, 2, N'Bộ sách giáo khoa', N'Sách giáo khoa lớp 1-5', 50, 10, 40000, N'Trẻ em nghèo vượt khó', '/Anh/QuaTang/qua5.jpg'),
-(5, 5, N'Bộ quần áo đồng phục', N'Quần áo đồng phục mới', 30, 5, 50000, N'Trẻ em học giỏi', '/Anh/QuaTang/qua6.jpg'),
-(9, 6, N'Bộ đồ dùng học tập', N'Bút, vở, thước, hộp bút', 60, 8, 58333, N'Trẻ em cần hỗ trợ', '/Anh/QuaTang/qua7.jpg'),
-(4, 3, N'Túi quà tết', N'Bánh kẹo, mứt tết', 80, 0, 50000, N'Trẻ em khó khăn', '/Anh/QuaTang/qua8.jpg'),
-(4, 4, N'Cây xanh tặng gia đình', N'Cây cảnh nhỏ', 50, 15, 20000, N'Gia đình trẻ em', '/Anh/QuaTang/qua9.jpg'),
-(6, 1, N'Túi xách trung thu', N'Túi xách đựng quà', 100, 10, 25000, N'Trẻ em tham gia', '/Anh/QuaTang/qua10.jpg'),
-(7, 7, N'Gấu bông', N'Gấu bông size nhỏ', 80, 18, 56250, N'Trẻ em dưới 10 tuổi', '/Anh/QuaTang/qua11.jpg'),
-(10, 7, N'Bóng đá mini', N'Bóng đá size 3', 50, 12, 58333, N'Trẻ em nam', '/Anh/QuaTang/qua12.jpg'),
-(9, 8, N'Giáo trình kỹ năng sống', N'Sách kỹ năng cho trẻ', 40, 8, 50000, N'Học viên khóa học', '/Anh/QuaTang/qua13.jpg'),
-(3, 1, N'Kẹo trung thu', N'Kẹo các loại', 100, 15, 15000, N'Trẻ em tham gia', '/Anh/QuaTang/qua14.jpg'),
-(10, 7, N'Vở viết', N'Combo 10 quyển vở', 120, 25, 25000, N'Tất cả trẻ em', '/Anh/QuaTang/qua15.jpg');
+(3, 1, N'Bánh trung thu cao cấp', N'Bánh trung thu nhân thập cẩm', 100, 5, 50000, N'Trẻ em tham gia sự kiện', '/Anh/QuaTang/qua1.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(3, 1, N'Lồng đèn trung thu', N'Lồng đèn hình ngôi sao', 100, 8, 30000, N'Trẻ em tham gia sự kiện', '/Anh/QuaTang/qua2.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(7, 7, N'Bộ đồ chơi giáo dục', N'Đồ chơi phát triển trí tuệ', 80, 12, 56250, N'Trẻ em 6-12 tuổi', '/Anh/QuaTang/qua3.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(10, 7, N'Phần quà tết thiếu nhi', N'Gồm bánh kẹo, đồ chơi, sách', 120, 20, 58333, N'Tất cả trẻ em', '/Anh/QuaTang/qua4.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(2, 2, N'Bộ sách giáo khoa', N'Sách giáo khoa lớp 1-5', 50, 10, 40000, N'Trẻ em nghèo vượt khó', '/Anh/QuaTang/qua5.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(5, 5, N'Bộ quần áo đồng phục', N'Quần áo đồng phục mới', 30, 5, 50000, N'Trẻ em học giỏi', '/Anh/QuaTang/qua6.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(9, 6, N'Bộ đồ dùng học tập', N'Bút, vở, thước, hộp bút', 60, 8, 58333, N'Trẻ em cần hỗ trợ', '/Anh/QuaTang/qua7.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(4, 3, N'Túi quà tết', N'Bánh kẹo, mứt tết', 80, 0, 50000, N'Trẻ em khó khăn', '/Anh/QuaTang/qua8.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(4, 4, N'Cây xanh tặng gia đình', N'Cây cảnh nhỏ', 50, 15, 20000, N'Gia đình trẻ em', '/Anh/QuaTang/qua9.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(6, 1, N'Túi xách trung thu', N'Túi xách đựng quà', 100, 10, 25000, N'Trẻ em tham gia', '/Anh/QuaTang/qua10.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(7, 7, N'Gấu bông', N'Gấu bông size nhỏ', 80, 18, 56250, N'Trẻ em dưới 10 tuổi', '/Anh/QuaTang/qua11.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(10, 7, N'Bóng đá mini', N'Bóng đá size 3', 50, 12, 58333, N'Trẻ em nam', '/Anh/QuaTang/qua12.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(9, 8, N'Giáo trình kỹ năng sống', N'Sách kỹ năng cho trẻ', 40, 8, 50000, N'Học viên khóa học', '/Anh/QuaTang/qua13.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(3, 1, N'Kẹo trung thu', N'Kẹo các loại', 100, 15, 15000, N'Trẻ em tham gia', '/Anh/QuaTang/qua14.jpg',N'Nguyễn Văn A',N'Quà tặng'),
+(10, 7, N'Vở viết', N'Combo 10 quyển vở', 120, 25, 25000, N'Tất cả trẻ em', '/Anh/QuaTang/qua15.jpg',N'Nguyễn Văn A',N'Quà tặng');
 
 -- 32. PhanPhatQua (50 phân phát quà)
 INSERT INTO PhanPhatQua (QuaTangUngHoID, TreEmID, SoLuongNhan, NgayPhanPhat, NguoiPhanPhat, TrangThai, GhiChu)
@@ -1011,4 +1013,4 @@ VALUES
 (8, 8, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Quà tết phong phú'),
 (8, 9, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Đã ký nhận'),
 (8, 10, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Gia đình cảm ơn nhiều');
-select * from UngHo
+select * from PhanPhatQua where PhanPhatID=1

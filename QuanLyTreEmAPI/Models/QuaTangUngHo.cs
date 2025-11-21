@@ -9,6 +9,8 @@ namespace QuanLyTreEmAPI.Models
         public int? SuKienId { get; set; }
         public string TenQua { get; set; }
         public string MoTa { get; set; }
+        public string NguoiChiuTrachNhiem { get; set; }
+        public string LoaiHoTro { get; set; }
         public int SoLuongTong { get; set; }
         public int SoLuongConLai { get; set; }
         public decimal DonGia { get; set; }
