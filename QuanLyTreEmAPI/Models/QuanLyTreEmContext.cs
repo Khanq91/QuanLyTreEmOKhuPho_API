@@ -24,7 +24,7 @@ public partial class QuanLyTreEmContext : DbContext
 
     public virtual DbSet<DangKySuKien> DangKySuKiens { get; set; }
 
-    public virtual DbSet<HoTroPhucLoi> HoTroPhucLois { get; set; }
+    //public virtual DbSet<HoTroPhucLoi> HoTroPhucLois { get; set; }
 
     public virtual DbSet<HoanCanh> HoanCanhs { get; set; }
 
@@ -160,21 +160,21 @@ public partial class QuanLyTreEmContext : DbContext
                 .HasConstraintName("FK__DangKySuK__UserI__3A81B327");
         });
 
-        modelBuilder.Entity<HoTroPhucLoi>(entity =>
-        {
-            entity.HasKey(e => e.HoTroId).HasName("PK__HoTroPhu__530870AE2353BE29");
+        //modelBuilder.Entity<HoTroPhucLoi>(entity =>
+        //{
+        //    entity.HasKey(e => e.HoTroId).HasName("PK__HoTroPhu__530870AE2353BE29");
 
-            entity.ToTable("HoTroPhucLoi");
+        //    entity.ToTable("HoTroPhucLoi");
 
-            entity.Property(e => e.HoTroId).HasColumnName("HoTroID");
-            entity.Property(e => e.LoaiHoTro).HasMaxLength(100);
-            entity.Property(e => e.NguoiChiuTrachNhiemHoTro).HasMaxLength(100);
-            entity.Property(e => e.TreEmId).HasColumnName("TreEmID");
+        //    entity.Property(e => e.HoTroId).HasColumnName("HoTroID");
+        //    entity.Property(e => e.LoaiHoTro).HasMaxLength(100);
+        //    entity.Property(e => e.NguoiChiuTrachNhiemHoTro).HasMaxLength(100);
+        //    entity.Property(e => e.TreEmId).HasColumnName("TreEmID");
 
-            entity.HasOne(d => d.TreEm).WithMany(p => p.HoTroPhucLois)
-                .HasForeignKey(d => d.TreEmId)
-                .HasConstraintName("FK__HoTroPhuc__TreEm__656C112C");
-        });
+        //    entity.HasOne(d => d.TreEm).WithMany(p => p.HoTroPhucLois)
+        //        .HasForeignKey(d => d.TreEmId)
+        //        .HasConstraintName("FK__HoTroPhuc__TreEm__656C112C");
+        //});
 
         modelBuilder.Entity<HoanCanh>(entity =>
         {
@@ -319,12 +319,13 @@ public partial class QuanLyTreEmContext : DbContext
 
             entity.Property(e => e.MinhChungId).HasColumnName("MinhChungID");
             entity.Property(e => e.FilePath).HasMaxLength(300);
-            entity.Property(e => e.HoTroId).HasColumnName("HoTroID");
             entity.Property(e => e.LoaiMinhChung).HasMaxLength(100);
+            entity.Property(e => e.UngHoId).HasColumnName("UngHoID");  // ⭐ QUAN TRỌNG
 
-            entity.HasOne(d => d.HoTro).WithMany(p => p.PhieuMinhChungs)
-                .HasForeignKey(d => d.HoTroId)
-                .HasConstraintName("FK__PhieuMinh__HoTro__68487DD7");
+            entity.HasOne(d => d.UngHo)
+                  .WithMany(p => p.PhieuMinhChungs)
+                  .HasForeignKey(d => d.UngHoId)
+                  .HasConstraintName("FK__PhieuMinh__UngHo__68487DD7");
         });
 
         modelBuilder.Entity<SuKien>(entity =>
@@ -557,25 +558,6 @@ public partial class QuanLyTreEmContext : DbContext
             entity.HasOne(d => d.ManhThuongQuan).WithMany(p => p.UngHos)
                 .HasForeignKey(d => d.ManhThuongQuanId)
                 .HasConstraintName("FK__UngHo__ManhThuon__173876EA");
-
-            entity.HasMany(d => d.HoTros).WithMany(p => p.UngHos)
-                .UsingEntity<Dictionary<string, object>>(
-                    "UngHoHoTroPhucLoi",
-                    r => r.HasOne<HoTroPhucLoi>().WithMany()
-                        .HasForeignKey("HoTroId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__UngHo_HoT__HoTro__6FE99F9F"),
-                    l => l.HasOne<UngHo>().WithMany()
-                        .HasForeignKey("UngHoId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__UngHo_HoT__UngHo__6EF57B66"),
-                    j =>
-                    {
-                        j.HasKey("UngHoId", "HoTroId").HasName("PK__UngHo_Ho__CC352B559EB899C2");
-                        j.ToTable("UngHo_HoTroPhucLoi");
-                        j.IndexerProperty<int>("UngHoId").HasColumnName("UngHoID");
-                        j.IndexerProperty<int>("HoTroId").HasColumnName("HoTroID");
-                    });
 
             entity.HasMany(d => d.TreEms).WithMany(p => p.UngHos)
                 .UsingEntity<Dictionary<string, object>>(

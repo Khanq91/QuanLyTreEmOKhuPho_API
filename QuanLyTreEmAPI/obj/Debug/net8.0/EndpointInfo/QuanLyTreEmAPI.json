@@ -5,35 +5,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/AIPhanCum/PhanCumDoUuTienCapBach": {
-      "get": {
-        "tags": [
-          "AIPhanCum"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/KetQuaPhanCumDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/KetQuaPhanCumDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/KetQuaPhanCumDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/BaoCaoThongKe/TongQuan": {
       "get": {
         "tags": [
@@ -573,6 +544,41 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HoTroVaUngHo/XoaQuaTangUngHo/{quaTangUngHoId}": {
+      "delete": {
+        "tags": [
+          "HoTroVaUngHo"
+        ],
+        "parameters": [
+          {
+            "name": "quaTangUngHoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HoTroVaUngHo/DanhSachSuKienTuongLai": {
+      "get": {
+        "tags": [
+          "HoTroVaUngHo"
         ],
         "responses": {
           "200": {
@@ -2451,72 +2457,6 @@
         },
         "additionalProperties": false
       },
-      "HoTroPhucLoi": {
-        "type": "object",
-        "properties": {
-          "hoTroId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "loaiHoTro": {
-            "type": "string",
-            "nullable": true
-          },
-          "moTa": {
-            "type": "string",
-            "nullable": true
-          },
-          "ngayCap": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "ngayHenLai": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "nguoiChiuTrachNhiemHoTro": {
-            "type": "string",
-            "nullable": true
-          },
-          "trangThaiPhat": {
-            "type": "string",
-            "nullable": true
-          },
-          "ghiChuTNV": {
-            "type": "string",
-            "nullable": true
-          },
-          "treEmId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "nguoiDungId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "phieuMinhChungs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PhieuMinhChung"
-            },
-            "nullable": true
-          },
-          "treEm": {
-            "$ref": "#/components/schemas/TreEm"
-          },
-          "ungHos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UngHo"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "HoTroPhucLoiInfo": {
         "type": "object",
         "properties": {
@@ -2597,23 +2537,6 @@
           "lopId": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "KetQuaPhanCumDto": {
-        "type": "object",
-        "properties": {
-          "tongSoTreEm": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "danhSachTreEm": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TreEmDonGianDto"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3175,13 +3098,13 @@
             "format": "date",
             "nullable": true
           },
-          "hoTroId": {
+          "ungHoId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "hoTro": {
-            "$ref": "#/components/schemas/HoTroPhucLoi"
+          "ungHo": {
+            "$ref": "#/components/schemas/UngHo"
           }
         },
         "additionalProperties": false
@@ -3268,6 +3191,10 @@
             "format": "int32"
           },
           "doiTuongNhan": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenSuKien": {
             "type": "string",
             "nullable": true
           },
@@ -4182,13 +4109,6 @@
             "format": "int32",
             "nullable": true
           },
-          "hoTroPhucLois": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HoTroPhucLoi"
-            },
-            "nullable": true
-          },
           "phanPhatQuas": {
             "type": "array",
             "items": {
@@ -4323,51 +4243,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/VanDongDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TreEmDonGianDto": {
-        "type": "object",
-        "properties": {
-          "treEmId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tenTreEm": {
-            "type": "string",
-            "nullable": true
-          },
-          "tuoi": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "khuPho": {
-            "type": "string",
-            "nullable": true
-          },
-          "mucDo": {
-            "type": "string",
-            "nullable": true
-          },
-          "diemCapBach": {
-            "type": "number",
-            "format": "double"
-          },
-          "lyDoChinh": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "huongGiaiQuyet": {
-            "type": "array",
-            "items": {
-              "type": "string"
             },
             "nullable": true
           }
@@ -4633,10 +4508,10 @@
           "manhThuongQuan": {
             "$ref": "#/components/schemas/ManhThuongQuan"
           },
-          "hoTros": {
+          "phieuMinhChungs": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/HoTroPhucLoi"
+              "$ref": "#/components/schemas/PhieuMinhChung"
             },
             "nullable": true
           },

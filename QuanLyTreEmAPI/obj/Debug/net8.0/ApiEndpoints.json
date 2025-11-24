@@ -1,25 +1,5 @@
 [
   {
-    "ContainingType": "QuanLyTreEmAPI.Controllers.AIPhanCumController",
-    "Method": "PhanCumTreEmTheoDoCapBach",
-    "RelativePath": "api/AIPhanCum/PhanCumDoUuTienCapBach",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "QuanLyTreEmAPI.Controllers.KetQuaPhanCumDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "QuanLyTreEm.API.Controllers.BaoCaoThongKeController",
     "Method": "GetSuKienTheoKy",
     "RelativePath": "api/BaoCaoThongKe/SuKienTheoKy",
@@ -159,6 +139,16 @@
     "ContainingType": "QuanLyTreEmAPI.Controllers.HoTroVaUngHoController",
     "Method": "GetDanhSachHoTro",
     "RelativePath": "api/HoTroVaUngHo/DanhSachHoTro",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.HoTroVaUngHoController",
+    "Method": "DanhSachSuKienTuongLai",
+    "RelativePath": "api/HoTroVaUngHo/DanhSachSuKienTuongLai",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -345,6 +335,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.HoTroVaUngHoController",
+    "Method": "XoaQuaTangUngHo",
+    "RelativePath": "api/HoTroVaUngHo/XoaQuaTangUngHo/{quaTangUngHoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quaTangUngHoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "QuanLyTreEmAPI.Controllers.HoTroVaUngHoController",

@@ -14,7 +14,9 @@ public partial class PhieuMinhChung
 
     public DateOnly? NgayCap { get; set; }
 
-    public int? HoTroId { get; set; }
+    public int? UngHoId { get; set; }
+    //public int? HoTroId { get; set; }
 
-    public virtual HoTroPhucLoi? HoTro { get; set; }
+    //public virtual HoTroPhucLoi? HoTro { get; set; }
+    public virtual UngHo? UngHo { get; set; }
 }

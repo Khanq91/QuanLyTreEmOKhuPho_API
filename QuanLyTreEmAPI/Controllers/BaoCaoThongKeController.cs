@@ -71,7 +71,7 @@ namespace QuanLyTreEm.API.Controllers
         [HttpGet("TongQuan")]
         public IActionResult GetTongQuan([FromQuery] DateTime? from, [FromQuery] DateTime? to)
         {
-            var fromDate = from ?? DateTime.Today.AddMonths(-12);   
+            var fromDate = from ?? DateTime.Today.AddMonths(-12);
             var toDate = to ?? DateTime.Today.AddDays(1);
 
             // Tổng sự kiện trong kỳ
@@ -95,12 +95,11 @@ namespace QuanLyTreEm.API.Controllers
             //    .Where(x => ToDateTime(x.NgayUngHo) >= fromDate && ToDateTime(x.NgayUngHo) < toDate).Sum(x => (decimal?)x.SoTien) ?? 0m;
 
             // Số trẻ được hỗ trợ
-            var soTreDuocHoTro = _context.HoTroPhucLois
-                .AsEnumerable()
-                .Where(x => ToDateTime(x.NgayCap) >= fromDate && ToDateTime(x.NgayCap) < toDate)
-                .Select(x => x.TreEmId)
-                .Distinct()
-                .Count();
+            var soTreDuocHoTro = _context.PhanPhatQuas
+            .Where(x => x.NgayPhanPhat >= fromDate && x.NgayPhanPhat < toDate)
+            .Select(x => x.TreEmId)
+            .Distinct()
+            .Count();
 
             // Số Tình nguyện viên
             var soTinhNguyenVien = _context.TinhNguyenViens.Count();
@@ -164,11 +163,14 @@ namespace QuanLyTreEm.API.Controllers
             var fromDate = from ?? DateTime.Today.AddMonths(-12);
             var toDate = to ?? DateTime.Today.AddDays(1);
 
-            var items = _context.HoTroPhucLois
-                .AsEnumerable()
-                .Where(x => ToDateTime(x.NgayCap) >= fromDate && ToDateTime(x.NgayCap) < toDate)
-                .Select(x => new { x.TreEmId, NgayCap = ToDateTime(x.NgayCap) })
-                .ToList();
+            var items = _context.PhanPhatQuas
+                      .Where(x => x.NgayPhanPhat >= fromDate && x.NgayPhanPhat < toDate)
+                      .Select(x => new
+                      {
+                          x.TreEmId,
+                          NgayCap = x.NgayPhanPhat
+                      })
+                      .ToList();
 
             var series = Periods(fromDate, toDate, granularity)
                 .Select(p => new

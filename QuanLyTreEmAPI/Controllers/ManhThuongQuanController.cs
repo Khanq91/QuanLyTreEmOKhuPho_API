@@ -272,13 +272,14 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(u => u.PhanBoUngHoChiPhis)
                 .Include(u => u.QuaTangUngHos)
                     .ThenInclude(q => q.PhanPhatQuas)
-                .Include(u => u.HoTros)
+                .Include(u => u.PhieuMinhChungs)  // ✅ THÊM PhieuMinhChung
+                .Include(u => u.TreEms)            // ✅ THÊM TreEms (many-to-many)
                 .FirstOrDefaultAsync(u => u.UngHoId == UngHoId);
 
             if (ungHo == null)
                 return NotFound("Không tìm thấy bản ghi Ủng hộ.");
 
-            // 1. Xóa PhanPhatQua
+            // 1. Xóa PhanPhatQua (cascade từ QuaTangUngHo)
             foreach (var qua in ungHo.QuaTangUngHos)
             {
                 if (qua.PhanPhatQuas.Any())
@@ -293,17 +294,20 @@ namespace QuanLyTreEmAPI.Controllers
             if (ungHo.PhanBoUngHoChiPhis.Any())
                 _context.PhanBoUngHoChiPhis.RemoveRange(ungHo.PhanBoUngHoChiPhis);
 
-            // 4. Xóa liên kết HoTroPhucLoi (chỉ xóa liên kết, không xóa entity)
-            ungHo.HoTros.Clear();
+            // 4. ✅ Xóa PhieuMinhChung
+            if (ungHo.PhieuMinhChungs.Any())
+                _context.PhieuMinhChungs.RemoveRange(ungHo.PhieuMinhChungs);
 
-            // 5. Xóa bản ghi cha UngHo
+            // 5. ✅ Xóa liên kết UngHo_TreEm (many-to-many, chỉ xóa liên kết)
+            ungHo.TreEms.Clear();
+
+            // 6. Xóa bản ghi cha UngHo
             _context.UngHos.Remove(ungHo);
 
             await _context.SaveChangesAsync();
 
             return Ok("Xóa thành công.");
         }
-
 
         [HttpGet("ThongTinManhThuongQuan")]
         public async Task<IActionResult> ThongTinManhThuongQuan([FromQuery] int ManhThuongQuanID)

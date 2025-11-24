@@ -17,6 +17,7 @@ namespace QuanLyTreEmOKhuPho.Models.HoTroVaUngHo
         public int SoLuongTong { get; set; }
         public int SoLuongConLai { get; set; }
         public string DoiTuongNhan { get; set; }
+        public string TenSuKien { get; set; }
         public string TenManhThuongQuan { get; set; }
         public string DiaChi { get; set; }
         public string SDT { get; set; }

@@ -18,7 +18,8 @@ public partial class UngHo
 
     public virtual ManhThuongQuan? ManhThuongQuan { get; set; }
 
-    public virtual ICollection<HoTroPhucLoi> HoTros { get; set; } = new List<HoTroPhucLoi>();
+    //public virtual ICollection<HoTroPhucLoi> HoTros { get; set; } = new List<HoTroPhucLoi>();
+    public virtual ICollection<PhieuMinhChung> PhieuMinhChungs { get; set; } = new List<PhieuMinhChung>();
 
     public virtual ICollection<TreEm> TreEms { get; set; } = new List<TreEm>();
     public virtual ICollection<QuaTangUngHo> QuaTangUngHos { get; set; } = new List<QuaTangUngHo>();

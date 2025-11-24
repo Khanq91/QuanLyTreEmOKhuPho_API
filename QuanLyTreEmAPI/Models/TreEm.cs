@@ -27,7 +27,6 @@ public partial class TreEm
 
     public int? KhuPhoId { get; set; }
 
-    public virtual ICollection<HoTroPhucLoi> HoTroPhucLois { get; set; } = new List<HoTroPhucLoi>();
     public virtual ICollection<PhanPhatQua> PhanPhatQuas { get; set; } = new List<PhanPhatQua>();
 
     public virtual KhuPho? KhuPho { get; set; }

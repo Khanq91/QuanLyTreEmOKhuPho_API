@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuanLyTreEmAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e212d18851e59c68da5d5a505708d631c98477d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6aeb1df526d6477530db09fa9e463db17141d93f")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuanLyTreEmAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuanLyTreEmAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

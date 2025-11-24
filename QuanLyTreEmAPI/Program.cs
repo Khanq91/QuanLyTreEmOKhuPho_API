@@ -97,7 +97,7 @@ builder.Services.AddScoped<ITruongHocRepository, TruongHocRepository>();
 builder.Services.AddScoped<IHoanCanhRepository, HoanCanhRepository>();
 builder.Services.AddScoped<IPhuHuynhRepository, PhuHuynhRepository>();
 builder.Services.AddScoped<IPhieuHocTapRepository, PhieuHocTapRepository>();
-builder.Services.AddScoped<IHoTroPhucLoiRepository, HoTroPhucLoiRepository>();
+//builder.Services.AddScoped<IHoTroPhucLoiRepository, HoTroPhucLoiRepository>();
 builder.Services.AddScoped<IVanDongTreEmRepository, VanDongTreEmRepository>();
 
 // Register Services

@@ -85,8 +85,8 @@ namespace QuanLyTreEmAPI.Controllers
                     .ThenInclude(p => p.Lop)
                 .Include(te => te.PhieuHocTaps)
                     .ThenInclude(p => p.Truong)
-                .Include(te => te.HoTroPhucLois)
-                    .ThenInclude(h => h.PhieuMinhChungs)
+                //.Include(te => te.HoTroPhucLois)
+                //    .ThenInclude(h => h.PhieuMinhChungs)
                 .Include(te => te.VanDongTreEms)
                     .ThenInclude(v => v.HoanCanh)
                 .Include(te => te.VanDongTreEms)
@@ -159,31 +159,31 @@ namespace QuanLyTreEmAPI.Controllers
                     .ToList(),
 
                 // ✅ Hỗ trợ phúc lợi - BỎ ?? new List<object>()
-                HoTro = tre.HoTroPhucLois
-                    .OrderByDescending(ht => ht.NgayCap)
-                    .Select(ht => new
-                    {
-                        ht.HoTroId,
-                        ht.LoaiHoTro,
-                        ht.NgayCap,
-                        ht.MoTa,
-                        ht.TrangThaiPhat,
-                        ht.NguoiChiuTrachNhiemHoTro,
-                        ht.NgayHenLai,
-                        ht.GhiChuTNV,
-                        // ✅ Files - BỎ ?? new List<object>()
-                        Files = ht.PhieuMinhChungs
-                            .Where(f => !string.IsNullOrEmpty(f.FilePath))
-                            .Select(f => new
-                            {
-                                f.MinhChungId,
-                                f.LoaiMinhChung,
-                                f.NgayCap,
-                                Url = $"{baseUrl}{f.FilePath.Replace("\\", "/")}"
-                            })
-                            .ToList()
-                    })
-                    .ToList(),
+                //HoTro = tre.HoTroPhucLois
+                //    .OrderByDescending(ht => ht.NgayCap)
+                //    .Select(ht => new
+                //    {
+                //        ht.HoTroId,
+                //        ht.LoaiHoTro,
+                //        ht.NgayCap,
+                //        ht.MoTa,
+                //        ht.TrangThaiPhat,
+                //        ht.NguoiChiuTrachNhiemHoTro,
+                //        ht.NgayHenLai,
+                //        ht.GhiChuTNV,
+                //        // ✅ Files - BỎ ?? new List<object>()
+                //        Files = ht.PhieuMinhChungs
+                //            .Where(f => !string.IsNullOrEmpty(f.FilePath))
+                //            .Select(f => new
+                //            {
+                //                f.MinhChungId,
+                //                f.LoaiMinhChung,
+                //                f.NgayCap,
+                //                Url = $"{baseUrl}{f.FilePath.Replace("\\", "/")}"
+                //            })
+                //            .ToList()
+                //    })
+                //    .ToList(),
 
                 // ✅ Vận động - BỎ ?? new List<object>()
                 VanDong = tre.VanDongTreEms
@@ -374,8 +374,8 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(te => te.TreEmPhuHuynhs)
                 .Include(te => te.TreEmHoanCanhs)
                 .Include(te => te.PhieuHocTaps)
-                .Include(te => te.HoTroPhucLois)
-                    .ThenInclude(ht => ht.PhieuMinhChungs)
+                //.Include(te => te.HoTroPhucLois)
+                //    .ThenInclude(ht => ht.PhieuMinhChungs)
                 .Include(te => te.VanDongTreEms)
                 .FirstOrDefaultAsync(te => te.TreEmId == id);
 
