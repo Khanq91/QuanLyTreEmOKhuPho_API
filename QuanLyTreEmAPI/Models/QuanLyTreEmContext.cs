@@ -81,7 +81,15 @@ public partial class QuanLyTreEmContext : DbContext
         {
             entity.ToTable("TreEm_SuKien");
 
-            entity.HasKey(e => new { e.TreEmId, e.SuKienId });
+            entity.HasKey(e => e.TreEmSuKienId);
+
+            entity.Property(e => e.TreEmSuKienId).HasColumnName("TreEmSuKienID");
+            entity.Property(e => e.TreEmId).HasColumnName("TreEmID");
+            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
+
+            entity.HasIndex(e => new { e.TreEmId, e.SuKienId })
+                  .IsUnique()
+                  .HasDatabaseName("UQ_TreEmSuKien");
 
             entity.HasOne(e => e.TreEm)
                   .WithMany(t => t.TreEmSuKiens)
@@ -99,13 +107,16 @@ public partial class QuanLyTreEmContext : DbContext
             entity.ToTable("ChiPhiSuKien");
 
             entity.Property(e => e.ChiPhiId).HasColumnName("ChiPhiID");
-            entity.Property(e => e.GhiChu).HasMaxLength(300);
-            entity.Property(e => e.SoTien).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
             entity.Property(e => e.TenKhoanChi).HasMaxLength(200);
+            entity.Property(e => e.SoTien).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NguoiPheDuyet).HasMaxLength(100);
+            entity.Property(e => e.NgayPheDuyet).HasColumnType("date");
+            entity.Property(e => e.VanBanPheDuyet).HasMaxLength(255);
+            entity.Property(e => e.GhiChu).HasMaxLength(300);
+            entity.Property(e => e.SuKienID).HasColumnName("SuKienID");
 
             entity.HasOne(d => d.SuKien).WithMany(p => p.ChiPhiSuKiens)
-                .HasForeignKey(d => d.SuKienId)
+                .HasForeignKey(d => d.SuKienID)
                 .HasConstraintName("FK__ChiPhiSuK__SuKie__33D4B598");
         });
 
@@ -255,12 +266,17 @@ public partial class QuanLyTreEmContext : DbContext
             entity.ToTable("NguoiDung");
 
             entity.HasIndex(e => e.Email, "UQ__NguoiDun__A9D1053405DBD2B6").IsUnique();
+            entity.HasIndex(e => e.SDT, "UQ__NguoiDun__CA1930A407C3D2F8").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.HoTen).HasMaxLength(100);
             entity.Property(e => e.MatKhau).HasMaxLength(100);
             entity.Property(e => e.VaiTro).HasMaxLength(50);
+            entity.Property(e => e.SDT).HasMaxLength(12);
+            entity.Property(e => e.Anh).HasMaxLength(500);
+            entity.Property(e => e.TrangThai).HasMaxLength(50);
+            entity.Property(e => e.NgayTao);
         });
 
         modelBuilder.Entity<PhanCongTinhNguyenVien>(entity =>
@@ -331,11 +347,11 @@ public partial class QuanLyTreEmContext : DbContext
 
         modelBuilder.Entity<SuKien>(entity =>
         {
-            entity.HasKey(e => e.SuKienId).HasName("PK__SuKien__3B964778629F39E1");
+            entity.HasKey(e => e.SuKienID).HasName("PK__SuKien__3B964778629F39E1");
 
             entity.ToTable("SuKien");
 
-            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
+            entity.Property(e => e.SuKienID).HasColumnName("SuKienID");
             entity.Property(e => e.DiaDiem).HasMaxLength(200);
             entity.Property(e => e.KhuPhoId).HasColumnName("KhuPhoID");
             entity.Property(e => e.NguoiChiuTrachNhiem).HasMaxLength(200);
@@ -358,9 +374,10 @@ public partial class QuanLyTreEmContext : DbContext
             entity.ToTable("ThoiGianChiTietSuKien");
 
             entity.Property(e => e.ThoiGianChiTietSuKienId).HasColumnName("ThoiGianChiTietSuKienID");
-            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
+            entity.Property(e => e.MoTa).HasColumnName("MoTa");
             entity.Property(e => e.ThoiGianBatDau).HasColumnType("datetime");
             entity.Property(e => e.ThoiGianKetThuc).HasColumnType("datetime");
+            entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
 
             entity.HasOne(d => d.SuKien).WithMany(p => p.ThoiGianChiTietSuKiens)
                 .HasForeignKey(d => d.SuKienId)
@@ -370,11 +387,11 @@ public partial class QuanLyTreEmContext : DbContext
 
         modelBuilder.Entity<ThongBao>(entity =>
         {
-            entity.HasKey(e => e.ThongBaoId).HasName("PK__ThongBao__6E51A53B81A3B316");
+            entity.HasKey(e => e.ThongBaoID).HasName("PK__ThongBao__6E51A53B81A3B316");
 
             entity.ToTable("ThongBao");
 
-            entity.Property(e => e.ThongBaoId).HasColumnName("ThongBaoID");
+            entity.Property(e => e.ThongBaoID).HasColumnName("ThongBaoID");
             entity.Property(e => e.NgayThongBao).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.SuKienId).HasColumnName("SuKienID");
 
@@ -385,19 +402,22 @@ public partial class QuanLyTreEmContext : DbContext
 
         modelBuilder.Entity<ThongBaoNguoiDung>(entity =>
         {
-            entity.HasKey(e => new { e.ThongBaoId, e.UserId }).HasName("PK__ThongBao__BF2929F1555A9FB2");
+            entity.HasKey(e => new { e.ThongBaoID, e.UserId }).HasName("PK__ThongBao__BF2929F1555A9FB2");
 
             entity.ToTable("ThongBao_NguoiDung");
 
-            entity.Property(e => e.ThongBaoId).HasColumnName("ThongBaoID");
+            entity.Property(e => e.ThongBaoID).HasColumnName("ThongBaoID");
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.DaDoc).IsRequired().HasDefaultValue(false);
 
-            entity.HasOne(d => d.ThongBao).WithMany(p => p.ThongBaoNguoiDungs)
-                .HasForeignKey(d => d.ThongBaoId)
+            entity.HasOne(d => d.ThongBao)
+                .WithMany(p => p.ThongBaoNguoiDungs)
+                .HasForeignKey(d => d.ThongBaoID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ThongBao___Thong__4222D4EF");
 
-            entity.HasOne(d => d.User).WithMany(p => p.ThongBaoNguoiDungs)
+            entity.HasOne(d => d.User)
+                .WithMany(p => p.ThongBaoNguoiDungs)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ThongBao___UserI__4316F928");
@@ -438,9 +458,10 @@ public partial class QuanLyTreEmContext : DbContext
             entity.Property(e => e.TenTietMuc).HasMaxLength(100);
             entity.Property(e => e.ThoiGianChiTietSuKienId).HasColumnName("ThoiGianChiTietSuKienID");
 
-            entity.HasOne(d => d.ThoiGianChiTietSuKien).WithMany(p => p.TietMucSuKiens)
-                .HasForeignKey(d => d.ThoiGianChiTietSuKienId)
-                .HasConstraintName("FK__TietMucSu__ThoiG__30F848ED");
+            entity.HasOne(d => d.ThoiGianChiTietSuKien)
+                  .WithMany(p => p.TietMucSuKiens)
+                  .HasForeignKey(d => d.ThoiGianChiTietSuKienId)
+                  .HasConstraintName("FK__TietMucSu__ThoiG__30F848ED");
         });
 
         modelBuilder.Entity<TinhNguyenVien>(entity =>

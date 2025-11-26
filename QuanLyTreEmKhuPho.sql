@@ -1013,4 +1013,40 @@ VALUES
 (8, 8, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Quà tết phong phú'),
 (8, 9, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Đã ký nhận'),
 (8, 10, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Gia đình cảm ơn nhiều');
+
+
+SELECT * FROM KhuPho;
+SELECT * FROM ManhThuongQuan;
+SELECT * FROM TinhNguyenVien;
+SELECT * FROM LichTrong;
+SELECT * FROM ChiTietLichTrong;
+SELECT * FROM SuKien;
+SELECT * FROM ThoiGianChiTietSuKien;
+SELECT * FROM TietMucSuKien;
+SELECT * FROM ChiPhiSuKien;
+SELECT * FROM ChiTietChiPhiSuKien;
+SELECT * FROM PhanCongTinhNguyenVien;
+SELECT * FROM DangKySuKien;
+SELECT * FROM NguoiDung;
+SELECT * FROM TreEm;
+SELECT * FROM TreEm_PhuHuynh;
+SELECT * FROM ThongTinPhuHuynh;
+SELECT * FROM ThongBao_NguoiDung;
+SELECT * FROM TruongHoc;
+SELECT * FROM LopHoc;
+SELECT * FROM ThongBao;
+SELECT * FROM PhieuHocTap;
+SELECT * FROM HoanCanh;
+SELECT * FROM TreEm_HoanCanh;
+SELECT * FROM VanDongTreEm;
+-- SELECT * FROM HoTroPhucLoi;
+SELECT * FROM PhieuMinhChung;
+-- SELECT * FROM UngHo_HoTroPhucLoi;
+SELECT * FROM UngHo;
+SELECT * FROM ThongBao_NguoiDung
+SELECT * FROM TreEm_SuKien
+SELECT * FROM PhanBoUngHoChiPhi
+SELECT * FROM QuaTangUngHo
+SELECT * FROM PhanPhatQua
+
 select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

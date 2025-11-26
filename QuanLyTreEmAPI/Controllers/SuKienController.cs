@@ -30,7 +30,7 @@ namespace QuanLyTreEmAPI.Controllers
        .ToList() // ⚠️ Chuyển về memory
        .Select(e => new
        {
-           e.SuKienId,
+           e.SuKienID,
            e.TenSuKien,
            e.NgayBatDau,
            e.NgayKetThuc,
@@ -55,7 +55,7 @@ namespace QuanLyTreEmAPI.Controllers
                 .Where(e => e.NgayBatDau.HasValue && e.NgayBatDau.Value.ToDateTime(TimeOnly.MinValue) > today)
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -80,7 +80,7 @@ namespace QuanLyTreEmAPI.Controllers
                 )
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -102,7 +102,7 @@ namespace QuanLyTreEmAPI.Controllers
                 .Where(e => e.NgayKetThuc.HasValue && e.NgayKetThuc.Value.ToDateTime(TimeOnly.MinValue) < today)
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -136,7 +136,7 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(x => x.ChiPhiSuKiens)
                     .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.SuKienId == id);
+                .FirstOrDefaultAsync(x => x.SuKienID == id);
 
             if (sk == null)
                 return NotFound(new { message = "Không tìm thấy sự kiện" });
@@ -179,7 +179,7 @@ namespace QuanLyTreEmAPI.Controllers
             var result = new
             {
                 // Thông tin cơ bản
-                sk.SuKienId,
+                sk.SuKienID,
                 sk.TenSuKien,
                 sk.MoTa,
                 sk.DiaDiem,
@@ -310,7 +310,7 @@ namespace QuanLyTreEmAPI.Controllers
                         MoTa = tgDto.MoTa,
                         ThoiGianBatDau = tgDto.ThoiGianBatDau,
                         ThoiGianKetThuc = tgDto.ThoiGianKetThuc,
-                        SuKienId = suKien.SuKienId
+                        SuKienId = suKien.SuKienID
                     };
                     _context.ThoiGianChiTietSuKiens.Add(tg);
                     await _context.SaveChangesAsync();
@@ -336,7 +336,7 @@ namespace QuanLyTreEmAPI.Controllers
                         TenKhoanChi = cpDto.TenKhoanChi,
                         SoTien = cpDto.SoTien,
                         GhiChu = cpDto.GhiChu,
-                        SuKienId = suKien.SuKienId
+                        SuKienID = suKien.SuKienID
                     };
                     _context.ChiPhiSuKiens.Add(cp);
                     await _context.SaveChangesAsync();
@@ -363,7 +363,7 @@ namespace QuanLyTreEmAPI.Controllers
 
                     var pc = new PhanCongTinhNguyenVien
                     {
-                        SuKienId = suKien.SuKienId,
+                        SuKienId = suKien.SuKienID,
                         TinhNguyenVienId = pcDto.TinhNguyenVienId,
                         CongViec = pcDto.CongViec,
                         GhiChu = pcDto.GhiChu,
@@ -376,7 +376,7 @@ namespace QuanLyTreEmAPI.Controllers
                 await transaction.CommitAsync();
 
                 // Trả về đúng định dạng GetDetail
-                return await GetDetail(suKien.SuKienId);
+                return await GetDetail(suKien.SuKienID);
             }
             catch (Exception ex)
             {
@@ -433,7 +433,7 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpPost("{id}/dangky")]
         public async Task<IActionResult> DangKy(int id, [FromBody] DangKySuKien dto)
          {
-            var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienId == id);
+            var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienID == id);
             if (!suKien) return NotFound("Sự kiện không tồn tại");
 
             var user = await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId);

@@ -342,11 +342,11 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 {
                     SuKien = s,
                     DangKy = _context.DangKySuKiens
-                        .FirstOrDefault(dk => dk.SuKienId == s.SuKienId && dk.UserId == userId),
+                        .FirstOrDefault(dk => dk.SuKienId == s.SuKienID && dk.UserId == userId),
                     PhanCong = _context.PhanCongTinhNguyenViens
-                        .FirstOrDefault(pc => pc.SuKienId == s.SuKienId && pc.TinhNguyenVienId == tnv.TinhNguyenVienId),
+                        .FirstOrDefault(pc => pc.SuKienId == s.SuKienID && pc.TinhNguyenVienId == tnv.TinhNguyenVienId),
                     SoLuongDaDangKy = _context.DangKySuKiens
-                        .Count(dk => dk.SuKienId == s.SuKienId && dk.TrangThai != "Từ chối")
+                        .Count(dk => dk.SuKienId == s.SuKienID && dk.TrangThai != "Từ chối")
                 });
 
             // Apply filter
@@ -377,7 +377,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             var result = await query
                 .Select(x => new DanhSachSuKienDTO
                 {
-                    SuKienId = x.SuKien.SuKienId,
+                    SuKienId = x.SuKien.SuKienID,
                     TenSuKien = x.SuKien.TenSuKien,
                     MoTa = x.SuKien.MoTa,
                     DiaDiem = x.SuKien.DiaDiem,
@@ -423,7 +423,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
             var suKien = await _context.SuKiens
                 .Include(s => s.KhuPho)
-                .FirstOrDefaultAsync(s => s.SuKienId == id);
+                .FirstOrDefaultAsync(s => s.SuKienID == id);
 
             if (suKien == null)
                 return NotFound(new { message = "Không tìm thấy sự kiện" });
@@ -451,7 +451,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
             var result = new ChiTietSuKienDTO
             {
-                SuKienId = suKien.SuKienId,
+                SuKienId = suKien.SuKienID,
                 TenSuKien = suKien.TenSuKien,
                 MoTa = suKien.MoTa,
                 DiaDiem = suKien.DiaDiem,
@@ -830,7 +830,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     TrangThai = phanPhat.TrangThai ?? "Đang tiến hành",
                     GhiChu = phanPhat.GhiChu,
 
-                    SuKienID = suKien?.SuKienId ?? 0,
+                    SuKienID = suKien?.SuKienID ?? 0,
                     TenSuKien = suKien?.TenSuKien ?? "",
                     NgayBatDau = suKien?.NgayBatDau ?? DateOnly.FromDateTime(DateTime.Now),
                     NgayKetThuc = suKien?.NgayKetThuc ?? DateOnly.FromDateTime(DateTime.Now),
@@ -1295,7 +1295,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 // Query thông báo
                 var query = from tb in _context.ThongBaos
                             join tbn in _context.ThongBaoNguoiDungs
-                                on tb.ThongBaoId equals tbn.ThongBaoId
+                                on tb.ThongBaoID equals tbn.ThongBaoID
                             where tbn.UserId == userId
                             select new
                             {
@@ -1324,10 +1324,10 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
                 var result = await query
                     .OrderByDescending(x => x.tb.NgayThongBao)
-                    .ThenBy(x => x.DaDoc) // Chưa đọc lên trước
+                    .ThenBy(x => x.DaDoc) 
                     .Select(x => new ThongBaoDTO
                     {
-                        ThongBaoId = x.tb.ThongBaoId,
+                        ThongBaoId = x.tb.ThongBaoID,
                         NoiDung = x.tb.NoiDung,
                         NgayThongBao = x.tb.NgayThongBao,
                         DaDoc = x.DaDoc,
@@ -1342,7 +1342,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                             x.tb.NoiDung.Contains("quan trọng") ? "IMPORTANT" : "INFO",
                         TenSuKien = x.tb.SuKienId != null ?
                             _context.SuKiens
-                                .Where(sk => sk.SuKienId == x.tb.SuKienId)
+                                .Where(sk => sk.SuKienID == x.tb.SuKienId)
                                 .Select(sk => sk.TenSuKien)
                                 .FirstOrDefault() : null
                     })
@@ -1383,8 +1383,8 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
         /// <summary>
         /// Đánh dấu thông báo đã đọc
         /// </summary>
-        [HttpPut("ThongBao/{thongBaoId}/DaDoc")]
-        public async Task<IActionResult> DanhDauDaDoc(int thongBaoId)
+        [HttpPut("ThongBao/{ThongBaoID}/DaDoc")]
+        public async Task<IActionResult> DanhDauDaDoc(int ThongBaoID)
         {
             try
             {
@@ -1393,7 +1393,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     return Unauthorized(new { message = "Không xác định được người dùng" });
 
                 var thongBaoNguoiDung = await _context.ThongBaoNguoiDungs
-                    .FirstOrDefaultAsync(tbn => tbn.ThongBaoId == thongBaoId && tbn.UserId == userId);
+                    .FirstOrDefaultAsync(tbn => tbn.ThongBaoID == ThongBaoID && tbn.UserId == userId);
 
                 if (thongBaoNguoiDung == null)
                     return NotFound(new { message = "Không tìm thấy thông báo" });
@@ -1444,7 +1444,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             try
             {
                 var suKien = await _context.SuKiens
-                    .FirstOrDefaultAsync(sk => sk.SuKienId == suKienId);
+                    .FirstOrDefaultAsync(sk => sk.SuKienID == suKienId);
 
                 if (suKien == null) return;
 
@@ -1474,7 +1474,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 {
                     _context.ThongBaoNguoiDungs.Add(new ThongBaoNguoiDung
                     {
-                        ThongBaoId = thongBao.ThongBaoId,
+                        ThongBaoID = thongBao.ThongBaoID,
                         UserId = (int)userId,
                         DaDoc = false
                     });
@@ -1519,7 +1519,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
                 _context.ThongBaoNguoiDungs.Add(new ThongBaoNguoiDung
                 {
-                    ThongBaoId = thongBao.ThongBaoId,
+                    ThongBaoID = thongBao.ThongBaoID,
                     UserId = (int)phanCong.TinhNguyenVien.UserId,
                     DaDoc = false
                 });
@@ -1570,7 +1570,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 {
                     _context.ThongBaoNguoiDungs.Add(new ThongBaoNguoiDung
                     {
-                        ThongBaoId = thongBao.ThongBaoId,
+                        ThongBaoID = thongBao.ThongBaoID,
                         UserId = (int)userId,
                         DaDoc = false
                     });
@@ -1603,7 +1603,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 {
                     // Lấy TNV đã đăng ký
                     var tinhNguyenVienDaDangKy = await _context.DangKySuKiens
-                        .Where(dk => dk.SuKienId == suKien.SuKienId && dk.TrangThai == "Đã duyệt")
+                        .Where(dk => dk.SuKienId == suKien.SuKienID && dk.TrangThai == "Đã duyệt")
                         .Select(dk => dk.UserId)
                         .ToListAsync();
 
@@ -1613,7 +1613,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
                     var thongBao = new ThongBao
                     {
-                        SuKienId = suKien.SuKienId,
+                        SuKienId = suKien.SuKienID,
                         NoiDung = $"Nhắc nhở: Sự kiện sắp diễn ra!\n" +
                                   $"{suKien.TenSuKien}\n" +
                                   $"Còn {soNgayConLai} ngày nữa ({suKien.NgayBatDau:dd/MM/yyyy})\n" +
@@ -1629,7 +1629,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     {
                         _context.ThongBaoNguoiDungs.Add(new ThongBaoNguoiDung
                         {
-                            ThongBaoId = thongBao.ThongBaoId,
+                            ThongBaoID = thongBao.ThongBaoID,
                             UserId = (int)userId,
                             DaDoc = false
                         });
@@ -1885,133 +1885,173 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
         // ==========================================================================
         // GET LỊCH SỬ HOẠT ĐỘNG
         // ==========================================================================
-        //[HttpGet("LichSuHoatDong")]
-        //public async Task<IActionResult> GetLichSuHoatDong(
-        //    [FromQuery] string? khuPho = null,
-        //    [FromQuery] int page = 1,
-        //    [FromQuery] int pageSize = 10)
-        //{
-        //    try
-        //    {
-        //        var userId = GetCurrentUserId();
-        //        if (userId == 0)
-        //        {
-        //            return Unauthorized(new { message = "Không tìm thấy userId trong token" });
-        //        }
+        [HttpGet("LichSuHoatDong")]
+        public async Task<IActionResult> GetLichSuHoatDong(
+            [FromQuery] string? khuPho = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
+        {
+            try
+            {
+                var userId = GetCurrentUserId();
+                if (userId == 0)
+                {
+                    return Unauthorized(new { message = "Không tìm thấy userId trong token" });
+                }
 
-        //        var tnv = await _context.TinhNguyenViens
-        //            .FirstOrDefaultAsync(t => t.UserId == userId);
+                var tnv = await _context.TinhNguyenViens
+                    .FirstOrDefaultAsync(t => t.UserId == userId);
 
-        //        if (tnv == null)
-        //            return NotFound(new { message = "Không tìm thấy tình nguyện viên" });
+                if (tnv == null)
+                    return NotFound(new { message = "Không tìm thấy tình nguyện viên" });
 
-        //        // 1. Sự kiện đã tham gia
-        //        var suKienQuery = _context.DangKySuKiens
-        //            .Include(dk => dk.SuKien)
-        //                .ThenInclude(sk => sk.KhuPho)
-        //            .Where(dk => dk.UserId == userId
-        //                && dk.TrangThai == "Đã duyệt"
-        //                && dk.SuKien.NgayKetThuc < DateOnly.FromDateTime(DateTime.Now));
+                // 1. Sự kiện đã tham gia
+                var suKienQuery = _context.DangKySuKiens
+                    .Include(dk => dk.SuKien)
+                        .ThenInclude(sk => sk.KhuPho)
+                    .Where(dk => dk.UserId == userId
+                        && dk.TrangThai == "Đã duyệt"
+                        && dk.SuKien.NgayKetThuc < DateOnly.FromDateTime(DateTime.Now));
 
-        //        if (!string.IsNullOrEmpty(khuPho))
-        //        {
-        //            suKienQuery = suKienQuery.Where(dk => dk.SuKien.KhuPho.TenKhuPho.Contains(khuPho));
-        //        }
+                if (!string.IsNullOrEmpty(khuPho))
+                {
+                    suKienQuery = suKienQuery.Where(dk => dk.SuKien.KhuPho.TenKhuPho.Contains(khuPho));
+                }
 
-        //        var suKienList = await suKienQuery
-        //            .Skip((page - 1) * pageSize)
-        //            .Take(pageSize)
-        //            .Select(dk => new SuKienTNVDaThamGiaDTO
-        //            {
-        //                SuKienID = dk.SuKienId,
-        //                TenSuKien = dk.SuKien.TenSuKien,
-        //                DiaDiem = dk.SuKien.DiaDiem,
-        //                NgayBatDau = dk.SuKien.NgayBatDau,
-        //                NgayKetThuc = dk.SuKien.NgayKetThuc,
-        //                TenKhuPho = dk.SuKien.KhuPho.TenKhuPho,
-        //                NgayDangKy = dk.NgayDangKy
-        //            })
-        //            .ToListAsync();
+                var suKienList = await suKienQuery
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(dk => new SuKienTNVDaThamGiaDTO
+                    {
+                        SuKienID = dk.SuKienId,
+                        TenSuKien = dk.SuKien.TenSuKien,
+                        DiaDiem = dk.SuKien.DiaDiem,
+                        NgayBatDau = dk.SuKien.NgayBatDau,
+                        NgayKetThuc = dk.SuKien.NgayKetThuc,
+                        TenKhuPho = dk.SuKien.KhuPho.TenKhuPho,
+                        NgayDangKy = dk.NgayDangKy
+                    })
+                    .ToListAsync();
 
-        //        // 2. Hỗ trợ phúc lợi đã phát
-        //        var hoTroQuery = _context.HoTroPhucLois
-        //            .Include(ht => ht.TreEm)
-        //                .ThenInclude(te => te.KhuPho)
-        //            .Where(ht => ht.NguoiDungId == userId
-        //                && ht.TrangThaiPhat == "Đã phát thành công");
+                //2. Hỗ trợ phúc lợi đã phát
+                //var hoTroQuery = _context.HoTroPhucLois
+                //    .Include(ht => ht.TreEm)
+                //        .ThenInclude(te => te.KhuPho)
+                //    .Where(ht => ht.NguoiDungId == userId
+                //        && ht.TrangThaiPhat == "Đã phát thành công");
 
-        //        if (!string.IsNullOrEmpty(khuPho))
-        //        {
-        //            hoTroQuery = hoTroQuery.Where(ht => ht.TreEm.KhuPho.TenKhuPho.Contains(khuPho));
-        //        }
+                //if (!string.IsNullOrEmpty(khuPho))
+                //{
+                //    hoTroQuery = hoTroQuery.Where(ht => ht.TreEm.KhuPho.TenKhuPho.Contains(khuPho));
+                //}
 
-        //        var hoTroList = await hoTroQuery
-        //            .Skip((page - 1) * pageSize)
-        //            .Take(pageSize)
-        //            .Select(ht => new HoTroPhucLoiDaPhatDTO
-        //            {
-        //                HoTroID = ht.HoTroId,
-        //                LoaiHoTro = ht.LoaiHoTro,
-        //                MoTa = ht.MoTa,
-        //                NgayCap = ht.NgayCap,
-        //                TenTreEm = ht.TreEm.HoTen,
-        //                TenKhuPho = ht.TreEm.KhuPho.TenKhuPho,
-        //                TrangThaiPhat = ht.TrangThaiPhat
-        //            })
-        //            .ToListAsync();
+                //var hoTroList = await hoTroQuery
+                //    .Skip((page - 1) * pageSize)
+                //    .Take(pageSize)
+                //    .Select(ht => new HoTroPhucLoiDaPhatDTO
+                //    {
+                //        HoTroID = ht.HoTroId,
+                //        LoaiHoTro = ht.LoaiHoTro,
+                //        MoTa = ht.MoTa,
+                //        NgayCap = ht.NgayCap,
+                //        TenTreEm = ht.TreEm.HoTen,
+                //        TenKhuPho = ht.TreEm.KhuPho.TenKhuPho,
+                //        TrangThaiPhat = ht.TrangThaiPhat
+                //    })
+                //    .ToListAsync();
+                // 2. Quà đã phát
+                var currentUser = await _context.NguoiDungs
+                    .FirstOrDefaultAsync(u => u.UserId == userId);
 
-        //        // 3. Trẻ em đã vận động
-        //        var vanDongQuery = _context.VanDongTreEms
-        //            .Include(vd => vd.TreEm)
-        //                .ThenInclude(te => te.KhuPho)
-        //            .Include(vd => vd.HoanCanh)
-        //            .Where(vd => vd.NguoiDungId == userId
-        //                && vd.NgayVanDong < DateOnly.FromDateTime(DateTime.Now));
+                var quaQuery = _context.PhanPhatQuas
+                    .Include(p => p.QuaTangUngHo)
+                        .ThenInclude(q => q.SuKien)
+                    .Include(p => p.TreEm)
+                        .ThenInclude(t => t.KhuPho)
+                    .Where(p => p.NguoiPhanPhat == currentUser.HoTen);
 
-        //        if (!string.IsNullOrEmpty(khuPho))
-        //        {
-        //            vanDongQuery = vanDongQuery.Where(vd => vd.TreEm.KhuPho.TenKhuPho.Contains(khuPho));
-        //        }
+                if (!string.IsNullOrEmpty(khuPho))
+                {
+                    quaQuery = quaQuery.Where(p => p.TreEm.KhuPho.TenKhuPho.Contains(khuPho));
+                }
 
-        //        var vanDongList = await vanDongQuery
-        //            .Skip((page - 1) * pageSize)
-        //            .Take(pageSize)
-        //            .Select(vd => new TreEmDaVanDongDTO
-        //            {
-        //                VanDongID = vd.VanDongId,
-        //                TenTreEm = vd.TreEm.HoTen,
-        //                NgaySinh = vd.TreEm.NgaySinh,
-        //                GioiTinh = vd.TreEm.GioiTinh,
-        //                TenKhuPho = vd.TreEm.KhuPho.TenKhuPho,
-        //                LoaiHoanCanh = vd.HoanCanh.LoaiHoanCanh,
-        //                SoLan = vd.SoLan,
-        //                LyDo = vd.LyDo,
-        //                KetQua = vd.KetQua,
-        //                NgayVanDong = vd.NgayVanDong,
-        //                TinhTrangCapNhat = vd.TinhTrangCapNhat,
-        //                GhiChuChiTiet = vd.GhiChuChiTiet
-        //            })
-        //            .ToListAsync();
+                var quaDaPhatList = await quaQuery
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(p => new QuaPhanPhatInfoDTO
+                    {
+                        PhanPhatID = p.PhanPhatId,
+                        TenQua = p.QuaTangUngHo.TenQua,
+                        MoTa = p.QuaTangUngHo.MoTa,
+                        SoLuongNhan = p.SoLuongNhan,
+                        NgayPhanPhat = p.NgayPhanPhat,
+                        NguoiPhanPhat = p.NguoiPhanPhat,
+                        TrangThai = p.TrangThai,
+                        Anh = p.QuaTangUngHo.Anh,
+                        SuKienID = p.QuaTangUngHo.SuKienId,
+                        TenSuKien = p.QuaTangUngHo.SuKien != null
+                            ? p.QuaTangUngHo.SuKien.TenSuKien
+                            : null,
+                        TenTreEm = p.TreEm.HoTen,
+                        TreEmId = p.TreEm.TreEmId,
+                    })
+                    .ToListAsync();
 
-        //        var result = new LichSuHoatDongDTO
-        //        {
-        //            SuKienDaThamGia = suKienList,
-        //            HoTroPhucLoiDaPhat = hoTroList,
-        //            TreEmDaVanDong = vanDongList,
-        //            TotalSuKien = await suKienQuery.CountAsync(),
-        //            TotalHoTro = await hoTroQuery.CountAsync(),
-        //            TotalVanDong = await vanDongQuery.CountAsync(),
-        //            Page = page,
-        //            PageSize = pageSize
-        //        };
 
-        //        return Ok(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, new { message = "Lỗi hệ thống", error = ex.Message });
-        //    }
-        //}
+                // 3. Trẻ em đã vận động
+                var vanDongQuery = _context.VanDongTreEms
+                    .Include(vd => vd.TreEm)
+                        .ThenInclude(te => te.KhuPho)
+                    .Include(vd => vd.HoanCanh)
+                    .Where(vd => vd.NguoiDungId == userId
+                        && vd.NgayVanDong < DateOnly.FromDateTime(DateTime.Now));
+
+                if (!string.IsNullOrEmpty(khuPho))
+                {
+                    vanDongQuery = vanDongQuery.Where(vd => vd.TreEm.KhuPho.TenKhuPho.Contains(khuPho));
+                }
+
+                var vanDongList = await vanDongQuery
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(vd => new TreEmDaVanDongDTO
+                    {
+                        VanDongID = vd.VanDongId,
+                        TenTreEm = vd.TreEm.HoTen,
+                        NgaySinh = vd.TreEm.NgaySinh,
+                        GioiTinh = vd.TreEm.GioiTinh,
+                        TenKhuPho = vd.TreEm.KhuPho.TenKhuPho,
+                        LoaiHoanCanh = vd.HoanCanh.LoaiHoanCanh,
+                        SoLan = vd.SoLan,
+                        LyDo = vd.LyDo,
+                        KetQua = vd.KetQua,
+                        NgayVanDong = vd.NgayVanDong,
+                        TinhTrangCapNhat = vd.TinhTrangCapNhat,
+                        GhiChuChiTiet = vd.GhiChuChiTiet
+                    })
+                    .ToListAsync();
+
+                var result = new LichSuHoatDongDTO
+                {
+                    SuKienDaThamGia = suKienList,
+                    QuaDaPhanPhat = quaDaPhatList,
+                    //HoTroPhucLoiDaPhat = hoTroList,
+                    TreEmDaVanDong = vanDongList,
+                    TotalSuKien = await suKienQuery.CountAsync(),
+                    //TotalHoTro = await hoTroQuery.CountAsync(),
+                    TotalQuaPhanPhat = await quaQuery.CountAsync(),
+                    TotalVanDong = await vanDongQuery.CountAsync(),
+                    Page = page,
+                    PageSize = pageSize
+                };
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Lỗi hệ thống", error = ex.Message });
+            }
+        }
 
         // ==========================================================================
         // CẬP NHẬT AVATAR

@@ -800,7 +800,7 @@ namespace QuanLyTreEmAPI.Controllers
                     .Where(sk => sk.NgayBatDau.HasValue && sk.NgayBatDau.Value >= today)
                     .Select(sk => new
                     {
-                        sk.SuKienId,
+                        sk.SuKienID,
                         sk.TenSuKien,
                         sk.NgayBatDau,
                         sk.NgayKetThuc,

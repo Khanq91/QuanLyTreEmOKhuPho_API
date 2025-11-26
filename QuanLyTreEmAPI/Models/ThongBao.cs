@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models;
 
 public partial class ThongBao
 {
-    public int ThongBaoId { get; set; }
+    [Column("ThongBaoID")]
+    public int ThongBaoID { get; set; }
 
     public int? SuKienId { get; set; }
 
@@ -15,6 +17,6 @@ public partial class ThongBao
 
     public virtual SuKien? SuKien { get; set; }
 
-    public virtual ICollection<NguoiDung> Users { get; set; } = new List<NguoiDung>();
+    //public virtual ICollection<NguoiDung> Users { get; set; } = new List<NguoiDung>();
     public virtual ICollection<ThongBaoNguoiDung> ThongBaoNguoiDungs { get; set; } = new List<ThongBaoNguoiDung>();
 }

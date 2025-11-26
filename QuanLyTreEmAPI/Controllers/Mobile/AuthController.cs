@@ -33,7 +33,18 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             try
             {
                 var nguoiDung = await _context.NguoiDungs
-                    .FirstOrDefaultAsync(u => u.SDT == request.SDT);
+                    .AsNoTracking()
+                    .Where(u => u.SDT == request.SDT)
+                    .Select(u => new NguoiDung
+                    {
+                        UserId = u.UserId,
+                        HoTen = u.HoTen,
+                        SDT = u.SDT,
+                        MatKhau = u.MatKhau,
+                        VaiTro = u.VaiTro,
+                        TrangThai = u.TrangThai
+                    })
+                    .FirstOrDefaultAsync();
 
                 if (nguoiDung == null)
                     return Unauthorized(new { message = "Số điện thoại hoặc mật khẩu không đúng" });
@@ -95,7 +106,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
         // Test endpoint to verify authentication
         [HttpGet("profile")]
-        //[Microsoft.AspNetCore.Authorization.Authorize]
+        [Microsoft.AspNetCore.Authorization.Authorize]
         public IActionResult GetProfile()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

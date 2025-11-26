@@ -17,7 +17,7 @@ public partial class ChiPhiSuKien
 
     public string? GhiChu { get; set; }
 
-    public int? SuKienId { get; set; }
+    public int? SuKienID { get; set; }
 
     public virtual ICollection<ChiTietChiPhiSuKien> ChiTietChiPhiSuKiens { get; set; } = new List<ChiTietChiPhiSuKien>();
     public virtual SuKien? SuKien { get; set; }

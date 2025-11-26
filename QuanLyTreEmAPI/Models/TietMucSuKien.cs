@@ -7,7 +7,7 @@ namespace QuanLyTreEmAPI.Models;
 public partial class TietMucSuKien
 {
     public int TietMucId { get; set; }
-    public int SuKienId { get; set; }
+    //public int SuKienID { get; set; }
 
     public string? TenTietMuc { get; set; }
 

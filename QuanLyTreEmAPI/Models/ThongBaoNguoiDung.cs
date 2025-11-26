@@ -1,8 +1,11 @@
-﻿namespace QuanLyTreEmAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace QuanLyTreEmAPI.Models
 {
     public class ThongBaoNguoiDung
     {
-        public int ThongBaoId { get; set; }
+        [Column("ThongBaoID")]
+        public int ThongBaoID { get; set; }
 
         public int UserId { get; set; }
 

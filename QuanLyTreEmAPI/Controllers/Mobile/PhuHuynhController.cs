@@ -151,7 +151,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     .Take(3)
                     .Select(sk => new SuKienInfoDTO
                     {
-                        SuKienID = sk.SuKienId,
+                        SuKienID = sk.SuKienID,
                         TenSuKien = sk.TenSuKien,
                         MoTa = sk.MoTa,
                         DiaDiem = sk.DiaDiem,
@@ -168,15 +168,15 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 // 7 Lấy 3 thông báo chưa đọc mới nhất
                 response.ThongBaoChuaDoc = await _context.ThongBaos
                     .Join(_context.ThongBaoNguoiDungs,
-                        tb => tb.ThongBaoId,
-                        tbnd => tbnd.ThongBaoId,
+                        tb => tb.ThongBaoID,
+                        tbnd => tbnd.ThongBaoID,
                         (tb, tbnd) => new { tb, tbnd })
                     .Where(x => x.tbnd.UserId == userId && !x.tbnd.DaDoc)
                     .OrderByDescending(x => x.tb.NgayThongBao)
                     .Take(3)
                     .Select(x => new ThongBaoInfoDTO
                     {
-                        ThongBaoID = x.tb.ThongBaoId,
+                        ThongBaoID = x.tb.ThongBaoID,
                         NoiDung = x.tb.NoiDung,
                         NgayThongBao = x.tb.NgayThongBao,
                         TenSuKien = x.tb.SuKien != null ? x.tb.SuKien.TenSuKien : null
@@ -504,7 +504,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     .OrderBy(sk => sk.NgayBatDau)
                     .Select(sk => new
                     {
-                        sk.SuKienId,
+                        sk.SuKienID,
                         sk.TenSuKien,
                         sk.NgayBatDau,
                         sk.NgayKetThuc,
@@ -516,7 +516,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
                 var danhSachSuKien = suKiens.Select(sk => new DanhSachSuKienDTO
                 {
-                    SuKienId = sk.SuKienId,
+                    SuKienId = sk.SuKienID,
                     TenSuKien = sk.TenSuKien,
                     NgayBatDau = sk.NgayBatDau?.ToString("dd/MM/yyyy") ?? "",
                     NgayKetThuc = sk.NgayKetThuc?.ToString("dd/MM/yyyy") ?? "",
@@ -542,52 +542,84 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
         {
             try
             {
-                //var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
                 var subClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                     ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-
                 if (string.IsNullOrEmpty(subClaim))
                     return Unauthorized(new { message = "Không tìm thấy userId trong token" });
-
                 var userId = int.Parse(subClaim);
 
-                // Lấy thông tin sự kiện
                 var suKien = await _context.SuKiens
                     .Include(sk => sk.KhuPho)
                     .Include(sk => sk.DangKySuKiens)
-                    .Include(sk => sk.ThoiGianChiTietSuKiens)
-                        .ThenInclude(tg => tg.TietMucSuKiens)
-                    .FirstOrDefaultAsync(sk => sk.SuKienId == suKienId);
+                    .FirstOrDefaultAsync(sk => sk.SuKienID == suKienId);
 
                 if (suKien == null)
                 {
                     return NotFound(new { message = "Không tìm thấy sự kiện" });
                 }
 
-                // Kiểm tra trạng thái đăng ký
+                var thoiGianList = await _context.ThoiGianChiTietSuKiens
+                    .Where(tg => tg.SuKienId == suKienId)
+                    .OrderBy(tg => tg.ThoiGianBatDau)
+                    .ToListAsync();
+
+                var tietMucDict = new Dictionary<int, List<TietMucInfoDTO>>();
+
+                using (var command = _context.Database.GetDbConnection().CreateCommand())
+                {
+                    command.CommandText = @"
+                SELECT tm.TietMucID, tm.TenTietMuc, tm.NguoiThucHien, tm.ThoiGianChiTietSuKienID
+                FROM TietMucSuKien tm
+                INNER JOIN ThoiGianChiTietSuKien tg ON tm.ThoiGianChiTietSuKienID = tg.ThoiGianChiTietSuKienID
+                WHERE tg.SuKienID = @SuKienID";
+
+                    var parameter = command.CreateParameter();
+                    parameter.ParameterName = "@SuKienID";
+                    parameter.Value = suKienId;
+                    command.Parameters.Add(parameter);
+
+                    await _context.Database.OpenConnectionAsync();
+                    using (var result = await command.ExecuteReaderAsync())
+                    {
+                        while (await result.ReadAsync())
+                        {
+                            var thoiGianId = result.GetInt32(result.GetOrdinal("ThoiGianChiTietSuKienID"));
+
+                            if (!tietMucDict.ContainsKey(thoiGianId))
+                            {
+                                tietMucDict[thoiGianId] = new List<TietMucInfoDTO>();
+                            }
+
+                            tietMucDict[thoiGianId].Add(new TietMucInfoDTO
+                            {
+                                TietMucId = result.GetInt32(result.GetOrdinal("TietMucID")),
+                                TenTietMuc = result.IsDBNull(result.GetOrdinal("TenTietMuc"))
+                                    ? ""
+                                    : result.GetString(result.GetOrdinal("TenTietMuc")),
+                                NguoiThucHien = result.IsDBNull(result.GetOrdinal("NguoiThucHien"))
+                                    ? ""
+                                    : result.GetString(result.GetOrdinal("NguoiThucHien"))
+                            });
+                        }
+                    }
+                }
+
                 var dangKy = suKien.DangKySuKiens.FirstOrDefault(dk => dk.UserId == userId);
 
-                // Chuẩn bị danh sách chương trình
-                var danhSachChuongTrinh = suKien.ThoiGianChiTietSuKiens
-                    .OrderBy(tg => tg.ThoiGianBatDau)
-                    .Select(tg => new ChuongTrinhSuKienDTO
-                    {
-                        ThoiGianChiTietSuKienId = tg.ThoiGianChiTietSuKienId,
-                        MoTa = tg.MoTa ?? "",
-                        ThoiGianBatDau = tg.ThoiGianBatDau?.ToString("dd/MM/yyyy HH:mm") ?? "",
-                        ThoiGianKetThuc = tg.ThoiGianKetThuc?.ToString("dd/MM/yyyy HH:mm") ?? "",
-                        DanhSachTietMuc = tg.TietMucSuKiens.Select(tm => new TietMucInfoDTO
-                        {
-                            TietMucId = tm.TietMucId,
-                            TenTietMuc = tm.TenTietMuc ?? "",
-                            NguoiThucHien = tm.NguoiThucHien ?? ""
-                        }).ToList()
-                    })
-                    .ToList();
+                var danhSachChuongTrinh = thoiGianList.Select(tg => new ChuongTrinhSuKienDTO
+                {
+                    ThoiGianChiTietSuKienId = tg.ThoiGianChiTietSuKienId,
+                    MoTa = tg.MoTa ?? "",
+                    ThoiGianBatDau = tg.ThoiGianBatDau?.ToString("dd/MM/yyyy HH:mm") ?? "",
+                    ThoiGianKetThuc = tg.ThoiGianKetThuc?.ToString("dd/MM/yyyy HH:mm") ?? "",
+                    DanhSachTietMuc = tietMucDict.ContainsKey(tg.ThoiGianChiTietSuKienId)
+                        ? tietMucDict[tg.ThoiGianChiTietSuKienId]
+                        : new List<TietMucInfoDTO>()
+                }).ToList();
 
                 var response = new ChiTietSuKienResponseDTO
                 {
-                    SuKienId = suKien.SuKienId,
+                    SuKienId = suKien.SuKienID,
                     TenSuKien = suKien.TenSuKien,
                     MoTa = suKien.MoTa ?? "",
                     DiaDiem = suKien.DiaDiem ?? "",
@@ -630,7 +662,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
 
                 // Kiểm tra sự kiện có tồn tại không
                 var suKien = await _context.SuKiens
-                    .FirstOrDefaultAsync(sk => sk.SuKienId == request.SuKienId);
+                    .FirstOrDefaultAsync(sk => sk.SuKienID == request.SuKienId);
 
                 if (suKien == null)
                 {
@@ -763,7 +795,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     .OrderByDescending(tbnd => tbnd.ThongBao.NgayThongBao)
                     .Select(tbnd => new TabThongBaoInfoDTO
                     {
-                        ThongBaoID = tbnd.ThongBaoId,
+                        ThongBaoID = tbnd.ThongBaoID,
                         NoiDung = tbnd.ThongBao.NoiDung,
                         NgayThongBao = tbnd.ThongBao.NgayThongBao.HasValue 
                             ? tbnd.ThongBao.NgayThongBao.Value.ToString("dd/MM/yyyy") 
@@ -819,7 +851,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 }
 
                 var thongBaoNguoiDung = await _context.ThongBaoNguoiDungs
-                    .FirstOrDefaultAsync(tbnd => tbnd.ThongBaoId == request.ThongBaoID && tbnd.UserId == userId);
+                    .FirstOrDefaultAsync(tbnd => tbnd.ThongBaoID == request.ThongBaoID && tbnd.UserId == userId);
 
                 if (thongBaoNguoiDung == null)
                 {

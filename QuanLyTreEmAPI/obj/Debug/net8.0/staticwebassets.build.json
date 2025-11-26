@@ -1,1 +1,1670 @@
-{"Version":1,"Hash":"IutMVo0U/UCUEkSzNxZmE7yT+gZP3Enn+KqDGXVMtHo=","Source":"QuanLyTreEmAPI","BasePath":"_content/QuanLyTreEmAPI","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[{"Name":"QuanLyTreEmAPI\\wwwroot","Source":"QuanLyTreEmAPI","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","Pattern":"**"}],"Assets":[{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/hinh1#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"qljx31ygt6","Integrity":"foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\hinh1.jpg","FileLength":43935,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/hinh2#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"c61r84o8ga","Integrity":"tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\hinh2.jpg","FileLength":70007,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/hinh3#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"2gpqnt2u20","Integrity":"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\hinh3.jpg","FileLength":173641,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/hinh4#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"oudezvcz8a","Integrity":"oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\hinh4.jpg","FileLength":6888,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/hinh5#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"r3kvyrf9lr","Integrity":"h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\hinh5.jpg","FileLength":156636,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/NguoiDung/macdinh#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"678thn5r50","Integrity":"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\NguoiDung\\macdinh.jpg","FileLength":32760,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/em1#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"7dakr3nj4x","Integrity":"hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\em1.jpg","FileLength":309145,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/em2#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"rz4iznhol6","Integrity":"OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\em2.jpg","FileLength":101216,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/em3#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"s5ecei72nt","Integrity":"UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\em3.jpg","FileLength":323707,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/em4#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"esbc4dbj98","Integrity":"rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\em4.jpg","FileLength":6161,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/em5#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"um6gnxxx8z","Integrity":"ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\em5.jpg","FileLength":291318,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"Anh/TreEm/macdinh#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"678thn5r50","Integrity":"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\Anh\\TreEm\\macdinh.jpg","FileLength":32760,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"MinhChung/AnhTangQua#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"4qfboax1rp","Integrity":"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\MinhChung\\AnhTangQua.jpg","FileLength":10381,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"MinhChung/AnhTangQua1#[.{fingerprint}]?.jpg","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"4qfboax1rp","Integrity":"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\MinhChung\\AnhTangQua1.jpg","FileLength":10381,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"MinhChung/chuyenkhoan_2#[.{fingerprint}]?.pdf","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"570cxr03tp","Integrity":"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\MinhChung\\chuyenkhoan_2.pdf","FileLength":355768,"LastWriteTime":"2025-11-26T03:23:00+00:00"},{"Identity":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf","SourceId":"QuanLyTreEmAPI","SourceType":"Discovered","ContentRoot":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\","BasePath":"_content/QuanLyTreEmAPI","RelativePath":"MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa#[.{fingerprint}]?.pdf","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"570cxr03tp","Integrity":"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf","FileLength":355768,"LastWriteTime":"2025-11-26T03:33:34+00:00"}],"Endpoints":[{"Route":"Anh/NguoiDung/hinh1.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"43935"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo="}]},{"Route":"Anh/NguoiDung/hinh1.qljx31ygt6.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"43935"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"qljx31ygt6"},{"Name":"label","Value":"Anh/NguoiDung/hinh1.jpg"},{"Name":"integrity","Value":"sha256-foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo="}]},{"Route":"Anh/NguoiDung/hinh2.c61r84o8ga.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"70007"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"c61r84o8ga"},{"Name":"label","Value":"Anh/NguoiDung/hinh2.jpg"},{"Name":"integrity","Value":"sha256-tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E="}]},{"Route":"Anh/NguoiDung/hinh2.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"70007"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E="}]},{"Route":"Anh/NguoiDung/hinh3.2gpqnt2u20.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"173641"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"2gpqnt2u20"},{"Name":"label","Value":"Anh/NguoiDung/hinh3.jpg"},{"Name":"integrity","Value":"sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="}]},{"Route":"Anh/NguoiDung/hinh3.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"173641"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="}]},{"Route":"Anh/NguoiDung/hinh4.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"6888"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs="}]},{"Route":"Anh/NguoiDung/hinh4.oudezvcz8a.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"6888"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"oudezvcz8a"},{"Name":"label","Value":"Anh/NguoiDung/hinh4.jpg"},{"Name":"integrity","Value":"sha256-oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs="}]},{"Route":"Anh/NguoiDung/hinh5.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"156636"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I="}]},{"Route":"Anh/NguoiDung/hinh5.r3kvyrf9lr.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"156636"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"r3kvyrf9lr"},{"Name":"label","Value":"Anh/NguoiDung/hinh5.jpg"},{"Name":"integrity","Value":"sha256-h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I="}]},{"Route":"Anh/NguoiDung/macdinh.678thn5r50.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"32760"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"678thn5r50"},{"Name":"label","Value":"Anh/NguoiDung/macdinh.jpg"},{"Name":"integrity","Value":"sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="}]},{"Route":"Anh/NguoiDung/macdinh.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"32760"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="}]},{"Route":"Anh/TreEm/em1.7dakr3nj4x.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"309145"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"7dakr3nj4x"},{"Name":"label","Value":"Anh/TreEm/em1.jpg"},{"Name":"integrity","Value":"sha256-hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI="}]},{"Route":"Anh/TreEm/em1.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"309145"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI="}]},{"Route":"Anh/TreEm/em2.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"101216"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0="}]},{"Route":"Anh/TreEm/em2.rz4iznhol6.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"101216"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"rz4iznhol6"},{"Name":"label","Value":"Anh/TreEm/em2.jpg"},{"Name":"integrity","Value":"sha256-OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0="}]},{"Route":"Anh/TreEm/em3.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"323707"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU="}]},{"Route":"Anh/TreEm/em3.s5ecei72nt.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"323707"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"s5ecei72nt"},{"Name":"label","Value":"Anh/TreEm/em3.jpg"},{"Name":"integrity","Value":"sha256-UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU="}]},{"Route":"Anh/TreEm/em4.esbc4dbj98.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"6161"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"esbc4dbj98"},{"Name":"label","Value":"Anh/TreEm/em4.jpg"},{"Name":"integrity","Value":"sha256-rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw="}]},{"Route":"Anh/TreEm/em4.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"6161"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw="}]},{"Route":"Anh/TreEm/em5.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"291318"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ="}]},{"Route":"Anh/TreEm/em5.um6gnxxx8z.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"291318"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"um6gnxxx8z"},{"Name":"label","Value":"Anh/TreEm/em5.jpg"},{"Name":"integrity","Value":"sha256-ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ="}]},{"Route":"Anh/TreEm/macdinh.678thn5r50.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"32760"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"678thn5r50"},{"Name":"label","Value":"Anh/TreEm/macdinh.jpg"},{"Name":"integrity","Value":"sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="}]},{"Route":"Anh/TreEm/macdinh.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"32760"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="}]},{"Route":"MinhChung/AnhTangQua.4qfboax1rp.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"10381"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"4qfboax1rp"},{"Name":"label","Value":"MinhChung/AnhTangQua.jpg"},{"Name":"integrity","Value":"sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="}]},{"Route":"MinhChung/AnhTangQua.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"10381"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="}]},{"Route":"MinhChung/AnhTangQua1.4qfboax1rp.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"10381"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"4qfboax1rp"},{"Name":"label","Value":"MinhChung/AnhTangQua1.jpg"},{"Name":"integrity","Value":"sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="}]},{"Route":"MinhChung/AnhTangQua1.jpg","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"10381"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="}]},{"Route":"MinhChung/chuyenkhoan_2.570cxr03tp.pdf","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"355768"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"570cxr03tp"},{"Name":"label","Value":"MinhChung/chuyenkhoan_2.pdf"},{"Name":"integrity","Value":"sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="}]},{"Route":"MinhChung/chuyenkhoan_2.pdf","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"355768"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:23:00 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="}]},{"Route":"MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.570cxr03tp.pdf","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"355768"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:33:34 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"570cxr03tp"},{"Name":"label","Value":"MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.pdf"},{"Name":"integrity","Value":"sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="}]},{"Route":"MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.pdf","AssetFile":"D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"355768"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""},{"Name":"Last-Modified","Value":"Wed, 26 Nov 2025 03:33:34 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="}]}]}
+{
+  "Version": 1,
+  "Hash": "CAlkVODLvHznUfcRRsJzzv3+YFUHcScFQVrmR3IodvU=",
+  "Source": "QuanLyTreEmAPI",
+  "BasePath": "_content/QuanLyTreEmAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "QuanLyTreEmAPI\\wwwroot",
+      "Source": "QuanLyTreEmAPI",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/hinh1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qljx31ygt6",
+      "Integrity": "foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh1.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/hinh2#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c61r84o8ga",
+      "Integrity": "tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh2.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/hinh3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2gpqnt2u20",
+      "Integrity": "rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh3.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/hinh4#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oudezvcz8a",
+      "Integrity": "oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh4.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/hinh5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "r3kvyrf9lr",
+      "Integrity": "h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh5.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/macdinh#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "678thn5r50",
+      "Integrity": "PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\macdinh.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/em1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7dakr3nj4x",
+      "Integrity": "hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\em1.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/em2#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rz4iznhol6",
+      "Integrity": "OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\em2.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/em3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s5ecei72nt",
+      "Integrity": "UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\em3.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/em4#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "esbc4dbj98",
+      "Integrity": "rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\em4.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/em5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "um6gnxxx8z",
+      "Integrity": "ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\em5.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/TreEm/macdinh#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "678thn5r50",
+      "Integrity": "PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\TreEm\\macdinh.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "MinhChung/AnhTangQua#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4qfboax1rp",
+      "Integrity": "pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MinhChung\\AnhTangQua.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "MinhChung/AnhTangQua1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4qfboax1rp",
+      "Integrity": "pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MinhChung\\AnhTangQua1.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "570cxr03tp",
+      "Integrity": "AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "MinhChung/chuyenkhoan_2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "570cxr03tp",
+      "Integrity": "AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MinhChung\\chuyenkhoan_2.pdf"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "Anh/NguoiDung/hinh1.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "43935"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh1.qljx31ygt6.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "43935"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qljx31ygt6"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/hinh1.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-foioxzKyuWVBIswzOW04PHP0w4T89ZeTWfpiq+1FxMo="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh2.c61r84o8ga.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c61r84o8ga"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/hinh2.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh2.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh3.2gpqnt2u20.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "173641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2gpqnt2u20"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/hinh3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh3.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "173641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh4.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6888"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh4.oudezvcz8a.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6888"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oudezvcz8a"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/hinh4.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oJyMA99T8qpQxxrHqjjJelvd747WaX0rB7zo+4g9Vrs="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh5.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "156636"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/hinh5.r3kvyrf9lr.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "156636"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r3kvyrf9lr"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/hinh5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h1UAV1bRxrU58XZeZNmakKI1XPihV4U/fEmyxmajK7I="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/macdinh.678thn5r50.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "678thn5r50"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/macdinh.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/macdinh.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em1.7dakr3nj4x.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "309145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7dakr3nj4x"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/em1.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em1.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "309145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hXcspOZ9spfLGRxmYTQ5s0ix1ja6YLmbN/L6GptiLKI="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em2.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em2.rz4iznhol6.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rz4iznhol6"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/em2.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OUeqLRLR/ofyJY/RiseCoDlRS4y3gdM8INnkkcLB9p0="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em3.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "323707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em3.s5ecei72nt.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "323707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s5ecei72nt"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/em3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UOd/XJLawkfmm0wc1DKBkd++MdqiMcBoVO5m6InuJoU="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em4.esbc4dbj98.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6161"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "esbc4dbj98"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/em4.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em4.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6161"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rg7H2z8dJoIVYR3+kOW9z87C193Hn1P1FRkgb3RCUNw="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em5.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "291318"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/em5.um6gnxxx8z.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "291318"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "um6gnxxx8z"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/em5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ao9cidKWDCOa0kCQmdL4D7NG8tpjjUigbF+QR5FVGQQ="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/macdinh.678thn5r50.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "678thn5r50"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/TreEm/macdinh.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/TreEm/macdinh.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrQhsq9Rvi2GqxmQG8l/I1KdZKYauJJBAtL7qkZv3gY="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/AnhTangQua.4qfboax1rp.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4qfboax1rp"
+        },
+        {
+          "Name": "label",
+          "Value": "MinhChung/AnhTangQua.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/AnhTangQua.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/AnhTangQua1.4qfboax1rp.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4qfboax1rp"
+        },
+        {
+          "Name": "label",
+          "Value": "MinhChung/AnhTangQua1.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/AnhTangQua1.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pAuoAHoXpd/Jz86ZlzswRTXHxlA1r0gj8w1qvbH4oH0="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.570cxr03tp.pdf",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "355768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "570cxr03tp"
+        },
+        {
+          "Name": "label",
+          "Value": "MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/chuyenkhoan_2_20251126103334_44c9a0aa.pdf",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "355768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/chuyenkhoan_2.570cxr03tp.pdf",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "355768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "570cxr03tp"
+        },
+        {
+          "Name": "label",
+          "Value": "MinhChung/chuyenkhoan_2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="
+        }
+      ]
+    },
+    {
+      "Route": "MinhChung/chuyenkhoan_2.pdf",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "355768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Nov 2025 14:55:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AVlRXAwpC2BKA0P5TX+6L6sep/IZ3A5a7JUpjVaai9w="
+        }
+      ]
+    }
+  ]
+}
