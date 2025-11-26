@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Tong_hop_Tieu_Luan\\DOAN\\11_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {}
+    "D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {}
   },
   "projects": {
-    "D:\\Tong_hop_Tieu_Luan\\DOAN\\11_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {
+    "D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Tong_hop_Tieu_Luan\\DOAN\\11_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+        "projectUniqueName": "D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
         "projectName": "QuanLyTreEmAPI",
-        "projectPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\11_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+        "projectPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\11_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\obj\\",
+        "outputPath": "D:\\Tong_hop_Tieu_Luan\\DOAN\\25_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

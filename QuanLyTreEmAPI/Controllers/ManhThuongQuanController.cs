@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyTreEmAPI.DTOs.ManhThuongQuan;
@@ -13,9 +14,12 @@ namespace QuanLyTreEmAPI.Controllers
     public class ManhThuongQuanController : ControllerBase
     {
         private readonly QuanLyTreEmContext _context;
-        public ManhThuongQuanController(QuanLyTreEmContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ManhThuongQuanController(QuanLyTreEmContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
+
         }
         [HttpGet("ThongKeManhThuongQuan")]
         public async Task<IActionResult> GetThongKeManhThuongQuan()
@@ -90,15 +94,22 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpPost("LuuThongTinUngHo")]
         public async Task<IActionResult> LuuThongTinUngHo([FromBody] ThongTinUngHo dto)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
+                if (!DateOnly.TryParseExact(dto.NgayUngHo, "yyyy-MM-dd", out DateOnly ngayUngHo))
+                {
+                    return BadRequest(new { MessageError = "Định dạng ngày không hợp lệ" });
+                }
+
+                // 1. Lưu UngHo
                 var ungHo = new UngHo
                 {
                     ManhThuongQuanId = dto.ManhThuongQuanId.Value,
                     SoTien = dto.SoTien,
                     SoLuongVatPham = dto.SoLuongVatPham,
                     SoLuongConLai = dto.SoLuongVatPham,
-                    NgayUngHo = dto.NgayUngHo,
+                    NgayUngHo = ngayUngHo,
                     DoiTuong = dto.DoiTuong,
                     TenVatPham = dto.TenVatPham,
                     LoaiUngHo = dto.LoaiUngHo,
@@ -108,10 +119,56 @@ namespace QuanLyTreEmAPI.Controllers
                 _context.UngHos.Add(ungHo);
                 await _context.SaveChangesAsync();
 
+                // 2. Xử lý từng file với loại minh chứng riêng
+                if (dto.Files != null && dto.Files.Count > 0)
+                {
+                    string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "MinhChung");
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    foreach (var fileDto in dto.Files)
+                    {
+                        if (string.IsNullOrWhiteSpace(fileDto.FileData))
+                            continue;
+
+                        try
+                        {
+                            byte[] fileBytes = Convert.FromBase64String(fileDto.FileData);
+                            string fileExtension = Path.GetExtension(fileDto.FileName);
+                            string fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileDto.FileName);
+                            string fileName = $"{fileNameWithoutExt}_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(0, 8)}{fileExtension}";
+                            string filePath = Path.Combine(uploadFolder, fileName);
+
+                            await System.IO.File.WriteAllBytesAsync(filePath, fileBytes);
+
+                            // 3. Lưu PhieuMinhChung cho từng file
+                            var phieuMinhChung = new PhieuMinhChung
+                            {
+                                UngHoId = ungHo.UngHoId,
+                                FilePath = $"/MinhChung/{fileName}",
+                                LoaiMinhChung = fileDto.LoaiMinhChung, // Lấy loại từ file DTO
+                                NgayCap = DateOnly.FromDateTime(DateTime.Now)
+                            };
+
+                            _context.PhieuMinhChungs.Add(phieuMinhChung);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error saving file {fileDto.FileName}: {ex.Message}");
+                        }
+                    }
+
+                    await _context.SaveChangesAsync();
+                }
+
+                await transaction.CommitAsync();
                 return Ok(new { MessageSuccess = "Lưu thông tin ủng hộ thành công!" });
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
                 return StatusCode(500, new { MessageError = "Lỗi khi lưu: " + ex.Message });
             }
         }

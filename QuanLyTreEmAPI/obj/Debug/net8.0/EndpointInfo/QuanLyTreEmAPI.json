@@ -2398,6 +2398,28 @@
         },
         "additionalProperties": false
       },
+      "FileUploadDto": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileData": {
+            "type": "string",
+            "nullable": true
+          },
+          "loaiMinhChung": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GhiNhanManhThuongQuan": {
         "type": "object",
         "properties": {
@@ -3928,7 +3950,7 @@
           },
           "ngayUngHo": {
             "type": "string",
-            "format": "date"
+            "nullable": true
           },
           "doiTuong": {
             "type": "string",
@@ -3944,6 +3966,13 @@
           },
           "ghiChu": {
             "type": "string",
+            "nullable": true
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileUploadDto"
+            },
             "nullable": true
           }
         },
