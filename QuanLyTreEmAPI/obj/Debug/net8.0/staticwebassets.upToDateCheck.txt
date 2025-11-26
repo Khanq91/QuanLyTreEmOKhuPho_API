@@ -13,3 +13,4 @@ wwwroot\Anh\TreEm\macdinh.jpg
 wwwroot\MinhChung\AnhTangQua.jpg
 wwwroot\MinhChung\AnhTangQua1.jpg
 wwwroot\MinhChung\chuyenkhoan_2.pdf
+wwwroot\MinhChung\chuyenkhoan_2_20251126103334_44c9a0aa.pdf

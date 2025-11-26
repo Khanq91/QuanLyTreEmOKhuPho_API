@@ -34,6 +34,8 @@ builder.Services.AddSwaggerGen(c =>
                 Array.Empty<string>()
             }
         });
+        c.MapType<IFormFile>(() => new OpenApiSchema { Type = "string", Format = "binary" });
+        c.OperationFilter<FileUploadOperationFilter>();
     }
 );
 

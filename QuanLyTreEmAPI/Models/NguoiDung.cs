@@ -29,5 +29,5 @@ public partial class NguoiDung
 
     public virtual ICollection<VanDongTreEm> VanDongTreEms { get; set; } = new List<VanDongTreEm>();
 
-    public virtual ICollection<ThongBao> ThongBaos { get; set; } = new List<ThongBao>();
+    public virtual ICollection<ThongBaoNguoiDung> ThongBaoNguoiDungs { get; set; } = new List<ThongBaoNguoiDung>();
 }

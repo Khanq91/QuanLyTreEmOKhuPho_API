@@ -596,6 +596,698 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.AuthController",
+    "Method": "DangXuat",
+    "RelativePath": "api/mobile/Auth/DangXuat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.AuthController",
+    "Method": "DoiMatKhau",
+    "RelativePath": "api/mobile/Auth/DoiMatKhau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.PhuHuynh.DoiMatKhauRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/mobile/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.Auth.LoginRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.AuthController",
+    "Method": "GetProfile",
+    "RelativePath": "api/mobile/Auth/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "CapNhatPhuHuynh",
+    "RelativePath": "api/Mobile/PhuHuynh/CapNhatPhuHuynh",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.PhuHuynh.CapNhatThongTinPhuHuynhRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "CapNhatThongTinTreEm",
+    "RelativePath": "api/Mobile/PhuHuynh/CapNhatTreEm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.PhuHuynh.CapNhatThongTinTreEmRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetChiTietPhuHuynh",
+    "RelativePath": "api/Mobile/PhuHuynh/ChiTietPhuHuynh/{phuHuynhId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phuHuynhId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetChiTietSuKien",
+    "RelativePath": "api/Mobile/PhuHuynh/ChiTietSuKien/{suKienId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suKienId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "DangKySuKien",
+    "RelativePath": "api/Mobile/PhuHuynh/DangKySuKien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.PhuHuynh.DangKySuKienRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetDanhSachCon",
+    "RelativePath": "api/Mobile/PhuHuynh/DanhSachCon",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetDanhSachPhuHuynh",
+    "RelativePath": "api/Mobile/PhuHuynh/DanhSachPhuHuynh",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetDanhSachSuKien",
+    "RelativePath": "api/Mobile/PhuHuynh/DanhSachSuKien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetTabHocTap",
+    "RelativePath": "api/Mobile/PhuHuynh/HocTap/{treEmId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetPhuHuynhHome",
+    "RelativePath": "api/Mobile/PhuHuynh/Home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "HuyDangKySuKien",
+    "RelativePath": "api/Mobile/PhuHuynh/HuyDangKySuKien/{suKienId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suKienId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetQuaDaNhan",
+    "RelativePath": "api/Mobile/PhuHuynh/QuaDaNhan/{treEmId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetDanhSachThongBao",
+    "RelativePath": "api/Mobile/PhuHuynh/ThongBao",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "DanhDauDaDoc",
+    "RelativePath": "api/Mobile/PhuHuynh/ThongBao/DanhDauDaDoc",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.PhuHuynh.DanhDauDaDocRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetThongTinTaiKhoan",
+    "RelativePath": "api/Mobile/PhuHuynh/ThongTinTaiKhoan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "GetThongTinTreEmChiTiet",
+    "RelativePath": "api/Mobile/PhuHuynh/ThongTinTreEm/{treEmId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "UploadAnhPhuHuynhCuThe",
+    "RelativePath": "api/Mobile/PhuHuynh/UploadAnhPhuHuynh/{phuHuynhId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phuHuynhId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "UploadAnhTaiKhoan",
+    "RelativePath": "api/Mobile/PhuHuynh/UploadAnhTaiKhoan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
+    "Method": "UploadAnhTreEm",
+    "RelativePath": "api/Mobile/PhuHuynh/UploadAnhTreEm/{treEmId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetChiTietSuKien",
+    "RelativePath": "api/Mobile/TinhNguyenVien/{id}/ChiTietSuKien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.ChiTietSuKienDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "CapNhatAvatar",
+    "RelativePath": "api/Mobile/TinhNguyenVien/CapNhatAvatar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "CapNhatPhanPhatQua",
+    "RelativePath": "api/Mobile/TinhNguyenVien/CapNhatPhanPhatQua",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.CapNhatPhanPhatQuaRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "CapNhatVanDong",
+    "RelativePath": "api/Mobile/TinhNguyenVien/CapNhatVanDong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TreEmID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "HoanCanhID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TinhTrangCapNhat",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GhiChuChiTiet",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SoLan",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "DangKySuKien",
+    "RelativePath": "api/Mobile/TinhNguyenVien/DangKySuKien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.DangKySuKienRequestDtoo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetDanhSachKhuPho",
+    "RelativePath": "api/Mobile/TinhNguyenVien/DanhSachKhuPho",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetDanhSachSuKien",
+    "RelativePath": "api/Mobile/TinhNguyenVien/DanhSachSuKien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuanLyTreEmAPI.DTOs.TInhNguyenVien.DanhSachSuKienDTO, QuanLyTreEmAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetDanhSachTreEm",
+    "RelativePath": "api/Mobile/TinhNguyenVien/DanhSachTreEm",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetHome",
+    "RelativePath": "api/Mobile/TinhNguyenVien/Home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "HuyDangKySuKien",
+    "RelativePath": "api/Mobile/TinhNguyenVien/HuyDangKySuKien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.HuyDangKySuKienRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetLichTrong",
+    "RelativePath": "api/Mobile/TinhNguyenVien/LichTrong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "UpdateLichTrong",
+    "RelativePath": "api/Mobile/TinhNguyenVien/LichTrong",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.UpdateLichTrongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetChiTietTreEmPhanPhatQua",
+    "RelativePath": "api/Mobile/TinhNguyenVien/PhanPhatQua/{phanPhatId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phanPhatId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Mobile/TinhNguyenVien/Profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.TInhNguyenVien.UpdateProfileRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetProfile",
+    "RelativePath": "api/Mobile/TinhNguyenVien/Profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetDanhSachThongBao",
+    "RelativePath": "api/Mobile/TinhNguyenVien/ThongBao",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "DanhDauDaDoc",
+    "RelativePath": "api/Mobile/TinhNguyenVien/ThongBao/{thongBaoId}/DaDoc",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "thongBaoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetSoLuongChuaDoc",
+    "RelativePath": "api/Mobile/TinhNguyenVien/ThongBao/ChuaDoc/SoLuong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "DanhDauTatCaDaDoc",
+    "RelativePath": "api/Mobile/TinhNguyenVien/ThongBao/DaDoc/TatCa",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.TinhNguyenVienController",
+    "Method": "GetChiTietTreEmVanDong",
+    "RelativePath": "api/Mobile/TinhNguyenVien/VanDongTreEm/{treEmId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.NguoiDungController",
     "Method": "GetAll",
     "RelativePath": "api/NguoiDung",

@@ -1013,4 +1013,4 @@ VALUES
 (8, 8, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Quà tết phong phú'),
 (8, 9, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Đã ký nhận'),
 (8, 10, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Gia đình cảm ơn nhiều');
-select * from UngHo,PhieuMinhChung where UngHo.UngHoID=PhieuMinhChung.UngHoID
+select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

@@ -7,7 +7,7 @@
         public int? UserID { get; set; }
         public int TinhNguyenVienID { get; set; }
         public string TenTinhNguyenVien { get; set; }
-        public DateTime? NgaySinh { get; set; }
+        public DateOnly? NgaySinh { get; set; }
         public string? Anh { get; set; }
         public string? TrangThai { get; set; }
         public DateOnly? NgayTao { get; set; }

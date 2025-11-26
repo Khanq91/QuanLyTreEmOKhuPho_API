@@ -16,4 +16,5 @@ public partial class ThongBao
     public virtual SuKien? SuKien { get; set; }
 
     public virtual ICollection<NguoiDung> Users { get; set; } = new List<NguoiDung>();
+    public virtual ICollection<ThongBaoNguoiDung> ThongBaoNguoiDungs { get; set; } = new List<ThongBaoNguoiDung>();
 }

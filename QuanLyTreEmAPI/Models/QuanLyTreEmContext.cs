@@ -49,6 +49,7 @@ public partial class QuanLyTreEmContext : DbContext
     public virtual DbSet<ThoiGianChiTietSuKien> ThoiGianChiTietSuKiens { get; set; }
 
     public virtual DbSet<ThongBao> ThongBaos { get; set; }
+    public virtual DbSet<ThongBaoNguoiDung> ThongBaoNguoiDungs { get; set; }
 
     public virtual DbSet<ThongTinPhuHuynh> ThongTinPhuHuynhs { get; set; }
 
@@ -366,9 +367,10 @@ public partial class QuanLyTreEmContext : DbContext
                 .HasConstraintName("FK__ThoiGianC__SuKie__29572725");
         });
 
+
         modelBuilder.Entity<ThongBao>(entity =>
         {
-            entity.HasKey(e => e.ThongBaoId).HasName("PK__ThongBao__6E51A53BF50B4D0E");
+            entity.HasKey(e => e.ThongBaoId).HasName("PK__ThongBao__6E51A53B81A3B316");
 
             entity.ToTable("ThongBao");
 
@@ -378,26 +380,27 @@ public partial class QuanLyTreEmContext : DbContext
 
             entity.HasOne(d => d.SuKien).WithMany(p => p.ThongBaos)
                 .HasForeignKey(d => d.SuKienId)
-                .HasConstraintName("FK__ThongBao__SuKien__3D5E1FD2");
+                .HasConstraintName("FK__ThongBao__SuKien__3E52440B");
+        });
 
-            entity.HasMany(d => d.Users).WithMany(p => p.ThongBaos)
-                .UsingEntity<Dictionary<string, object>>(
-                    "ThongBaoNguoiDung",
-                    r => r.HasOne<NguoiDung>().WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__ThongBao___UserI__4222D4EF"),
-                    l => l.HasOne<ThongBao>().WithMany()
-                        .HasForeignKey("ThongBaoId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__ThongBao___Thong__412EB0B6"),
-                    j =>
-                    {
-                        j.HasKey("ThongBaoId", "UserId").HasName("PK__ThongBao__BF2929F176CDF00D");
-                        j.ToTable("ThongBao_NguoiDung");
-                        j.IndexerProperty<int>("ThongBaoId").HasColumnName("ThongBaoID");
-                        j.IndexerProperty<int>("UserId").HasColumnName("UserID");
-                    });
+        modelBuilder.Entity<ThongBaoNguoiDung>(entity =>
+        {
+            entity.HasKey(e => new { e.ThongBaoId, e.UserId }).HasName("PK__ThongBao__BF2929F1555A9FB2");
+
+            entity.ToTable("ThongBao_NguoiDung");
+
+            entity.Property(e => e.ThongBaoId).HasColumnName("ThongBaoID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.ThongBao).WithMany(p => p.ThongBaoNguoiDungs)
+                .HasForeignKey(d => d.ThongBaoId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ThongBao___Thong__4222D4EF");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ThongBaoNguoiDungs)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ThongBao___UserI__4316F928");
         });
 
         modelBuilder.Entity<ThongTinPhuHuynh>(entity =>
