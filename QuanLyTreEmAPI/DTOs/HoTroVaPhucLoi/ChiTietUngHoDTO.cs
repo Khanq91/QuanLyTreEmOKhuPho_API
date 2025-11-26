@@ -8,7 +8,7 @@ namespace QuanLyTreEmOKhuPho.Models.HoTroVaUngHo
     public class QuaTangDTO
     {
         public int QuaTangUngHoID { get; set; }
-        public int SoLuongTreEm { get; set; }
+        public int? SoLuongTreEm { get; set; }
         public decimal PhanTrangHoanThanh { get; set; }
         public int SoLuongTreEmChuaNhanQua { get; set; }
         public string TenQua { get; set; }

@@ -4,7 +4,7 @@
     {
         public int SoLuongHoTro { get; set; }
         public decimal TongTien { get; set; }
-        public int SoLuongTreEm { get; set; }
-        public int SoDotHoTro { get; set; }
+        public int? SoLuongTreEm { get; set; }
+        public int? SoDotHoTro { get; set; }
     }
 }

@@ -24,6 +24,7 @@ public partial class TreEm
 
     public string? TinhTrang { get; set; }
     public string? Anh { get; set; }
+    public bool? UseYn { get; set; } = true;
 
     public int? KhuPhoId { get; set; }
 

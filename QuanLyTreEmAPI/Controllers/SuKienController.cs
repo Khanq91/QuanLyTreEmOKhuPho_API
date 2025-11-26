@@ -26,6 +26,7 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet("all")]
         public IActionResult GetAllEvents()
         {
+            var sk = _context.SuKiens.ToList();
             var suKiens = _context.SuKiens
        .ToList() // ⚠️ Chuyển về memory
        .Select(e => new
@@ -33,6 +34,7 @@ namespace QuanLyTreEmAPI.Controllers
            e.SuKienId,
            e.TenSuKien,
            e.NgayBatDau,
+           e.AnhSuKien,
            e.NgayKetThuc,
            e.DiaDiem,
            TrangThai = GetTrangThai(
@@ -40,7 +42,7 @@ namespace QuanLyTreEmAPI.Controllers
                e.NgayKetThuc?.ToDateTime(TimeOnly.MinValue)
            )
        })
-       .OrderBy(e => e.NgayBatDau)
+        .OrderByDescending(e => e.SuKienId)
        .ToList();
 
             return Ok(suKiens);
@@ -124,34 +126,28 @@ namespace QuanLyTreEmAPI.Controllers
             return "Đang diễn ra";
         }
         #region TAB 1: THÔNG TIN CHUNG
-        // ===========================================================
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDetail(int id)
         {
-            // ✅ Truy vấn chính với các relationships cần thiết
             var sk = await _context.SuKiens
-                .Include(x => x.KhuPho)
-                .Include(x => x.ThoiGianChiTietSuKiens)
-                    .ThenInclude(t => t.TietMucSuKiens)
-                .Include(x => x.ChiPhiSuKiens)
-                    .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.SuKienId == id);
+             .Include(x => x.KhuPho)
+             .Include(x => x.ThoiGianChiTietSuKiens)
+             .Include(x => x.TietMucSuKiens) // ✅ thêm dòng này
+             .Include(x => x.ChiPhiSuKiens)
+                 .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
+             .AsNoTracking()
+             .FirstOrDefaultAsync(x => x.SuKienId == id);
+
 
             if (sk == null)
                 return NotFound(new { message = "Không tìm thấy sự kiện" });
 
-            // ✅ Lấy số lượng tình nguyện viên đã đăng ký
             var soTNVDaDangKy = await _context.DangKySuKiens
                 .Where(x => x.SuKienId == id && x.TrangThai == "Đã duyệt")
                 .CountAsync();
-
-            // ✅ Lấy số lượng trẻ em đã đăng ký
-            // Map tên cột chính xác: SuKienID thay vì SuKienId
             var soTreEmDaDangKy = await _context.TreEmSuKiens
                 .CountAsync(x => x.SuKienId == id && x.TrangThai == "Đã đăng ký");
 
-            // ✅ Lấy danh sách quà tặng
             var quaTang = await _context.QuaTangUngHos
                 .Where(x => x.SuKienId == id)
                 .Select(q => new
@@ -175,19 +171,16 @@ namespace QuanLyTreEmAPI.Controllers
                 .SelectMany(c => c.ChiTietChiPhiSuKiens)
                 .Sum(ct => (ct.SoLuong ?? 0) * (ct.DonGia ?? 0));
 
-            // ✅ Build response
             var result = new
             {
-                // Thông tin cơ bản
                 sk.SuKienId,
                 sk.TenSuKien,
                 sk.MoTa,
                 sk.DiaDiem,
                 sk.NgayBatDau,
+                sk.AnhSuKien,
                 sk.NgayKetThuc,
                 sk.NguoiChiuTrachNhiem,
-
-                // Số lượng
                 sk.SoLuongTinhNguyenVien,
                 sk.SoLuongTreEm,
                 SoTNVDaDangKy = soTNVDaDangKy,
@@ -204,7 +197,6 @@ namespace QuanLyTreEmAPI.Controllers
                     sk.KhuPho.QuanHuyen,
                     sk.KhuPho.ThanhPho
                 },
-
                 // Thời gian chi tiết và tiết mục
                 ThoiGianChiTiet = sk.ThoiGianChiTietSuKiens
                     .OrderBy(t => t.ThoiGianBatDau)
@@ -223,7 +215,7 @@ namespace QuanLyTreEmAPI.Controllers
                         }).ToList(),
                         TongChiPhiTietMuc = t.TietMucSuKiens.Sum(tm => tm.ChiPhiTietMuc ?? 0)
                     }).ToList(),
-
+                TietMuc = sk.TietMucSuKiens.ToList(),
                 // Chi phí sự kiện
                 ChiPhi = sk.ChiPhiSuKiens.Select(c => new
                 {
@@ -284,7 +276,35 @@ namespace QuanLyTreEmAPI.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // 1. Tạo SuKien
+
+                string imagePath = null;
+
+                if (!string.IsNullOrEmpty(dto.AnhSuKien))
+                {
+                    // Nếu FE gửi base64
+                    if (dto.AnhSuKien.StartsWith("data:image"))
+                    {
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(),
+                                                      "wwwroot", "Anh", "SuKien");
+                        if (!Directory.Exists(folderPath))
+                            Directory.CreateDirectory(folderPath);
+
+                        var fileName = $"sukien_{DateTime.Now:yyyyMMddHHmmssfff}.jpg";
+                        var filePath = Path.Combine(folderPath, fileName);
+
+                        var base64Data = dto.AnhSuKien.Substring(dto.AnhSuKien.IndexOf(",") + 1);
+                        var bytes = Convert.FromBase64String(base64Data);
+
+                        await System.IO.File.WriteAllBytesAsync(filePath, bytes);
+
+                        imagePath = $"/Anh/SuKien/{fileName}";
+                    }
+                    else
+                    {
+                        imagePath = dto.AnhSuKien;
+                    }
+                }
+
                 var suKien = new SuKien
                 {
                     TenSuKien = dto.TenSuKien,
@@ -296,13 +316,13 @@ namespace QuanLyTreEmAPI.Controllers
                     SoLuongTinhNguyenVien = dto.SoLuongTinhNguyenVien,
                     SoLuongTreEm = dto.SoLuongTreEm,
                     UserId = dto.UserId,
-                    KhuPhoId = dto.KhuPhoId
+                    KhuPhoId = dto.KhuPhoId,
+                    AnhSuKien = imagePath       
                 };
 
                 _context.SuKiens.Add(suKien);
-                await _context.SaveChangesAsync(); // Lấy ID
+                await _context.SaveChangesAsync();
 
-                // 2. Thêm Thời gian chi tiết + Tiết mục
                 foreach (var tgDto in dto.ThoiGianChiTiet)
                 {
                     var tg = new ThoiGianChiTietSuKien
@@ -375,7 +395,6 @@ namespace QuanLyTreEmAPI.Controllers
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                // Trả về đúng định dạng GetDetail
                 return await GetDetail(suKien.SuKienId);
             }
             catch (Exception ex)
@@ -457,9 +476,7 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(new { message = "Đăng ký thành công! Vui lòng chờ duyệt." });
         }
-        // =============================================================
-        // QUẢN LÝ ĐĂNG KÝ SỰ KIỆN
-        // =============================================================
+      
 
         [HttpGet("getalldangkysukien")]
         public async Task<IActionResult> GetAllDangKySuKien()
@@ -519,136 +536,138 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(new { message = "Xóa đăng ký thành công!" });
         }
 
-        //[HttpPut("{id}/updateAll")]
-        //public async Task<IActionResult> UpdateFullSuKien(int id, [FromBody] SuKienDTOCreate model)
-        //{
-        //    await using var transaction = await _context.Database.BeginTransactionAsync();
-        //    try
-        //    {
-        //        var suKien = await _context.SuKiens
-        //            .Include(x => x.TietMucSuKiens)
-        //            .Include(x => x.ChiPhiSuKiens)
-        //                .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
-        //            .FirstOrDefaultAsync(x => x.SuKienId == id);
 
-        //        if (suKien == null)
-        //            return NotFound("Không tìm thấy sự kiện.");
+        [HttpPut("{id}/updateAll")]
+        public async Task<IActionResult> UpdateFullSuKien(int id, [FromBody] SuKienDTOCreate model)
+        {
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var suKien = await _context.SuKiens
+                    .Include(x => x.TietMucSuKiens)
+                    .Include(x => x.ChiPhiSuKiens)
+                        .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
+                    .FirstOrDefaultAsync(x => x.SuKienId == id);
 
-        //        // === Cập nhật phần chính ===
-        //        suKien.TenSuKien = model.TenSuKien;
-        //        suKien.MoTa = model.MoTa;
-        //        suKien.NgayBatDau = model.NgayBatDau;
-        //        suKien.NgayKetThuc = model.NgayKetThuc;
-        //        suKien.DiaDiem = model.DiaDiem;
-        //        suKien.NguoiChiuTrachNhiem = model.NguoiChiuTrachNhiem;
+                if (suKien == null)
+                    return NotFound("Không tìm thấy sự kiện.");
 
-        //        // === Cập nhật TIẾT MỤC ===
-        //        var oldTietMuc = suKien.TietMucSuKiens.ToList();
-        //        foreach (var old in oldTietMuc)
-        //        {
-        //            var newTm = model.TietMuc.FirstOrDefault(x => x.TietMucId == old.TietMucId);
-        //            if (newTm == null)
-        //            {
-        //                _context.TietMucSuKiens.Remove(old);
-        //            }
-        //            else
-        //            {
-        //                old.TenTietMuc = newTm.TenTietMuc;
-        //                old.NguoiThucHien = newTm.NguoiThucHien;
-        //                old.ChiPhiTietMuc = newTm.ChiPhiTietMuc;
-        //            }
-        //        }
+                suKien.TenSuKien = model.TenSuKien;
+                suKien.MoTa = model.MoTa;
+                suKien.NgayBatDau = model.NgayBatDau;
+                suKien.NgayKetThuc = model.NgayKetThuc;
+                suKien.DiaDiem = model.DiaDiem;
+                suKien.NguoiChiuTrachNhiem = model.NguoiChiuTrachNhiem;
+                var oldTietMuc = suKien.TietMucSuKiens.ToList();
 
-        //        // Thêm mới tiết mục nếu có
-        //        foreach (var tm in model.TietMuc.Where(x => x.TietMucId == 0))
-        //        {
-        //            suKien.TietMucSuKiens.Add(new TietMucSuKien
-        //            {
-        //                TenTietMuc = tm.TenTietMuc,
-        //                ThoiGianChiTietSuKienId = 1,
-        //                NguoiThucHien = tm.NguoiThucHien,
-        //                ChiPhiTietMuc = tm.ChiPhiTietMuc
-        //            });
-        //        }
+                foreach (var old in oldTietMuc)
+                {
+                    var newTm = model.TietMuc.FirstOrDefault(x => x.TietMucId == old.TietMucId);
+                    if (newTm == null)
+                    {
+                        _context.TietMucSuKiens.Remove(old);
+                    }
+                    else
+                    {
+                        old.TenTietMuc = newTm.TenTietMuc;
+                        old.NguoiThucHien = newTm.NguoiThucHien;
+                        old.ChiPhiTietMuc = newTm.ChiPhiTietMuc;
+                        old.ThoiGianChiTietSuKienId = newTm.ThoiGianChiTietSuKienId;
+                    }
+                }
 
-        //        // === Cập nhật CHI PHÍ ===
-        //        foreach (var oldCp in suKien.ChiPhiSuKiens.ToList())
-        //        {
-        //            var newCp = model.ChiPhi.FirstOrDefault(x => x.ChiPhiId == oldCp.ChiPhiId);
-        //            if (newCp == null)
-        //            {
-        //                _context.ChiPhiSuKiens.Remove(oldCp);
-        //                continue;
-        //            }
+                foreach (var tm in model.TietMuc.Where(x => x.TietMucId == 0))
+                {
+                    _context.TietMucSuKiens.Add(new TietMucSuKien
+                    {
+                        TenTietMuc = tm.TenTietMuc,
+                        NguoiThucHien = tm.NguoiThucHien,
+                        ChiPhiTietMuc = tm.ChiPhiTietMuc,
+                        ThoiGianChiTietSuKienId = tm.ThoiGianChiTietSuKienId,
+                        SuKienId = suKien.SuKienId // ✅ Gán đúng SuKienId cho tiết mục mới
+                    });
+                }
+                foreach (var oldCp in suKien.ChiPhiSuKiens.ToList())
+                {
+                    var newCp = model.ChiPhi.FirstOrDefault(x => x.ChiPhiId == oldCp.ChiPhiId);
 
-        //            // Cập nhật phần chính
-        //            oldCp.TenKhoanChi = newCp.TenKhoanChi;
-        //            oldCp.GhiChu = newCp.GhiChu;
-        //            oldCp.SoTien = newCp.SoTien;
+                    if (newCp == null)
+                    {
+                        var phanBo = _context.PhanBoUngHoChiPhis.Where(p => p.ChiPhiId == oldCp.ChiPhiId).ToList();
+                        if (phanBo.Any()) _context.PhanBoUngHoChiPhis.RemoveRange(phanBo);
 
-        //            // === Cập nhật CHI TIẾT CHI PHÍ ===
-        //            foreach (var oldCt in oldCp.ChiTietChiPhiSuKiens.ToList())
-        //            {
-        //                var newCt = newCp.ChiTiet.FirstOrDefault(c => c.ChiTietId == oldCt.ChiTietChiPhi);
-        //                if (newCt == null)
-        //                    _context.ChiTietChiPhiSuKiens.Remove(oldCt);
-        //                else
-        //                {
-        //                    oldCt.TenPhanQua = newCt.TenPhanQua;
-        //                    oldCt.SoLuong = newCt.SoLuong;
-        //                    oldCt.DonGia = newCt.DonGia;
-        //                    oldCt.NguoiDaiDien = newCt.NguoiDaiDien;
-        //                }
-        //            }
+                        var ct = oldCp.ChiTietChiPhiSuKiens.ToList();
+                        if (ct.Any()) _context.ChiTietChiPhiSuKiens.RemoveRange(ct);
 
-        //            // Thêm chi tiết mới
-        //            foreach (var addCt in newCp.ChiTiet.Where(c => c.ChiTietId == 0))
-        //            {
-        //                oldCp.ChiTietChiPhiSuKiens.Add(new ChiTietChiPhiSuKien
-        //                {
-        //                    TenPhanQua = addCt.TenPhanQua,
-        //                    SoLuong = addCt.SoLuong,
-        //                    DonGia = addCt.DonGia,
-        //                    NguoiDaiDien = addCt.NguoiDaiDien
-        //                });
-        //            }
-        //        }
+                        _context.ChiPhiSuKiens.Remove(oldCp);
+                        continue;
+                    }
 
-        //        // === Thêm khoản chi phí mới nếu có ===
-        //        foreach (var addCp in model.ChiPhi.Where(x => x.ChiPhiId == 0))
-        //        {
-        //            suKien.ChiPhiSuKiens.Add(new ChiPhiSuKien
-        //            {
-        //                TenKhoanChi = addCp.TenKhoanChi,
-        //                GhiChu = addCp.GhiChu,
-        //                SoTien = addCp.SoTien,
-        //                ChiTietChiPhiSuKiens = addCp.ChiTiet.Select(c => new ChiTietChiPhiSuKien
-        //                {
-        //                    TenPhanQua = c.TenPhanQua,
-        //                    SoLuong = c.SoLuong,
-        //                    DonGia = c.DonGia,
-        //                    NguoiDaiDien = c.NguoiDaiDien
-        //                }).ToList()
-        //            });
-        //        }
+                    oldCp.TenKhoanChi = newCp.TenKhoanChi;
+                    oldCp.GhiChu = newCp.GhiChu;
+                    oldCp.SoTien = newCp.SoTien;
 
-        //        await _context.SaveChangesAsync();
-        //        await transaction.CommitAsync();
+                    foreach (var oldCt in oldCp.ChiTietChiPhiSuKiens.ToList())
+                    {
+                        var newCt = newCp.ChiTiet.FirstOrDefault(c => c.ChiTietId == oldCt.ChiPhiId);
 
-        //        return Ok(new { message = "✅ Cập nhật sự kiện thành công!" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await transaction.RollbackAsync();
-        //        return StatusCode(500, new
-        //        {
-        //            message = "❌ Cập nhật thất bại! Dữ liệu đã được rollback.",
-        //            error = ex.Message
-        //        });
-        //    }
-        //}
+                        if (newCt == null)
+                            _context.ChiTietChiPhiSuKiens.Remove(oldCt);
+                        else
+                        {
+                            oldCt.TenPhanQua = newCt.TenPhanQua;
+                            oldCt.SoLuong = newCt.SoLuong;
+                            oldCt.DonGia = newCt.DonGia;
+                            oldCt.NguoiDaiDien = newCt.NguoiDaiDien;
+                        }
+                    }
 
-        // tre em dang ky tham gia su kien
+                    foreach (var addCt in newCp.ChiTiet.Where(c => c.ChiTietId == 0))
+                    {
+                        oldCp.ChiTietChiPhiSuKiens.Add(new ChiTietChiPhiSuKien
+                        {
+                            TenPhanQua = addCt.TenPhanQua,
+                            SoLuong = addCt.SoLuong,
+                            DonGia = addCt.DonGia,
+                            NguoiDaiDien = addCt.NguoiDaiDien
+                        });
+                    }
+                }
+
+                foreach (var addCp in model.ChiPhi.Where(x => x.ChiPhiId == 0))
+                {
+                    suKien.ChiPhiSuKiens.Add(new ChiPhiSuKien
+                    {
+                        TenKhoanChi = addCp.TenKhoanChi,
+                        GhiChu = addCp.GhiChu,
+                        SoTien = addCp.SoTien,
+                        SuKienId = suKien.SuKienId, 
+                        ChiTietChiPhiSuKiens = addCp.ChiTiet.Select(c => new ChiTietChiPhiSuKien
+                        {
+                            TenPhanQua = c.TenPhanQua,
+                            SoLuong = c.SoLuong,
+                            DonGia = c.DonGia,
+                            NguoiDaiDien = c.NguoiDaiDien
+                        }).ToList()
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(new { message = "✅ Cập nhật sự kiện thành công!" });
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, new
+                {
+                    message = "❌ Cập nhật thất bại! Dữ liệu đã được rollback.",
+                    error = ex.Message
+                });
+            }
+        }
+
         [HttpPost("{id}/dangkytreem")]
         public async Task<IActionResult> DangKyTreEm(int id, [FromBody] int treEmId)
         {
@@ -669,7 +688,9 @@ namespace QuanLyTreEmAPI.Controllers
             var treEmSuKien = new TreEmSuKien
             {
                 TreEmId = treEmId,
-                SuKienId = id
+                SuKienId = id,
+                NgayDangKy = DateTime.Now,
+                TrangThai = "Đã dăng ký"
             };
 
             _context.TreEmSuKiens.Add(treEmSuKien);

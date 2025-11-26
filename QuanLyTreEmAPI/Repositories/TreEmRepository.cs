@@ -7,6 +7,7 @@ namespace QuanLyTreEmAPI.Repositories
     public class TreEmRepository : ITreEmRepository
     {
         private readonly QuanLyTreEmContext _context;
+        private const string DefaultImage = "/Anh/TreEm/default.jpg";
 
         public TreEmRepository(QuanLyTreEmContext context)
         {
@@ -101,6 +102,9 @@ namespace QuanLyTreEmAPI.Repositories
 
         public async Task<TreEm> CreateAsync(TreEm treEm)
         {
+            if (string.IsNullOrWhiteSpace(treEm.Anh))
+                treEm.Anh = DefaultImage;
+
             _context.TreEms.Add(treEm);
             await _context.SaveChangesAsync();
             return treEm;

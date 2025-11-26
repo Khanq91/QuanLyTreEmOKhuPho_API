@@ -18,9 +18,20 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var treEms = await _context.TreEms.ToListAsync();
+            var treEms = await _context.TreEms
+                .Where(te => te.UseYn == true).OrderByDescending(te => te.TreEmId)
+                .ToListAsync();
+
             return Ok(treEms);
         }
+        [HttpGet("DanhSachTruong")]
+        public async Task<IActionResult> GetTruongHoc()
+        {
+            var truongs =  _context.TruongHocs.ToList();
+
+            return Ok(truongs);
+        }
+
         [HttpGet("TongTreEmTheoKhuPho")]
         public async Task<IActionResult> TongTreEmTheoKhuPho()
         {
@@ -41,9 +52,9 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet("DanhSach")]
         public async Task<IActionResult> GetDanhSachTreEm()
         {
-            var baseUrl = $"{Request.Scheme}://{Request.Host}"; // 👉 tự động lấy https://localhost:44389
+            var baseUrl = $"{Request.Scheme}://{Request.Host}"; 
 
-            var data = await _context.TreEms
+            var data = await _context.TreEms.Where(te => te.UseYn == true)
                 .Include(te => te.KhuPho)
                 .Include(te => te.Truong)
                 .Include(te => te.TreEmHoanCanhs)
@@ -63,7 +74,7 @@ namespace QuanLyTreEmAPI.Controllers
                     Anh = te.Anh != null
                         ? $"{baseUrl}{te.Anh.Replace("\\", "/")}" // 👉 ghép URL tuyệt đối
                         : $"{baseUrl}/Anh/default-avatar.png"
-                })
+                }).OrderByDescending(te => te.TreEmId)
                 .ToListAsync();
 
             return Ok(data);
@@ -93,6 +104,24 @@ namespace QuanLyTreEmAPI.Controllers
                     .ThenInclude(v => v.NguoiDung)
                 .FirstOrDefaultAsync(te => te.TreEmId == id);
 
+            var sukienTreThamGia = await _context.TreEmSuKiens
+              .Include(s => s.SuKien)
+              .Where(s => s.TreEmId == id)
+              .Select(s => new
+              {
+                  s.TreEmSuKienId,
+                  s.SuKienId,
+                  TenSuKien = s.SuKien.TenSuKien,
+                  s.SuKien.DiaDiem,
+                  s.SuKien.NgayBatDau,
+                  s.SuKien.NgayKetThuc,
+                  s.TrangThai,
+                  s.GhiChu,
+                  s.NgayDangKy
+              })
+              .ToListAsync();
+
+
             if (tre == null)
                 return NotFound(new { message = "Không tìm thấy trẻ em" });
 
@@ -112,7 +141,6 @@ namespace QuanLyTreEmAPI.Controllers
                     ? $"{baseUrl}{tre.Anh.Replace("\\", "/")}"
                     : $"{baseUrl}/Anh/default-avatar.png",
 
-                // ✅ Hoàn cảnh - BỎ ?? new List<object>()
                 HoanCanh = tre.TreEmHoanCanhs
                     .Where(h => h.HoanCanh != null)
                     .Select(h => new
@@ -123,8 +151,8 @@ namespace QuanLyTreEmAPI.Controllers
                         h.NgayCapNhat
                     })
                     .ToList(),
+                SuKienTreThamGia = sukienTreThamGia,
 
-                // ✅ Phụ huynh - BỎ ?? new List<object>()
                 PhuHuynh = tre.TreEmPhuHuynhs
                     .Where(p => p.PhuHuynh != null)
                     .Select(p => new
@@ -142,7 +170,6 @@ namespace QuanLyTreEmAPI.Controllers
                     })
                     .ToList(),
 
-                // ✅ Học tập - BỎ ?? new List<object>()
                 HocTap = tre.PhieuHocTaps
                     .OrderByDescending(p => p.NamHoc)
                     .Select(p => new
@@ -244,18 +271,15 @@ namespace QuanLyTreEmAPI.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // 🔹 Xử lý ảnh: nếu chuỗi là base64 thì lưu ra file vật lý
                 string imagePath = null;
                 if (!string.IsNullOrEmpty(model.Anh))
                 {
                     if (model.Anh.StartsWith("data:image"))
                     {
-                        // Tạo thư mục nếu chưa có
                         var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Anh", "TreEm");
                         if (!Directory.Exists(folderPath))
                             Directory.CreateDirectory(folderPath);
 
-                        // Tạo tên file duy nhất
                         var fileName = $"treem_{DateTime.Now:yyyyMMddHHmmssfff}.jpg";
                         var filePath = Path.Combine(folderPath, fileName);
 
@@ -264,12 +288,10 @@ namespace QuanLyTreEmAPI.Controllers
                         var bytes = Convert.FromBase64String(base64Data);
                         await System.IO.File.WriteAllBytesAsync(filePath, bytes);
 
-                        // Lưu đường dẫn tương đối
                         imagePath = $"/Anh/TreEm/{fileName}";
                     }
                     else
                     {
-                        // Trường hợp frontend chỉ gửi đường dẫn
                         imagePath = model.Anh;
                     }
                 }
@@ -285,6 +307,7 @@ namespace QuanLyTreEmAPI.Controllers
                     TruongId = model.TruongId,
                     KhuPhoId = model.KhuPhoId,
                     TinhTrang = model.TinhTrang,
+                    UseYn = true,
                     Anh = imagePath
                 };
 
@@ -305,7 +328,6 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
-                // 🔹 Thêm phụ huynh
                 if (model.PhuHuynhs != null)
                 {
                     foreach (var ph in model.PhuHuynhs)
@@ -374,8 +396,6 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(te => te.TreEmPhuHuynhs)
                 .Include(te => te.TreEmHoanCanhs)
                 .Include(te => te.PhieuHocTaps)
-                //.Include(te => te.HoTroPhucLois)
-                //    .ThenInclude(ht => ht.PhieuMinhChungs)
                 .Include(te => te.VanDongTreEms)
                 .FirstOrDefaultAsync(te => te.TreEmId == id);
 
@@ -385,9 +405,7 @@ namespace QuanLyTreEmAPI.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // ============================
-                // 🔹 Cập nhật thông tin cơ bản
-                // ============================
+
                 tre.HoTen = model.HoTen;
                 tre.NgaySinh = DateOnly.FromDateTime(model.NgaySinh);
                 tre.GioiTinh = model.GioiTinh;
@@ -398,7 +416,6 @@ namespace QuanLyTreEmAPI.Controllers
                 tre.TruongId = model.TruongId;
                 tre.TinhTrang = model.TinhTrang;
 
-                // 🔹 Nếu người dùng upload ảnh mới (base64)
                 if (!string.IsNullOrEmpty(model.Anh))
                 {
                     if (model.Anh.StartsWith("data:image"))
@@ -421,7 +438,34 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
-          
+                if (model.HocTaps != null && model.HocTaps.Any())
+                {
+                    var htOld = tre.PhieuHocTaps.FirstOrDefault();
+
+                    if (htOld != null)
+                    {
+                        htOld.DiemTrungBinh = model.HocTaps[0].DiemTrungBinh;
+                        htOld.XepLoai = model.HocTaps[0].XepLoai;
+                        htOld.HanhKiem = model.HocTaps[0].HanhKiem;
+                        htOld.GhiChu = model.HocTaps[0].GhiChu;
+                    }
+                    else
+                    {
+                        var ht = model.HocTaps[0];
+
+                        _context.PhieuHocTaps.Add(new PhieuHocTap
+                        {
+                            TreEmId = tre.TreEmId,
+                            DiemTrungBinh = ht.DiemTrungBinh,
+                            XepLoai = ht.XepLoai,
+                            HanhKiem = ht.HanhKiem,
+                            GhiChu = ht.GhiChu,
+                            NamHoc = DateOnly.FromDateTime(DateTime.Now),
+                            TruongId = tre.TruongId, 
+                            LopId = ht.LopId         
+                        });
+                    }
+                }
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -435,6 +479,18 @@ namespace QuanLyTreEmAPI.Controllers
             }
         }
 
+        [HttpPost("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var tre = await _context.TreEms.FindAsync(id);
+            if (tre == null)
+                return NotFound(new { message = "Không tìm thấy trẻ" });
+
+            tre.UseYn = false;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đã xóa mềm trẻ em" });
+        }
 
         public class TreEmCreateDto
         {
