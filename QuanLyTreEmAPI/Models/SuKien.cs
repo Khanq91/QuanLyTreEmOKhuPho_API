@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models;
 
+[Table("SuKien")]
 public partial class SuKien
 {
     [Column("SuKienID")]
@@ -17,6 +18,7 @@ public partial class SuKien
     public string? MoTa { get; set; }
 
     public string? DiaDiem { get; set; }
+    public string? AnhSuKien { get; set; }
 
     public DateOnly? NgayBatDau { get; set; }
 

@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models
 {
     public class SuKienDTOCreate
     {
+        [Column("SuKienID")]
+
         public int SuKienId { get; set; }
 
         [Required(ErrorMessage = "Tên sự kiện là bắt buộc")]
@@ -20,6 +23,7 @@ namespace QuanLyTreEmAPI.Models
         public DateOnly? NgayKetThuc { get; set; }
 
         public string? NguoiChiuTrachNhiem { get; set; }
+        public string? AnhSuKien { get; set; }
         public int? SoLuongTinhNguyenVien { get; set; }
         public int? SoLuongTreEm { get; set; }
 
@@ -53,6 +57,7 @@ namespace QuanLyTreEmAPI.Models
         [Required]
         public string TenTietMuc { get; set; } = null!;
         public string? NguoiThucHien { get; set; }
+        public int? ThoiGianChiTietSuKienId { get; set; }
         public decimal? ChiPhiTietMuc { get; set; }
     }
 

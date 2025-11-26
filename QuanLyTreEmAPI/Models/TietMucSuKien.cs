@@ -1,11 +1,13 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models;
 
 public partial class TietMucSuKien
 {
+
     public int TietMucId { get; set; }
     //public int SuKienID { get; set; }
 

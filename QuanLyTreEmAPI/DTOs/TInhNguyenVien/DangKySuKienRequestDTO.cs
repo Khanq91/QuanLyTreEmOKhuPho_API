@@ -2,6 +2,7 @@
 {
     public class DangKySuKienRequestDtoo
     {
+
         public int SuKienId { get; set; }
     }
 }
