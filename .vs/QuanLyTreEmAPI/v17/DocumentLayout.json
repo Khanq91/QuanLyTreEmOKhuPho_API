@@ -1,46 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\",
+  "WorkspaceRootPath": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\models\\tietmucsukien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\models\\tietmucsukien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\models\\sukien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\models\\sukien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\models\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\models\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\tinhnguyenviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\mobile\\tinhnguyenviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\sukiencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\sukiencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\phuhuynhcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\phuhuynhcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\mobile\\phuhuynhcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\aiphanloaicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\aiphanloaicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\models\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\models\\quanlytreemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\mobile\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\dtos\\tinhnguyenvien\\quaphanphatinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\dtos\\tinhnguyenvien\\quaphanphatinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\26_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\dtos\\tinhnguyenvien\\lichsuhoatdongdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\dtos\\tinhnguyenvien\\lichsuhoatdongdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|d:\\file\\hk7\\kl_cn\\project\\api\\27_11_2025\\quanlytreemokhupho_api\\quanlytreemapi\\controllers\\mobile\\tinhnguyenviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEA92219-FA1C-4B58-9550-8BA781B09770}|QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj|solutionrelative:quanlytreemapi\\controllers\\mobile\\tinhnguyenviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,50 +40,49 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "QuanLyTreEmContext.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
               "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
               "RelativeToolTip": "QuanLyTreEmAPI\\Models\\QuanLyTreEmContext.cs",
               "ViewState": "AgIAALgBAAAAAAAAAAArwMABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-26T16:03:29.881Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TinhNguyenVienController.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
+              "ViewState": "AgIAAOwHAAAAAAAAAAAkwNEHAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T16:03:26.373Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhuHuynhController.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
+              "ViewState": "AgIAAH8DAAAAAAAAAAASwJUDAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T16:03:25.869Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TinhNguyenVienController.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\Mobile\\TinhNguyenVienController.cs",
-              "ViewState": "AgIAAOwHAAAAAAAAAAAkwNEHAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:03:26.373Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PhuHuynhController.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\Mobile\\PhuHuynhController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:03:25.869Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
               "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
               "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\Mobile\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -109,53 +92,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TietMucSuKien.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\TietMucSuKien.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Models\\TietMucSuKien.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\TietMucSuKien.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Models\\TietMucSuKien.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Program.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Program.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Program.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAApwA0AAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T18:33:59.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ThongBao.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\ThongBao.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Models\\ThongBao.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\ThongBao.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Models\\ThongBao.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T18:33:41.197Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SuKien.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\SuKien.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Models\\SuKien.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Models\\SuKien.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Models\\SuKien.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T18:33:17.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SuKienController.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\SuKienController.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\SuKienController.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\SuKienController.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\SuKienController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T18:31:19.462Z",
+              "WhenOpened": "2025-11-27T12:24:59.163Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -164,27 +109,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "QuaPhanPhatInfoDTO.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\QuaPhanPhatInfoDTO.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\QuaPhanPhatInfoDTO.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\QuaPhanPhatInfoDTO.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\QuaPhanPhatInfoDTO.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAcwA8AAAAaAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AIPhanLoaiController.cs",
+              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\AIPhanLoaiController.cs",
+              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\Controllers\\AIPhanLoaiController.cs",
+              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\Controllers\\AIPhanLoaiController.cs",
+              "RelativeToolTip": "QuanLyTreEmAPI\\Controllers\\AIPhanLoaiController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAMwBMAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T17:35:20.17Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "LichSuHoatDongDTO.cs",
-              "DocumentMoniker": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\LichSuHoatDongDTO.cs",
-              "RelativeDocumentMoniker": "QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\LichSuHoatDongDTO.cs",
-              "ToolTip": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\LichSuHoatDongDTO.cs",
-              "RelativeToolTip": "QuanLyTreEmAPI\\DTOs\\TInhNguyenVien\\LichSuHoatDongDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T17:29:32.921Z"
+              "WhenOpened": "2025-11-27T12:25:50.968Z"
             }
           ]
         }

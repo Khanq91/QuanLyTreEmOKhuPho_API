@@ -915,7 +915,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
         [HttpPost("UploadAnhTaiKhoan")]
         [Authorize(Roles = "Phụ huynh")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UploadAnhTaiKhoan( IFormFile file)
+        public async Task<IActionResult> UploadAnhTaiKhoan([FromBody] IFormFile file)
         {
             try
             {

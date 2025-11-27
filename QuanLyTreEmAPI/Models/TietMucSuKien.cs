@@ -9,7 +9,7 @@ public partial class TietMucSuKien
 {
 
     public int TietMucId { get; set; }
-    //public int SuKienID { get; set; }
+    public int SuKienID { get; set; }
 
     public string? TenTietMuc { get; set; }
 

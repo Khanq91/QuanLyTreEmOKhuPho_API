@@ -42,7 +42,7 @@ namespace QuanLyTreEmAPI.Controllers
                e.NgayKetThuc?.ToDateTime(TimeOnly.MinValue)
            )
        })
-        .OrderByDescending(e => e.SuKienId)
+        .OrderByDescending(e => e.SuKienID)
        .ToList();
 
             return Ok(suKiens);
@@ -549,7 +549,7 @@ namespace QuanLyTreEmAPI.Controllers
                     .Include(x => x.TietMucSuKiens)
                     .Include(x => x.ChiPhiSuKiens)
                         .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
-                    .FirstOrDefaultAsync(x => x.SuKienId == id);
+                    .FirstOrDefaultAsync(x => x.SuKienID == id);
 
                 if (suKien == null)
                     return NotFound("Không tìm thấy sự kiện.");
@@ -586,7 +586,7 @@ namespace QuanLyTreEmAPI.Controllers
                         NguoiThucHien = tm.NguoiThucHien,
                         ChiPhiTietMuc = tm.ChiPhiTietMuc,
                         ThoiGianChiTietSuKienId = tm.ThoiGianChiTietSuKienId,
-                        SuKienId = suKien.SuKienId // ✅ Gán đúng SuKienId cho tiết mục mới
+                        SuKienID = suKien.SuKienID // ✅ Gán đúng SuKienId cho tiết mục mới
                     });
                 }
                 foreach (var oldCp in suKien.ChiPhiSuKiens.ToList())
@@ -643,7 +643,7 @@ namespace QuanLyTreEmAPI.Controllers
                         TenKhoanChi = addCp.TenKhoanChi,
                         GhiChu = addCp.GhiChu,
                         SoTien = addCp.SoTien,
-                        SuKienId = suKien.SuKienId, 
+                        SuKienID = suKien.SuKienID, 
                         ChiTietChiPhiSuKiens = addCp.ChiTiet.Select(c => new ChiTietChiPhiSuKien
                         {
                             TenPhanQua = c.TenPhanQua,

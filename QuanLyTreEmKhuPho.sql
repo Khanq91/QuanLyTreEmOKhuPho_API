@@ -1049,4 +1049,11 @@ SELECT * FROM PhanBoUngHoChiPhi
 SELECT * FROM QuaTangUngHo
 SELECT * FROM PhanPhatQua
 
+ALTER TABLE TietMucSuKien
+ADD SuKienID INT NULL;
+ALTER TABLE SuKien
+ADD AnhSuKien NVARCHAR(500) NULL;
+ALTER TABLE TreEm
+ADD Useyn BIT DEFAULT 1;
+
 select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

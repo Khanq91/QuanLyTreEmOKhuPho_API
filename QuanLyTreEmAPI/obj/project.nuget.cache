@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j0u/5vNe0pE=",
+  "dgSpecHash": "1r58fx9G4H0=",
   "success": true,
-  "projectFilePath": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+  "projectFilePath": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

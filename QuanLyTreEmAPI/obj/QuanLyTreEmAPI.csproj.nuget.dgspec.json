@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {}
+    "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {}
   },
   "projects": {
-    "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {
+    "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+        "projectUniqueName": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
         "projectName": "QuanLyTreEmAPI",
-        "projectPath": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
+        "projectPath": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\QuanLyTreEmAPI.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\File\\HK7\\KL_CN\\project\\api\\26_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\obj\\",
+        "outputPath": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
