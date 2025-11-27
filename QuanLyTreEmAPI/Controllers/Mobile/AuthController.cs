@@ -19,6 +19,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
     {
         private readonly QuanLyTreEmContext _context;
         private readonly IConfiguration _configuration;
+        private const string DEFAULT_PASSWORD = "140letrongtan";
         public AuthController(QuanLyTreEmContext context, IConfiguration configuration)
         {
             _configuration = configuration;
@@ -104,9 +105,10 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        // Test endpoint to verify authentication
         [HttpGet("profile")]
-        [Microsoft.AspNetCore.Authorization.Authorize]
+        //[Microsoft.AspNetCore.Authorization.Authorize]
+        [Authorize]
+
         public IActionResult GetProfile()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -178,6 +180,77 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             // Với JWT, việc đăng xuất được xử lý ở client (xóa token)
             // API này chỉ trả về message xác nhận
             return Ok(new { message = "Đăng xuất thành công" });
+        }
+
+        [HttpPost("QuenMatKhau")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDTO request)
+        {
+            try
+            {
+                // Validate input
+                if (string.IsNullOrWhiteSpace(request.SDT))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Số điện thoại không được để trống"
+                    });
+                }
+
+                // Trim và chuẩn hóa SĐT
+                var sdt = request.SDT.Trim();
+
+                // Tìm user theo SĐT
+                var user = await _context.NguoiDungs
+                    .FirstOrDefaultAsync(u => u.SDT == sdt);
+
+                if (user == null)
+                {
+                    return NotFound(new
+                    {
+                        success = false,
+                        message = "Số điện thoại không tồn tại trong hệ thống"
+                    });
+                }
+
+                // Kiểm tra trạng thái tài khoản
+                if (user.TrangThai != "Đang hoạt động")
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = $"Tài khoản đang ở trạng thái: {user.TrangThai}. Vui lòng liên hệ quản trị viên."
+                    });
+                }
+
+                // Reset mật khẩu về mặc định
+                user.MatKhau = DEFAULT_PASSWORD;
+
+                // Lưu thay đổi
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Đặt lại mật khẩu thành công",
+                    data = new
+                    {
+                        sdt = user.SDT,
+                        hoTen = user.HoTen,
+                        matKhauMoi = DEFAULT_PASSWORD,
+                        vaiTro = user.VaiTro
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi server khi đặt lại mật khẩu",
+                    error = ex.Message
+                });
+            }
         }
     }
 }

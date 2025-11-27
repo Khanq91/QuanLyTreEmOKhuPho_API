@@ -306,7 +306,6 @@ D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\o
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.QuanLyTreEmAPI.props
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.QuanLyTreEmAPI.props
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\staticwebassets.pack.json
-D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTr.EBB1BD43.Up2Date
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\QuanLyTreEmAPI.dll
 D:\File\HK7\KL_CN\project\api\27_11_2025\QuanLyTreEmOKhuPho_API\QuanLyTreEmAPI\obj\Debug\net8.0\refint\QuanLyTreEmAPI.dll

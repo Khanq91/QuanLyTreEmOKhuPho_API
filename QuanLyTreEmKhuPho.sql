@@ -448,6 +448,7 @@ VALUES
 (N'Chương trình từ thiện tết thiếu nhi', N'Bùi Thị H', N'Tặng quà, tổ chức vui chơi cho trẻ em nhân dịp 1/6', N'Sân vận động Khu phố 7', '2025-06-01', '2025-06-01', 16, 150, 8, 7),
 (N'Lớp học kỹ năng sống', N'Đinh Văn I', N'Dạy kỹ năng sống, kỹ năng giao tiếp cho trẻ em', N'Nhà văn hóa Khu phố 8', '2025-07-10', '2025-07-20', 12, 40, 9, 8);
 
+ 
 -- 9. ThoiGianChiTietSuKien (20 thời gian chi tiết)
 INSERT INTO ThoiGianChiTietSuKien (MoTa, ThoiGianBatDau, ThoiGianKetThuc, SuKienID)
 VALUES
@@ -1055,5 +1056,13 @@ ALTER TABLE SuKien
 ADD AnhSuKien NVARCHAR(500) NULL;
 ALTER TABLE TreEm
 ADD Useyn BIT DEFAULT 1;
+
+select * from SuKien
+update SuKien
+set NgayBatDau='2025-12-20'
+where SuKienID = 3
+update SuKien
+set NgayKetThuc='2025-12-21'
+where SuKienID = 3
 
 select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

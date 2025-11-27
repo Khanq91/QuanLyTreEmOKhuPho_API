@@ -36,6 +36,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
             var userId = int.Parse(subClaim);
             return userId;
         }
+
         // +------------------------------------------------------------------+
         // |    TAB TRANG CHỦ                                                 |
         // +------------------------------------------------------------------+
