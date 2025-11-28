@@ -31,7 +31,13 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(truongs);
         }
+        [HttpGet("DanhSachPhuHuynh")]
+        public async Task<IActionResult> GetPhuHuynh()
+        {
+            var truongs = _context.ThongTinPhuHuynhs.ToList();
 
+            return Ok(truongs);
+        }
         [HttpGet("TongTreEmTheoKhuPho")]
         public async Task<IActionResult> TongTreEmTheoKhuPho()
         {

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,9 +8,6 @@ public partial class TietMucSuKien
 {
 
     public int TietMucId { get; set; }
-    [Column("SuKienID")]
-
-    public int SuKienId { get; set; }
 
     public string? TenTietMuc { get; set; }
 

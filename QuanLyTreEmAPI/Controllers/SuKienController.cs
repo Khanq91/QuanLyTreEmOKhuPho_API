@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using QuanLyTreEmAPI.Models;
+using System.Linq;
 
 namespace QuanLyTreEmAPI.Controllers
 {
@@ -8,12 +10,14 @@ namespace QuanLyTreEmAPI.Controllers
     [ApiController]
     public class SuKienController : ControllerBase
     {
-        private readonly QuanLyTreEmContext _context;
-        private readonly IWebHostEnvironment _env;
+     private readonly QuanLyTreEmContext _context;
+         private readonly IConfiguration _configuration;
 
-        public SuKienController(QuanLyTreEmContext context)
+
+        public SuKienController(QuanLyTreEmContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -28,7 +32,7 @@ namespace QuanLyTreEmAPI.Controllers
         {
             var sk = _context.SuKiens.ToList();
             var suKiens = _context.SuKiens
-       .ToList() // ⚠️ Chuyển về memory
+       .ToList() 
        .Select(e => new
        {
            e.SuKienId,
@@ -129,16 +133,16 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDetail(int id)
         {
+
             var sk = await _context.SuKiens
              .Include(x => x.KhuPho)
              .Include(x => x.ThoiGianChiTietSuKiens)
-             .Include(x => x.TietMucSuKiens) // ✅ thêm dòng này
              .Include(x => x.ChiPhiSuKiens)
                  .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
              .AsNoTracking()
              .FirstOrDefaultAsync(x => x.SuKienId == id);
 
-
+            var tietMucs = new Dictionary<int, List<TietMucSuKien>>();
             if (sk == null)
                 return NotFound(new { message = "Không tìm thấy sự kiện" });
 
@@ -147,7 +151,45 @@ namespace QuanLyTreEmAPI.Controllers
                 .CountAsync();
             var soTreEmDaDangKy = await _context.TreEmSuKiens
                 .CountAsync(x => x.SuKienId == id && x.TrangThai == "Đã đăng ký");
+            var connStr = _context.Database.GetDbConnection().ConnectionString;
 
+            var tietMucDict = new Dictionary<int, List<object>>();
+            using (var conn = new SqlConnection(connStr))
+            {
+                await conn.OpenAsync();
+                var sql = @"SELECT * FROM TietMucSuKien WHERE ThoiGianChiTietSuKienID IN
+            (SELECT ThoiGianChiTietSuKienID FROM ThoiGianChiTietSuKien WHERE SuKienID = @SuKienID)";
+
+
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SuKienID", id);
+                    using (var rd = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await rd.ReadAsync())
+                        {
+                            int tgId = rd.GetInt32(rd.GetOrdinal("ThoiGianChiTietSuKienID"));
+
+
+                            var obj = new
+                            {
+                                TietMucId = rd.GetInt32(rd.GetOrdinal("TietMucID")),
+                                TenTietMuc = rd["TenTietMuc"]?.ToString(),
+                                NguoiThucHien = rd["NguoiThucHien"]?.ToString(),
+                                ChiPhiTietMuc = rd["ChiPhiTietMuc"] == DBNull.Value ? 0 : (decimal)rd["ChiPhiTietMuc"],
+                                ThoiGianChiTietSuKienId = tgId
+                            };
+
+
+                            if (!tietMucDict.ContainsKey(tgId))
+                                tietMucDict[tgId] = new List<object>();
+
+
+                            tietMucDict[tgId].Add(obj);
+                        }
+                    }
+                }
+            }
             var quaTang = await _context.QuaTangUngHos
                 .Where(x => x.SuKienId == id)
                 .Select(q => new
@@ -165,7 +207,6 @@ namespace QuanLyTreEmAPI.Controllers
                 })
                 .ToListAsync();
 
-            // ✅ Tính tổng chi phí
             var tongChiPhi = sk.ChiPhiSuKiens.Sum(c => c.SoTien ?? 0);
             var tongChiPhiChiTiet = sk.ChiPhiSuKiens
                 .SelectMany(c => c.ChiTietChiPhiSuKiens)
@@ -197,26 +238,24 @@ namespace QuanLyTreEmAPI.Controllers
                     sk.KhuPho.QuanHuyen,
                     sk.KhuPho.ThanhPho
                 },
-                // Thời gian chi tiết và tiết mục
                 ThoiGianChiTiet = sk.ThoiGianChiTietSuKiens
-                    .OrderBy(t => t.ThoiGianBatDau)
-                    .Select(t => new
-                    {
-                        t.ThoiGianChiTietSuKienId,
-                        t.MoTa,
-                        t.ThoiGianBatDau,
-                        t.ThoiGianKetThuc,
-                        TietMuc = t.TietMucSuKiens.Select(tm => new
-                        {
-                            tm.TietMucId,
-                            tm.TenTietMuc,
-                            tm.NguoiThucHien,
-                            tm.ChiPhiTietMuc
-                        }).ToList(),
-                        TongChiPhiTietMuc = t.TietMucSuKiens.Sum(tm => tm.ChiPhiTietMuc ?? 0)
-                    }).ToList(),
+                .OrderBy(t => t.ThoiGianBatDau)
+                .Select(t => new
+                {
+                    t.ThoiGianChiTietSuKienId,
+                    t.MoTa,
+                    t.ThoiGianBatDau,
+                    t.ThoiGianKetThuc,
+                    TietMuc = tietMucDict.ContainsKey(t.ThoiGianChiTietSuKienId)
+                ? tietMucDict[t.ThoiGianChiTietSuKienId]
+                : new List<object>(),
+
+
+                    TongChiPhiTietMuc = tietMucDict.ContainsKey(t.ThoiGianChiTietSuKienId)
+                ? tietMucDict[t.ThoiGianChiTietSuKienId].Sum(tm => (decimal)tm.GetType().GetProperty("ChiPhiTietMuc").GetValue(tm))
+                : 0
+                }).ToList(),
                 TietMuc = sk.TietMucSuKiens.ToList(),
-                // Chi phí sự kiện
                 ChiPhi = sk.ChiPhiSuKiens.Select(c => new
                 {
                     c.ChiPhiId,
@@ -238,10 +277,8 @@ namespace QuanLyTreEmAPI.Controllers
                     TongChiTietKhoanChi = c.ChiTietChiPhiSuKiens.Sum(ct => (ct.SoLuong ?? 0) * (ct.DonGia ?? 0))
                 }).ToList(),
 
-                // Quà tặng
                 QuaTang = quaTang,
 
-                // Tổng hợp
                 TongKet = new
                 {
                     TongChiPhi = tongChiPhi,
@@ -259,44 +296,39 @@ namespace QuanLyTreEmAPI.Controllers
         }
         #endregion
 
-        // POST: api/SuKien
+        // Thay thế toàn bộ phần xử lý EF trong phương thức Create bằng ADO
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SuKienDTOCreate dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // Kiểm tra tồn tại
-            if (!await _context.KhuPhos.AnyAsync(k => k.KhuPhoId == dto.KhuPhoId))
-                return BadRequest(new { message = "Khu phố không tồn tại." });
+            var connString = _context.Database.GetConnectionString();
+            await using var conn = new SqlConnection(connString);
+            await conn.OpenAsync();
+            using var transaction = conn.BeginTransaction();
 
-            if (!await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId))
-                return BadRequest(new { message = "Người dùng không tồn tại." });
 
-            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
+                // Kiểm tra tồn tại khu phố và người dùng
+                if (!await _context.KhuPhos.AnyAsync(k => k.KhuPhoId == dto.KhuPhoId))
+                    return BadRequest(new { message = "Khu phố không tồn tại." });
+                if (!await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId))
+                    return BadRequest(new { message = "Người dùng không tồn tại." });
 
                 string imagePath = null;
-
                 if (!string.IsNullOrEmpty(dto.AnhSuKien))
                 {
-                    // Nếu FE gửi base64
                     if (dto.AnhSuKien.StartsWith("data:image"))
                     {
-                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(),
-                                                      "wwwroot", "Anh", "SuKien");
-                        if (!Directory.Exists(folderPath))
-                            Directory.CreateDirectory(folderPath);
-
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Anh", "SuKien");
+                        if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
                         var fileName = $"sukien_{DateTime.Now:yyyyMMddHHmmssfff}.jpg";
                         var filePath = Path.Combine(folderPath, fileName);
-
                         var base64Data = dto.AnhSuKien.Substring(dto.AnhSuKien.IndexOf(",") + 1);
                         var bytes = Convert.FromBase64String(base64Data);
-
                         await System.IO.File.WriteAllBytesAsync(filePath, bytes);
-
                         imagePath = $"/Anh/SuKien/{fileName}";
                     }
                     else
@@ -305,102 +337,118 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
-                var suKien = new SuKien
+                var insertSuKienCmd = conn.CreateCommand();
+                insertSuKienCmd.Transaction = transaction;
+                insertSuKienCmd.CommandText = @"
+            INSERT INTO SuKien (TenSuKien, MoTa, DiaDiem, NgayBatDau, NgayKetThuc, NguoiChiuTrachNhiem,
+                                SoLuongTinhNguyenVien, SoLuongTreEm, UserID, KhuPhoID, AnhSuKien)
+            OUTPUT INSERTED.SuKienID
+            VALUES (@Ten, @MoTa, @DiaDiem, @NgayBatDau, @NgayKetThuc, @Nguoi, @SoTNV, @SoTreEm, @User, @KhuPho, @Anh)";
+
+                insertSuKienCmd.Parameters.AddRange(new[]
                 {
-                    TenSuKien = dto.TenSuKien,
-                    MoTa = dto.MoTa,
-                    DiaDiem = dto.DiaDiem,
-                    NgayBatDau = dto.NgayBatDau,
-                    NgayKetThuc = dto.NgayKetThuc,
-                    NguoiChiuTrachNhiem = dto.NguoiChiuTrachNhiem,
-                    SoLuongTinhNguyenVien = dto.SoLuongTinhNguyenVien,
-                    SoLuongTreEm = dto.SoLuongTreEm,
-                    UserId = dto.UserId,
-                    KhuPhoId = dto.KhuPhoId,
-                    AnhSuKien = imagePath       
-                };
+            new SqlParameter("@Ten", dto.TenSuKien ?? (object)DBNull.Value),
+            new SqlParameter("@MoTa", dto.MoTa ?? (object)DBNull.Value),
+            new SqlParameter("@DiaDiem", dto.DiaDiem ?? (object)DBNull.Value),
+            new SqlParameter("@NgayBatDau", dto.NgayBatDau),
+            new SqlParameter("@NgayKetThuc", dto.NgayKetThuc),
+            new SqlParameter("@Nguoi", dto.NguoiChiuTrachNhiem ?? (object)DBNull.Value),
+            new SqlParameter("@SoTNV", dto.SoLuongTinhNguyenVien),
+            new SqlParameter("@SoTreEm", dto.SoLuongTreEm),
+            new SqlParameter("@User", dto.UserId),
+            new SqlParameter("@KhuPho", dto.KhuPhoId),
+            new SqlParameter("@Anh", (object?)imagePath ?? DBNull.Value)
+        });
 
-                _context.SuKiens.Add(suKien);
-                await _context.SaveChangesAsync();
+                var suKienId = (int)(await insertSuKienCmd.ExecuteScalarAsync());
 
-                foreach (var tgDto in dto.ThoiGianChiTiet)
+                foreach (var tg in dto.ThoiGianChiTiet)
                 {
-                    var tg = new ThoiGianChiTietSuKien
-                    {
-                        MoTa = tgDto.MoTa,
-                        ThoiGianBatDau = tgDto.ThoiGianBatDau,
-                        ThoiGianKetThuc = tgDto.ThoiGianKetThuc,
-                        SuKienId = suKien.SuKienId
-                    };
-                    _context.ThoiGianChiTietSuKiens.Add(tg);
-                    await _context.SaveChangesAsync();
+                    var insertTimeCmd = conn.CreateCommand();
+                    insertTimeCmd.Transaction = transaction;
+                    insertTimeCmd.CommandText = @"
+                INSERT INTO ThoiGianChiTietSuKien (MoTa, ThoiGianBatDau, ThoiGianKetThuc, SuKienID)
+                OUTPUT INSERTED.ThoiGianChiTietSuKienID
+                VALUES (@MoTa, @BatDau, @KetThuc, @SuKienID)";
 
-                    foreach (var tmDto in tgDto.TietMuc)
+                    insertTimeCmd.Parameters.AddRange(new[]
                     {
-                        var tm = new TietMucSuKien
+                new SqlParameter("@MoTa", tg.MoTa ?? (object)DBNull.Value),
+                new SqlParameter("@BatDau", tg.ThoiGianBatDau),
+                new SqlParameter("@KetThuc", tg.ThoiGianKetThuc),
+                new SqlParameter("@SuKienID", suKienId)
+            });
+
+                    var tgId = (int)(await insertTimeCmd.ExecuteScalarAsync());
+
+                    foreach (var tm in tg.TietMuc)
+                    {
+                        var insertTmCmd = conn.CreateCommand();
+                        insertTmCmd.Transaction = transaction;
+                        insertTmCmd.CommandText = @"
+                    INSERT INTO TietMucSuKien (TenTietMuc, NguoiThucHien, ChiPhiTietMuc, ThoiGianChiTietSuKienID)
+                    VALUES (@Ten, @Nguoi, @ChiPhi, @TGID)";
+
+                        insertTmCmd.Parameters.AddRange(new[]
                         {
-                            TenTietMuc = tmDto.TenTietMuc,
-                            NguoiThucHien = tmDto.NguoiThucHien,
-                            ChiPhiTietMuc = tmDto.ChiPhiTietMuc,
-                            ThoiGianChiTietSuKienId = tg.ThoiGianChiTietSuKienId,
-                        };
-                        _context.TietMucSuKiens.Add(tm);
+                    new SqlParameter("@Ten", tm.TenTietMuc ?? (object)DBNull.Value),
+                    new SqlParameter("@Nguoi", tm.NguoiThucHien ?? (object)DBNull.Value),
+                    new SqlParameter("@ChiPhi", tm.ChiPhiTietMuc ?? (object)DBNull.Value),
+                    new SqlParameter("@TGID", tgId)
+                });
+
+                        await insertTmCmd.ExecuteNonQueryAsync();
                     }
                 }
 
-                // 3. Thêm Chi phí + Chi tiết
-                foreach (var cpDto in dto.ChiPhi)
+                // 3. Insert ChiPhi + ChiTiet
+                foreach (var cp in dto.ChiPhi)
                 {
-                    var cp = new ChiPhiSuKien
-                    {
-                        TenKhoanChi = cpDto.TenKhoanChi,
-                        SoTien = cpDto.SoTien,
-                        GhiChu = cpDto.GhiChu,
-                        SuKienId = suKien.SuKienId
-                    };
-                    _context.ChiPhiSuKiens.Add(cp);
-                    await _context.SaveChangesAsync();
+                    var insertCpCmd = conn.CreateCommand();
+                    insertCpCmd.Transaction = transaction;
+                    insertCpCmd.CommandText = @"
+                INSERT INTO ChiPhiSuKien (SuKienID, TenKhoanChi, GhiChu, SoTien)
+                OUTPUT INSERTED.ChiPhiID
+                VALUES (@SuKienID, @Ten, @GhiChu, @SoTien)";
 
-                    foreach (var ctDto in cpDto.ChiTiet)
+                    insertCpCmd.Parameters.AddRange(new[]
                     {
-                        var ct = new ChiTietChiPhiSuKien
+                new SqlParameter("@SuKienID", suKienId),
+                new SqlParameter("@Ten", cp.TenKhoanChi ?? (object)DBNull.Value),
+                new SqlParameter("@GhiChu", cp.GhiChu ?? (object)DBNull.Value),
+                new SqlParameter("@SoTien", cp.SoTien)
+            });
+
+                    var chiPhiId = (int)(await insertCpCmd.ExecuteScalarAsync());
+
+                    foreach (var ct in cp.ChiTiet)
+                    {
+                        var insertCtCmd = conn.CreateCommand();
+                        insertCtCmd.Transaction = transaction;
+                        insertCtCmd.CommandText = @"
+                    INSERT INTO ChiTietChiPhiSuKien (ChiPhiID, TenPhanQua, SoLuong, DonGia, NguoiDaiDien)
+                    VALUES (@ChiPhiID, @Ten, @SL, @DonGia, @Nguoi)";
+
+                        insertCtCmd.Parameters.AddRange(new[]
                         {
-                            TenPhanQua = ctDto.TenPhanQua,
-                            NguoiDaiDien = ctDto.NguoiDaiDien,
-                            SoLuong = ctDto.SoLuong,
-                            DonGia = ctDto.DonGia,
-                            ChiPhiId = cp.ChiPhiId
-                        };
-                        _context.ChiTietChiPhiSuKiens.Add(ct);
+                    new SqlParameter("@ChiPhiID", chiPhiId),
+                    new SqlParameter("@Ten", ct.TenPhanQua ?? (object)DBNull.Value),
+                    new SqlParameter("@SL", ct.SoLuong),
+                    new SqlParameter("@DonGia", ct.DonGia),
+                    new SqlParameter("@Nguoi", ct.NguoiDaiDien ?? (object)DBNull.Value)
+                });
+
+                        await insertCtCmd.ExecuteNonQueryAsync();
                     }
                 }
 
-                // 4. Thêm Phân công
-                foreach (var pcDto in dto.PhanCong)
-                {
-                    if (!await _context.TinhNguyenViens.AnyAsync(t => t.TinhNguyenVienId == pcDto.TinhNguyenVienId))
-                        return BadRequest(new { message = $"Tình nguyện viên ID {pcDto.TinhNguyenVienId} không tồn tại." });
-
-                    var pc = new PhanCongTinhNguyenVien
-                    {
-                        SuKienId = suKien.SuKienId,
-                        TinhNguyenVienId = pcDto.TinhNguyenVienId,
-                        CongViec = pcDto.CongViec,
-                        GhiChu = pcDto.GhiChu,
-                        NgayPhanCong = DateOnly.FromDateTime(DateTime.Today)
-                    };
-                    _context.PhanCongTinhNguyenViens.Add(pc);
-                }
-
-                await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-
-                return await GetDetail(suKien.SuKienId);
+                return Ok(new { message = "✅ Tạo sự kiện thành công!", suKienId });
             }
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                return StatusCode(500, new { message = "Lỗi khi tạo sự kiện.", error = ex.Message });
+                return StatusCode(500, new { message = "❌ Lỗi khi tạo sự kiện.", error = ex.Message });
             }
         }
 
@@ -536,125 +584,38 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(new { message = "Xóa đăng ký thành công!" });
         }
 
-
         [HttpPut("{id}/updateAll")]
         public async Task<IActionResult> UpdateFullSuKien(int id, [FromBody] SuKienDTOCreate model)
         {
-            await using var transaction = await _context.Database.BeginTransactionAsync();
+            var connection = _context.Database.GetDbConnection();
+            await connection.OpenAsync();
+            using var transaction = connection.BeginTransaction();
             try
             {
-                var suKien = await _context.SuKiens
-                    .Include(x => x.TietMucSuKiens)
-                    .Include(x => x.ChiPhiSuKiens)
-                        .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
-                    .FirstOrDefaultAsync(x => x.SuKienId == id);
+                // 1. Cập nhật SuKien
+                var updateSuKienCmd = connection.CreateCommand();
+                updateSuKienCmd.Transaction = transaction;
+                updateSuKienCmd.CommandText = @"
+            UPDATE SuKien
+            SET TenSuKien = @TenSuKien,
+                MoTa = @MoTa,
+                NgayBatDau = @NgayBatDau,
+                NgayKetThuc = @NgayKetThuc,
+                DiaDiem = @DiaDiem,
+                NguoiChiuTrachNhiem = @NguoiChiuTrachNhiem
+            WHERE SuKienID = @SuKienID";
 
-                if (suKien == null)
-                    return NotFound("Không tìm thấy sự kiện.");
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@SuKienID", id));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@TenSuKien", model.TenSuKien ?? (object)DBNull.Value));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@MoTa", model.MoTa ?? (object)DBNull.Value));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@NgayBatDau", model.NgayBatDau));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@NgayKetThuc", model.NgayKetThuc));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@DiaDiem", model.DiaDiem ?? (object)DBNull.Value));
+                updateSuKienCmd.Parameters.Add(new SqlParameter("@NguoiChiuTrachNhiem", model.NguoiChiuTrachNhiem ?? (object)DBNull.Value));
 
-                suKien.TenSuKien = model.TenSuKien;
-                suKien.MoTa = model.MoTa;
-                suKien.NgayBatDau = model.NgayBatDau;
-                suKien.NgayKetThuc = model.NgayKetThuc;
-                suKien.DiaDiem = model.DiaDiem;
-                suKien.NguoiChiuTrachNhiem = model.NguoiChiuTrachNhiem;
-                var oldTietMuc = suKien.TietMucSuKiens.ToList();
+                await updateSuKienCmd.ExecuteNonQueryAsync();
 
-                foreach (var old in oldTietMuc)
-                {
-                    var newTm = model.TietMuc.FirstOrDefault(x => x.TietMucId == old.TietMucId);
-                    if (newTm == null)
-                    {
-                        _context.TietMucSuKiens.Remove(old);
-                    }
-                    else
-                    {
-                        old.TenTietMuc = newTm.TenTietMuc;
-                        old.NguoiThucHien = newTm.NguoiThucHien;
-                        old.ChiPhiTietMuc = newTm.ChiPhiTietMuc;
-                        old.ThoiGianChiTietSuKienId = newTm.ThoiGianChiTietSuKienId;
-                    }
-                }
-
-                foreach (var tm in model.TietMuc.Where(x => x.TietMucId == 0))
-                {
-                    _context.TietMucSuKiens.Add(new TietMucSuKien
-                    {
-                        TenTietMuc = tm.TenTietMuc,
-                        NguoiThucHien = tm.NguoiThucHien,
-                        ChiPhiTietMuc = tm.ChiPhiTietMuc,
-                        ThoiGianChiTietSuKienId = tm.ThoiGianChiTietSuKienId,
-                        SuKienId = suKien.SuKienId // ✅ Gán đúng SuKienId cho tiết mục mới
-                    });
-                }
-                foreach (var oldCp in suKien.ChiPhiSuKiens.ToList())
-                {
-                    var newCp = model.ChiPhi.FirstOrDefault(x => x.ChiPhiId == oldCp.ChiPhiId);
-
-                    if (newCp == null)
-                    {
-                        var phanBo = _context.PhanBoUngHoChiPhis.Where(p => p.ChiPhiId == oldCp.ChiPhiId).ToList();
-                        if (phanBo.Any()) _context.PhanBoUngHoChiPhis.RemoveRange(phanBo);
-
-                        var ct = oldCp.ChiTietChiPhiSuKiens.ToList();
-                        if (ct.Any()) _context.ChiTietChiPhiSuKiens.RemoveRange(ct);
-
-                        _context.ChiPhiSuKiens.Remove(oldCp);
-                        continue;
-                    }
-
-                    oldCp.TenKhoanChi = newCp.TenKhoanChi;
-                    oldCp.GhiChu = newCp.GhiChu;
-                    oldCp.SoTien = newCp.SoTien;
-
-                    foreach (var oldCt in oldCp.ChiTietChiPhiSuKiens.ToList())
-                    {
-                        var newCt = newCp.ChiTiet.FirstOrDefault(c => c.ChiTietId == oldCt.ChiPhiId);
-
-                        if (newCt == null)
-                            _context.ChiTietChiPhiSuKiens.Remove(oldCt);
-                        else
-                        {
-                            oldCt.TenPhanQua = newCt.TenPhanQua;
-                            oldCt.SoLuong = newCt.SoLuong;
-                            oldCt.DonGia = newCt.DonGia;
-                            oldCt.NguoiDaiDien = newCt.NguoiDaiDien;
-                        }
-                    }
-
-                    foreach (var addCt in newCp.ChiTiet.Where(c => c.ChiTietId == 0))
-                    {
-                        oldCp.ChiTietChiPhiSuKiens.Add(new ChiTietChiPhiSuKien
-                        {
-                            TenPhanQua = addCt.TenPhanQua,
-                            SoLuong = addCt.SoLuong,
-                            DonGia = addCt.DonGia,
-                            NguoiDaiDien = addCt.NguoiDaiDien
-                        });
-                    }
-                }
-
-                foreach (var addCp in model.ChiPhi.Where(x => x.ChiPhiId == 0))
-                {
-                    suKien.ChiPhiSuKiens.Add(new ChiPhiSuKien
-                    {
-                        TenKhoanChi = addCp.TenKhoanChi,
-                        GhiChu = addCp.GhiChu,
-                        SoTien = addCp.SoTien,
-                        SuKienId = suKien.SuKienId, 
-                        ChiTietChiPhiSuKiens = addCp.ChiTiet.Select(c => new ChiTietChiPhiSuKien
-                        {
-                            TenPhanQua = c.TenPhanQua,
-                            SoLuong = c.SoLuong,
-                            DonGia = c.DonGia,
-                            NguoiDaiDien = c.NguoiDaiDien
-                        }).ToList()
-                    });
-                }
-
-                await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-
                 return Ok(new { message = "✅ Cập nhật sự kiện thành công!" });
             }
             catch (Exception ex)
