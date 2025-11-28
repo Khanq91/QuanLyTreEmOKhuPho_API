@@ -448,6 +448,7 @@ VALUES
 (N'Chương trình từ thiện tết thiếu nhi', N'Bùi Thị H', N'Tặng quà, tổ chức vui chơi cho trẻ em nhân dịp 1/6', N'Sân vận động Khu phố 7', '2025-06-01', '2025-06-01', 16, 150, 8, 7),
 (N'Lớp học kỹ năng sống', N'Đinh Văn I', N'Dạy kỹ năng sống, kỹ năng giao tiếp cho trẻ em', N'Nhà văn hóa Khu phố 8', '2025-07-10', '2025-07-20', 12, 40, 9, 8);
 
+ 
 -- 9. ThoiGianChiTietSuKien (20 thời gian chi tiết)
 INSERT INTO ThoiGianChiTietSuKien (MoTa, ThoiGianBatDau, ThoiGianKetThuc, SuKienID)
 VALUES
@@ -1013,4 +1014,55 @@ VALUES
 (8, 8, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Quà tết phong phú'),
 (8, 9, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Đã ký nhận'),
 (8, 10, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Gia đình cảm ơn nhiều');
+
+
+SELECT * FROM KhuPho;
+SELECT * FROM ManhThuongQuan;
+SELECT * FROM TinhNguyenVien;
+SELECT * FROM LichTrong;
+SELECT * FROM ChiTietLichTrong;
+SELECT * FROM SuKien;
+SELECT * FROM ThoiGianChiTietSuKien;
+SELECT * FROM TietMucSuKien;
+SELECT * FROM ChiPhiSuKien;
+SELECT * FROM ChiTietChiPhiSuKien;
+SELECT * FROM PhanCongTinhNguyenVien;
+SELECT * FROM DangKySuKien;
+SELECT * FROM NguoiDung;
+SELECT * FROM TreEm;
+SELECT * FROM TreEm_PhuHuynh;
+SELECT * FROM ThongTinPhuHuynh;
+SELECT * FROM ThongBao_NguoiDung;
+SELECT * FROM TruongHoc;
+SELECT * FROM LopHoc;
+SELECT * FROM ThongBao;
+SELECT * FROM PhieuHocTap;
+SELECT * FROM HoanCanh;
+SELECT * FROM TreEm_HoanCanh;
+SELECT * FROM VanDongTreEm;
+-- SELECT * FROM HoTroPhucLoi;
+SELECT * FROM PhieuMinhChung;
+-- SELECT * FROM UngHo_HoTroPhucLoi;
+SELECT * FROM UngHo;
+SELECT * FROM ThongBao_NguoiDung
+SELECT * FROM TreEm_SuKien
+SELECT * FROM PhanBoUngHoChiPhi
+SELECT * FROM QuaTangUngHo
+SELECT * FROM PhanPhatQua
+
+ALTER TABLE TietMucSuKien
+ADD SuKienID INT NULL;
+ALTER TABLE SuKien
+ADD AnhSuKien NVARCHAR(500) NULL;
+ALTER TABLE TreEm
+ADD Useyn BIT DEFAULT 1;
+
+select * from SuKien
+update SuKien
+set NgayBatDau='2025-12-20'
+where SuKienID = 3
+update SuKien
+set NgayKetThuc='2025-12-21'
+where SuKienID = 3
+
 select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

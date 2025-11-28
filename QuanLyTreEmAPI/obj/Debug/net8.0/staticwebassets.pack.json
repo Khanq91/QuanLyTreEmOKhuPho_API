@@ -1,0 +1,93 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_1_638998879985929412.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\3_1_638998879985929412.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\hinh1.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh2.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\hinh2.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\hinh3.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\hinh4.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh5.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\hinh5.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\macdinh.jpg",
+      "PackagePath": "staticwebassets\\Anh\\NguoiDung\\macdinh.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em1.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\em1.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em2.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\em2.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em3.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\em3.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em4.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\em4.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\em5.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\em5.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\TreEm\\macdinh.jpg",
+      "PackagePath": "staticwebassets\\Anh\\TreEm\\macdinh.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua.jpg",
+      "PackagePath": "staticwebassets\\MinhChung\\AnhTangQua.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\AnhTangQua1.jpg",
+      "PackagePath": "staticwebassets\\MinhChung\\AnhTangQua1.jpg"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2.pdf",
+      "PackagePath": "staticwebassets\\MinhChung\\chuyenkhoan_2.pdf"
+    },
+    {
+      "Id": "D:\\File\\HK7\\KL_CN\\project\\api\\27_11_2025\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf",
+      "PackagePath": "staticwebassets\\MinhChung\\chuyenkhoan_2_20251126103334_44c9a0aa.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.QuanLyTreEmAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.QuanLyTreEmAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.QuanLyTreEmAPI.props",
+      "PackagePath": "build\\QuanLyTreEmAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.QuanLyTreEmAPI.props",
+      "PackagePath": "buildMultiTargeting\\QuanLyTreEmAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.QuanLyTreEmAPI.props",
+      "PackagePath": "buildTransitive\\QuanLyTreEmAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

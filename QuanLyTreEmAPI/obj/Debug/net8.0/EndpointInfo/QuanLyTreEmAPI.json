@@ -2166,6 +2166,48 @@
         }
       }
     },
+    "/api/SuKien/{id}/updateAll": {
+      "put": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuKienDTOCreate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuKienDTOCreate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuKienDTOCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SuKien/{id}/dangkytreem": {
       "post": {
         "tags": [
@@ -2766,14 +2808,14 @@
         }
       }
     },
-    "/api/Mobile/TinhNguyenVien/ThongBao/{thongBaoId}/DaDoc": {
+    "/api/Mobile/TinhNguyenVien/ThongBao/{ThongBaoID}/DaDoc": {
       "put": {
         "tags": [
           "TinhNguyenVien"
         ],
         "parameters": [
           {
-            "name": "thongBaoId",
+            "name": "ThongBaoID",
             "in": "path",
             "required": true,
             "schema": {
@@ -2854,6 +2896,45 @@
         }
       }
     },
+    "/api/Mobile/TinhNguyenVien/LichSuHoatDong": {
+      "get": {
+        "tags": [
+          "TinhNguyenVien"
+        ],
+        "parameters": [
+          {
+            "name": "khuPho",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Mobile/TinhNguyenVien/CapNhatAvatar": {
       "post": {
         "tags": [
@@ -2883,6 +2964,18 @@
       }
     },
     "/api/TreEm": {
+      "get": {
+        "tags": [
+          "TreEm"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TreEm/DanhSachTruong": {
       "get": {
         "tags": [
           "TreEm"
@@ -3007,6 +3100,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TreEm/Delete/{id}": {
+      "post": {
+        "tags": [
+          "TreEm"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -3339,7 +3455,7 @@
             "type": "string",
             "nullable": true
           },
-          "suKienId": {
+          "suKienID": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -4599,7 +4715,8 @@
           },
           "soLuongTreEm": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "phanTrangHoanThanh": {
             "type": "number",
@@ -4744,7 +4861,7 @@
       "SuKien": {
         "type": "object",
         "properties": {
-          "suKienId": {
+          "suKienID": {
             "type": "integer",
             "format": "int32"
           },
@@ -4761,6 +4878,10 @@
             "nullable": true
           },
           "diaDiem": {
+            "type": "string",
+            "nullable": true
+          },
+          "anhSuKien": {
             "type": "string",
             "nullable": true
           },
@@ -4897,6 +5018,10 @@
             "nullable": true
           },
           "nguoiChiuTrachNhiem": {
+            "type": "string",
+            "nullable": true
+          },
+          "anhSuKien": {
             "type": "string",
             "nullable": true
           },
@@ -5261,7 +5386,7 @@
       "ThongBao": {
         "type": "object",
         "properties": {
-          "thongBaoId": {
+          "thongBaoID": {
             "type": "integer",
             "format": "int32"
           },
@@ -5282,13 +5407,6 @@
           "suKien": {
             "$ref": "#/components/schemas/SuKien"
           },
-          "users": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NguoiDung"
-            },
-            "nullable": true
-          },
           "thongBaoNguoiDungs": {
             "type": "array",
             "items": {
@@ -5302,7 +5420,7 @@
       "ThongBaoNguoiDung": {
         "type": "object",
         "properties": {
-          "thongBaoId": {
+          "thongBaoID": {
             "type": "integer",
             "format": "int32"
           },
@@ -5335,11 +5453,13 @@
           },
           "soLuongTreEm": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "soDotHoTro": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5467,6 +5587,11 @@
             "type": "string",
             "nullable": true
           },
+          "thoiGianChiTietSuKienId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "chiPhiTietMuc": {
             "type": "number",
             "format": "double",
@@ -5482,7 +5607,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "suKienId": {
+          "suKienID": {
             "type": "integer",
             "format": "int32"
           },
@@ -5602,6 +5727,10 @@
           },
           "anh": {
             "type": "string",
+            "nullable": true
+          },
+          "useYn": {
+            "type": "boolean",
             "nullable": true
           },
           "khuPhoId": {

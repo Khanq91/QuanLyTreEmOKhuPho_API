@@ -35,7 +35,7 @@ namespace QuanLyTreEmAPI.Controllers
        .ToList() 
        .Select(e => new
        {
-           e.SuKienId,
+           e.SuKienID,
            e.TenSuKien,
            e.NgayBatDau,
            e.AnhSuKien,
@@ -46,7 +46,7 @@ namespace QuanLyTreEmAPI.Controllers
                e.NgayKetThuc?.ToDateTime(TimeOnly.MinValue)
            )
        })
-        .OrderByDescending(e => e.SuKienId)
+        .OrderByDescending(e => e.SuKienID)
        .ToList();
 
             return Ok(suKiens);
@@ -61,7 +61,7 @@ namespace QuanLyTreEmAPI.Controllers
                 .Where(e => e.NgayBatDau.HasValue && e.NgayBatDau.Value.ToDateTime(TimeOnly.MinValue) > today)
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -86,7 +86,7 @@ namespace QuanLyTreEmAPI.Controllers
                 )
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -108,7 +108,7 @@ namespace QuanLyTreEmAPI.Controllers
                 .Where(e => e.NgayKetThuc.HasValue && e.NgayKetThuc.Value.ToDateTime(TimeOnly.MinValue) < today)
                 .Select(e => new
                 {
-                    e.SuKienId,
+                    e.SuKienID,
                     e.TenSuKien,
                     e.NgayBatDau,
                     e.NgayKetThuc,
@@ -214,7 +214,8 @@ namespace QuanLyTreEmAPI.Controllers
 
             var result = new
             {
-                sk.SuKienId,
+                // Thông tin cơ bản
+                sk.SuKienID,
                 sk.TenSuKien,
                 sk.MoTa,
                 sk.DiaDiem,
@@ -500,7 +501,7 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpPost("{id}/dangky")]
         public async Task<IActionResult> DangKy(int id, [FromBody] DangKySuKien dto)
          {
-            var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienId == id);
+            var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienID == id);
             if (!suKien) return NotFound("Sự kiện không tồn tại");
 
             var user = await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId);

@@ -31,7 +31,7 @@ namespace QuanLyTreEmAPI.Controllers
                         join c in _context.ChiTietLichTrongs on l.LichTrongId equals c.LichTrongId
                         join p in _context.PhanCongTinhNguyenViens on t.TinhNguyenVienId equals p.TinhNguyenVienId into pcg
                         from p in pcg.DefaultIfEmpty()
-                        join s in _context.SuKiens on p.SuKienId equals s.SuKienId into sg
+                        join s in _context.SuKiens on p.SuKienId equals s.SuKienID into sg
                         from s in sg.DefaultIfEmpty()
                         select new { t, u, k, c, s };
 
@@ -68,7 +68,7 @@ namespace QuanLyTreEmAPI.Controllers
                     SDT = g.Key.SDT,
                     ChucVu = g.Key.ChucVu,
                     SoLuongCaRanh = g.Select(x => x.c.ChiTietLichTrongId).Distinct().Count(),
-                    TongSuKienThamGia = g.Select(x => x.s.SuKienId).Distinct().Count(sid => sid != null)
+                    TongSuKienThamGia = g.Select(x => x.s.SuKienID).Distinct().Count(sid => sid != null)
                 })
                 .OrderBy(x => x.TinhNguyenVienID)
                 .ToListAsync();
@@ -85,7 +85,7 @@ namespace QuanLyTreEmAPI.Controllers
                         join c in _context.ChiTietLichTrongs on l.LichTrongId equals c.LichTrongId
                         join p in _context.PhanCongTinhNguyenViens on t.TinhNguyenVienId equals p.TinhNguyenVienId into pcg
                         from p in pcg.DefaultIfEmpty()
-                        join s in _context.SuKiens on p.SuKienId equals s.SuKienId into sg
+                        join s in _context.SuKiens on p.SuKienId equals s.SuKienID into sg
                         from s in sg.DefaultIfEmpty()
                         select new { t, u, k, c, s };
 
@@ -119,7 +119,7 @@ namespace QuanLyTreEmAPI.Controllers
                     ChucVu = g.Key.ChucVu,
                     Anh = g.Key.Anh,
                     SoLuongCaRanh = g.Select(x => x.c.ChiTietLichTrongId).Distinct().Count(),
-                    TongSuKienThamGia = g.Select(x => x.s.SuKienId).Distinct().Count(sid => sid != null)
+                    TongSuKienThamGia = g.Select(x => x.s.SuKienID).Distinct().Count(sid => sid != null)
                 })
                 .OrderBy(x => x.TinhNguyenVienID)
                 .FirstOrDefaultAsync(); // Lấy 1 phần tử đầu tiên (hoặc null nếu không có)
@@ -153,9 +153,9 @@ namespace QuanLyTreEmAPI.Controllers
         {
             var suKienDaThamGia = await (
                 from dk in _context.DangKySuKiens
-                join sk in _context.SuKiens on dk.SuKienId equals sk.SuKienId
+                join sk in _context.SuKiens on dk.SuKienId equals sk.SuKienID
                 join tnv in _context.TinhNguyenViens on dk.UserId equals tnv.UserId
-                join pc in _context.PhanCongTinhNguyenViens on sk.SuKienId equals pc.SuKienId
+                join pc in _context.PhanCongTinhNguyenViens on sk.SuKienID equals pc.SuKienId
                 where tnv.UserId == UserID
                 select new
                 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyTreEmAPI.Models;
 
@@ -13,6 +14,7 @@ public partial class ThoiGianChiTietSuKien
 
     public DateTime? ThoiGianKetThuc { get; set; }
 
+    [Column("SuKienID")]
     public int? SuKienId { get; set; }
 
     public virtual SuKien? SuKien { get; set; }

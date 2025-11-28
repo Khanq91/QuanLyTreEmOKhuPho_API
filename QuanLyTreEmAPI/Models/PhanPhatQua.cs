@@ -10,7 +10,7 @@ namespace QuanLyTreEmAPI.Models
         [Column("QuaTangUngHoID")]
         public int QuaTangUngHoId { get; set; }
 
-        [Column("TreEmID")]  // ← ĐẢM BẢO DÒNG NÀY CÓ!
+        [Column("TreEmID")]
         public int TreEmId { get; set; }
 
         public int SoLuongNhan { get; set; }

@@ -8,7 +8,8 @@ namespace QuanLyTreEmAPI.Models;
 public partial class SuKien
 {
     [Column("SuKienID")]
-    public int SuKienId { get; set; }
+
+    public int SuKienID { get; set; }
 
     public string? TenSuKien { get; set; }
 

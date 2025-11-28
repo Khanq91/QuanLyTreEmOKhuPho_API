@@ -8,7 +8,7 @@ namespace QuanLyTreEmAPI.Models;
 public partial class ThongBao
 {
     [Column("ThongBaoID")]
-    public int ThongBaoId { get; set; }
+    public int ThongBaoID { get; set; }
 
     public int? SuKienId { get; set; }
 
