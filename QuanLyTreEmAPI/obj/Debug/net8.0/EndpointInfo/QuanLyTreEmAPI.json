@@ -91,6 +91,37 @@
         }
       }
     },
+    "/api/mobile/Auth/QuenMatKhau": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/BaoCaoThongKe/TongQuan": {
       "get": {
         "tags": [
@@ -219,6 +250,235 @@
               "format": "date-time"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/health": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/analyze/{treEmId}": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "parameters": [
+          {
+            "name": "treEmId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClusterPrediction"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClusterPrediction"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClusterPrediction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clustering/analyze-all": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clustering/analyze-by-khupho/{khuPhoId}": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "parameters": [
+          {
+            "name": "khuPhoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TreEmWithPriority"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clustering/priority-groups": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/statistics": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/high-priority": {
+      "get": {
+        "tags": [
+          "Clustering"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/search": {
+      "post": {
+        "tags": [
+          "Clustering"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchCriteria"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchCriteria"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchCriteria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clustering/export-csv": {
+      "get": {
+        "tags": [
+          "Clustering"
         ],
         "responses": {
           "200": {
@@ -2987,6 +3247,18 @@
         }
       }
     },
+    "/api/TreEm/DanhSachPhuHuynh": {
+      "get": {
+        "tags": [
+          "TreEm"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TreEm/TongTreEmTheoKhuPho": {
       "get": {
         "tags": [
@@ -3713,6 +3985,64 @@
         },
         "additionalProperties": false
       },
+      "ClusterPrediction": {
+        "type": "object",
+        "properties": {
+          "cluster": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "priority_level": {
+            "type": "string",
+            "nullable": true
+          },
+          "priority_rank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "priority_score": {
+            "type": "number",
+            "format": "float"
+          },
+          "confidence": {
+            "type": "number",
+            "format": "float"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "immediate_actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "feature_analysis": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FeatureAnalysis"
+            },
+            "nullable": true
+          },
+          "input_data": {
+            "$ref": "#/components/schemas/TreEmFeatures"
+          }
+        },
+        "additionalProperties": false
+      },
       "DangKySuKien": {
         "type": "object",
         "properties": {
@@ -3903,6 +4233,24 @@
         },
         "additionalProperties": false
       },
+      "FeatureAnalysis": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "FileUploadDto": {
         "type": "object",
         "properties": {
@@ -3919,6 +4267,16 @@
             "nullable": true
           },
           "loaiMinhChung": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ForgotPasswordRequestDTO": {
+        "type": "object",
+        "properties": {
+          "sdt": {
             "type": "string",
             "nullable": true
           }
@@ -4774,6 +5132,10 @@
             "type": "string",
             "nullable": true
           },
+          "anh": {
+            "type": "string",
+            "nullable": true
+          },
           "ngayUngHo": {
             "type": "string",
             "format": "date-time",
@@ -4853,6 +5215,69 @@
             "items": {
               "$ref": "#/components/schemas/PhanPhatQua"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchCriteria": {
+        "type": "object",
+        "properties": {
+          "priorityLevels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "minHocTap": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "maxHocTap": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "minHanhVi": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "maxHanhVi": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "minTamLy": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "maxTamLy": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "minGiaDinh": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "maxGiaDinh": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "minNguyCoBoHoc": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "maxNguyCoBoHoc": {
+            "type": "number",
+            "format": "float",
             "nullable": true
           }
         },
@@ -5607,10 +6032,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "suKienID": {
-            "type": "integer",
-            "format": "int32"
-          },
           "tenTietMuc": {
             "type": "string",
             "nullable": true
@@ -5878,6 +6299,36 @@
         },
         "additionalProperties": false
       },
+      "TreEmFeatures": {
+        "type": "object",
+        "properties": {
+          "tre_em_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "HocTap": {
+            "type": "number",
+            "format": "float"
+          },
+          "HanhVi": {
+            "type": "number",
+            "format": "float"
+          },
+          "TamLy": {
+            "type": "number",
+            "format": "float"
+          },
+          "GiaDinh": {
+            "type": "number",
+            "format": "float"
+          },
+          "NguyCoBoHoc": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
       "TreEmHoanCanh": {
         "type": "object",
         "properties": {
@@ -5978,6 +6429,58 @@
           },
           "suKien": {
             "$ref": "#/components/schemas/SuKien"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TreEmWithPriority": {
+        "type": "object",
+        "properties": {
+          "treEmId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tenTre": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngaySinh": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gioiTinh": {
+            "type": "string",
+            "nullable": true
+          },
+          "cluster": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "priorityLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "priorityRank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "confidence": {
+            "type": "number",
+            "format": "float"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "features": {
+            "$ref": "#/components/schemas/TreEmFeatures"
           }
         },
         "additionalProperties": false

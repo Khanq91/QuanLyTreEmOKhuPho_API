@@ -205,8 +205,11 @@ namespace QuanLyTreEmAPI.Controllers
                         join uh in _context.UngHos
                             on mtq.ManhThuongQuanId equals uh.ManhThuongQuanId into ungHoGroup
                         from uh in ungHoGroup.DefaultIfEmpty()
+                        join pmc in _context.PhieuMinhChungs
+                      on uh.UngHoId equals pmc.UngHoId into phieuGroup
+                            from pmc in phieuGroup.DefaultIfEmpty()
                         where mtq.ManhThuongQuanId == ManhThuongQuanID
-                        select new { mtq, uh };
+                        select new { mtq, uh,pmc };
 
             var result = await query
                 .GroupBy(g => new
@@ -236,6 +239,19 @@ namespace QuanLyTreEmAPI.Controllers
                         .Where(x => x.uh != null && x.uh.NgayUngHo.HasValue)
                         .Max(x => x.uh.NgayUngHo.Value)
                         .ToString("dd/MM/yyyy"),
+                    PhieuMinhChung = g
+                    .Where(x => x.pmc != null)
+                    .Select(x => new PhieuMinhChungDto
+                    {
+                        PhieuMinhChungID = x.pmc.MinhChungId,
+                        LoaiMinhChung = x.pmc.LoaiMinhChung,
+                        FilePath = x.pmc.FilePath,
+                        NgayCap = x.pmc.NgayCap.HasValue
+                        ? x.pmc.NgayCap.Value.ToDateTime(TimeOnly.MinValue)
+                        : null
+                    })
+                    .ToList()
+
                 })
                 .FirstOrDefaultAsync();
 

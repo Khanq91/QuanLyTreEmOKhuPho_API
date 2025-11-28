@@ -5,6 +5,8 @@ using QuanLyTreEmAPI.DTOs.HoTroVaPhucLoi;
 using QuanLyTreEmAPI.Models;
 using QuanLyTreEmOKhuPho.Models.HoTroVaUngHo;
 using System.Data;
+using System.IO;
+
 
 namespace QuanLyTreEmAPI.Controllers
 {
@@ -165,6 +167,7 @@ namespace QuanLyTreEmAPI.Controllers
                     SoLuongTreEmChuaNhanQua = soLuongChuaPhat,
                     PhanTrangHoanThanh = phanTramHoanThanh,
                     SoLuongConLai = quaTang.SoLuongConLai,
+                    Anh=quaTang.Anh,
                     DoiTuongNhan = quaTang.DoiTuongNhan ?? "",
                     TenManhThuongQuan = quaTang.UngHo?.ManhThuongQuan?.Ten ?? "",
                     DiaChi = quaTang.UngHo?.ManhThuongQuan?.DiaChi ?? "",
@@ -285,8 +288,43 @@ namespace QuanLyTreEmAPI.Controllers
                 return StatusCode(500, new { message = "Lỗi lấy danh sách trẻ em", error = ex.Message });
             }
         }
+        private async Task<string> SaveBase64ImageAsync(string base64String, IWebHostEnvironment env, string folderName)
+        {
+            try
+            {
+                // Loại bỏ header "data:image/...;base64,"
+                var base64Data = base64String.Contains(",")
+                    ? base64String.Split(',')[1]
+                    : base64String;
+
+                byte[] imageBytes = Convert.FromBase64String(base64Data);
+
+                // Tạo tên file unique
+                string fileName = $"{Guid.NewGuid()}.jpg";
+
+                // Đường dẫn lưu file: wwwroot/Anh/QuaTang
+                string uploadPath = Path.Combine(env.WebRootPath, "Anh", folderName);
+
+                // Tạo folder nếu chưa tồn tại
+                if (!Directory.Exists(uploadPath))
+                    Directory.CreateDirectory(uploadPath);
+
+                string fullPath = Path.Combine(uploadPath, fileName);
+
+                // ✅ Ghi file bằng System.IO.File để tránh nhầm với ControllerBase.File
+                await System.IO.File.WriteAllBytesAsync(fullPath, imageBytes);
+
+                // Trả về đường dẫn tương đối (dùng trong API trả về)
+                return $"/Anh/{folderName}/{fileName}";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi lưu ảnh: {ex.Message}");
+            }
+        }
+
         [HttpPost("TaoHoTroVaPhanPhat")]
-        public async Task<ActionResult<TaoHoTroVaPhanPhatResponseDTO>> TaoHoTroVaPhanPhat(TaoHoTroVaPhanPhatDTO request)
+        public async Task<ActionResult<TaoHoTroVaPhanPhatResponseDTO>> TaoHoTroVaPhanPhat(TaoHoTroVaPhanPhatDTO request, [FromServices] IWebHostEnvironment env)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
 
@@ -336,6 +374,18 @@ namespace QuanLyTreEmAPI.Controllers
                 }
                 else
                 {
+                    string? anhPath = null;
+                    if (!string.IsNullOrEmpty(request.AnhQua))
+                    {
+                        try
+                        {
+                            anhPath = await SaveBase64ImageAsync(request.AnhQua, env, "QuaTang");
+                        }
+                        catch (Exception ex)
+                        {
+                            return BadRequest(new { message = $"Lỗi lưu ảnh: {ex.Message}" });
+                        }
+                    }
                     quaTang = new QuaTangUngHo
                     {
                         UngHoId = ungHo.UngHoId,
@@ -348,7 +398,7 @@ namespace QuanLyTreEmAPI.Controllers
                         SoLuongConLai = tongSoLuongPhat,
                         DonGia = donGia ?? 0,
                         DoiTuongNhan = request.DoiTuongNhan ?? ungHo.DoiTuong,
-                        Anh = request.AnhQua
+                        Anh = anhPath 
                     };
 
                     _context.QuaTangUngHos.Add(quaTang);
@@ -425,7 +475,7 @@ namespace QuanLyTreEmAPI.Controllers
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-
+          
                 return Ok(new
                 {
                     Success = true,

@@ -23,6 +23,7 @@ namespace QuanLyTreEmOKhuPho.Models.HoTroVaUngHo
         public string SDT { get; set; }
         public string LoaiUngHo { get; set; }
         public string GhiChu { get; set; }
+        public string Anh { get; set; }
         public DateTime? NgayUngHo { get; set; }
         public List<TreNhanQuaDTO> DanhSachTreNhan { get; set; }
     }

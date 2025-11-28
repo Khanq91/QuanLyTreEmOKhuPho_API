@@ -16,5 +16,14 @@
         public int SoLanUngHo { get; set; }
 
         public  string? NgayUngHoGanNhat { get; set; }
+        public List<PhieuMinhChungDto> PhieuMinhChung { get; set; }
+    }
+
+    public class PhieuMinhChungDto
+    {
+        public int PhieuMinhChungID { get; set; }
+        public string LoaiMinhChung { get; set; }
+        public string FilePath { get; set; }
+        public DateTime? NgayCap { get; set; }
     }
 }

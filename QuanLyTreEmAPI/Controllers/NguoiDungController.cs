@@ -27,17 +27,19 @@ namespace QuanLyTreEmAPI.Controllers
         public async Task<IActionResult> Login(string SDT, string MatKhau)
         {
             var user = await _context.NguoiDungs
-                .FirstOrDefaultAsync(u => u.SDT == SDT && u.MatKhau == MatKhau && (u.VaiTro == "Admin" || u.VaiTro == "Cán bộ"));
+                .FirstOrDefaultAsync(u => u.SDT == SDT && u.MatKhau == MatKhau && (u.VaiTro== "Cán bộ" || u.VaiTro== "Admin"));
 
             if (user == null)
-                return Unauthorized("Sai tài khoản hoặc mật khẩu");
-
+                return Unauthorized(); 
             return Ok(new
             {
-                message = "Đăng nhập thành công",
-                TenHienThi = user
+                UserId = user.UserId,
+                Ten = user.HoTen,
+                VaiTro = user.VaiTro,
+                TrangThai = user.TrangThai
             });
         }
+
 
     }
 }

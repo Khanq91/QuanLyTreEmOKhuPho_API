@@ -1065,4 +1065,5 @@ update SuKien
 set NgayKetThuc='2025-12-21'
 where SuKienID = 3
 
+select * from PhieuMinhChung
 select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 

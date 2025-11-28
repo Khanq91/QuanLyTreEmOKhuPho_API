@@ -94,6 +94,150 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "AnalyzeAllChildren",
+    "RelativePath": "api/Clustering/analyze-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[QuanLyTreEmAPI.Services.TreEmWithPriority, QuanLyTreEmAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "AnalyzeByKhuPho",
+    "RelativePath": "api/Clustering/analyze-by-khupho/{khuPhoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "khuPhoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[QuanLyTreEmAPI.Services.TreEmWithPriority, QuanLyTreEmAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "AnalyzeChild",
+    "RelativePath": "api/Clustering/analyze/{treEmId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "treEmId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuanLyTreEmAPI.DTOs.AI.ClusterPrediction",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "ExportCsv",
+    "RelativePath": "api/Clustering/export-csv",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "CheckHealth",
+    "RelativePath": "api/Clustering/health",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "GetHighPriorityChildren",
+    "RelativePath": "api/Clustering/high-priority",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "GetPriorityGroups",
+    "RelativePath": "api/Clustering/priority-groups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "SearchChildren",
+    "RelativePath": "api/Clustering/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "criteria",
+        "Type": "QuanLyTreEmAPI.Controllers.SearchCriteria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.ClusteringController",
+    "Method": "GetStatistics",
+    "RelativePath": "api/Clustering/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.HoTroVaUngHoController",
     "Method": "GetChiTietQuaTang",
     "RelativePath": "api/HoTroVaUngHo/ChiTietQuaTang/{id}",
@@ -648,6 +792,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.AuthController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/mobile/Auth/QuenMatKhau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyTreEmAPI.DTOs.Auth.ForgotPasswordRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QuanLyTreEmAPI.Controllers.Mobile.PhuHuynhController",
     "Method": "CapNhatPhuHuynh",
     "RelativePath": "api/Mobile/PhuHuynh/CapNhatPhuHuynh",
@@ -922,7 +1082,7 @@
       {
         "Name": "file",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -1934,6 +2094,16 @@
     "ContainingType": "QuanLyTreEmAPI.Controllers.TreEmController",
     "Method": "GetDanhSachTreEm",
     "RelativePath": "api/TreEm/DanhSach",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.TreEmController",
+    "Method": "GetPhuHuynh",
+    "RelativePath": "api/TreEm/DanhSachPhuHuynh",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
