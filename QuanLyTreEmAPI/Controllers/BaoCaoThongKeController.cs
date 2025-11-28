@@ -138,18 +138,21 @@ namespace QuanLyTreEm.API.Controllers
                 .ToList();
 
             var series = Periods(fromDate, toDate, granularity)
-                .Select(p => new
-                {
-                    Label = granularity.ToLowerInvariant() switch
-                    {
-                        "day" => p.start.ToString("dd/MM/yyyy"),
-                        "week" => $"Tuần {CultureInfo.GetCultureInfo("vi-VN").Calendar.GetWeekOfYear(p.start, CalendarWeekRule.FirstDay, DayOfWeek.Monday)}/{p.start.Year}",
-                        "quarter" => $"Q{((p.start.Month - 1) / 3) + 1}/{p.start.Year}",
-                        "year" => p.start.ToString("yyyy"),
-                        _ => p.start.ToString("MM/yyyy")
-                    },
-                    Count = events.Count(d => d >= p.start && d < p.end)
-                });
+    .Select(p => new
+    {
+        Label = granularity.ToLowerInvariant() switch
+        {
+            "day" => p.start.ToString("dd/MM/yyyy"),
+            "week" => $"Tuần {CultureInfo.GetCultureInfo("vi-VN").Calendar
+                        .GetWeekOfYear(p.start, CalendarWeekRule.FirstDay, DayOfWeek.Monday)}/{p.start.Year}",
+            "quarter" => $"Q{((p.start.Month - 1) / 3) + 1}/{p.start.Year}",
+            "year" => p.start.ToString("yyyy"),
+            _ => p.start.ToString("MM/yyyy")
+        },
+
+        SoLuongSuKien = events.Count(d => d >= p.start && d < p.end) // 👈 Sửa tên biến
+    });
+
 
             return Ok(series);
         }

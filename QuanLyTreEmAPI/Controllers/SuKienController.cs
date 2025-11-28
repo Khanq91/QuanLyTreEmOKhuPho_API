@@ -140,7 +140,7 @@ namespace QuanLyTreEmAPI.Controllers
              .Include(x => x.ChiPhiSuKiens)
                  .ThenInclude(cp => cp.ChiTietChiPhiSuKiens)
              .AsNoTracking()
-             .FirstOrDefaultAsync(x => x.SuKienId == id);
+             .FirstOrDefaultAsync(x => x.SuKienID == id);
 
             var tietMucs = new Dictionary<int, List<TietMucSuKien>>();
             if (sk == null)
