@@ -345,41 +345,36 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(u => u.PhanBoUngHoChiPhis)
                 .Include(u => u.QuaTangUngHos)
                     .ThenInclude(q => q.PhanPhatQuas)
-                .Include(u => u.PhieuMinhChungs)  // ✅ THÊM PhieuMinhChung
-                .Include(u => u.TreEms)            // ✅ THÊM TreEms (many-to-many)
+                .Include(u => u.PhieuMinhChungs)
                 .FirstOrDefaultAsync(u => u.UngHoId == UngHoId);
 
             if (ungHo == null)
-                return NotFound("Không tìm thấy bản ghi Ủng hộ.");
+                return NotFound(new { Message = "Không tìm thấy bản ghi Ủng hộ." });
 
-            // 1. Xóa PhanPhatQua (cascade từ QuaTangUngHo)
-            foreach (var qua in ungHo.QuaTangUngHos)
+            // ✅ KIỂM TRA: Nếu đã có Quà tặng ủng hộ → KHÔNG CHO XÓA
+            if (ungHo.QuaTangUngHos.Any())
             {
-                if (qua.PhanPhatQuas.Any())
-                    _context.PhanPhatQuas.RemoveRange(qua.PhanPhatQuas);
+                return BadRequest(new
+                {
+                    Message = "Không thể xóa! Đã có quà tặng ủng hộ được tạo từ bản ghi này.",
+                    SoLuongQuaTang = ungHo.QuaTangUngHos.Count
+                });
             }
 
-            // 2. Xóa QuaTangUngHo
-            if (ungHo.QuaTangUngHos.Any())
-                _context.QuaTangUngHos.RemoveRange(ungHo.QuaTangUngHos);
-
-            // 3. Xóa PhanBoUngHoChiPhi
+            // 1. Xóa PhanBoUngHoChiPhi
             if (ungHo.PhanBoUngHoChiPhis.Any())
                 _context.PhanBoUngHoChiPhis.RemoveRange(ungHo.PhanBoUngHoChiPhis);
 
-            // 4. ✅ Xóa PhieuMinhChung
+            // 2. Xóa PhieuMinhChung
             if (ungHo.PhieuMinhChungs.Any())
                 _context.PhieuMinhChungs.RemoveRange(ungHo.PhieuMinhChungs);
 
-            // 5. ✅ Xóa liên kết UngHo_TreEm (many-to-many, chỉ xóa liên kết)
-            ungHo.TreEms.Clear();
-
-            // 6. Xóa bản ghi cha UngHo
+            // 3. Xóa bản ghi cha UngHo
             _context.UngHos.Remove(ungHo);
 
             await _context.SaveChangesAsync();
 
-            return Ok("Xóa thành công.");
+            return Ok(new { Message = "Xóa ủng hộ thành công." });
         }
 
         [HttpGet("ThongTinManhThuongQuan")]

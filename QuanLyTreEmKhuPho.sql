@@ -1064,6 +1064,6 @@ where SuKienID = 3
 update SuKien
 set NgayKetThuc='2025-12-21'
 where SuKienID = 3
-
-select * from PhieuMinhChung
-select * from ManhThuongQuan,UngHo,PhieuMinhChung where ManhThuongQuan.ManhThuongQuanID=UngHo.ManhThuongQuanID and UngHo.UngHoID=PhieuMinhChung.UngHoID and ManhThuongQuan.ManhThuongQuanID=2 
+select * from UngHo,QuaTangUngHo where UngHo.UngHoID=QuaTangUngHo.QuaTangUngHoID and UngHo.UngHoID=2
+select * from QuaTangUngHo where QuaTangUngHoID=24
+select * from UngHo where UngHoID=18

@@ -168,6 +168,7 @@ namespace QuanLyTreEmAPI.Controllers
                     PhanTrangHoanThanh = phanTramHoanThanh,
                     SoLuongConLai = quaTang.SoLuongConLai,
                     Anh=quaTang.Anh,
+                    DonGia=quaTang.DonGia,
                     DoiTuongNhan = quaTang.DoiTuongNhan ?? "",
                     TenManhThuongQuan = quaTang.UngHo?.ManhThuongQuan?.Ten ?? "",
                     DiaChi = quaTang.UngHo?.ManhThuongQuan?.DiaChi ?? "",
@@ -298,23 +299,17 @@ namespace QuanLyTreEmAPI.Controllers
                     : base64String;
 
                 byte[] imageBytes = Convert.FromBase64String(base64Data);
-
-                // Tạo tên file unique
                 string fileName = $"{Guid.NewGuid()}.jpg";
 
-                // Đường dẫn lưu file: wwwroot/Anh/QuaTang
                 string uploadPath = Path.Combine(env.WebRootPath, "Anh", folderName);
 
-                // Tạo folder nếu chưa tồn tại
                 if (!Directory.Exists(uploadPath))
                     Directory.CreateDirectory(uploadPath);
 
                 string fullPath = Path.Combine(uploadPath, fileName);
 
-                // ✅ Ghi file bằng System.IO.File để tránh nhầm với ControllerBase.File
                 await System.IO.File.WriteAllBytesAsync(fullPath, imageBytes);
 
-                // Trả về đường dẫn tương đối (dùng trong API trả về)
                 return $"/Anh/{folderName}/{fileName}";
             }
             catch (Exception ex)
@@ -324,7 +319,9 @@ namespace QuanLyTreEmAPI.Controllers
         }
 
         [HttpPost("TaoHoTroVaPhanPhat")]
-        public async Task<ActionResult<TaoHoTroVaPhanPhatResponseDTO>> TaoHoTroVaPhanPhat(TaoHoTroVaPhanPhatDTO request, [FromServices] IWebHostEnvironment env)
+        public async Task<ActionResult<TaoHoTroVaPhanPhatResponseDTO>> TaoHoTroVaPhanPhat(
+          TaoHoTroVaPhanPhatDTO request,
+          [FromServices] IWebHostEnvironment env)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
 
@@ -342,12 +339,21 @@ namespace QuanLyTreEmAPI.Controllers
                     return NotFound(new { message = "Không tìm thấy thông tin ủng hộ" });
 
                 int tongSoLuongPhat = request.DanhSachTreEmNhan.Sum(t => t.SoLuongNhan);
-                var donGia = request.DonGia;
-                if (!donGia.HasValue || donGia.Value <= 0)
+
+                // ✅ TÍNH ĐƠN GIÁ TỪ UNGHỘ (LUÔN LUÔN)
+                decimal donGia = 0;
+
+                if (ungHo.SoLuongVatPham.HasValue && ungHo.SoLuongVatPham.Value > 0)
                 {
-                    // Tính tự động từ thông tin UngHo
-                    donGia = (ungHo.SoTien / (ungHo.SoLuongVatPham ?? 1)); // tránh chia cho 0
+                    donGia = ungHo.SoTien.GetValueOrDefault() / ungHo.SoLuongVatPham.Value;
                 }
+                else
+                {
+                    // Nếu không có SoLuongVatPham, có thể dùng request.DonGia hoặc = 0
+                    donGia = request.DonGia ?? 0;
+                }
+
+                // KIỂM TRA SỐ LƯỢNG UngHo
                 if (!ungHo.SoLuongConLai.HasValue || ungHo.SoLuongConLai < tongSoLuongPhat)
                 {
                     return BadRequest(new
@@ -356,6 +362,7 @@ namespace QuanLyTreEmAPI.Controllers
                     });
                 }
 
+                // TRƯỜNG HỢP 1: SỬ DỤNG QUÀ TẶNG CÓ SẴN
                 if (request.QuaTangUngHoId.HasValue)
                 {
                     quaTang = await _context.QuaTangUngHos
@@ -371,9 +378,15 @@ namespace QuanLyTreEmAPI.Controllers
                             message = $"Số lượng quà tặng không đủ! Còn lại: {quaTang.SoLuongConLai}, Cần: {tongSoLuongPhat}"
                         });
                     }
+
+                    // ✅ CẬP NHẬT ĐƠN GIÁ CHO QUÀ TẶNG CÓ SẴN (nếu cần)
+                    // Tùy logic: có thể giữ nguyên hoặc update
+                    // quaTang.DonGia = donGia; // Uncomment nếu muốn update
                 }
+                // TRƯỜNG HỢP 2: TẠO MỚI QUÀ TẶNG
                 else
                 {
+                    // Lưu ảnh
                     string? anhPath = null;
                     if (!string.IsNullOrEmpty(request.AnhQua))
                     {
@@ -386,6 +399,8 @@ namespace QuanLyTreEmAPI.Controllers
                             return BadRequest(new { message = $"Lỗi lưu ảnh: {ex.Message}" });
                         }
                     }
+
+                    // ✅ TẠO QUÀ TẶNG MỚI VỚI ĐƠN GIÁ ĐÃ TÍNH TỪ UNGHỘ
                     quaTang = new QuaTangUngHo
                     {
                         UngHoId = ungHo.UngHoId,
@@ -396,9 +411,9 @@ namespace QuanLyTreEmAPI.Controllers
                         LoaiHoTro = request.LoaiHoTro,
                         SoLuongTong = tongSoLuongPhat,
                         SoLuongConLai = tongSoLuongPhat,
-                        DonGia = donGia ?? 0,
+                        DonGia = donGia, // ✅ Đơn giá từ UngHo.SoTien / UngHo.SoLuongVatPham
                         DoiTuongNhan = request.DoiTuongNhan ?? ungHo.DoiTuong,
-                        Anh = anhPath 
+                        Anh = anhPath
                     };
 
                     _context.QuaTangUngHos.Add(quaTang);
@@ -408,8 +423,8 @@ namespace QuanLyTreEmAPI.Controllers
                     await _context.SaveChangesAsync();
                 }
 
+                // LẤY DANH SÁCH TRẺ EM
                 var treEmIds = request.DanhSachTreEmNhan.Select(t => t.TreEmId).ToList();
-
                 var danhSachTreEm = await _context.TreEms
                     .Where(t => treEmIds.Contains(t.TreEmId))
                     .ToListAsync();
@@ -419,22 +434,27 @@ namespace QuanLyTreEmAPI.Controllers
 
                 var danhSachPhanPhat = new List<PhanPhatQuaInfo>();
 
+                // TẠO PHÂN PHÁT QUÀ
                 foreach (var treEmNhan in request.DanhSachTreEmNhan)
                 {
                     var ngayPP = request.NgayPhanPhat.ToDateTime(TimeOnly.MinValue);
+
+                    // Kiểm tra trùng lặp
                     var trungLap = await _context.PhanPhatQuas.AnyAsync(pp =>
                         pp.QuaTangUngHoId == quaTang.QuaTangUngHoId &&
                         pp.TreEmId == treEmNhan.TreEmId &&
                         pp.NgayPhanPhat.Date == ngayPP.Date
                     );
+
                     if (trungLap)
                     {
                         await transaction.RollbackAsync();
                         return BadRequest(new
                         {
-                            message = $"Trẻ ID {treEmNhan.TreEmId} đã nhận quà ngày {request.NgayPhanPhat:dd/MM/yyyy}"
+                            message = $"Trẻ ID {treEmNhan.TreEmId} đã nhận quà từ quà tặng này vào ngày {request.NgayPhanPhat:dd/MM/yyyy}"
                         });
                     }
+
                     var phanPhat = new PhanPhatQua
                     {
                         QuaTangUngHoId = quaTang.QuaTangUngHoId,
@@ -461,7 +481,7 @@ namespace QuanLyTreEmAPI.Controllers
                     });
                 }
 
-                // 5. CẬP NHẬT SỐ LƯỢNG QUÀ
+                // CẬP NHẬT SỐ LƯỢNG CÒN LẠI
                 if (request.TrangThaiPhat == "Đã phát")
                 {
                     quaTang.SoLuongConLai -= tongSoLuongPhat;
@@ -475,13 +495,16 @@ namespace QuanLyTreEmAPI.Controllers
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-          
+
                 return Ok(new
                 {
                     Success = true,
                     Message = $"Đã phân phát quà cho {request.DanhSachTreEmNhan.Count} trẻ",
                     UngHoId = ungHo.UngHoId,
                     QuaTangUngHoId = quaTang.QuaTangUngHoId,
+                    DonGia = donGia, // ✅ Đơn giá đã tính từ UngHo
+                    SoTienUngHo = ungHo.SoTien,
+                    SoLuongVatPham = ungHo.SoLuongVatPham,
                     SoTreEmDaNhan = request.DanhSachTreEmNhan.Count,
                     TongSoLuongPhat = tongSoLuongPhat,
                     SoLuongConLaiQuaTang = quaTang.SoLuongConLai,
@@ -791,7 +814,6 @@ namespace QuanLyTreEmAPI.Controllers
                 TenQuaTang = quaTang.TenQua
             });
         }
-
         [HttpDelete("XoaQuaTangUngHo/{quaTangUngHoId}")]
         public async Task<IActionResult> XoaQuaTangUngHo(int quaTangUngHoId)
         {
@@ -802,7 +824,7 @@ namespace QuanLyTreEmAPI.Controllers
             if (qua == null)
                 return NotFound(new { Message = "Không tìm thấy quà tặng ủng hộ." });
 
-            // Kiểm tra có trẻ nào đã nhận chưa
+            // Kiểm tra có trẻ nào đã nhận quà chưa
             bool coTreDaNhan = await _context.PhanPhatQuas
                 .AnyAsync(p => p.QuaTangUngHoId == quaTangUngHoId
                                && p.TrangThai == "Đã nhận");
@@ -811,31 +833,36 @@ namespace QuanLyTreEmAPI.Controllers
             {
                 return BadRequest(new
                 {
-                    Message = "Không thể xóa! Đã có trẻ nhận quà từ quà tặng này."
+                    Message = "Không thể xóa! Đã có trẻ em nhận quà từ quà tặng này."
                 });
             }
 
             // Nếu không có trẻ nào đã nhận → Hoàn trả số lượng vào UngHo
-            var ungHo = await _context.UngHos
-                .FirstOrDefaultAsync(u => u.UngHoId == qua.UngHoId);
-
-            if (ungHo != null)
+            if (qua.UngHoId.HasValue)
             {
-                // Cộng số lượng quà tổng vào SoLuongConLai của Ủng hộ
-                ungHo.SoLuongConLai += qua.SoLuongTong;
-                await _context.SaveChangesAsync();
+                var ungHo = await _context.UngHos
+                    .FirstOrDefaultAsync(u => u.UngHoId == qua.UngHoId);
+
+                if (ungHo != null)
+                {
+                    // Cộng số lượng quà tổng vào SoLuongConLai của Ủng hộ
+                    ungHo.SoLuongConLai = (ungHo.SoLuongConLai ?? 0) + qua.SoLuongTong;
+                }
             }
 
-            // Xóa dữ liệu phân phát (nếu có nhưng chưa nhận)
-            var phanPhat = await _context.PhanPhatQuas
-                .Where(p => p.QuaTangUngHoId == quaTangUngHoId)
+            // Xóa các bản ghi phân phát (chỉ những bản ghi chưa nhận)
+            var phanPhatChuaNhan = await _context.PhanPhatQuas
+                .Where(p => p.QuaTangUngHoId == quaTangUngHoId
+                            && p.TrangThai != "Đã nhận")
                 .ToListAsync();
 
-            if (phanPhat.Any())
-                _context.PhanPhatQuas.RemoveRange(phanPhat);
+            if (phanPhatChuaNhan.Any())
+                _context.PhanPhatQuas.RemoveRange(phanPhatChuaNhan);
 
             // Xóa quà tặng
             _context.QuaTangUngHos.Remove(qua);
+
+            // Lưu tất cả thay đổi
             await _context.SaveChangesAsync();
 
             return Ok(new { Message = "Xóa quà tặng ủng hộ thành công!" });
