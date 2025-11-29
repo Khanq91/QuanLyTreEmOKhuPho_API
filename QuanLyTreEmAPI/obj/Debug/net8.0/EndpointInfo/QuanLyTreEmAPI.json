@@ -4847,6 +4847,10 @@
             "type": "string",
             "nullable": true
           },
+          "danhGiaCongViec": {
+            "type": "string",
+            "nullable": true
+          },
           "ghiChu": {
             "type": "string",
             "nullable": true

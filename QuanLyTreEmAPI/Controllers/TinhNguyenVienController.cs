@@ -122,7 +122,7 @@ namespace QuanLyTreEmAPI.Controllers
                     TongSuKienThamGia = g.Select(x => x.s.SuKienID).Distinct().Count(sid => sid != null)
                 })
                 .OrderBy(x => x.TinhNguyenVienID)
-                .FirstOrDefaultAsync(); // Lấy 1 phần tử đầu tiên (hoặc null nếu không có)
+                .FirstOrDefaultAsync(); 
 
             if (result == null)
                 return NotFound(); // Không tìm thấy UserID
@@ -161,7 +161,8 @@ namespace QuanLyTreEmAPI.Controllers
                 {
                     sk.TenSuKien,
                     sk.NgayBatDau,
-                    pc.CongViec
+                    pc.CongViec,
+                    pc.DanhGiaCongViec
                 }
             ).ToListAsync();
 

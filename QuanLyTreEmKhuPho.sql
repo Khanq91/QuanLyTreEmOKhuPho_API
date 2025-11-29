@@ -91,6 +91,7 @@ CREATE TABLE SuKien (
     NgayBatDau DATE,
     NgayKetThuc DATE,
     SoLuongTinhNguyenVien INT,
+	 AnhSuKien NVARCHAR(500) NULL,
     SoLuongTreEm INT,
     UserID INT FOREIGN KEY REFERENCES NguoiDung(UserID),
     KhuPhoID INT FOREIGN KEY REFERENCES KhuPho(KhuPhoID)
@@ -112,6 +113,7 @@ CREATE TABLE PhanCongTinhNguyenVien (
     TinhNguyenVienID INT FOREIGN KEY REFERENCES TinhNguyenVien(TinhNguyenVienID),
     CongViec NVARCHAR(200),
     GhiChu NVARCHAR(300),
+    DanhGiaCongViec NVARCHAR(300),
     NgayPhanCong DATE DEFAULT GETDATE()
 );
 
@@ -203,6 +205,7 @@ CREATE TABLE TreEm (
     DanToc NVARCHAR(20),
     QuocTich NVARCHAR(30),
     Anh VARCHAR(500),
+	Useyn BIT DEFAULT 1,
     TruongID INT FOREIGN KEY REFERENCES TruongHoc(TruongID),
     TinhTrang NVARCHAR(100),
     KhuPhoID INT FOREIGN KEY REFERENCES KhuPho(KhuPhoID)
@@ -474,33 +477,33 @@ VALUES
 (N'Tuần 2 - Kỹ năng tự bảo vệ bản thân', '2025-07-17 14:00', '2025-07-20 17:00', 8);
 
 -- 10. PhanCongTinhNguyenVien (25 phân công)
-INSERT INTO PhanCongTinhNguyenVien (SuKienID, TinhNguyenVienID, CongViec, GhiChu, NgayPhanCong)
+INSERT INTO PhanCongTinhNguyenVien (SuKienID, TinhNguyenVienID, CongViec, GhiChu, NgayPhanCong,DanhGiaCongViec)
 VALUES
-(1, 1, N'Điều phối chung', N'Giám sát toàn bộ sự kiện', '2025-08-25'),
-(1, 2, N'Phát quà cho trẻ', N'Khu vực A', '2025-08-25'),
-(1, 3, N'Trông trẻ', N'Khu vực B', '2025-08-25'),
-(2, 4, N'Chuẩn bị sân khấu', N'Dựng sân khấu và âm thanh', '2025-06-01'),
-(2, 5, N'Tổ chức trò chơi', N'Các trò chơi dân gian', '2025-06-01'),
-(2, 6, N'Hỗ trợ ăn uống', N'Chuẩn bị bữa ăn cho trẻ', '2025-06-01'),
-(3, 7, N'Phát quà tết', N'Điều phối phát quà', '2025-01-10'),
-(3, 8, N'Giao lưu văn nghệ', N'Tổ chức tiết mục', '2025-01-10'),
-(4, 1, N'Hướng dẫn vệ sinh', N'Chia nhóm làm việc', '2025-04-15'),
-(4, 2, N'Trồng cây xanh', N'Hướng dẫn trồng cây', '2025-04-15'),
-(5, 3, N'Dẫn chương trình', N'MC chính của sự kiện', '2025-05-10'),
-(5, 4, N'Chấm thi', N'Hội đồng giám khảo', '2025-05-10'),
-(5, 5, N'Tổ chức hậu cần', N'Chuẩn bị sân khấu, giải thưởng', '2025-05-10'),
-(6, 6, N'Giới thiệu sách', N'Giới thiệu sách hay cho trẻ', '2025-03-01'),
-(6, 7, N'Phát sách tặng', N'Phát sách cho các em', '2025-03-01'),
-(7, 8, N'Điều phối phát quà', N'Tổ chức phát quà', '2025-05-20'),
-(7, 1, N'Tổ chức trò chơi', N'Các trò chơi vui nhộn', '2025-05-20'),
-(7, 2, N'Hỗ trợ ăn uống', N'Phục vụ bữa ăn', '2025-05-20'),
-(8, 3, N'Giảng dạy kỹ năng giao tiếp', N'Giáo viên chính', '2025-07-01'),
-(8, 4, N'Giảng dạy kỹ năng tự bảo vệ', N'Huấn luyện viên', '2025-07-01'),
-(8, 5, N'Hỗ trợ giảng dạy', N'Trợ giảng', '2025-07-01'),
-(1, 4, N'Nhiếp ảnh', N'Chụp ảnh sự kiện', '2025-08-25'),
-(2, 7, N'Y tế', N'Hỗ trợ y tế cho trẻ', '2025-06-01'),
-(3, 1, N'Đón tiếp', N'Đón tiếp khách mời', '2025-01-10'),
-(7, 3, N'An ninh trật tự', N'Đảm bảo an toàn', '2025-05-20');
+(1, 1, N'Điều phối chung', N'Giám sát toàn bộ sự kiện', '2025-08-25',N'Hoàn thành tốt'),
+(1, 2, N'Phát quà cho trẻ', N'Khu vực A', '2025-08-25',N'Hoàn thành tốt'),
+(1, 3, N'Trông trẻ', N'Khu vực B', '2025-08-25',N'Hoàn thành tốt'),
+(2, 4, N'Chuẩn bị sân khấu', N'Dựng sân khấu và âm thanh', '2025-06-01',N'Chưa hoàn thành tốt'),
+(2, 5, N'Tổ chức trò chơi', N'Các trò chơi dân gian', '2025-06-01',N'Chưa hoàn thành tốt'),
+(2, 6, N'Hỗ trợ ăn uống', N'Chuẩn bị bữa ăn cho trẻ', '2025-06-01',N'Chưa hoàn thành tốt'),
+(3, 7, N'Phát quà tết', N'Điều phối phát quà', '2025-01-10',N'Không hoàn thành tốt'),
+(3, 8, N'Giao lưu văn nghệ', N'Tổ chức tiết mục', '2025-01-10',N'Không hoàn thành tốt'),
+(4, 1, N'Hướng dẫn vệ sinh', N'Chia nhóm làm việc', '2025-04-15',N'Không hoàn thành tốt'),
+(4, 2, N'Trồng cây xanh', N'Hướng dẫn trồng cây', '2025-04-15',N'Không hoàn thành tốt'),
+(5, 3, N'Dẫn chương trình', N'MC chính của sự kiện', '2025-05-10',N'Không hoàn thành tốt'),
+(5, 4, N'Chấm thi', N'Hội đồng giám khảo', '2025-05-10',N'Không hoàn thành tốt'),
+(5, 5, N'Tổ chức hậu cần', N'Chuẩn bị sân khấu, giải thưởng', '2025-05-10',N'Không hoàn thành'),
+(6, 6, N'Giới thiệu sách', N'Giới thiệu sách hay cho trẻ', '2025-03-01',N'Không hoàn thành'),
+(6, 7, N'Phát sách tặng', N'Phát sách cho các em', '2025-03-01',N'Không hoàn thành'),
+(7, 8, N'Điều phối phát quà', N'Tổ chức phát quà', '2025-05-20',N'Không hoàn thành'),
+(7, 1, N'Tổ chức trò chơi', N'Các trò chơi vui nhộn', '2025-05-20',N'Vắng'),
+(7, 2, N'Hỗ trợ ăn uống', N'Phục vụ bữa ăn', '2025-05-20',N'Đã hoàn thành'),
+(8, 3, N'Giảng dạy kỹ năng giao tiếp', N'Giáo viên chính', '2025-07-01',N'Vắng'),
+(8, 4, N'Giảng dạy kỹ năng tự bảo vệ', N'Huấn luyện viên', '2025-07-01',N'Vắng'),
+(8, 5, N'Hỗ trợ giảng dạy', N'Trợ giảng', '2025-07-01',N'Vắng'),
+(1, 4, N'Nhiếp ảnh', N'Chụp ảnh sự kiện', '2025-08-25',N'Vắng'),
+(2, 7, N'Y tế', N'Hỗ trợ y tế cho trẻ', '2025-06-01',N'Vắng'),
+(3, 1, N'Đón tiếp', N'Đón tiếp khách mời', '2025-01-10',N'Vắng'),
+(7, 3, N'An ninh trật tự', N'Đảm bảo an toàn', '2025-05-20',N'Vắng');
 
 -- 11. TietMucSuKien (30 tiết mục)
 INSERT INTO TietMucSuKien (TenTietMuc, NguoiThucHien, ChiPhiTietMuc, ThoiGianChiTietSuKienID)
@@ -1049,14 +1052,6 @@ SELECT * FROM TreEm_SuKien
 SELECT * FROM PhanBoUngHoChiPhi
 SELECT * FROM QuaTangUngHo
 SELECT * FROM PhanPhatQua
-
-ALTER TABLE TietMucSuKien
-ADD SuKienID INT NULL;
-ALTER TABLE SuKien
-ADD AnhSuKien NVARCHAR(500) NULL;
-ALTER TABLE TreEm
-ADD Useyn BIT DEFAULT 1;
-
 select * from SuKien
 update SuKien
 set NgayBatDau='2025-12-20'
@@ -1064,6 +1059,4 @@ where SuKienID = 3
 update SuKien
 set NgayKetThuc='2025-12-21'
 where SuKienID = 3
-select * from UngHo,QuaTangUngHo where UngHo.UngHoID=QuaTangUngHo.QuaTangUngHoID and UngHo.UngHoID=2
-select * from QuaTangUngHo where QuaTangUngHoID=24
-select * from UngHo where UngHoID=18
+select * from NguoiDung where VaiTro= N'Tình nguyện viên'
