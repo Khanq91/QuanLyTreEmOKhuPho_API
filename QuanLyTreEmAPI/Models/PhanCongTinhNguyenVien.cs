@@ -14,6 +14,7 @@ public partial class PhanCongTinhNguyenVien
     public string? CongViec { get; set; }
 
     public string? GhiChu { get; set; }
+    public string? DanhGiaCongViec { get; set; }
 
     public DateOnly? NgayPhanCong { get; set; }
 

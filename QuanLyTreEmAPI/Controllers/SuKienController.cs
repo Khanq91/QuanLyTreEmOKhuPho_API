@@ -471,11 +471,12 @@ namespace QuanLyTreEmAPI.Controllers
         [HttpGet("nguoiDung")]
         public async Task<IActionResult> GetNguoiDung()
         {
-            var result = await _context.NguoiDungs
+            var result = await _context.NguoiDungs.Where(x => x.VaiTro == "Tình nguyện viên")
                 .Select(u => new
                 {
                     u.UserId,
-                    HoTen = u.HoTen 
+                    HoTen = u.HoTen
+                  
                 })
                 .OrderBy(u => u.HoTen)
                 .ToListAsync();
@@ -493,6 +494,56 @@ namespace QuanLyTreEmAPI.Controllers
                     t.Sdt
                 })
                 .ToListAsync();
+
+            return Ok(result);
+        }
+        [HttpGet("{suKienId}/tinhnguyenvien")]
+        public async Task<IActionResult> GetDanhSachTinhNguyenVien(int suKienId)
+        {
+            // danh sách TNV (join User + TNV)
+            var listTNV = await (
+                from tnv in _context.TinhNguyenViens
+                join nd in _context.NguoiDungs on tnv.UserId equals nd.UserId
+                select new
+                {
+                    tnv.TinhNguyenVienId,
+                    nd.HoTen,
+                    nd.Email,
+                    nd.SDT,
+                    nd.Anh,
+                    KhuPho = tnv.KhuPhoId
+                }
+            ).ToListAsync();
+
+            // danh sách phân công
+            var phanCong = await _context.PhanCongTinhNguyenViens
+                .Where(x => x.SuKienId == suKienId)
+                .Select(x => new
+                {
+                    x.PhanCongId,
+                    x.TinhNguyenVienId,
+                    x.CongViec,
+                    x.GhiChu,
+                    x.NgayPhanCong,
+                    x.DanhGiaCongViec
+                })
+                .ToListAsync();
+
+            // merge lại theo TNV
+            var result = listTNV.Select(tnv => new
+            {
+                tnv.TinhNguyenVienId,
+                tnv.HoTen,
+                tnv.Email,
+                tnv.SDT,
+                tnv.Anh,
+                tnv.KhuPho,
+
+                // nếu chưa có phân công → null
+                PhanCong = phanCong
+                    .Where(pc => pc.TinhNguyenVienId == tnv.TinhNguyenVienId)
+                    .FirstOrDefault()
+            });
 
             return Ok(result);
         }
@@ -700,6 +751,67 @@ namespace QuanLyTreEmAPI.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Đã xóa trẻ khỏi danh sách tham gia sự kiện." });
+        }
+        public class TaoPhanCongRequest
+        {
+            public int SuKienID { get; set; }
+            public int TinhNguyenVienID { get; set; }
+            public string CongViec { get; set; }
+            public string GhiChu { get; set; }
+        }
+
+        [HttpPost("phancong")]
+        public async Task<IActionResult> TaoPhanCong([FromBody] TaoPhanCongRequest req)
+        {
+            var pc = new PhanCongTinhNguyenVien
+            {
+                SuKienId = req.SuKienID,
+                TinhNguyenVienId = req.TinhNguyenVienID,
+                CongViec = req.CongViec,
+                GhiChu = req.GhiChu,
+                NgayPhanCong = DateOnly.FromDateTime(DateTime.Now),
+                DanhGiaCongViec = null
+            };
+
+            _context.PhanCongTinhNguyenViens.Add(pc);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đã phân công thành công" });
+        }
+        public class CapNhatPhanCongRequest
+        {
+            public string CongViec { get; set; }
+            public string GhiChu { get; set; }
+            public string DanhGiaCongViec { get; set; }
+        }
+
+        [HttpPut("phancong/{phanCongId}")]
+        public async Task<IActionResult> CapNhatPhanCong(int phanCongId, [FromBody] CapNhatPhanCongRequest req)
+        {
+            var pc = await _context.PhanCongTinhNguyenViens.FindAsync(phanCongId);
+
+            if (pc == null)
+                return NotFound(new { message = "Không tìm thấy phân công" });
+
+            pc.CongViec = req.CongViec;
+            pc.GhiChu = req.GhiChu;
+            pc.DanhGiaCongViec = req.DanhGiaCongViec;
+
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Cập nhật phân công thành công" });
+        }
+        [HttpDelete("phancong/{phanCongId}")]
+        public async Task<IActionResult> XoaPhanCong(int phanCongId)
+        {
+            var pc = await _context.PhanCongTinhNguyenViens.FindAsync(phanCongId);
+
+            if (pc == null)
+                return NotFound(new { message = "Không tìm thấy phân công" });
+
+            _context.PhanCongTinhNguyenViens.Remove(pc);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đã xóa phân công" });
         }
 
     }

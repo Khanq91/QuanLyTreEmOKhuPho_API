@@ -49,29 +49,45 @@ namespace QuanLyTreEmAPI.Controllers
             return Ok(treList);
         }
         [HttpPost("ghinhan")]
-        public async Task<IActionResult> GhiNhanVanDong([FromBody] VanDongTreEm model)
+        public async Task<IActionResult> GhiNhanVanDong([FromBody] GhiNhanVanDongDTO input)
         {
-            if (model == null || model.TreEmId <= 0)
+            if (input == null || input.TreEmId <= 0)
                 return BadRequest("Thiếu dữ liệu trẻ.");
 
-            var tre = await _context.TreEms.FindAsync(model.TreEmId);
+            var tre = await _context.TreEms.FindAsync(input.TreEmId);
             if (tre == null)
                 return NotFound("Không tìm thấy trẻ.");
 
-            // Tự động xác định HoanCanhID, Người dùng giả định (Admin)
-            model.NgayVanDong = DateOnly.FromDateTime(DateTime.Now);
-            model.SoLan = await _context.VanDongTreEms
-                            .CountAsync(v => v.TreEmId == model.TreEmId) + 1;
-            model.NguoiDungId ??= 1;
-            model.HoanCanhId ??= _context.TreEmHoanCanhs
-                .Where(h => h.TreEmId == model.TreEmId)
-                .Select(h => h.HoanCanhId).FirstOrDefault();
+            var tnv = await _context.NguoiDungs
+                .FirstOrDefaultAsync(x => x.UserId == input.NguoiVanDongId);
 
-            _context.VanDongTreEms.Add(model);
+            if (tnv == null)
+                return BadRequest("Người vận động không hợp lệ.");
+
+            var vd = new VanDongTreEm
+            {
+                TreEmId = input.TreEmId,
+                LyDo = input.LyDo,
+                KetQua = input.KetQua,
+                NgayVanDong = DateOnly.FromDateTime(DateTime.Now),
+                SoLan = await _context.VanDongTreEms.CountAsync(v => v.TreEmId == input.TreEmId) + 1,
+                HoanCanhId = _context.TreEmHoanCanhs
+                    .Where(h => h.TreEmId == input.TreEmId)
+                    .Select(h => h.HoanCanhId)
+                    .FirstOrDefault()
+            };
+
+            _context.VanDongTreEms.Add(vd);
+
+            tnv.NguoiVanDongId = input.TreEmId;
+            _context.NguoiDungs.Update(tnv);
+
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Đã ghi nhận vận động thành công!" });
+            return Ok(new { message = "Ghi nhận vận động thành công!" });
         }
+
+
         [HttpGet("vandong/chitiet/{treEmId}")]
         public async Task<IActionResult> GetChiTietVanDong(int treEmId)
         {
@@ -89,20 +105,28 @@ namespace QuanLyTreEmAPI.Controllers
                 tre.HoTen,
                 tre.NgaySinh,
                 LichSu = tre.VanDongTreEms
-                    .OrderByDescending(v => v.NgayVanDong)
-                    .Select(v => new
-                    {
-                        v.VanDongId,
-                        v.SoLan,
-                        v.LyDo,
-                        v.KetQua,
-                        v.NgayVanDong,
-                        HoanCanh = v.HoanCanh.LoaiHoanCanh
-                    })
-                    .ToList()
+                .OrderByDescending(v => v.NgayVanDong)
+                .Select(v => new
+                {
+                    v.VanDongId,
+                    v.SoLan,
+                    v.LyDo,
+                    v.KetQua,
+                    v.NgayVanDong,
+                    HoanCanh = v.HoanCanh.LoaiHoanCanh
+                })
+                .ToList()
+
             };
 
             return Ok(result);
+        }
+        public class GhiNhanVanDongDTO
+        {
+            public int TreEmId { get; set; }
+            public int NguoiVanDongId { get; set; }
+            public string? LyDo { get; set; }
+            public string? KetQua { get; set; }
         }
 
     }
