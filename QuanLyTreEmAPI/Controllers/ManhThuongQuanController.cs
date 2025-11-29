@@ -205,8 +205,11 @@ namespace QuanLyTreEmAPI.Controllers
                         join uh in _context.UngHos
                             on mtq.ManhThuongQuanId equals uh.ManhThuongQuanId into ungHoGroup
                         from uh in ungHoGroup.DefaultIfEmpty()
+                        join pmc in _context.PhieuMinhChungs
+                      on uh.UngHoId equals pmc.UngHoId into phieuGroup
+                            from pmc in phieuGroup.DefaultIfEmpty()
                         where mtq.ManhThuongQuanId == ManhThuongQuanID
-                        select new { mtq, uh };
+                        select new { mtq, uh,pmc };
 
             var result = await query
                 .GroupBy(g => new
@@ -236,6 +239,19 @@ namespace QuanLyTreEmAPI.Controllers
                         .Where(x => x.uh != null && x.uh.NgayUngHo.HasValue)
                         .Max(x => x.uh.NgayUngHo.Value)
                         .ToString("dd/MM/yyyy"),
+                    PhieuMinhChung = g
+                    .Where(x => x.pmc != null)
+                    .Select(x => new PhieuMinhChungDto
+                    {
+                        PhieuMinhChungID = x.pmc.MinhChungId,
+                        LoaiMinhChung = x.pmc.LoaiMinhChung,
+                        FilePath = x.pmc.FilePath,
+                        NgayCap = x.pmc.NgayCap.HasValue
+                        ? x.pmc.NgayCap.Value.ToDateTime(TimeOnly.MinValue)
+                        : null
+                    })
+                    .ToList()
+
                 })
                 .FirstOrDefaultAsync();
 
@@ -329,41 +345,36 @@ namespace QuanLyTreEmAPI.Controllers
                 .Include(u => u.PhanBoUngHoChiPhis)
                 .Include(u => u.QuaTangUngHos)
                     .ThenInclude(q => q.PhanPhatQuas)
-                .Include(u => u.PhieuMinhChungs)  // ✅ THÊM PhieuMinhChung
-                .Include(u => u.TreEms)            // ✅ THÊM TreEms (many-to-many)
+                .Include(u => u.PhieuMinhChungs)
                 .FirstOrDefaultAsync(u => u.UngHoId == UngHoId);
 
             if (ungHo == null)
-                return NotFound("Không tìm thấy bản ghi Ủng hộ.");
+                return NotFound(new { Message = "Không tìm thấy bản ghi Ủng hộ." });
 
-            // 1. Xóa PhanPhatQua (cascade từ QuaTangUngHo)
-            foreach (var qua in ungHo.QuaTangUngHos)
+            // ✅ KIỂM TRA: Nếu đã có Quà tặng ủng hộ → KHÔNG CHO XÓA
+            if (ungHo.QuaTangUngHos.Any())
             {
-                if (qua.PhanPhatQuas.Any())
-                    _context.PhanPhatQuas.RemoveRange(qua.PhanPhatQuas);
+                return BadRequest(new
+                {
+                    Message = "Không thể xóa! Đã có quà tặng ủng hộ được tạo từ bản ghi này.",
+                    SoLuongQuaTang = ungHo.QuaTangUngHos.Count
+                });
             }
 
-            // 2. Xóa QuaTangUngHo
-            if (ungHo.QuaTangUngHos.Any())
-                _context.QuaTangUngHos.RemoveRange(ungHo.QuaTangUngHos);
-
-            // 3. Xóa PhanBoUngHoChiPhi
+            // 1. Xóa PhanBoUngHoChiPhi
             if (ungHo.PhanBoUngHoChiPhis.Any())
                 _context.PhanBoUngHoChiPhis.RemoveRange(ungHo.PhanBoUngHoChiPhis);
 
-            // 4. ✅ Xóa PhieuMinhChung
+            // 2. Xóa PhieuMinhChung
             if (ungHo.PhieuMinhChungs.Any())
                 _context.PhieuMinhChungs.RemoveRange(ungHo.PhieuMinhChungs);
 
-            // 5. ✅ Xóa liên kết UngHo_TreEm (many-to-many, chỉ xóa liên kết)
-            ungHo.TreEms.Clear();
-
-            // 6. Xóa bản ghi cha UngHo
+            // 3. Xóa bản ghi cha UngHo
             _context.UngHos.Remove(ungHo);
 
             await _context.SaveChangesAsync();
 
-            return Ok("Xóa thành công.");
+            return Ok(new { Message = "Xóa ủng hộ thành công." });
         }
 
         [HttpGet("ThongTinManhThuongQuan")]

@@ -12,6 +12,7 @@ public partial class PhanCongTinhNguyenVien
     public int? TinhNguyenVienId { get; set; }
 
     public string? CongViec { get; set; }
+    public string? DanhGiaCongViec { get; set; }
 
     public string? GhiChu { get; set; }
     public string? DanhGiaCongViec { get; set; }

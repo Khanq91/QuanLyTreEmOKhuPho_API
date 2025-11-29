@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using QuanLyTreEmAPI.Data;
-using QuanLyTreEmAPI.Repositories;
 //using QuanLyTreEmAPI.Services;
 using Microsoft.OpenApi.Models;
+using QuanLyTreEmAPI.Data;
+using QuanLyTreEmAPI.Repositories;
+using QuanLyTreEmAPI.Services;
 using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://0.0.0.0:5035", "https://0.0.0.0:44362");
@@ -103,6 +104,8 @@ builder.Services.AddScoped<IPhuHuynhRepository, PhuHuynhRepository>();
 builder.Services.AddScoped<IPhieuHocTapRepository, PhieuHocTapRepository>();
 //builder.Services.AddScoped<IHoTroPhucLoiRepository, HoTroPhucLoiRepository>();
 builder.Services.AddScoped<IVanDongTreEmRepository, VanDongTreEmRepository>();
+builder.Services.AddHttpClient<IMLClusteringService, MLClusteringService>();
+builder.Services.AddScoped<ITreEmAnalysisService, TreEmAnalysisService>();
 
 // Register Services
 //builder.Services.AddScoped<IAuthService, AuthService>();
