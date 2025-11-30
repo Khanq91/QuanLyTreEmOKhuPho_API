@@ -23,5 +23,6 @@ namespace QuanLyTreEmAPI.DTOs.TInhNguyenVien
         public DateOnly? NgayPhanCong { get; set; }
         public List<ThoiGianChiTietDtoo> ThoiGianChiTiet { get; set; }
         public int SoLuongDaDangKy { get; set; }
+        public string? AnhSuKien { get; set; }
     }
 }

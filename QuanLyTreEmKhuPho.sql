@@ -18,7 +18,7 @@ CREATE TABLE KhuPho (
     QuanHuyen NVARCHAR(100),
     ThanhPho NVARCHAR(100)
 );
-
+select * from SuKien
 -- Bảng Người dùng
 CREATE TABLE NguoiDung (
     UserID INT PRIMARY KEY IDENTITY(1,1),
@@ -1057,8 +1057,10 @@ update SuKien
 set NgayBatDau='2025-12-20'
 where SuKienID = 3
 update SuKien
-set NgayKetThuc='2025-12-21'
+set AnhSuKien='/Anh/SuKien/sukien_20251128123445549.jpg'
 where SuKienID = 3
+update SuKien
+set AnhSuKien=NULL
 select * from NguoiDung where VaiTro= N'Tình nguyện viên'
 select * from TinhNguyenVien
 select * from DangKySuKien

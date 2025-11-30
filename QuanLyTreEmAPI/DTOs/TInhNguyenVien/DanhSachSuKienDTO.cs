@@ -17,6 +17,7 @@
         public string? CongViecPhanCong { get; set; }
         public bool DaPhanCong { get; set; }
         public int SoLuongDaDangKy { get; set; }
+        public string? AnhSuKien { get; set; }
 
     }
 }

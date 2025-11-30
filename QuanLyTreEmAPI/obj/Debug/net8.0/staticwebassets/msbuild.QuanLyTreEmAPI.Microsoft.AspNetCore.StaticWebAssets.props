@@ -126,6 +126,168 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\NguoiDung\macdinh.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\1d4b56c7-2425-44b3-ae21-13630e9ca765.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/1d4b56c7-2425-44b3-ae21-13630e9ca765.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z3j81tls9v</Fingerprint>
+      <Integrity>v5eUL6sz9KE7Vp5NzDOtWd0HnO8mAMyaOqtodxiNne4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\1d4b56c7-2425-44b3-ae21-13630e9ca765.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\22ad1b8e-b586-4cbb-83bf-61b4735b8a1c.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/22ad1b8e-b586-4cbb-83bf-61b4735b8a1c.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>asbyps89o7</Fingerprint>
+      <Integrity>Ktnfsa9V3U8nBFooG+jKQfu7hRa1h2zWvUZ5xOHOfOY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\22ad1b8e-b586-4cbb-83bf-61b4735b8a1c.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\747af0de-9612-4afd-a369-28caabb05b5a.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/747af0de-9612-4afd-a369-28caabb05b5a.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z3j81tls9v</Fingerprint>
+      <Integrity>v5eUL6sz9KE7Vp5NzDOtWd0HnO8mAMyaOqtodxiNne4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\747af0de-9612-4afd-a369-28caabb05b5a.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\838f2580-393e-4894-a2e6-cd12f23c5cb4.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/838f2580-393e-4894-a2e6-cd12f23c5cb4.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z3j81tls9v</Fingerprint>
+      <Integrity>v5eUL6sz9KE7Vp5NzDOtWd0HnO8mAMyaOqtodxiNne4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\838f2580-393e-4894-a2e6-cd12f23c5cb4.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\bac30fe7-d10d-450c-b983-79ede43d7ef2.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/bac30fe7-d10d-450c-b983-79ede43d7ef2.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>asbyps89o7</Fingerprint>
+      <Integrity>Ktnfsa9V3U8nBFooG+jKQfu7hRa1h2zWvUZ5xOHOfOY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\bac30fe7-d10d-450c-b983-79ede43d7ef2.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\df7052f1-fa05-4eab-a477-cafcc2e617d6.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/df7052f1-fa05-4eab-a477-cafcc2e617d6.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>asbyps89o7</Fingerprint>
+      <Integrity>Ktnfsa9V3U8nBFooG+jKQfu7hRa1h2zWvUZ5xOHOfOY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\df7052f1-fa05-4eab-a477-cafcc2e617d6.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\e104a619-c32a-4dc8-8ff0-b3c60c935f58.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/e104a619-c32a-4dc8-8ff0-b3c60c935f58.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z3j81tls9v</Fingerprint>
+      <Integrity>v5eUL6sz9KE7Vp5NzDOtWd0HnO8mAMyaOqtodxiNne4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\e104a619-c32a-4dc8-8ff0-b3c60c935f58.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\f2974ae7-f414-4f43-9594-d5d570471969.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/QuaTang/f2974ae7-f414-4f43-9594-d5d570471969.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z3j81tls9v</Fingerprint>
+      <Integrity>v5eUL6sz9KE7Vp5NzDOtWd0HnO8mAMyaOqtodxiNne4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\QuaTang\f2974ae7-f414-4f43-9594-d5d570471969.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\SuKien\sukien_20251128123445549.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>Anh/SuKien/sukien_20251128123445549.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>asbyps89o7</Fingerprint>
+      <Integrity>Ktnfsa9V3U8nBFooG+jKQfu7hRa1h2zWvUZ5xOHOfOY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\SuKien\sukien_20251128123445549.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Anh\TreEm\em1.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>QuanLyTreEmAPI</SourceId>
@@ -305,6 +467,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MinhChung\chuyenkhoan_2_20251126103334_44c9a0aa.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MinhChung\to-chuc-su-kien-cho-tre-em-6_20251128152016_72c6b35f.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>QuanLyTreEmAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/QuanLyTreEmAPI</BasePath>
+      <RelativePath>MinhChung/to-chuc-su-kien-cho-tre-em-6_20251128152016_72c6b35f.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>asbyps89o7</Fingerprint>
+      <Integrity>Ktnfsa9V3U8nBFooG+jKQfu7hRa1h2zWvUZ5xOHOfOY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MinhChung\to-chuc-su-kien-cho-tre-em-6_20251128152016_72c6b35f.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>
