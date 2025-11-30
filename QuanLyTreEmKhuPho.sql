@@ -91,7 +91,7 @@ CREATE TABLE SuKien (
     NgayBatDau DATE,
     NgayKetThuc DATE,
     SoLuongTinhNguyenVien INT,
-	 AnhSuKien NVARCHAR(500) NULL,
+	AnhSuKien NVARCHAR(500) NULL,
     SoLuongTreEm INT,
     UserID INT FOREIGN KEY REFERENCES NguoiDung(UserID),
     KhuPhoID INT FOREIGN KEY REFERENCES KhuPho(KhuPhoID)
@@ -1060,3 +1060,5 @@ update SuKien
 set NgayKetThuc='2025-12-21'
 where SuKienID = 3
 select * from NguoiDung where VaiTro= N'Tình nguyện viên'
+select * from TinhNguyenVien
+select * from DangKySuKien

@@ -2303,6 +2303,29 @@
         }
       }
     },
+    "/api/SuKien/{suKienId}/tinhnguyenvien": {
+      "get": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "suKienId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SuKien/{id}/dangky": {
       "post": {
         "tags": [
@@ -2553,6 +2576,100 @@
           },
           {
             "name": "treEmId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/phancong": {
+      "post": {
+        "tags": [
+          "SuKien"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaoPhanCongRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaoPhanCongRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaoPhanCongRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuKien/phancong/{phanCongId}": {
+      "put": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "phanCongId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapNhatPhanCongRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapNhatPhanCongRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapNhatPhanCongRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SuKien"
+        ],
+        "parameters": [
+          {
+            "name": "phanCongId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3499,17 +3616,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VanDongTreEm"
+                "$ref": "#/components/schemas/GhiNhanVanDongDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VanDongTreEm"
+                "$ref": "#/components/schemas/GhiNhanVanDongDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VanDongTreEm"
+                "$ref": "#/components/schemas/GhiNhanVanDongDTO"
               }
             }
           }
@@ -3586,6 +3703,24 @@
   },
   "components": {
     "schemas": {
+      "CapNhatPhanCongRequest": {
+        "type": "object",
+        "properties": {
+          "congViec": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghiChu": {
+            "type": "string",
+            "nullable": true
+          },
+          "danhGiaCongViec": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CapNhatPhanPhatQuaRequestDTO": {
         "type": "object",
         "properties": {
@@ -4311,6 +4446,28 @@
             "nullable": true
           },
           "ghiChu": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GhiNhanVanDongDTO": {
+        "type": "object",
+        "properties": {
+          "treEmId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lyDo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ketQua": {
             "type": "string",
             "nullable": true
           }
@@ -5692,6 +5849,28 @@
             "items": {
               "$ref": "#/components/schemas/PhanPhatQuaInfo"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaoPhanCongRequest": {
+        "type": "object",
+        "properties": {
+          "suKienID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tinhNguyenVienID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "congViec": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghiChu": {
+            "type": "string",
             "nullable": true
           }
         },

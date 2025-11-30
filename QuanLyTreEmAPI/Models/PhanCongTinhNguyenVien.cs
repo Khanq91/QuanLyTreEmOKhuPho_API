@@ -15,10 +15,7 @@ public partial class PhanCongTinhNguyenVien
     public string? DanhGiaCongViec { get; set; }
 
     public string? GhiChu { get; set; }
-    public string? DanhGiaCongViec { get; set; }
-
     public DateOnly? NgayPhanCong { get; set; }
-
     public virtual SuKien? SuKien { get; set; }
 
     public virtual TinhNguyenVien? TinhNguyenVien { get; set; }

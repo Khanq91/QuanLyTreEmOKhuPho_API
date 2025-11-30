@@ -152,10 +152,9 @@ namespace QuanLyTreEmAPI.Controllers
         public async Task<IActionResult> GetSuKienDaThamGia([FromQuery] int UserID)
         {
             var suKienDaThamGia = await (
-                from dk in _context.DangKySuKiens
-                join sk in _context.SuKiens on dk.SuKienId equals sk.SuKienID
-                join tnv in _context.TinhNguyenViens on dk.UserId equals tnv.UserId
-                join pc in _context.PhanCongTinhNguyenViens on sk.SuKienID equals pc.SuKienId
+                from pc in _context.PhanCongTinhNguyenViens
+                join sk in _context.SuKiens on pc.SuKienId equals sk.SuKienID
+                join tnv in _context.TinhNguyenViens on pc.TinhNguyenVienId equals tnv.TinhNguyenVienId
                 where tnv.UserId == UserID
                 select new
                 {

@@ -1832,6 +1832,22 @@
   },
   {
     "ContainingType": "QuanLyTreEmAPI.Controllers.SuKienController",
+    "Method": "GetDanhSachTinhNguyenVien",
+    "RelativePath": "api/SuKien/{suKienId}/tinhnguyenvien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suKienId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.SuKienController",
     "Method": "GetAllEvents",
     "RelativePath": "api/SuKien/all",
     "HttpMethod": "GET",
@@ -1920,6 +1936,59 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.SuKienController",
+    "Method": "TaoPhanCong",
+    "RelativePath": "api/SuKien/phancong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "QuanLyTreEmAPI.Controllers.SuKienController\u002BTaoPhanCongRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.SuKienController",
+    "Method": "CapNhatPhanCong",
+    "RelativePath": "api/SuKien/phancong/{phanCongId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phanCongId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "QuanLyTreEmAPI.Controllers.SuKienController\u002BCapNhatPhanCongRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyTreEmAPI.Controllers.SuKienController",
+    "Method": "XoaPhanCong",
+    "RelativePath": "api/SuKien/phancong/{phanCongId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phanCongId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -2228,8 +2297,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "QuanLyTreEmAPI.Models.VanDongTreEm",
+        "Name": "input",
+        "Type": "QuanLyTreEmAPI.Controllers.VanDongController\u002BGhiNhanVanDongDTO",
         "IsRequired": true
       }
     ],
