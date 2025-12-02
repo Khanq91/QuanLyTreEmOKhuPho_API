@@ -23,7 +23,7 @@ namespace QuanLyTreEmAPI.Controllers
             var khuPhos = await _context.KhuPhos.ToListAsync();
             return Ok(khuPhos);
         }
-     
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -71,6 +71,29 @@ namespace QuanLyTreEmAPI.Controllers
             _context.KhuPhos.Remove(khuPho);
             await _context.SaveChangesAsync();
             return Ok(new { message = "Xóa thành công" });
+        }
+        [HttpGet("SapToi")]
+        public async Task<ActionResult<List<SuKien>>> LaySuKienSapToi([FromQuery] int? KhuPhoID)
+        {
+            try
+            {
+                var query = _context.SuKiens
+                    .Where(sk => sk.NgayBatDau.HasValue
+                         && sk.NgayBatDau.Value > DateOnly.FromDateTime(DateTime.Now))
+                    .OrderBy(sk => sk.NgayBatDau);
+                if (KhuPhoID.HasValue)
+                {
+                    query = (IOrderedQueryable<SuKien>)query.Where(sk => sk.KhuPhoId == KhuPhoID.Value);
+                }
+
+                var suKiens = await query.ToListAsync();
+                return Ok(suKiens);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Lỗi khi lấy danh sách sự kiện", error = ex.Message });
+
+            }
         }
     }
 }

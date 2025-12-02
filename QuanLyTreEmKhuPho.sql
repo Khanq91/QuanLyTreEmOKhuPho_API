@@ -5,7 +5,7 @@ CREATE DATABASE QuanLyTreEm;
 GO
 USE QuanLyTreEm;
 GO
-/
+
 -- ============================== 
 -- TẠO CÁC BẢNG
 -- ==============================
@@ -18,7 +18,6 @@ CREATE TABLE KhuPho (
     QuanHuyen NVARCHAR(100),
     ThanhPho NVARCHAR(100)
 );
-select * from SuKien
 -- Bảng Người dùng
 CREATE TABLE NguoiDung (
     UserID INT PRIMARY KEY IDENTITY(1,1),
@@ -281,20 +280,6 @@ CREATE TABLE VanDongTreEm (
     NgayCapNhat DATE DEFAULT GETDATE()
 );
 
-
--- Bảng Hỗ trợ phúc lợi
---CREATE TABLE HoTroPhucLoi (
---    HoTroID INT PRIMARY KEY IDENTITY(1,1),
---    LoaiHoTro NVARCHAR(100),
---    MoTa NVARCHAR(MAX),
---    NgayCap DATE,
---    NguoiChiuTrachNhiemHoTro NVARCHAR(100),
---    TrangThaiPhat NVARCHAR(50),
---    NgayHenLai DATE NULL,
---    GhiChuTNV NVARCHAR(MAX),
---    TreEmID INT FOREIGN KEY REFERENCES TreEm(TreEmID),
---    NguoiDungID INT FOREIGN KEY REFERENCES NguoiDung(UserID)
---);
 -- Bảng Phiếu minh chứng
 CREATE TABLE PhieuMinhChung (
     MinhChungID INT PRIMARY KEY IDENTITY(1,1),
@@ -440,18 +425,17 @@ VALUES
 (N'Chiều', N'Thứ 3', 8), (N'Sáng', N'Thứ 4', 8), (N'Chiều', N'Thứ 6', 8), (N'Sáng', N'Thứ 7', 8), (N'Chiều', N'Chủ nhật', 8);
 
 -- 8. SuKien (8 sự kiện)
-INSERT INTO SuKien (TenSuKien, NguoiChiuTrachNhiem, MoTa, DiaDiem, NgayBatDau, NgayKetThuc, SoLuongTinhNguyenVien, SoLuongTreEm, UserID, KhuPhoID)
+INSERT INTO SuKien (TenSuKien, NguoiChiuTrachNhiem, MoTa, DiaDiem, NgayBatDau, NgayKetThuc, SoLuongTinhNguyenVien, SoLuongTreEm,AnhSuKien, UserID, KhuPhoID)
 VALUES
-(N'Sự kiện trung thu 2025', N'Nguyễn Văn A', N'Tổ chức phát quà trung thu cho trẻ em khó khăn trong khu vực', N'Nhà văn hóa Khu phố 1', '2025-09-10', '2025-09-11', 15, 120, 1, 1),
-(N'Hội trại hè thiếu nhi', N'Trần Thị B', N'Tổ chức các trò chơi, hoạt động vui chơi ngoài trời cho trẻ', N'Công viên Khu phố 2', '2025-06-15', '2025-06-17', 20, 100, 2, 2),
-(N'Lễ phát quà tết Nguyên đán', N'Lê Văn C', N'Phát quà tết cho trẻ em có hoàn cảnh khó khăn', N'Trung tâm văn hóa Khu phố 3', '2025-01-20', '2025-01-21', 12, 80, 3, 3),
-(N'Chiến dịch môi trường xanh', N'Phạm Thị D', N'Vệ sinh môi trường, trồng cây xanh tại khu phố', N'Khu vực công cộng Khu phố 4', '2025-04-22', '2025-04-22', 18, 60, 4, 4),
-(N'Hội thi năng khiếu thiếu nhi', N'Võ Văn E', N'Thi vẽ, hát, múa, kể chuyện cho trẻ em', N'Hội trường Khu phố 5', '2025-05-25', '2025-05-26', 10, 70, 5, 5),
-(N'Ngày hội đọc sách', N'Hoàng Thị F', N'Khuyến khích trẻ em đọc sách, tặng sách cho các em', N'Thư viện Khu phố 6', '2025-03-15', '2025-03-15', 8, 50, 6, 6),
-(N'Chương trình từ thiện tết thiếu nhi', N'Bùi Thị H', N'Tặng quà, tổ chức vui chơi cho trẻ em nhân dịp 1/6', N'Sân vận động Khu phố 7', '2025-06-01', '2025-06-01', 16, 150, 8, 7),
-(N'Lớp học kỹ năng sống', N'Đinh Văn I', N'Dạy kỹ năng sống, kỹ năng giao tiếp cho trẻ em', N'Nhà văn hóa Khu phố 8', '2025-07-10', '2025-07-20', 12, 40, 9, 8);
+(N'Sự kiện trung thu 2025', N'Nguyễn Văn A', N'Tổ chức phát quà trung thu cho trẻ em khó khăn trong khu vực', N'Nhà văn hóa Khu phố 1', '2025-09-10', '2025-09-11', 15, 120,'/Anh/SuKien/sukien_1.jpg', 1, 1),
+(N'Hội trại hè thiếu nhi', N'Trần Thị B', N'Tổ chức các trò chơi, hoạt động vui chơi ngoài trời cho trẻ', N'Công viên Khu phố 2', '2025-06-15', '2025-06-17', 20, 100,'/Anh/SuKien/sukien_2.jpg', 2, 2),
+(N'Lễ phát quà tết Nguyên đán', N'Lê Văn C', N'Phát quà tết cho trẻ em có hoàn cảnh khó khăn', N'Trung tâm văn hóa Khu phố 3', '2025-01-20', '2025-01-21', 12, 80,'/Anh/SuKien/sukien_3.jpg', 3, 3),
+(N'Chiến dịch môi trường xanh', N'Phạm Thị D', N'Vệ sinh môi trường, trồng cây xanh tại khu phố', N'Khu vực công cộng Khu phố 4', '2025-04-22', '2025-04-22', 18, 60,'/Anh/SuKien/sukien_4.jpg', 4, 4),
+(N'Hội thi năng khiếu thiếu nhi', N'Võ Văn E', N'Thi vẽ, hát, múa, kể chuyện cho trẻ em', N'Hội trường Khu phố 5', '2025-05-25', '2025-05-26', 10, 70,'/Anh/SuKien/sukien_5.jpg', 5, 5),
+(N'Ngày hội đọc sách', N'Hoàng Thị F', N'Khuyến khích trẻ em đọc sách, tặng sách cho các em', N'Thư viện Khu phố 6', '2025-03-15', '2025-03-15', 8, 50,'/Anh/SuKien/sukien_6.jpg', 6, 6),
+(N'Chương trình từ thiện tết thiếu nhi', N'Bùi Thị H', N'Tặng quà, tổ chức vui chơi cho trẻ em nhân dịp 1/6', N'Sân vận động Khu phố 7', '2025-06-01', '2025-06-01', 16, 150,'/Anh/SuKien/sukien_7.jpg', 8, 7),
+(N'Lớp học kỹ năng sống', N'Đinh Văn I', N'Dạy kỹ năng sống, kỹ năng giao tiếp cho trẻ em', N'Nhà văn hóa Khu phố 8', '2025-07-10', '2025-07-20', 12, 40,'/Anh/SuKien/sukien_8.jpg', 9, 8);
 
- 
 -- 9. ThoiGianChiTietSuKien (20 thời gian chi tiết)
 INSERT INTO ThoiGianChiTietSuKien (MoTa, ThoiGianBatDau, ThoiGianKetThuc, SuKienID)
 VALUES
@@ -847,35 +831,6 @@ VALUES
 (15, 5, 5, 3, N'Khuyết tật, cần điều trị', N'Đang điều trị', '2023-09-15', '/Anh/VanDong/vd14.jpg', N'Đang xử lý', N'Hỗ trợ chi phí y tế', '2024-09-15'),
 (19, 6, 9, 1, N'Hoàn cảnh khó khăn', N'Đã tiếp nhận', '2024-05-05', '/Anh/VanDong/vd15.jpg', N'Đã hoàn thành', N'Hỗ trợ học phí', '2024-05-10');
 
--- 1. HoTroPhucLoi (25 hỗ trợ phúc lợi - KHÔNG CÓ DotHoTroID)
---INSERT INTO HoTroPhucLoi (LoaiHoTro, MoTa, NgayCap, NguoiChiuTrachNhiemHoTro, TrangThaiPhat, NgayHenLai, GhiChuTNV, TreEmID, NguoiDungID)
---VALUES
---(N'Học bổng', N'Học bổng học kỳ 1 năm 2024', '2024-01-25', N'Trần Thị B', N'Đã phát', NULL, N'Đã nhận đầy đủ', 1, 2),
---(N'Hỗ trợ học phí', N'Hỗ trợ học phí toàn phần', '2024-02-20', N'Trần Thị B', N'Đã phát', NULL, N'Đã chuyển khoản', 2, 2),
---(N'Học bổng', N'Học bổng năm học 2024-2025', '2024-03-15', N'Võ Văn E', N'Đã phát', NULL, N'Đã nhận', 3, 5),
---(N'Hỗ trợ y tế', N'Chi phí điều trị khuyết tật', '2024-04-10', N'Hoàng Thị F', N'Đang xử lý', '2024-12-01', N'Đang theo dõi điều trị', 4, 6),
---(N'Hỗ trợ học phí', N'Hỗ trợ học phí học kỳ 2', '2024-04-22', N'Trần Thị B', N'Đã phát', NULL, NULL, 5, 2),
---(N'Hỗ trợ sinh hoạt', N'Hỗ trợ tiền ăn hàng tháng', '2024-05-01', N'Võ Văn E', N'Đã phát', '2024-11-01', N'Hỗ trợ định kỳ', 6, 5),
---(N'Học bổng', N'Học bổng học sinh giỏi', '2024-05-15', N'Hoàng Thị F', N'Đã phát', NULL, N'Đã nhận', 7, 6),
---(N'Hỗ trợ học phí', N'Hỗ trợ học phí toàn phần', '2024-06-25', N'Đinh Văn I', N'Đã phát', NULL, NULL, 8, 9),
---(N'Hỗ trợ y tế', N'Chi phí điều trị và phục hồi', '2024-07-01', N'Trần Thị B', N'Đang xử lý', '2025-01-01', N'Đang điều trị', 9, 2),
---(N'Hỗ trợ toàn diện', N'Hỗ trợ học phí, sinh hoạt, y tế', '2024-08-01', N'Võ Văn E', N'Đã phát', '2024-11-01', N'Hỗ trợ định kỳ hàng tháng', 10, 5),
---(N'Học bổng', N'Học bổng học kỳ 1', '2024-07-12', N'Hoàng Thị F', N'Đã phát', NULL, NULL, 11, 6),
---(N'Hỗ trợ học phí', N'Hỗ trợ học phí và sách vở', '2024-08-20', N'Đinh Văn I', N'Đã phát', NULL, N'Đã nhận đầy đủ', 12, 9),
---(N'Hỗ trợ sinh hoạt', N'Hỗ trợ tiền ăn định kỳ', '2024-09-01', N'Trần Thị B', N'Đã phát', '2024-12-01', N'Hỗ trợ hàng tháng', 13, 2),
---(N'Hỗ trợ y tế', N'Chi phí điều trị bệnh', '2024-09-15', N'Võ Văn E', N'Đang xử lý', '2025-02-01', N'Đang theo dõi', 15, 5),
---(N'Hỗ trợ học phí', N'Hỗ trợ học phí học kỳ 1', '2024-05-10', N'Đinh Văn I', N'Đã phát', NULL, NULL, 19, 9),
---(N'Quà tặng', N'Quà trung thu 2024', '2024-09-10', N'Trần Thị B', N'Đã phát', NULL, N'Đã nhận quà', 1, 2),
---(N'Quà tặng', N'Quà tết thiếu nhi', '2024-06-01', N'Bùi Thị H', N'Đã phát', NULL, N'Đã nhận', 2, 8),
---(N'Đồ dùng học tập', N'Bộ đồ dùng học tập đầy đủ', '2024-08-25', N'Hoàng Thị F', N'Đã phát', NULL, NULL, 3, 6),
---(N'Quần áo', N'Bộ quần áo đồng phục', '2024-05-20', N'Võ Văn E', N'Đã phát', NULL, N'Đã nhận', 4, 5),
---(N'Quà tặng', N'Quà tết Nguyên đán', '2024-01-20', N'Lê Văn C', N'Đã phát', NULL, NULL, 8, 3),
---(N'Đồ dùng học tập', N'Sách giáo khoa và vở', '2024-08-15', N'Trần Thị B', N'Đã phát', NULL, N'Đã nhận đầy đủ', 9, 2),
---(N'Quần áo', N'Quần áo mùa đông', '2024-11-05', N'Hoàng Thị F', N'Chờ phát', '2024-11-15', N'Chờ nhận hàng', 10, 6),
---(N'Quà tặng', N'Quà trung thu 2024', '2024-09-11', N'Nguyễn Văn A', N'Đã phát', NULL, NULL, 6, 1),
---(N'Hỗ trợ học phí', N'Học phí học kỳ 2', '2024-01-15', N'Trần Thị B', N'Đã phát', NULL, N'Đã chuyển khoản', 14, 2),
---(N'Đồ dùng học tập', N'Bộ sách tham khảo', '2024-03-20', N'Hoàng Thị F', N'Đã phát', NULL, N'Đã nhận', 16, 6);
-
 -- 3. PhieuMinhChung
 INSERT INTO PhieuMinhChung (LoaiMinhChung, FilePath, NgayCap, UngHoID)
 VALUES
@@ -891,40 +846,6 @@ VALUES
 (N'Xác nhận chuyển khoản', N'/MinhChung/chuyenkhoan_8.pdf', '2024-06-25', 8),
 (N'Hóa đơn điều trị', N'/MinhChung/hoadon_dieutri_9.pdf', '2024-07-01', 9),
 (N'Biên nhận toàn diện', N'/MinhChung/biennhan_toandien_10.pdf', '2024-08-01', 10);
---(N'Biên nhận học bổng', N'/MinhChung/hocbong_11.pdf', '2024-07-12', 11),
---(N'Biên nhận học phí', N'/MinhChung/biennhan_hocphi_12.pdf', '2024-08-20', 12),
---(N'Biên nhận tiền sinh hoạt', N'/MinhChung/biennhan_sinhoat_13.pdf', '2024-09-01', 13),
---(N'Hóa đơn y tế', N'/MinhChung/hoadon_yte_14.pdf', '2024-09-15', 14),
---(N'Biên nhận học phí', N'/MinhChung/biennhan_hocphi_15.pdf', '2024-05-10', 15),
---(N'Biên nhận quà tặng', N'/MinhChung/biennhan_qua_16.pdf', '2024-09-10', 16),
---(N'Biên nhận quà tặng', N'/MinhChung/biennhan_qua_17.pdf', '2024-06-01', 17),
---(N'Biên nhận đồ dùng', N'/MinhChung/biennhan_dodung_18.pdf', '2024-08-25', 18),
---(N'Biên nhận quần áo', N'/MinhChung/biennhan_quanao_19.pdf', '2024-05-20', 19),
---(N'Biên nhận quà tết', N'/MinhChung/biennhan_quatet_20.pdf', '2024-01-20', 20);
-
-
---INSERT INTO UngHo_HoTroPhucLoi (UngHoID, HoTroID)
---VALUES
----- Ủng hộ ID 1 (Tiền mặt học phí) -> Học bổng và hỗ trợ học phí
---(1, 1), (1, 2), (1, 5),
----- Ủng hộ ID 4 (Tài trợ sự kiện) -> Hỗ trợ y tế
---(4, 4), (4, 9), (4, 14),
----- Ủng hộ ID 6 (Học bổng) -> Hỗ trợ sinh hoạt
---(6, 6), (6, 10), (6, 13),
----- Ủng hộ ID 2 (Sách giáo khoa) -> Học bổng học sinh giỏi
---(2, 3), (2, 7), (2, 11),
----- Ủng hộ ID 3 (Quà trung thu) -> Quà tặng
---(3, 16), (3, 23),
----- Ủng hộ ID 7 (Đồ chơi giáo dục) -> Quà tặng
---(7, 17),
----- Ủng hộ ID 9 (Đồ dùng học tập) -> Đồ dùng học tập
---(9, 18), (9, 21), (9, 25),
----- Ủng hộ ID 5 (Quần áo) -> Quần áo
---(5, 19), (5, 22),
----- Ủng hộ ID 8 (Tiền mặt) -> Hỗ trợ học phí
---(8, 8), (8, 12), (8, 15), (8, 24),
----- Ủng hộ ID 10 (Quà tết) -> Quà tặng
---(10, 20);
 -- 30. PhanBoUngHoChiPhi (15 phân bổ)
 INSERT INTO PhanBoUngHoChiPhi (UngHoID, ChiPhiID, SoTienPhanBo, TyLe, NguoiPheDuyet, NgayPheDuyet, GhiChu)
 VALUES
@@ -1018,6 +939,194 @@ VALUES
 (8, 9, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Đã ký nhận'),
 (8, 10, 1, '2025-01-20', N'Lê Văn C', N'Đã nhận', N'Gia đình cảm ơn nhiều');
 
+USE QuanLyTreEm;
+GO
+
+-- ============================== 
+-- STORED PROCEDURE BACKUP DIFFERENTIAL
+-- ==============================
+CREATE OR ALTER PROCEDURE sp_BackupQuanLyTreEm_Differential
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @BackupPath NVARCHAR(500);
+    DECLARE @BackupFileName NVARCHAR(500);
+    DECLARE @DatabaseName NVARCHAR(100) = 'QuanLyTreEm';
+    DECLARE @ErrorMessage NVARCHAR(4000);
+    
+    BEGIN TRY
+        -- Đường dẫn lưu backup
+        SET @BackupPath = 'D:\Tong_hop_Tieu_Luan\DOAN\28_11_2025\QuanLyTreEmOKhuPho_API\Backup\';
+        
+        -- Tên file DIFFERENTIAL với ngày giờ
+        SET @BackupFileName = @BackupPath + @DatabaseName + '_Diff_' + 
+                              CONVERT(NVARCHAR(8), GETDATE(), 112) + '_' + 
+                              REPLACE(CONVERT(NVARCHAR(8), GETDATE(), 108), ':', '') + '.bak';
+        
+        -- Backup DIFFERENTIAL
+        BACKUP DATABASE QuanLyTreEm
+        TO DISK = @BackupFileName
+        WITH 
+            DIFFERENTIAL,
+            FORMAT,
+            INIT,
+            NAME = N'QuanLyTreEm-Differential Database Backup',
+            SKIP,
+            NOREWIND,
+            NOUNLOAD,
+            STATS = 10;
+        
+        PRINT 'Backup DIFFERENTIAL thành công: ' + @BackupFileName;
+        PRINT 'Thời gian: ' + CONVERT(NVARCHAR(30), GETDATE(), 120);
+        
+    END TRY
+    BEGIN CATCH
+        SET @ErrorMessage = ERROR_MESSAGE();
+        PRINT 'Lỗi khi backup differential: ' + @ErrorMessage;
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END;
+GO
+
+-- ============================== 
+-- STORED PROCEDURE BACKUP FULL
+-- ==============================
+CREATE OR ALTER PROCEDURE sp_BackupQuanLyTreEm_Full
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @BackupPath NVARCHAR(500);
+    DECLARE @BackupFileName NVARCHAR(500);
+    DECLARE @DatabaseName NVARCHAR(100) = 'QuanLyTreEm';
+    DECLARE @ErrorMessage NVARCHAR(4000);
+    
+    BEGIN TRY
+        -- Đường dẫn lưu backup
+        SET @BackupPath = 'D:\Tong_hop_Tieu_Luan\DOAN\28_11_2025\QuanLyTreEmOKhuPho_API\Backup\';
+        
+        -- Tên file FULL với ngày giờ
+        SET @BackupFileName = @BackupPath + @DatabaseName + '_Full_' + 
+                              CONVERT(NVARCHAR(8), GETDATE(), 112) + '_' + 
+                              REPLACE(CONVERT(NVARCHAR(8), GETDATE(), 108), ':', '') + '.bak';
+        
+        -- Backup FULL
+        BACKUP DATABASE QuanLyTreEm
+        TO DISK = @BackupFileName
+        WITH 
+            FORMAT,
+            INIT,
+            NAME = N'QuanLyTreEm-Full Database Backup',
+            SKIP,
+            NOREWIND,
+            NOUNLOAD,
+            STATS = 10;
+        
+        PRINT 'Backup FULL thành công: ' + @BackupFileName;
+        PRINT 'Thời gian: ' + CONVERT(NVARCHAR(30), GETDATE(), 120);
+        
+    END TRY
+    BEGIN CATCH
+        SET @ErrorMessage = ERROR_MESSAGE();
+        PRINT 'Lỗi khi backup full: ' + @ErrorMessage;
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END;
+GO
+
+-- ============================== 
+-- JOB BACKUP DIFFERENTIAL - 17H MỖI NGÀY
+-- ==============================
+USE msdb;
+GO
+
+IF EXISTS (SELECT job_id FROM msdb.dbo.sysjobs WHERE name = N'Daily_Backup_QuanLyTreEm_Diff_5PM')
+BEGIN
+    EXEC msdb.dbo.sp_delete_job @job_name = N'Daily_Backup_QuanLyTreEm_Diff_5PM';
+END;
+GO
+
+EXEC msdb.dbo.sp_add_job
+    @job_name = N'Daily_Backup_QuanLyTreEm_Diff_5PM',
+    @enabled = 1,
+    @description = N'Backup DIFFERENTIAL database QuanLyTreEm hàng ngày lúc 17:00';
+GO
+
+EXEC msdb.dbo.sp_add_jobstep
+    @job_name = N'Daily_Backup_QuanLyTreEm_Diff_5PM',
+    @step_name = N'Backup Differential',
+    @subsystem = N'TSQL',
+    @database_name = N'QuanLyTreEm',
+    @command = N'EXEC sp_BackupQuanLyTreEm_Differential;',
+    @retry_attempts = 3,
+    @retry_interval = 5;
+GO
+
+EXEC msdb.dbo.sp_add_schedule
+    @schedule_name = N'Daily_5PM_Diff_Schedule',
+    @freq_type = 4,
+    @freq_interval = 1,
+    @active_start_time = 170000;
+GO
+
+EXEC msdb.dbo.sp_attach_schedule
+    @job_name = N'Daily_Backup_QuanLyTreEm_Diff_5PM',
+    @schedule_name = N'Daily_5PM_Diff_Schedule';
+GO
+
+EXEC msdb.dbo.sp_add_jobserver
+    @job_name = N'Daily_Backup_QuanLyTreEm_Diff_5PM';
+GO
+
+-- ============================== 
+-- JOB BACKUP FULL - 24H THỨ 6
+-- ==============================
+IF EXISTS (SELECT job_id FROM msdb.dbo.sysjobs WHERE name = N'Weekly_Backup_QuanLyTreEm_Full_Friday')
+BEGIN
+    EXEC msdb.dbo.sp_delete_job @job_name = N'Weekly_Backup_QuanLyTreEm_Full_Friday';
+END;
+GO
+
+EXEC msdb.dbo.sp_add_job
+    @job_name = N'Weekly_Backup_QuanLyTreEm_Full_Friday',
+    @enabled = 1,
+    @description = N'Backup FULL database QuanLyTreEm vào 24:00 thứ 6';
+GO
+
+EXEC msdb.dbo.sp_add_jobstep
+    @job_name = N'Weekly_Backup_QuanLyTreEm_Full_Friday',
+    @step_name = N'Backup Full',
+    @subsystem = N'TSQL',
+    @database_name = N'QuanLyTreEm',
+    @command = N'EXEC sp_BackupQuanLyTreEm_Full;',
+    @retry_attempts = 3,
+    @retry_interval = 5;
+GO
+
+EXEC msdb.dbo.sp_add_schedule
+    @schedule_name = N'Weekly_Saturday_Midnight_Schedule',
+    @freq_type = 8,
+    @freq_interval = 64,
+    @freq_recurrence_factor = 1,
+    @active_start_time = 000000;
+GO
+
+EXEC msdb.dbo.sp_attach_schedule
+    @job_name = N'Weekly_Backup_QuanLyTreEm_Full_Friday',
+    @schedule_name = N'Weekly_Saturday_Midnight_Schedule';
+GO
+
+EXEC msdb.dbo.sp_add_jobserver
+    @job_name = N'Weekly_Backup_QuanLyTreEm_Full_Friday';
+GO
+
+PRINT '==============================================';
+PRINT 'Hoàn tất! Đã tạo:';
+PRINT '✓ Backup DIFFERENTIAL: 17:00 mỗi ngày';
+PRINT '✓ Backup FULL: 24:00 thứ 6';
+PRINT '==============================================';
+
 
 SELECT * FROM KhuPho;
 SELECT * FROM ManhThuongQuan;
@@ -1053,18 +1162,5 @@ SELECT * FROM PhanBoUngHoChiPhi
 SELECT * FROM QuaTangUngHo
 SELECT * FROM PhanPhatQua
 select * from SuKien
-update SuKien
-set NgayBatDau='2025-12-15'
-where SuKienID = 4
-update SuKien
-set AnhSuKien='/Anh/SuKien/sukien_20251128123445549.jpg'
-where SuKienID = 3
-update SuKien
-set AnhSuKien=NULL
-select * from NguoiDung where VaiTro= N'Tình nguyện viên'
-select * from TinhNguyenVien
-select * from DangKySuKien
 
-update PhanPhatQua
-set TrangThai = N'Đang tiến hành'
-where TreEmID = 1
+select * from QuaTangUngHo
