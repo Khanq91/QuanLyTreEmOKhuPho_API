@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.WebHost.UseUrls("http://0.0.0.0:5035", "https://0.0.0.0:44362");
+builder.WebHost.UseUrls("http://0.0.0.0:5035", "https://0.0.0.0:44362");
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

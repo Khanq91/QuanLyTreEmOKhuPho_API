@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Tz7XKqedxz7UQ5I8u6rIhfMgn6sdt2UUItIioAPNWZw=",
+  "Hash": "jdWkXGnUCbC0QZ5oEROOb1P/pEFJNiOL7IIi3o2B3QE=",
   "Source": "QuanLyTreEmAPI",
   "BasePath": "_content/QuanLyTreEmAPI",
   "Mode": "Default",
@@ -16,6 +16,27 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\MinhChung\\KetQuaUngHo\\a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/MinhChung/KetQuaUngHo/a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uk78899u6i",
+      "Integrity": "XrTjF66HcQ4P8Bpl0GLQrWFhvM+RLrGYB6Ekohih0+o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\MinhChung\\KetQuaUngHo\\a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg"
+    },
     {
       "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_1_638998879985929412.jpg",
       "SourceId": "QuanLyTreEmAPI",
@@ -36,6 +57,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\3_1_638998879985929412.jpg"
+    },
+    {
+      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_639003125991679297.jpg",
+      "SourceId": "QuanLyTreEmAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
+      "BasePath": "_content/QuanLyTreEmAPI",
+      "RelativePath": "Anh/NguoiDung/3_639003125991679297#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ql63u0a0h5",
+      "Integrity": "LsIuSSUPvVkt5LkYeTlqAyIWBjqx8bB2iomqQJ/YcgM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\3_639003125991679297.jpg"
     },
     {
       "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh1.jpg",
@@ -78,27 +120,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh2.jpg"
-    },
-    {
-      "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
-      "SourceId": "QuanLyTreEmAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\",
-      "BasePath": "_content/QuanLyTreEmAPI",
-      "RelativePath": "Anh/NguoiDung/hinh3#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "2gpqnt2u20",
-      "Integrity": "rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Anh\\NguoiDung\\hinh3.jpg"
     },
     {
       "Identity": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh4.jpg",
@@ -586,6 +607,88 @@
   ],
   "Endpoints": [
     {
+      "Route": "Anh/MinhChung/KetQuaUngHo/a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\MinhChung\\KetQuaUngHo\\a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16985"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XrTjF66HcQ4P8Bpl0GLQrWFhvM+RLrGYB6Ekohih0+o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Dec 2025 15:00:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XrTjF66HcQ4P8Bpl0GLQrWFhvM+RLrGYB6Ekohih0+o="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/MinhChung/KetQuaUngHo/a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.uk78899u6i.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\MinhChung\\KetQuaUngHo\\a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16985"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XrTjF66HcQ4P8Bpl0GLQrWFhvM+RLrGYB6Ekohih0+o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Dec 2025 15:00:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uk78899u6i"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/MinhChung/KetQuaUngHo/a7ee1c49-8c3e-41d4-aca2-a8dc22a8fbc1.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XrTjF66HcQ4P8Bpl0GLQrWFhvM+RLrGYB6Ekohih0+o="
+        }
+      ]
+    },
+    {
       "Route": "Anh/NguoiDung/3_1_638998879985929412.0bcxwgurq3.jpg",
       "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_1_638998879985929412.jpg",
       "Selectors": [],
@@ -664,6 +767,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-dEMPNZRdKj3YY76Xjpn+9YBbAExkSGN8sgphCPFFVyk="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/3_639003125991679297.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_639003125991679297.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10297"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LsIuSSUPvVkt5LkYeTlqAyIWBjqx8bB2iomqQJ/YcgM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Dec 2025 15:49:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LsIuSSUPvVkt5LkYeTlqAyIWBjqx8bB2iomqQJ/YcgM="
+        }
+      ]
+    },
+    {
+      "Route": "Anh/NguoiDung/3_639003125991679297.ql63u0a0h5.jpg",
+      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\3_639003125991679297.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10297"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LsIuSSUPvVkt5LkYeTlqAyIWBjqx8bB2iomqQJ/YcgM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Dec 2025 15:49:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ql63u0a0h5"
+        },
+        {
+          "Name": "label",
+          "Value": "Anh/NguoiDung/3_639003125991679297.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LsIuSSUPvVkt5LkYeTlqAyIWBjqx8bB2iomqQJ/YcgM="
         }
       ]
     },
@@ -828,88 +1013,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-tFb+lRZGO2x0xM4MMr8CluKhCZVXrYOxc52XNJsdU6E="
-        }
-      ]
-    },
-    {
-      "Route": "Anh/NguoiDung/hinh3.2gpqnt2u20.jpg",
-      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "173641"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 30 Nov 2025 13:29:51 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2gpqnt2u20"
-        },
-        {
-          "Name": "label",
-          "Value": "Anh/NguoiDung/hinh3.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="
-        }
-      ]
-    },
-    {
-      "Route": "Anh/NguoiDung/hinh3.jpg",
-      "AssetFile": "D:\\File\\HK7\\KL_CN\\project\\api\\30_11_2025_2\\QuanLyTreEmOKhuPho_API\\QuanLyTreEmAPI\\wwwroot\\Anh\\NguoiDung\\hinh3.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "173641"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 30 Nov 2025 13:29:51 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-rlF/Cb/O6KW20fkSsISoNhM0CBtc+z04UCjQnZLZhFw="
         }
       ]
     },

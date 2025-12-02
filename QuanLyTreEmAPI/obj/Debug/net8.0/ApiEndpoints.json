@@ -1082,7 +1082,7 @@
       {
         "Name": "file",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

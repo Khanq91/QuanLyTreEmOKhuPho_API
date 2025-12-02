@@ -630,6 +630,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                     NguoiChiuTrachNhiem = suKien.NguoiChiuTrachNhiem ?? "",
                     TenKhuPho = suKien.KhuPho?.TenKhuPho ?? "",
                     DiaChiKhuPho = suKien.KhuPho?.DiaChi ?? "",
+                    AnhSuKien = suKien.AnhSuKien,
                     DaDangKy = dangKy != null,
                     TrangThaiDangKy = dangKy?.TrangThai ?? "",
                     DanhSachChuongTrinh = danhSachChuongTrinh
@@ -915,7 +916,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
         [HttpPost("UploadAnhTaiKhoan")]
         [Authorize(Roles = "Phụ huynh")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UploadAnhTaiKhoan([FromBody] IFormFile file)
+        public async Task<IActionResult> UploadAnhTaiKhoan(IFormFile file)
         {
             try
             {
@@ -971,54 +972,7 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 return StatusCode(500, new { message = "Lỗi hệ thống", error = ex.Message });
             }
         }
-        //// ============================================
-        //// TAB TÀI KHOẢN - LẤY THÔNG TIN PHỤ HUYNH (BỎ)
-        //// ============================================
-        //[HttpGet("ThongTin")]
-        //[Authorize(Roles = "Phụ huynh")]
-        //public async Task<IActionResult> GetThongTinPhuHuynh()
-        //{
-        //    try
-        //    {
-        //        //var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-        //        var subClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-        //            ?? User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
 
-        //        if (string.IsNullOrEmpty(subClaim))
-        //            return Unauthorized(new { message = "Không tìm thấy userId trong token" });
-
-        //        var userId = int.Parse(subClaim);
-
-        //        var thongTin = await _context.ThongTinPhuHuynhs
-        //            .Where(ph => ph.UserId == userId)
-        //            .Select(ph => new ThongTinPhuHuynhResponseDTO
-        //            {
-        //                PhuHuynhID = ph.PhuHuynhId,
-        //                HoTen = ph.HoTen,
-        //                SDT = ph.Sdt,
-        //                Email = ph.User.Email,
-        //                DiaChi = ph.DiaChi ?? "",
-        //                NgheNghiep = ph.NgheNghiep ?? "",
-        //                NgaySinh = ph.NgaySinh.HasValue ? ph.NgaySinh.Value.ToString("dd/MM/yyyy") : "",
-        //                TonGiao = ph.TonGiao ?? "",
-        //                DanToc = ph.DanToc ?? "",
-        //                QuocTich = ph.QuocTich ?? "",
-        //                Anh = ph.User.Anh ?? ""
-        //            })
-        //            .FirstOrDefaultAsync();
-
-        //        if (thongTin == null)
-        //        {
-        //            return NotFound(new { message = "Không tìm thấy thông tin phụ huynh" });
-        //        }
-
-        //        return Ok(thongTin);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, new { message = "Lỗi hệ thống", error = ex.Message });
-        //    }
-        //}
 
         // ============================================
         // TAB TÀI KHOẢN - LẤY DANH SÁCH PHỤ HUYNH CỦA USER

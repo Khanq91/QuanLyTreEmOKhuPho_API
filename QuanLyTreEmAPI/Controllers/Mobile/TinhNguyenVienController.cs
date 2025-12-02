@@ -360,7 +360,8 @@ namespace QuanLyTreEmAPI.Controllers.Mobile
                 "DaDangKy" => query.Where(x => x.DangKy != null),
                 "DuocPhanCong" => query.Where(x => x.PhanCong != null),
                 "DaHetHan" => query.Where(x => x.SuKien.NgayKetThuc < DateOnly.FromDateTime(DateTime.Now)),
-                _ => query
+                //_ => query
+                "TatCa" or _ => query.Where(x => x.SuKien.NgayKetThuc >= DateOnly.FromDateTime(DateTime.Now))
             };
 
             // Apply search

@@ -4116,6 +4116,10 @@
           "soLuongDaDangKy": {
             "type": "integer",
             "format": "int32"
+          },
+          "anhSuKien": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4309,6 +4313,10 @@
           "soLuongDaDangKy": {
             "type": "integer",
             "format": "int32"
+          },
+          "anhSuKien": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

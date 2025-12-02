@@ -5,7 +5,7 @@ CREATE DATABASE QuanLyTreEm;
 GO
 USE QuanLyTreEm;
 GO
-
+/
 -- ============================== 
 -- TẠO CÁC BẢNG
 -- ==============================
@@ -1054,8 +1054,8 @@ SELECT * FROM QuaTangUngHo
 SELECT * FROM PhanPhatQua
 select * from SuKien
 update SuKien
-set NgayBatDau='2025-12-20'
-where SuKienID = 3
+set NgayBatDau='2025-12-15'
+where SuKienID = 4
 update SuKien
 set AnhSuKien='/Anh/SuKien/sukien_20251128123445549.jpg'
 where SuKienID = 3
@@ -1064,3 +1064,7 @@ set AnhSuKien=NULL
 select * from NguoiDung where VaiTro= N'Tình nguyện viên'
 select * from TinhNguyenVien
 select * from DangKySuKien
+
+update PhanPhatQua
+set TrangThai = N'Đang tiến hành'
+where TreEmID = 1

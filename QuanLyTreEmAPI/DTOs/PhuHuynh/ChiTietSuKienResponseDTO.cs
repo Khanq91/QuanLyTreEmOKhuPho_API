@@ -17,5 +17,6 @@
         public bool DaDangKy { get; set; }
         public string TrangThaiDangKy { get; set; } // Chờ duyệt, Đã duyệt, Từ chối
         public List<ChuongTrinhSuKienDTO> DanhSachChuongTrinh { get; set; }
+        public string? AnhSuKien { get; set; }
     }
 }
