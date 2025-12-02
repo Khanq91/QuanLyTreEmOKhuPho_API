@@ -2559,20 +2559,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/DangKyTreEmDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/DangKyTreEmDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/DangKyTreEmDto"
               }
             }
           }
@@ -4279,6 +4276,16 @@
         "type": "object",
         "properties": {
           "suKienId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DangKyTreEmDto": {
+        "type": "object",
+        "properties": {
+          "treEmId": {
             "type": "integer",
             "format": "int32"
           }

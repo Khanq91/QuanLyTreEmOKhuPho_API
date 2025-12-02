@@ -1791,8 +1791,8 @@
         "IsRequired": true
       },
       {
-        "Name": "treEmId",
-        "Type": "System.Int32",
+        "Name": "dto",
+        "Type": "QuanLyTreEmAPI.Controllers.SuKienController\u002BDangKyTreEmDto",
         "IsRequired": true
       }
     ],

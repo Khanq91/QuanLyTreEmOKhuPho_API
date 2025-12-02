@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using QuanLyTreEmAPI.Models;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace QuanLyTreEmAPI.Controllers
 {
@@ -497,13 +498,67 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(result);
         }
+        //[HttpGet("{suKienId}/tinhnguyenvien")]
+        //public async Task<IActionResult> GetDanhSachTinhNguyenVien(int suKienId)
+        //{
+        //    // danh sách TNV (join User + TNV)
+        //    var listTNV = await (
+        //        from tnv in _context.TinhNguyenViens
+        //        join nd in _context.NguoiDungs on tnv.UserId equals nd.UserId
+        //        select new
+        //        {
+        //            tnv.TinhNguyenVienId,
+        //            nd.HoTen,
+        //            nd.Email,
+        //            nd.SDT,
+        //            nd.Anh,
+        //            KhuPho = tnv.KhuPhoId
+        //        }
+        //    ).ToListAsync();
+
+        //    // danh sách phân công
+        //    var phanCong = await _context.PhanCongTinhNguyenViens
+        //        .Where(x => x.SuKienId == suKienId)
+        //        .Select(x => new
+        //        {
+        //            x.PhanCongId,
+        //            x.TinhNguyenVienId,
+        //            x.CongViec,
+        //            x.GhiChu,
+        //            x.NgayPhanCong,
+        //            x.DanhGiaCongViec
+        //        })
+        //        .ToListAsync();
+
+        //    // merge lại theo TNV
+        //    var result = listTNV.Select(tnv => new
+        //    {
+        //        tnv.TinhNguyenVienId,
+        //        tnv.HoTen,
+        //        tnv.Email,
+        //        tnv.SDT,
+        //        tnv.Anh,
+        //        tnv.KhuPho,
+
+        //        // nếu chưa có phân công → null
+        //        PhanCong = phanCong
+        //            .Where(pc => pc.TinhNguyenVienId == tnv.TinhNguyenVienId)
+        //            .FirstOrDefault()
+        //    });
+
+        //    return Ok(result);
+        //}
+
+        // POST: api/SuKien/{id}/dangky
         [HttpGet("{suKienId}/tinhnguyenvien")]
         public async Task<IActionResult> GetDanhSachTinhNguyenVien(int suKienId)
         {
-            // danh sách TNV (join User + TNV)
+            // Lấy danh sách TNV đã đăng ký và được duyệt
             var listTNV = await (
-                from tnv in _context.TinhNguyenViens
-                join nd in _context.NguoiDungs on tnv.UserId equals nd.UserId
+                from dk in _context.DangKySuKiens
+                where dk.SuKienId == suKienId && dk.TrangThai == "Đã duyệt"
+                join nd in _context.NguoiDungs on dk.UserId equals nd.UserId
+                join tnv in _context.TinhNguyenViens on nd.UserId equals tnv.UserId
                 select new
                 {
                     tnv.TinhNguyenVienId,
@@ -511,11 +566,12 @@ namespace QuanLyTreEmAPI.Controllers
                     nd.Email,
                     nd.SDT,
                     nd.Anh,
-                    KhuPho = tnv.KhuPhoId
+                    KhuPho = tnv.KhuPhoId,
+                    dk.NgayDangKy
                 }
             ).ToListAsync();
 
-            // danh sách phân công
+            // Lấy danh sách phân công
             var phanCong = await _context.PhanCongTinhNguyenViens
                 .Where(x => x.SuKienId == suKienId)
                 .Select(x => new
@@ -529,7 +585,7 @@ namespace QuanLyTreEmAPI.Controllers
                 })
                 .ToListAsync();
 
-            // merge lại theo TNV
+            // Merge lại theo TNV
             var result = listTNV.Select(tnv => new
             {
                 tnv.TinhNguyenVienId,
@@ -538,8 +594,9 @@ namespace QuanLyTreEmAPI.Controllers
                 tnv.SDT,
                 tnv.Anh,
                 tnv.KhuPho,
+                tnv.NgayDangKy,
 
-                // nếu chưa có phân công → null
+                // Nếu chưa có phân công → null
                 PhanCong = phanCong
                     .Where(pc => pc.TinhNguyenVienId == tnv.TinhNguyenVienId)
                     .FirstOrDefault()
@@ -547,8 +604,6 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(result);
         }
-
-        // POST: api/SuKien/{id}/dangky
         [HttpPost("{id}/dangky")]
         public async Task<IActionResult> DangKy(int id, [FromBody] DangKySuKien dto)
          {
@@ -557,8 +612,6 @@ namespace QuanLyTreEmAPI.Controllers
 
             var user = await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId);
             if (!user) return BadRequest("Người dùng không tồn tại");
-
-            // Kiểm tra đã đăng ký chưa
             var daDangKy = await _context.DangKySuKiens
                 .AnyAsync(d => d.SuKienId == id && d.UserId == dto.UserId);
             if (daDangKy) return BadRequest("Bạn đã đăng ký sự kiện này rồi!");
@@ -568,7 +621,7 @@ namespace QuanLyTreEmAPI.Controllers
                 SuKienId = id,
                 UserId = dto.UserId,
                 NgayDangKy = DateOnly.FromDateTime(DateTime.Today),
-                TrangThai = "Chờ duyệt"
+                TrangThai = "Đã duyệt"
             };
 
             _context.DangKySuKiens.Add(dangKy);
@@ -681,35 +734,62 @@ namespace QuanLyTreEmAPI.Controllers
             }
         }
 
-        [HttpPost("{id}/dangkytreem")]
-        public async Task<IActionResult> DangKyTreEm(int id, [FromBody] int treEmId)
+        // Thêm DTO class
+        public class DangKyTreEmDto
         {
-            var suKien = await _context.SuKiens.FindAsync(id);
-            if (suKien == null)
-                return NotFound("Sự kiện không tồn tại.");
+            [JsonPropertyName("treEmId")]  // ← Cho phép nhận "treEmId" từ JSON
+            public int TreEmId { get; set; }
+        }
 
-            var treEm = await _context.TreEms.FindAsync(treEmId);
-            if (treEm == null)
-                return NotFound("Trẻ em không tồn tại.");
-
-            var daDangKy = await _context.TreEmSuKiens
-                .AnyAsync(t => t.SuKienId == id && t.TreEmId == treEmId);
-
-            if (daDangKy)
-                return BadRequest("Trẻ em này đã đăng ký sự kiện này rồi!");
-
-            var treEmSuKien = new TreEmSuKien
+        [HttpPost("{id}/dangkytreem")]
+        public async Task<IActionResult> DangKyTreEm(int id, [FromBody] DangKyTreEmDto dto)
+        {
+            try
             {
-                TreEmId = treEmId,
-                SuKienId = id,
-                NgayDangKy = DateTime.Now,
-                TrangThai = "Đã dăng ký"
-            };
+                Console.WriteLine($"📥 Nhận request: SuKienId={id}, TreEmId={dto.TreEmId}"); // ← Thêm log
 
-            _context.TreEmSuKiens.Add(treEmSuKien);
-            await _context.SaveChangesAsync();
+                var suKien = await _context.SuKiens.FindAsync(id);
+                if (suKien == null)
+                {
+                    Console.WriteLine("❌ Sự kiện không tồn tại");
+                    return NotFound(new { message = "Sự kiện không tồn tại." });
+                }
 
-            return Ok(new { message = "Đăng ký trẻ em cho sự kiện thành công!" });
+                var treEm = await _context.TreEms.FindAsync(dto.TreEmId);
+                if (treEm == null)
+                {
+                    Console.WriteLine("❌ Trẻ em không tồn tại");
+                    return NotFound(new { message = "Trẻ em không tồn tại." });
+                }
+
+                var daDangKy = await _context.TreEmSuKiens
+                    .AnyAsync(t => t.SuKienId == id && t.TreEmId == dto.TreEmId);
+
+                if (daDangKy)
+                {
+                    Console.WriteLine("⚠️ Đã đăng ký rồi");
+                    return BadRequest(new { message = "Trẻ em này đã đăng ký sự kiện này rồi!" });
+                }
+
+                var treEmSuKien = new TreEmSuKien
+                {
+                    TreEmId = dto.TreEmId,
+                    SuKienId = id,
+                    NgayDangKy = DateTime.Now,
+                    TrangThai = "Đã đăng ký"
+                };
+
+                _context.TreEmSuKiens.Add(treEmSuKien);
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("✅ Đăng ký thành công");
+                return Ok(new { message = "Đăng ký trẻ em cho sự kiện thành công!" });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Lỗi: {ex.Message}");
+                return StatusCode(500, new { message = "Lỗi server: " + ex.Message });
+            }
         }
         [HttpGet("{id}/trethamgiaSK")]
         public async Task<IActionResult> GetTreEmThamGia(int id)

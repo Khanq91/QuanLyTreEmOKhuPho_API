@@ -72,9 +72,10 @@ namespace QuanLyTreEmAPI.Controllers
                 qtuh.SoLuongTong,
                 qtuh.SoLuongConLai,
                 qtuh.DonGia,
+                -- ✅ Tính tổng giá trị = SoLuongTong × DonGia
+                (qtuh.SoLuongTong * ISNULL(qtuh.DonGia, 0)) AS TongGiaTri,
                 ISNULL(COUNT(DISTINCT ppq.TreEmID), 0) AS SoLuongTreEmDuocUngHo,
                 ISNULL(SUM(CASE WHEN ppq.TrangThai = N'Đã phát' THEN 1 ELSE 0 END), 0) AS TreDaNhan,
-                uh.SoTien,
                 uh.NgayUngHo,
                 mtq.Ten AS TenManhThuongQuan
             FROM QuaTangUngHo qtuh
@@ -84,17 +85,16 @@ namespace QuanLyTreEmAPI.Controllers
             GROUP BY 
                 qtuh.QuaTangUngHoID, qtuh.TenQua, qtuh.MoTa, qtuh.DoiTuongNhan,
                 qtuh.LoaiHoTro, qtuh.SoLuongTong, qtuh.SoLuongConLai, qtuh.DonGia,
-                uh.SoTien, uh.NgayUngHo, mtq.Ten
+                uh.NgayUngHo, mtq.Ten
             ORDER BY qtuh.QuaTangUngHoID DESC
         ";
 
                 using var connection = _context.Database.GetDbConnection();
                 await connection.OpenAsync();
-
                 using var command = connection.CreateCommand();
                 command.CommandText = sqlQuery;
-
                 using var reader = await command.ExecuteReaderAsync();
+
                 var danhSach = new List<object>();
 
                 while (await reader.ReadAsync())
@@ -106,11 +106,13 @@ namespace QuanLyTreEmAPI.Controllers
                         MoTa = reader["MoTa"]?.ToString() ?? "",
                         DoiTuongNhan = reader["DoiTuongNhan"]?.ToString() ?? "",
                         LoaiHoTro = reader["LoaiHoTro"]?.ToString() ?? "",
-
+                        SoLuongTong = reader["SoLuongTong"] != DBNull.Value ? Convert.ToInt32(reader["SoLuongTong"]) : 0,
+                        SoLuongConLai = reader["SoLuongConLai"] != DBNull.Value ? Convert.ToInt32(reader["SoLuongConLai"]) : 0,
+                        DonGia = reader["DonGia"] != DBNull.Value ? Convert.ToDecimal(reader["DonGia"]) : 0m,
+                        // ✅ Tổng giá trị quà tặng
+                        TongGiaTri = reader["TongGiaTri"] != DBNull.Value ? Convert.ToDecimal(reader["TongGiaTri"]) : 0m,
                         SoLuongTreEmDuocUngHo = reader["SoLuongTreEmDuocUngHo"] != DBNull.Value ? Convert.ToInt32(reader["SoLuongTreEmDuocUngHo"]) : 0,
                         TreDaNhan = reader["TreDaNhan"] != DBNull.Value ? Convert.ToInt32(reader["TreDaNhan"]) : 0,
-
-                        SoTien = reader["SoTien"] != DBNull.Value ? Convert.ToDecimal(reader["SoTien"]) : 0m,
                         NgayUngHo = reader["NgayUngHo"] != DBNull.Value ? (DateTime?)reader["NgayUngHo"] : null,
                         TenManhThuongQuan = reader["TenManhThuongQuan"]?.ToString() ?? ""
                     });

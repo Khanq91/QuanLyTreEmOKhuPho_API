@@ -1161,6 +1161,27 @@ SELECT * FROM TreEm_SuKien
 SELECT * FROM PhanBoUngHoChiPhi
 SELECT * FROM QuaTangUngHo
 SELECT * FROM PhanPhatQua
-select * from SuKien
+select * from DangKySuKien
 
-select * from QuaTangUngHo
+-- Lấy danh sách tình nguyện viên đăng ký sự kiện
+SELECT 
+    tv.TinhNguyenVienID,
+    nd.HoTen AS TenTinhNguyenVien,
+    nd.SDT,
+    nd.Email,
+    sk.SuKienID,
+    sk.TenSuKien,
+    dk.NgayDangKy,
+    dk.TrangThai
+FROM DangKySuKien dk
+INNER JOIN SuKien sk
+    ON dk.SuKienID = sk.SuKienID
+INNER JOIN NguoiDung nd
+    ON dk.UserID = nd.UserID
+INNER JOIN TinhNguyenVien tv
+    ON nd.UserID = tv.UserID
+WHERE sk.SuKienID = 7
+ORDER BY nd.HoTen;
+select * from NguoiDung
+
+select  * from DangKySuKien where SuKienID=7

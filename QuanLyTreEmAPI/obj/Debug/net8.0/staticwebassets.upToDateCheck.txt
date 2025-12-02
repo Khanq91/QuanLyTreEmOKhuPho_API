@@ -14,7 +14,7 @@ wwwroot\Anh\QuaTang\bac30fe7-d10d-450c-b983-79ede43d7ef2.jpg
 wwwroot\Anh\QuaTang\df7052f1-fa05-4eab-a477-cafcc2e617d6.jpg
 wwwroot\Anh\QuaTang\e104a619-c32a-4dc8-8ff0-b3c60c935f58.jpg
 wwwroot\Anh\QuaTang\f2974ae7-f414-4f43-9594-d5d570471969.jpg
-wwwroot\Anh\SuKien\sukien_20251128123445549.jpg
+wwwroot\Anh\SuKien\sukien_1.jpg
 wwwroot\Anh\TreEm\em1.jpg
 wwwroot\Anh\TreEm\em2.jpg
 wwwroot\Anh\TreEm\em3.jpg
@@ -26,3 +26,18 @@ wwwroot\MinhChung\AnhTangQua1.jpg
 wwwroot\MinhChung\chuyenkhoan_2.pdf
 wwwroot\MinhChung\chuyenkhoan_2_20251126103334_44c9a0aa.pdf
 wwwroot\MinhChung\to-chuc-su-kien-cho-tre-em-6_20251128152016_72c6b35f.jpg
+wwwroot\Anh\SuKien\sukien_2.jpg
+wwwroot\Anh\SuKien\sukien_20251128123445549.jpg
+wwwroot\Anh\SuKien\sukien_3.jpg
+wwwroot\Anh\SuKien\sukien_4.jpg
+wwwroot\Anh\SuKien\sukien_5.jpg
+wwwroot\Anh\SuKien\sukien_6.jpg
+wwwroot\Anh\SuKien\sukien_7.jpg
+wwwroot\Anh\SuKien\sukien_8.jpg
+wwwroot\Anh\NguoiDung\hinh3.jpg
+wwwroot\Anh\NguoiDung\hinh7.jpg
+wwwroot\Anh\NguoiDung\hinh8.jpg
+wwwroot\Anh\NguoiDung\hinh9.jpg
+wwwroot\Anh\NguoiDung\hinh6.jpg
+wwwroot\Anh\NguoiDung\hinh10.jpg
+wwwroot\Anh\SuKien\sukien_20251203021616146.jpg
