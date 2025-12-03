@@ -1180,8 +1180,32 @@ INNER JOIN NguoiDung nd
     ON dk.UserID = nd.UserID
 INNER JOIN TinhNguyenVien tv
     ON nd.UserID = tv.UserID
-WHERE sk.SuKienID = 7
+WHERE sk.SuKienID = 8
 ORDER BY nd.HoTen;
+
 select * from NguoiDung
 
-select  * from DangKySuKien where SuKienID=7
+    SELECT 
+        qtuh.QuaTangUngHoID AS QuaTangUngHoID,
+        qtuh.TenQua,
+        qtuh.MoTa,
+        qtuh.DoiTuongNhan,
+        qtuh.LoaiHoTro,
+        qtuh.SoLuongTong,
+        qtuh.SoLuongConLai,
+        ISNULL(COUNT(DISTINCT ppq.TreEmID), 0) AS SoLuongTreEmDuocUngHo,
+        ISNULL(SUM(CASE WHEN ppq.TrangThai = N'Đã phát' THEN 1 ELSE 0 END), 0) AS TreDaNhan,
+        uh.SoTien,
+        uh.NgayUngHo,
+        mtq.Ten AS TenManhThuongQuan
+    FROM QuaTangUngHo qtuh
+    LEFT JOIN PhanPhatQua ppq ON qtuh.QuaTangUngHoID = ppq.QuaTangUngHoID
+    LEFT JOIN UngHo uh ON qtuh.UngHoID = uh.UngHoID
+    LEFT JOIN ManhThuongQuan mtq ON uh.ManhThuongQuanID = mtq.ManhThuongQuanID
+    GROUP BY 
+        qtuh.QuaTangUngHoID, qtuh.TenQua, qtuh.MoTa, qtuh.DoiTuongNhan,
+        qtuh.LoaiHoTro, qtuh.SoLuongTong, qtuh.SoLuongConLai, qtuh.DonGia,
+        uh.SoTien, uh.NgayUngHo, mtq.Ten
+    ORDER BY qtuh.QuaTangUngHoID DESC
+	select * from QuaTangUngHo
+select * from Thong

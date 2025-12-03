@@ -11,8 +11,8 @@ namespace QuanLyTreEmAPI.Controllers
     [ApiController]
     public class SuKienController : ControllerBase
     {
-     private readonly QuanLyTreEmContext _context;
-         private readonly IConfiguration _configuration;
+        private readonly QuanLyTreEmContext _context;
+        private readonly IConfiguration _configuration;
 
 
         public SuKienController(QuanLyTreEmContext context, IConfiguration configuration)
@@ -33,7 +33,7 @@ namespace QuanLyTreEmAPI.Controllers
         {
             var sk = _context.SuKiens.ToList();
             var suKiens = _context.SuKiens
-       .ToList() 
+       .ToList()
        .Select(e => new
        {
            e.SuKienID,
@@ -299,6 +299,161 @@ namespace QuanLyTreEmAPI.Controllers
         #endregion
 
         // Thay thế toàn bộ phần xử lý EF trong phương thức Create bằng ADO
+        //[HttpPost]
+        //public async Task<IActionResult> Create([FromBody] SuKienDTOCreate dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+
+        //    var connString = _context.Database.GetConnectionString();
+        //    await using var conn = new SqlConnection(connString);
+        //    await conn.OpenAsync();
+        //    using var transaction = conn.BeginTransaction();
+
+
+        //    try
+        //    {
+        //        // Kiểm tra tồn tại khu phố và người dùng
+        //        if (!await _context.KhuPhos.AnyAsync(k => k.KhuPhoId == dto.KhuPhoId))
+        //            return BadRequest(new { message = "Khu phố không tồn tại." });
+        //        if (!await _context.NguoiDungs.AnyAsync(u => u.UserId == dto.UserId))
+        //            return BadRequest(new { message = "Người dùng không tồn tại." });
+
+        //        string imagePath = null;
+        //        if (!string.IsNullOrEmpty(dto.AnhSuKien))
+        //        {
+        //            if (dto.AnhSuKien.StartsWith("data:image"))
+        //            {
+        //                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Anh", "SuKien");
+        //                if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+        //                var fileName = $"sukien_{DateTime.Now:yyyyMMddHHmmssfff}.jpg";
+        //                var filePath = Path.Combine(folderPath, fileName);
+        //                var base64Data = dto.AnhSuKien.Substring(dto.AnhSuKien.IndexOf(",") + 1);
+        //                var bytes = Convert.FromBase64String(base64Data);
+        //                await System.IO.File.WriteAllBytesAsync(filePath, bytes);
+        //                imagePath = $"/Anh/SuKien/{fileName}";
+        //            }
+        //            else
+        //            {
+        //                imagePath = dto.AnhSuKien;
+        //            }
+        //        }
+
+        //        var insertSuKienCmd = conn.CreateCommand();
+        //        insertSuKienCmd.Transaction = transaction;
+        //        insertSuKienCmd.CommandText = @"
+        //    INSERT INTO SuKien (TenSuKien, MoTa, DiaDiem, NgayBatDau, NgayKetThuc, NguoiChiuTrachNhiem,
+        //                        SoLuongTinhNguyenVien, SoLuongTreEm, UserID, KhuPhoID, AnhSuKien)
+        //    OUTPUT INSERTED.SuKienID
+        //    VALUES (@Ten, @MoTa, @DiaDiem, @NgayBatDau, @NgayKetThuc, @Nguoi, @SoTNV, @SoTreEm, @User, @KhuPho, @Anh)";
+
+        //        insertSuKienCmd.Parameters.AddRange(new[]
+        //        {
+        //    new SqlParameter("@Ten", dto.TenSuKien ?? (object)DBNull.Value),
+        //    new SqlParameter("@MoTa", dto.MoTa ?? (object)DBNull.Value),
+        //    new SqlParameter("@DiaDiem", dto.DiaDiem ?? (object)DBNull.Value),
+        //    new SqlParameter("@NgayBatDau", dto.NgayBatDau),
+        //    new SqlParameter("@NgayKetThuc", dto.NgayKetThuc),
+        //    new SqlParameter("@Nguoi", dto.NguoiChiuTrachNhiem ?? (object)DBNull.Value),
+        //    new SqlParameter("@SoTNV", dto.SoLuongTinhNguyenVien),
+        //    new SqlParameter("@SoTreEm", dto.SoLuongTreEm),
+        //    new SqlParameter("@User", dto.UserId),
+        //    new SqlParameter("@KhuPho", dto.KhuPhoId),
+        //    new SqlParameter("@Anh", (object?)imagePath ?? DBNull.Value)
+        //});
+
+        //        var suKienId = (int)(await insertSuKienCmd.ExecuteScalarAsync());
+
+        //        foreach (var tg in dto.ThoiGianChiTiet)
+        //        {
+        //            var insertTimeCmd = conn.CreateCommand();
+        //            insertTimeCmd.Transaction = transaction;
+        //            insertTimeCmd.CommandText = @"
+        //        INSERT INTO ThoiGianChiTietSuKien (MoTa, ThoiGianBatDau, ThoiGianKetThuc, SuKienID)
+        //        OUTPUT INSERTED.ThoiGianChiTietSuKienID
+        //        VALUES (@MoTa, @BatDau, @KetThuc, @SuKienID)";
+
+        //            insertTimeCmd.Parameters.AddRange(new[]
+        //            {
+        //        new SqlParameter("@MoTa", tg.MoTa ?? (object)DBNull.Value),
+        //        new SqlParameter("@BatDau", tg.ThoiGianBatDau),
+        //        new SqlParameter("@KetThuc", tg.ThoiGianKetThuc),
+        //        new SqlParameter("@SuKienID", suKienId)
+        //    });
+
+        //            var tgId = (int)(await insertTimeCmd.ExecuteScalarAsync());
+
+        //            foreach (var tm in tg.TietMuc)
+        //            {
+        //                var insertTmCmd = conn.CreateCommand();
+        //                insertTmCmd.Transaction = transaction;
+        //                insertTmCmd.CommandText = @"
+        //            INSERT INTO TietMucSuKien (TenTietMuc, NguoiThucHien, ChiPhiTietMuc, ThoiGianChiTietSuKienID)
+        //            VALUES (@Ten, @Nguoi, @ChiPhi, @TGID)";
+
+        //                insertTmCmd.Parameters.AddRange(new[]
+        //                {
+        //            new SqlParameter("@Ten", tm.TenTietMuc ?? (object)DBNull.Value),
+        //            new SqlParameter("@Nguoi", tm.NguoiThucHien ?? (object)DBNull.Value),
+        //            new SqlParameter("@ChiPhi", tm.ChiPhiTietMuc ?? (object)DBNull.Value),
+        //            new SqlParameter("@TGID", tgId)
+        //        });
+
+        //                await insertTmCmd.ExecuteNonQueryAsync();
+        //            }
+        //        }
+
+        //        // 3. Insert ChiPhi + ChiTiet
+        //        foreach (var cp in dto.ChiPhi)
+        //        {
+        //            var insertCpCmd = conn.CreateCommand();
+        //            insertCpCmd.Transaction = transaction;
+        //            insertCpCmd.CommandText = @"
+        //        INSERT INTO ChiPhiSuKien (SuKienID, TenKhoanChi, GhiChu, SoTien)
+        //        OUTPUT INSERTED.ChiPhiID
+        //        VALUES (@SuKienID, @Ten, @GhiChu, @SoTien)";
+
+        //            insertCpCmd.Parameters.AddRange(new[]
+        //            {
+        //        new SqlParameter("@SuKienID", suKienId),
+        //        new SqlParameter("@Ten", cp.TenKhoanChi ?? (object)DBNull.Value),
+        //        new SqlParameter("@GhiChu", cp.GhiChu ?? (object)DBNull.Value),
+        //        new SqlParameter("@SoTien", cp.SoTien)
+        //    });
+
+        //            var chiPhiId = (int)(await insertCpCmd.ExecuteScalarAsync());
+
+        //            foreach (var ct in cp.ChiTiet)
+        //            {
+        //                var insertCtCmd = conn.CreateCommand();
+        //                insertCtCmd.Transaction = transaction;
+        //                insertCtCmd.CommandText = @"
+        //            INSERT INTO ChiTietChiPhiSuKien (ChiPhiID, TenPhanQua, SoLuong, DonGia, NguoiDaiDien)
+        //            VALUES (@ChiPhiID, @Ten, @SL, @DonGia, @Nguoi)";
+
+        //                insertCtCmd.Parameters.AddRange(new[]
+        //                {
+        //            new SqlParameter("@ChiPhiID", chiPhiId),
+        //            new SqlParameter("@Ten", ct.TenPhanQua ?? (object)DBNull.Value),
+        //            new SqlParameter("@SL", ct.SoLuong),
+        //            new SqlParameter("@DonGia", ct.DonGia),
+        //            new SqlParameter("@Nguoi", ct.NguoiDaiDien ?? (object)DBNull.Value)
+        //        });
+
+        //                await insertCtCmd.ExecuteNonQueryAsync();
+        //            }
+        //        }
+
+        //        await transaction.CommitAsync();
+        //        return Ok(new { message = "✅ Tạo sự kiện thành công!", suKienId });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await transaction.RollbackAsync();
+        //        return StatusCode(500, new { message = "❌ Lỗi khi tạo sự kiện.", error = ex.Message });
+        //    }
+        //}
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SuKienDTOCreate dto)
         {
@@ -309,7 +464,6 @@ namespace QuanLyTreEmAPI.Controllers
             await using var conn = new SqlConnection(connString);
             await conn.OpenAsync();
             using var transaction = conn.BeginTransaction();
-
 
             try
             {
@@ -339,6 +493,7 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
+                // 1. Insert SuKien
                 var insertSuKienCmd = conn.CreateCommand();
                 insertSuKienCmd.Transaction = transaction;
                 insertSuKienCmd.CommandText = @"
@@ -349,21 +504,22 @@ namespace QuanLyTreEmAPI.Controllers
 
                 insertSuKienCmd.Parameters.AddRange(new[]
                 {
-            new SqlParameter("@Ten", dto.TenSuKien ?? (object)DBNull.Value),
-            new SqlParameter("@MoTa", dto.MoTa ?? (object)DBNull.Value),
-            new SqlParameter("@DiaDiem", dto.DiaDiem ?? (object)DBNull.Value),
-            new SqlParameter("@NgayBatDau", dto.NgayBatDau),
-            new SqlParameter("@NgayKetThuc", dto.NgayKetThuc),
-            new SqlParameter("@Nguoi", dto.NguoiChiuTrachNhiem ?? (object)DBNull.Value),
-            new SqlParameter("@SoTNV", dto.SoLuongTinhNguyenVien),
-            new SqlParameter("@SoTreEm", dto.SoLuongTreEm),
-            new SqlParameter("@User", dto.UserId),
-            new SqlParameter("@KhuPho", dto.KhuPhoId),
-            new SqlParameter("@Anh", (object?)imagePath ?? DBNull.Value)
-        });
+                    new SqlParameter("@Ten", dto.TenSuKien ?? (object)DBNull.Value),
+                    new SqlParameter("@MoTa", dto.MoTa ?? (object)DBNull.Value),
+                    new SqlParameter("@DiaDiem", dto.DiaDiem ?? (object)DBNull.Value),
+                    new SqlParameter("@NgayBatDau", dto.NgayBatDau),
+                    new SqlParameter("@NgayKetThuc", dto.NgayKetThuc),
+                    new SqlParameter("@Nguoi", dto.NguoiChiuTrachNhiem ?? (object)DBNull.Value),
+                    new SqlParameter("@SoTNV", dto.SoLuongTinhNguyenVien),
+                    new SqlParameter("@SoTreEm", dto.SoLuongTreEm),
+                    new SqlParameter("@User", dto.UserId),
+                    new SqlParameter("@KhuPho", dto.KhuPhoId),
+                    new SqlParameter("@Anh", (object?)imagePath ?? DBNull.Value)
+                });
 
                 var suKienId = (int)(await insertSuKienCmd.ExecuteScalarAsync());
 
+                // 2. Insert ThoiGianChiTiet + TietMuc
                 foreach (var tg in dto.ThoiGianChiTiet)
                 {
                     var insertTimeCmd = conn.CreateCommand();
@@ -444,8 +600,52 @@ namespace QuanLyTreEmAPI.Controllers
                     }
                 }
 
+                // ✅ 4. TẠO THÔNG BÁO VÀ GỬI ĐẾN PHỤ HUYNH & TÌNH NGUYỆN VIÊN
+                var noiDungThongBao = $@"🎉 Thông báo sự kiện mới: {dto.TenSuKien}
+
+📍 Địa điểm: {dto.DiaDiem}
+📅 Thời gian: Từ {dto.NgayBatDau:dd/MM/yyyy} đến {dto.NgayKetThuc:dd/MM/yyyy}
+👤 Người chịu trách nhiệm: {dto.NguoiChiuTrachNhiem}
+
+📝 Mô tả: {dto.MoTa}
+
+Vui lòng đăng ký tham gia sớm!";
+
+                // Tạo bản ghi trong bảng ThongBao
+                var insertThongBaoCmd = conn.CreateCommand();
+                insertThongBaoCmd.Transaction = transaction;
+                insertThongBaoCmd.CommandText = @"
+            INSERT INTO ThongBao (SuKienID, NoiDung, NgayThongBao)
+            OUTPUT INSERTED.ThongBaoID
+            VALUES (@SuKienID, @NoiDung, GETDATE())";
+
+                insertThongBaoCmd.Parameters.Add(new SqlParameter("@SuKienID", suKienId));
+                insertThongBaoCmd.Parameters.Add(new SqlParameter("@NoiDung", noiDungThongBao));
+
+                var thongBaoId = (int)(await insertThongBaoCmd.ExecuteScalarAsync());
+
+                // ✅ Gửi thông báo đến tất cả Phụ huynh và Tình nguyện viên (DaDoc = 0)
+                var insertThongBaoNguoiDungCmd = conn.CreateCommand();
+                insertThongBaoNguoiDungCmd.Transaction = transaction;
+                insertThongBaoNguoiDungCmd.CommandText = @"
+            INSERT INTO ThongBao_NguoiDung (ThongBaoID, UserID, DaDoc)
+            SELECT @ThongBaoID, UserID, 0
+            FROM NguoiDung
+            WHERE VaiTro IN (N'Phụ huynh', N'Tình nguyện viên')";
+
+                insertThongBaoNguoiDungCmd.Parameters.Add(new SqlParameter("@ThongBaoID", thongBaoId));
+
+                var soNguoiNhanThongBao = await insertThongBaoNguoiDungCmd.ExecuteNonQueryAsync();
+
                 await transaction.CommitAsync();
-                return Ok(new { message = "✅ Tạo sự kiện thành công!", suKienId });
+
+                return Ok(new
+                {
+                    message = "✅ Tạo sự kiện thành công!",
+                    suKienId = suKienId,
+                    thongBaoId = thongBaoId,
+                    soNguoiNhanThongBao = soNguoiNhanThongBao
+                });
             }
             catch (Exception ex)
             {
@@ -453,6 +653,7 @@ namespace QuanLyTreEmAPI.Controllers
                 return StatusCode(500, new { message = "❌ Lỗi khi tạo sự kiện.", error = ex.Message });
             }
         }
+
 
         [HttpGet("khuPho")]
         public async Task<IActionResult> GetKhuPho()
@@ -477,7 +678,7 @@ namespace QuanLyTreEmAPI.Controllers
                 {
                     u.UserId,
                     HoTen = u.HoTen
-                  
+
                 })
                 .OrderBy(u => u.HoTen)
                 .ToListAsync();
@@ -606,7 +807,7 @@ namespace QuanLyTreEmAPI.Controllers
         }
         [HttpPost("{id}/dangky")]
         public async Task<IActionResult> DangKy(int id, [FromBody] DangKySuKien dto)
-         {
+        {
             var suKien = await _context.SuKiens.AnyAsync(s => s.SuKienID == id);
             if (!suKien) return NotFound("Sự kiện không tồn tại");
 
@@ -629,7 +830,7 @@ namespace QuanLyTreEmAPI.Controllers
 
             return Ok(new { message = "Đăng ký thành công! Vui lòng chờ duyệt." });
         }
-      
+
 
         [HttpGet("getalldangkysukien")]
         public async Task<IActionResult> GetAllDangKySuKien()
